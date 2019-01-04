@@ -41,7 +41,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IHangupService.cs" />
+    <Compile Include="IInitiationService.cs" />
+    <Compile Include="IManageServices.cs" />
+    <Compile Include="IManagessageServices.cs" />
+    <Compile Include="IPdspServices.cs" />
+    <Compile Include="IProjectriskServices.cs" />
+    <Compile Include="IProjmessageServices.cs" />
+    <Compile Include="IProjproblemServices.cs" />
+    <Compile Include="IRoleServices.cs" />
+    <Compile Include="ISolutiontohangServices.cs" />
+    <Compile Include="IStackeholderServices.cs" />
+    <Compile Include="IWeeklyServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IPermissionServices.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChinaBank.Model\ChinaBank.Model.csproj">
+      <Project>{6277cced-4453-4807-bc15-659f37505bea}</Project>
+      <Name>ChinaBank.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
