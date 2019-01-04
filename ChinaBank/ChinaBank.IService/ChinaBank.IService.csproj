@@ -41,7 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IHangupService.cs" />
+    <Compile Include="IInitiationService.cs" />
+    <Compile Include="IManageServices.cs" />
+    <Compile Include="IManagessageServices.cs" />
+    <Compile Include="IPdspServices.cs" />
+    <Compile Include="IProjectriskServices.cs" />
+    <Compile Include="IRoleServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IPermissionServices.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
