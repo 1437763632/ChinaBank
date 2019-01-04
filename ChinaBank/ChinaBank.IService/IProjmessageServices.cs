@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ChinaBank.IService
 {
-    class IProjmessageServices
+    /// <summary>
+    /// 项目信息表接口
+    /// </summary>
+    public interface IProjmessageServices
     {
     }
 }

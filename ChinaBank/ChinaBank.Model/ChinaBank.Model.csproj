@@ -41,12 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+
     <Compile Include="Manage.cs" />
     <Compile Include="ManageAndRole.cs" />
     <Compile Include="Permission.cs" />
     <Compile Include="PermissionAndRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs" />
+
+    <Compile Include="Hangup.cs" />
+    <Compile Include="Initiation.cs" />
+    <Compile Include="PDSP.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Solutiontohang.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
