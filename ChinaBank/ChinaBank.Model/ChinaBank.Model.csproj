@@ -41,7 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Managemessage.cs" />
+    <Compile Include="Projmessage.cs" />
+    <Compile Include="Projproblem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Stackeholder.cs" />
+    <Compile Include="Weekly.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
