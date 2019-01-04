@@ -44,7 +44,7 @@
     <Compile Include="Hangup.cs" />
     <Compile Include="Initiation.cs" />
     <Compile Include="PDSP.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+
     <Compile Include="Solutiontohang.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

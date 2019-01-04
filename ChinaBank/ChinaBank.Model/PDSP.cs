@@ -14,43 +14,43 @@ namespace ChinaBank.Model
         /// <summary>
         /// 主键Id
         /// </summary>
-        public int id { get; set; }
+        public int Id { get; set; }
         /// <summary>
         /// 表单头
         /// </summary>
-        public string forms { get; set; }
+        public string Forms { get; set; }
         /// <summary>
         /// 项目编号
         /// </summary>
-        public string pid { get; set; }
+        public string Pid { get; set; }
         /// <summary>
         /// 项目名称
         /// </summary>
-        public string pname { get; set; }
+        public string Pname { get; set; }
         /// <summary>
         /// 申请人
         /// </summary>
-        public string applicant { get; set; }
+        public string Applicant { get; set; }
         /// <summary>
         /// 总行项目经理
         /// </summary>
-        public string pmheadoffice { get; set; }
+        public string Pmheadoffice { get; set; }
         /// <summary>
         /// 创建日期
         /// </summary>
-        public DateTime createtime { get; set; }
+        public DateTime Createtime { get; set; }
         /// <summary>
         /// 所属部门
         /// </summary>
-        public string department { get; set; }
+        public string Department { get; set; }
         /// <summary>
         /// 结束日期
         /// </summary>
-        public DateTime finishtime { get; set; }
+        public DateTime Finishtime { get; set; }
         /// <summary>
         /// 生效日期
         /// </summary>
-        public string takeeffecttime { get; set; }
+        public string Takeeffecttime { get; set; }
         /// <summary>
         /// 结项性质
         /// </summary>
@@ -62,7 +62,7 @@ namespace ChinaBank.Model
         /// <summary>
         /// 项目副经理
         /// </summary>
-        public string dpm { get; set; }
+        public string Dpm { get; set; }
         /// <summary>
         /// 项目结项报告
         /// </summary>
@@ -74,35 +74,35 @@ namespace ChinaBank.Model
         /// <summary>
         /// 项目干系人
         /// </summary>
-        public string stakeholder { get; set; }
+        public string Stakeholder { get; set; }
         /// <summary>
         /// 问题编号
         /// </summary>
-        public string questionid { get; set; }
+        public string Questionid { get; set; }
         /// <summary>
         /// 问题描述
         /// </summary>
-        public string questionName { get; set; }
+        public string QuestionName { get; set; }
         /// <summary>
         /// 是否修改
         /// </summary>
-        public string ismodify { get; set; }
+        public string Ismodify { get; set; }
         /// <summary>
         /// 提出人
         /// </summary>
-        public string introducer { get; set; }
+        public string Introducer { get; set; }
         /// <summary>
         /// 是否通过
         /// </summary>
-        public string passed { get; set; }
+        public string Passed { get; set; }
         /// <summary>
         /// 备注
         /// </summary>
-        public string remarks { get; set; }
+        public string Remarks { get; set; }
         /// <summary>
         /// 审核结论
         /// </summary>
-        public string auditconclusion { get; set; }
+        public string Auditconclusion { get; set; }
         /// <summary>
         /// 遗留事项
         /// </summary>
@@ -110,11 +110,11 @@ namespace ChinaBank.Model
         /// <summary>
         /// 其他事宜
         /// </summary>
-        public string othermatters { get; set; }
+        public string Othermatters { get; set; }
         /// <summary>
         /// 相关干系人签名
         /// </summary>
-        public string signature { get; set; }
+        public string Signature { get; set; }
         /// <summary>
         /// 实施牵头部门
         /// </summary>
@@ -122,26 +122,26 @@ namespace ChinaBank.Model
         /// <summary>
         /// 项目管理部
         /// </summary>
-        public string itemopinion { get; set; }
+        public string Itemopinion { get; set; }
         /// <summary>
         /// 工程管理部
         /// </summary>
-        public string projectopinion { get; set; }
+        public string Projectopinion { get; set; }
         /// <summary>
         /// 资源管理部
         /// </summary>
-        public string resourceadmin { get; set; }
+        public string Resourceadmin { get; set; }
         /// <summary>
         /// 财务管理部
         /// </summary>
-        public string financialadmin { get; set; }
+        public string Financialadmin { get; set; }
         /// <summary>
         /// 所属部门意见
         /// </summary>
-        public string departmentopinion { get; set; }
+        public string Departmentopinion { get; set; }
         /// <summary>
         /// 总经理室
         /// </summary>
-        public string executiveoffice { get; set; }
+        public string Executiveoffice { get; set; }
     }
 }
