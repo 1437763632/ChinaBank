@@ -22,14 +22,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+ 
+
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -43,12 +37,14 @@
   <ItemGroup>
 
 
+
     <Compile Include="Managemessage.cs" />
     <Compile Include="Projmessage.cs" />
     <Compile Include="Projproblem.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+
     <Compile Include="Stackeholder.cs" />
     <Compile Include="Weekly.cs" />
+
 
     <Compile Include="Manage.cs" />
     <Compile Include="ManageAndRole.cs" />
@@ -56,11 +52,10 @@
     <Compile Include="PermissionAndRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs" />
-
     <Compile Include="Hangup.cs" />
     <Compile Include="Initiation.cs" />
     <Compile Include="PDSP.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+
     <Compile Include="Solutiontohang.cs" />
 
   </ItemGroup>
