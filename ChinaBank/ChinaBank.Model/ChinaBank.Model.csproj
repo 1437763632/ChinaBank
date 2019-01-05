@@ -33,6 +33,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+
+
+
+    <Compile Include="Managemessage.cs" />
+    <Compile Include="Projmessage.cs" />
+    <Compile Include="Projproblem.cs" />
+
+    <Compile Include="Stackeholder.cs" />
+    <Compile Include="Weekly.cs" />
+
+
     <Compile Include="Manage.cs" />
     <Compile Include="ManageAndRole.cs" />
     <Compile Include="PageCriteria.cs" />
@@ -45,6 +56,7 @@
     <Compile Include="Initiation.cs" />
     <Compile Include="PDSP.cs" />
     <Compile Include="Solutiontohang.cs" />
+
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
