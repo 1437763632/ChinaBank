@@ -9,7 +9,7 @@ using System;
 using System.Linq;
 
 
-namespace ReadNovels.Common
+namespace ChinaBank.Common
 {
     using ChinaBank.Model;
     using Oracle.DataAccess;
