@@ -11,7 +11,7 @@ namespace ChinaBank.Service
     using ChinaBank.Model;
     using ChinaBank.Common;
     public class InitiationService : IInitiationService
-    {
+    { 
         public List<Initiation> GetInitiation()
         {
             throw new NotImplementedException();
