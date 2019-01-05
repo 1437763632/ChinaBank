@@ -41,6 +41,8 @@
     <Compile Include="Weekly.cs" />
     <Compile Include="Manage.cs" />
     <Compile Include="ManageAndRole.cs" />
+    <Compile Include="PageCriteria.cs" />
+    <Compile Include="PageDataView.cs" />
     <Compile Include="Permission.cs" />
     <Compile Include="PermissionAndRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -9,7 +9,9 @@ using System.Threading.Tasks;
 /// </summary>
 namespace ChinaBank.IService
 {
+    using ChinaBank.Model;
     public interface  IInitiationService
     {
+        List<Initiation> GetInitiation();
     }
 }
