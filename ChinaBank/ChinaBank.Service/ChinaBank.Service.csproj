@@ -41,7 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ManageServices.cs" />
+    <Compile Include="PermissionServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleServices.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChinaBank.IService\ChinaBank.IService.csproj">
+      <Project>{d127cbae-ca88-4492-b2e5-a9c09ba1cfa1}</Project>
+      <Name>ChinaBank.IService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChinaBank.Model\ChinaBank.Model.csproj">
+      <Project>{6277cced-4453-4807-bc15-659f37505bea}</Project>
+      <Name>ChinaBank.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

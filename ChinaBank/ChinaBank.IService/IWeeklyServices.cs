@@ -11,5 +11,6 @@ namespace ChinaBank.IService
     /// </summary>
     public interface IWeeklyServices
     {
+
     }
 }
