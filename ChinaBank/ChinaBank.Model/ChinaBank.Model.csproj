@@ -22,8 +22,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
- 
-
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -35,19 +33,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-
-
-
     <Compile Include="Managemessage.cs" />
     <Compile Include="Projmessage.cs" />
     <Compile Include="Projproblem.cs" />
-
+    <Compile Include="ShowRole.cs" />
     <Compile Include="Stackeholder.cs" />
     <Compile Include="Weekly.cs" />
-
-
     <Compile Include="Manage.cs" />
     <Compile Include="ManageAndRole.cs" />
+    <Compile Include="PageCriteria.cs" />
+    <Compile Include="PageDataView.cs" />
     <Compile Include="Permission.cs" />
     <Compile Include="PermissionAndRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -55,9 +50,7 @@
     <Compile Include="Hangup.cs" />
     <Compile Include="Initiation.cs" />
     <Compile Include="PDSP.cs" />
-
     <Compile Include="Solutiontohang.cs" />
-
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

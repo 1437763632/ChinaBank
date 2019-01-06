@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChinaBank.IService
+namespace ChinaBank.Service
 {
-    /// <summary>
-    /// 项目周报表
-    /// </summary>
-    public interface IWeeklyServices
+    class Projproblem
     {
-
     }
 }
