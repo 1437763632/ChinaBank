@@ -13,9 +13,9 @@ namespace ChinaBank.IService
     public interface IStackeholderServices
     {
          int Add(Stackeholder stack);
-     
 
-         List<Stackeholder> GetStackeholder()
+
+        List<Stackeholder> GetStackeholder();
      
     }
 }

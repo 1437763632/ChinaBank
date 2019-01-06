@@ -16,7 +16,7 @@ namespace ChinaBank.Service
 
     class ProjproblemService : IProjproblemServices
     {
-        public int Add(Projproblem p)
+        public int Add(Model.Projproblem p)
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
             {
@@ -25,12 +25,12 @@ namespace ChinaBank.Service
             }
         }
 
-        public List<Projproblem> GetProjproblems()
+        public List<Model.Projproblem> GetProjproblems()
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
             {
                 string captureByIdSql = @" select * from Projproblem";
-                var result = conn.Query<Projproblem>(captureByIdSql, null);
+                var result = conn.Query<Model.Projproblem>(captureByIdSql, null);
                 return result.ToList();
             }
         }
