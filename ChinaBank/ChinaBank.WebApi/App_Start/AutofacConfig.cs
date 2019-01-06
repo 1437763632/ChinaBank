@@ -13,7 +13,7 @@ namespace ChinaBank.WebApi.App_Start
     using ChinaBank.Service;
     using System.Web.Http;
     using System.Web.Mvc;
-
+    
     public class AutofacConfig
     {
         /// <summary>

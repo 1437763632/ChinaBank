@@ -41,9 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Demo.cs" />
     <Compile Include="ManageServices.cs" />
     <Compile Include="PermissionServices.cs" />
     <Compile Include="InitiationService.cs" />
+    <Compile Include="ProjproblemServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleServices.cs" />
   </ItemGroup>

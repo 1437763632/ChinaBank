@@ -114,6 +114,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AutofacConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -136,6 +137,28 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChinaBank.Cache\ChinaBank.Cache.csproj">
+      <Project>{8d25a7cd-aa98-4d32-b0f8-0c883d0c8c5f}</Project>
+      <Name>ChinaBank.Cache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChinaBank.Common\ChinaBank.Common.csproj">
+      <Project>{eb865b59-f036-44dc-8706-64e165f9cf64}</Project>
+      <Name>ChinaBank.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChinaBank.IService\ChinaBank.IService.csproj">
+      <Project>{d127cbae-ca88-4492-b2e5-a9c09ba1cfa1}</Project>
+      <Name>ChinaBank.IService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChinaBank.Model\ChinaBank.Model.csproj">
+      <Project>{6277cced-4453-4807-bc15-659f37505bea}</Project>
+      <Name>ChinaBank.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChinaBank.Service\ChinaBank.Service.csproj">
+      <Project>{c1e3eb4f-5e4c-4ef9-b698-28df850b28be}</Project>
+      <Name>ChinaBank.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
