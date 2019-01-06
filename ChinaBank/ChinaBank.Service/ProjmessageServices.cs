@@ -13,7 +13,7 @@ namespace ChinaBank.Service
     using Oracle.DataAccess.Client;
     class Projmessage:IProjmessageServices
     {
-        public int Add(Projmessage message)
+        public int Add(Model.Projmessage message)
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
             {
@@ -22,12 +22,12 @@ namespace ChinaBank.Service
             }
         }
 
-        public List<Projproblem> GetProjproblems()
+        public List<Model.Projmessage> GetProjmessage()
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
             {
                 string captureByIdSql = @" select * from Projmessage";
-                var result = conn.Query<Projproblem>(captureByIdSql, null);
+                var result = conn.Query<Model.Projmessage>(captureByIdSql, null);
                 return result.ToList();
             }
         }

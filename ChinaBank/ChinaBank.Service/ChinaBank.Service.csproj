@@ -59,8 +59,8 @@
     <Compile Include="ProjproblemServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleServices.cs" />
-    <Compile Include="Stackeholder.cs" />
-    <Compile Include="Weekly.cs" />
+    <Compile Include="StackeholderServices.cs" />
+    <Compile Include="WeeklyServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ChinaBank.IService\ChinaBank.IService.csproj">

@@ -13,7 +13,7 @@ namespace ChinaBank.Service
     using Oracle.DataAccess.Client;
     class Managemessage:IManagessageServices
     {
-        public int Add(Managemessage message)
+        public int Add(Model.Managemessage message)
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
             {   
@@ -22,12 +22,12 @@ namespace ChinaBank.Service
             }
         }
 
-        public List<Managemessage> GetManagemessage()
+        public List<Model.Managemessage> GetManagemessage()
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
             {
                 string captureByIdSql = @" select * from Managemessage";
-                var result = conn.Query<Managemessage>(captureByIdSql, null);
+                var result = conn.Query<Model.Managemessage>(captureByIdSql, null);
                 return result.ToList();
             }
         }
