@@ -10,6 +10,9 @@ namespace ChinaBank.Service
 {
     using Model;
     using IService;
+    using Common;
+    using Oracle.DataAccess.Client;
+    using Dapper;
     public class PermissionServices : IPermissionServices
     {
         /// <summary>
@@ -19,7 +22,12 @@ namespace ChinaBank.Service
         /// <returns></returns>
         public int PermissionAdd(Permission p)
         {
-            throw new NotImplementedException();
+            using (OracleConnection conn = DapperHelper.GetConnString())
+            {
+                string executeSql = @" INSERT INTO Permission (PermissionName,Url) VALUES (:PermissionName,:Url) ";
+                int result = conn.Execute(executeSql, p);
+                return result;
+            }
         }
         /// <summary>
         /// 权限显示
@@ -28,7 +36,12 @@ namespace ChinaBank.Service
 
         public List<Permission> permissions()
         {
-            throw new NotImplementedException();
+            using (OracleConnection conn = DapperHelper.GetConnString())
+            {
+                string executeSql = @"select * from permission ";
+                var result = conn.Query<Permission>(executeSql,null).ToList();
+                return result;
+            }
         }
 
         /// <summary>
@@ -38,7 +51,12 @@ namespace ChinaBank.Service
         /// <returns></returns>
         public List<Permission> permissionsID(int Id)
         {
-            throw new NotImplementedException();
+            using (OracleConnection conn = DapperHelper.GetConnString())
+            {
+                string executeSql = @"select * from permission where Id=:id ";
+                var result = conn.Query<Permission>(executeSql, new { id=Id}).ToList();
+                return result;
+            }
         }
         /// <summary>
         /// 修改
@@ -48,7 +66,12 @@ namespace ChinaBank.Service
 
         public int UpdatePermission(Permission p)
         {
-            throw new NotImplementedException();
+            using (OracleConnection conn = DapperHelper.GetConnString())
+            {
+                string sql = @"Update permission set PermissionName=:PermissionName,Url=：Url where Id=:Id";
+                var result = conn.Execute(sql, p);
+                return result;
+            }
         }
     }
 }
