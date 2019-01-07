@@ -9,7 +9,12 @@ using System.Threading.Tasks;
 /// </summary>
 namespace ChinaBank.IService
 {
+    using ChinaBank.Model;
     public interface  IManagessageServices
     {
+        int Add(Managemessage message);
+
+        List<Managemessage> GetManagemessage();
+  
     }
 }

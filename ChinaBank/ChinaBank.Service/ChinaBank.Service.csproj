@@ -39,6 +39,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\dlls\Oracle.DataAccess.dll</HintPath>
     </Reference>
+    <Reference Include="Oracle.Web, Version=2.112.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,11 +50,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Managemessage.cs" />
     <Compile Include="ManageServices.cs" />
     <Compile Include="PermissionServices.cs" />
     <Compile Include="InitiationService.cs" />
+    <Compile Include="ProjmessageServices.cs" />
+    <Compile Include="ProjproblemService.cs" />
+    <Compile Include="Demo.cs" />
+    <Compile Include="ProjproblemServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleServices.cs" />
+    <Compile Include="StackeholderServices.cs" />
+    <Compile Include="WeeklyServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ChinaBank.IService\ChinaBank.IService.csproj">

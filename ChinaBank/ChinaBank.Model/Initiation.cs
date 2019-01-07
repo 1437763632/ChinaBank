@@ -160,5 +160,9 @@ namespace ChinaBank.Model
         /// 附件
         /// </summary>
         public string Accessory { get; set; }
+        /// <summary>
+        /// 状态
+        /// </summary>
+        public int State { get; set; }
     }
 }

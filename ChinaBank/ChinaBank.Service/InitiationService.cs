@@ -12,6 +12,7 @@ namespace ChinaBank.Service
     using ChinaBank.Common;
     using Oracle.DataAccess.Client;
     using Dapper;
+
     public class InitiationService : IInitiationService
     {
         public List<Initiation> GetInitiation()
