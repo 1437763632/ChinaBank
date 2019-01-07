@@ -9,31 +9,6 @@ namespace ChinaBank.WebApi.Controllers
 {
     public class RBACController : ApiController
     {
-        // GET: api/RBAC
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET: api/RBAC/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST: api/RBAC
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT: api/RBAC/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/RBAC/5
-        public void Delete(int id)
-        {
-        }
+       
     }
 }
