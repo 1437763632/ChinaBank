@@ -43,6 +43,7 @@ namespace ChinaBank.Model
         /// 关联需求单号
         /// </summary>
         public string Requisitionid { get; set; }
+
         /// <summary>
         /// 发起部门
         /// </summary>
@@ -105,7 +106,7 @@ namespace ChinaBank.Model
         /// <summary>
         /// 申请日期
         /// </summary>
-        public string Times { get; set; }
+        public DateTime Times { get; set; }
         /// <summary>
         /// 是否紧急
         /// </summary>
@@ -164,5 +165,21 @@ namespace ChinaBank.Model
         /// 状态
         /// </summary>
         public int State { get; set; }
+        /// <summary>
+        /// 总行立项编号
+        /// </summary>
+        public string Projectnum { get; set; }
+        /// <summary>
+        /// 涉及产品名称
+        /// </summary>
+        public string Productname { get; set; }
+        /// <summary>
+        /// 总行业务部门
+        /// </summary>
+        public string Operating { get; set; }
+        /// <summary>
+        /// 总行项目经理
+        /// </summary>
+        public string ZPM { get; set; }
     }
 }

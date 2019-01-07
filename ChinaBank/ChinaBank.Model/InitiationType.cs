@@ -6,24 +6,18 @@ using System.Threading.Tasks;
 
 namespace ChinaBank.Model
 {
-    using System.ComponentModel.DataAnnotations.Schema;
     /// <summary>
-    /// 角色表
+    /// 项目类型表
     /// </summary>
-   public class Role
+    public class InitiationType
     {
         /// <summary>
-        /// 主键
+        /// 主键Id
         /// </summary>
         public int Id { get; set; }
         /// <summary>
-        /// 角色名称
+        /// 类型名称
         /// </summary>
-        public string  RoleName { get; set; }
-        /// <summary>
-        /// 权限ID
-        /// </summary>
-        [NotMapped]
-        public string RightID { get; set; }
+        public string Name { get; set; }
     }
 }

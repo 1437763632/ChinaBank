@@ -7,33 +7,110 @@ using System.Web.Http;
 
 namespace ChinaBank.WebApi.Controllers
 {
+    using Model;
+    using IService;
+    using Service;
+
+    [RoutePrefix("rbac")]
     public class RBACController : ApiController
     {
-        // GET: api/RBAC
-        public IEnumerable<string> Get()
+        [Unity.Attributes.Dependency]
+        public IPermissionServices permissionServices { get; set; }
+        [Unity.Attributes.Dependency]
+
+        public IRoleServices roleServices { get; set; }
+        #region 权限
+        /// <summary>
+        /// 权限添加
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        [Route("PermissionAdd")]
+        [HttpPost]
+        public int PermissionAdd(Permission permission)
         {
-            return new string[] { "value1", "value2" };
+            var i = permissionServices.PermissionAdd(permission);
+            return i;
+        }
+        /// <summary>
+        /// 权限显示
+        /// </summary>
+        /// <returns></returns>
+        [Route("permissions")]
+        [HttpGet]
+        public List<Permission> permissions()
+        {
+            var i = permissionServices.permissions();
+            return i;
         }
 
-        // GET: api/RBAC/5
-        public string Get(int id)
+        /// <summary>
+        /// 反填
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        [Route("permissionsID")]
+        [HttpGet]
+        public List<Permission> permissionsID(int Id)
         {
-            return "value";
+            var i = permissionServices.permissionsID(Id);
+            return i;
         }
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        [Route("UpdatePermission")]
+        [HttpPost]
 
-        // POST: api/RBAC
-        public void Post([FromBody]string value)
+        public int UpdatePermission(Permission permission)
         {
+            var i = permissionServices.UpdatePermission(permission);
+            return i;
         }
+        #endregion
+        #region 角色
+        /// <summary>
+        /// 角色添加
+        /// </summary>
+        /// <param name="role"></param>
+        /// <returns></returns>
 
-        // PUT: api/RBAC/5
-        public void Put(int id, [FromBody]string value)
+        public int RoleAdd(Role role)
         {
+            var i = roleServices.RoleAdd(role);
+            return i;
         }
-
-        // DELETE: api/RBAC/5
-        public void Delete(int id)
+        /// <summary>
+        /// 角色修改
+        /// </summary>~
+        /// <param name="role"></param>
+        /// <returns></returns>
+        public int RoleUpdate(Role role)
         {
+            var i = roleServices.RoleUpdate(role);
+            return i;
+        }
+        /// <summary>
+        /// 角色显示
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<ShowRole> showRoles()
+        {
+            var i = roleServices.showRoles();
+            return i;
+        }
+        /// <summary>
+        /// 反填
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public IEnumerable<ShowRole> showRolesID(int id)
+        {
+            var i = roleServices.showRolesID(id);
+            return i;
         }
     }
+    #endregion
 }

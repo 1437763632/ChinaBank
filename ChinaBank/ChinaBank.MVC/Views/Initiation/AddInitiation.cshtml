@@ -1,0 +1,74 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddInitiation</title>
+</head>
+<body>
+    <div>
+        <div><span>编码</span><span><input type="text" name="Cood" /></span><span>申请人</span><span><input type="text" name="Cood" /></span></div>
+        <div><span>项目编号</span><span><input type="text" name="Cood" /></span><span>申请日期</span><span><input type="text" name="Cood" /></span></div>
+        <div><span>项目名称</span><span><input type="text" name="Cood" /></span><span>项目类型</span><span><input type="text" name="Cood" /></span></div>
+        <div><span>关联需求单号</span><span><input type="text" name="Cood" /></span><span>涉及产品名称</span><span><input type="text" name="Cood" /></span></div>
+        <div><span>总行立项编号</span><span><input type="text" name="Cood" /></span><span>总行业务部门</span><span><input type="text" name="Cood" /></span></div>
+        <div><span>总行项目经理</span><span><input type="text" name="Cood" /></span><span>业务负责人</span><span><input type="text" name="Cood" /></span></div>
+        <div><span>项目所属部门</span><span><input type="text" name="Cood" /></span><span>实施配合部门</span><span><input type="text" name="Cood" /></span></div>
+        <div><span>提前启动项目</span><span><input type="text" name="Cood" /></span></div>
+        <div><span>收到提前启动指令时间</span><span><input type="text" name="Cood" /></span><span>提前启动函数</span><span><input type="text" name="Cood" /></span></div>
+        <div><span>提前启动指令中费用额度</span><span><input type="text" name="Cood" /></span></div>
+        <div><span>初步拟定软件中心项目经理</span><span><input type="text" name="Cood" /></span><span>项目经理等级</span><span><input type="text" name="Cood" /></span></div>
+        <div><span>正副标识</span><span><input type="text" name="Cood" /></span><span>任命类型</span><span><input type="text" name="Cood" /></span></div>
+        <div><span>项目工期</span><span><input type="text" name="Cood" /></span><span>预算工作量</span><span><input type="text" name="Cood" /></span></div>
+        <div><span>是否敏捷</span><span><input type="text" name="Cood" /></span><span>是否紧急</span><span><input type="text" name="Cood" /></span></div>
+        <div><span>计划管理人</span><span><input type="text" name="Cood" /></span></div>
+        <div><span>业务师</span><span><input type="text" name="Cood" /></span></div>
+        <div><span>项目组主要成员</span><span><input type="text" name="Cood" /></span></div>
+        <div><span>系统工程师</span><span><input type="text" name="Cood" /></span></div>
+        <div><span>架构师</span><span><input type="text" name="Cood" /></span></div>
+        <div><span>测试经理</span><span><input type="text" name="Cood" /></span></div>
+        <div><span>质量工程师</span><span><input type="text" name="Cood" /></span></div>
+        <div><span>配置管理员</span><span><input type="text" name="Cood" /></span></div>
+        <div><span>测试架构师</span><span><input type="text" name="Cood" /></span></div>
+        <div><span>项目核算项目编码</span><span><input type="text" name="Cood" /></span><span>项目核算项目编码维护时间</span><span><input type="text" name="Cood" /></span></div>
+        <div><span>处理步骤</span><span><input type="text" name="Cood" /></span><span>处理人</span><span><input type="text" name="Cood" /></span></div>
+        <div><span>保存</span><span><input type="text" name="Cood" /></span></div>
+    </div>
+</body>
+</html>
+<script src="~/Scripts/axios.js"></script>
+<script src="~/Scripts/vue.js"></script>
+<script type="text/javascript">
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                RoleList: ['董事', '部门主管', '部门经理', '部门主管'],
+                Sex: "",
+                Role:"请选择"
+            },
+            methods: {
+                addUser: function (name, sex, role) {
+                    axios.post('@Url.Action("Add", "User")', { user: { Name: name, Sex: sex, Role: role} }).then(
+                        (response) => {
+                            alert("添加成功")
+
+
+                        },
+                        (response) => {
+                            alert(response.status);
+                        }
+                    ).catch(function (response) {
+                        alert(response);
+                    });
+                },
+
+
+            },
+
+        });
+</script>

@@ -12,6 +12,8 @@ namespace ChinaBank.Service
     using IService;
     using Oracle.DataAccess.Client;
     public class WeeklyServices:IWeeklyServices
+
+
     {
         public int Add(Model.Weekly p)
         {
