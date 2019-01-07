@@ -1,0 +1,127 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Scripts/axios.js"></script>
+    <script src="~/Scripts/vue.js"></script>
+    <script type="text/javascript">
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                contactsList:[]
+            },
+            mounted() {
+                this.getAllContacts();
+            },
+            methods: {
+                getAllContacts: function () {
+                    axios.get('@Url.Action("Get", "Student")'
+                    ).then(
+                        (response) => {
+                            this.contactsList = [];
+                            for (var i = 0; i < response.data.length; i++) {
+                                this.contactsList.push(response.data[i]);
+                            }
+                            this.contactsList.push({ Id:"", Name: "", PhoneNo: "", EmailAddress: "" });
+                        },
+                        (response) => {
+                            alert(response.status);
+                        }
+                    ).catch(function (response) {
+                        alert(response);
+                    });
+                },
+                addContact: function (name, phoneno, emailaddress) {
+                    axios.post('@Url.Action("Add", "Student")', { contact: { Name: name, PhoneNo: phoneno, EmailAddress: emailaddress } }).then(
+                        (response) => {
+                            this.contactsList = [];
+                            for (var i = 0; i < response.data.length; i++) {
+                                this.contactsList.push(response.data[i]);
+                            }
+                            this.contactsList.push({ Id: "", Name: "", PhoneNo: "", EmailAddress: "" });
+                        },
+                        (response) => {
+                            alert(response.status);
+                        }
+                    ).catch(function (response) {
+                        alert(response);
+                    });
+                },
+                updateContact: function (id, name, phoneno, emailaddress) {
+                    axios.post('@Url.Action("Update", "Student")', { contact: { Id: id, Name: name, PhoneNo: phoneno, EmailAddress: emailaddress} }).then(
+                        (response) => {
+                            this.contactsList = [];
+                            for (var i = 0; i < response.data.length; i++) {
+                                this.contactsList.push(response.data[i]);
+                            }
+                            this.contactsList.push({ Id: "", Name: "", PhoneNo: "", EmailAddress: "" });
+                        },
+                        (response) => {
+                            alert(response.status);
+                        }
+                    ).catch(function (response) {
+                        alert(response);
+                    });
+                },
+                deleteContactById: function (id) {
+                    axios.post('@Url.Action("Delete", "Student")', { id: id }).then(
+                        (response) => {
+                            this.contactsList = [];
+                            for (var i = 0; i < response.data.length; i++) {
+                                this.contactsList.push(response.data[i]);
+                            }
+                            this.contactsList.push({ Id: "", Name: "", PhoneNo: "", EmailAddress: "" });
+                        },
+                        (response) => {
+                            alert(response.status);
+                        }
+                    ).catch(function (response) {
+                        alert(response);
+                    });
+                }
+            }
+        });
+    </script>
+</head>
+<body>
+    <div id="app">
+        <table v-show="contactsList.length" class="table-condensed" border="1">
+            <thead class="navbar-header">
+                <tr>
+                    <th>序号</th>
+                    <th>项目编号</th>
+                    <th>项目名称</th>
+                    <th>项目类型</th>
+                    <th>申请日期</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+                <tr v-for="(contact,index) in contactsList">
+                    <td><input type="text" v-model="contact.Id" /></td>
+                    <td><input type="text" v-model="contact.Pid" /></td>
+                    <td><input type="text" v-model="contact.Pname" /></td>
+                    <td><input type="text" v-model="contact.Ptype" /></td>
+                    <td><input type="text" v-model="contact.Budget" /></td>
+                    <td><input type="text" v-model="contact.State" /></td>
+                    <td>
+                        <div v-if="contact.Id!=''">
+                            <a href="#" v-on:click="updateContact(contact.Id,contact.Name,contact.PhoneNo,contact.EmailAddress)">修改</a>
+                            <a href="#" v-on:click="deleteContactById(contact.Id)">删除</a>
+                        </div>
+                        <div v-else>
+                            <a href="#" v-on:click="addContact(contact.Name,contact.PhoneNo,contact.EmailAddress)">添加</a>
+                        </div>
+                    </td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</body>
+</html>

@@ -10,11 +10,19 @@ namespace ChinaBank.Service
     using ChinaBank.IService;
     using ChinaBank.Model;
     using ChinaBank.Common;
+    using Oracle.DataAccess.Client;
+    using Dapper;
     public class InitiationService : IInitiationService
     {
         public List<Initiation> GetInitiation()
         {
-            throw new NotImplementedException();
+            using (OracleConnection conn = DapperHelper.GetConnString())
+            {
+                string sql = @"select * from Initiation";
+                var result = conn.Query<Initiation>(sql, null);
+                return result.ToList();
+
+            }
         }
     }
 }

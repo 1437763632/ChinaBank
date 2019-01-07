@@ -11,11 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChinaBank.Service", "ChinaB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChinaBank.MVC", "ChinaBank.MVC\ChinaBank.MVC.csproj", "{ECD9E44D-7F50-499B-A419-078B8A416139}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChinaBank.WebApi", "ChinaBank.WebApi\ChinaBank.WebApi.csproj", "{003C65F7-B09D-4EF2-8490-5032418F1040}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChinaBank.Common", "ChinaBank.Common\ChinaBank.Common.csproj", "{EB865B59-F036-44DC-8706-64E165F9CF64}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChinaBank.Cache", "ChinaBank.Cache\ChinaBank.Cache.csproj", "{8D25A7CD-AA98-4D32-B0F8-0C883D0C8C5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChinaBank.WebApi", "ChinaBank.WebApi\ChinaBank.WebApi.csproj", "{20345D4D-5F29-4C4C-B468-E8B236238FD5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,10 +39,6 @@ Global
 		{ECD9E44D-7F50-499B-A419-078B8A416139}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECD9E44D-7F50-499B-A419-078B8A416139}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECD9E44D-7F50-499B-A419-078B8A416139}.Release|Any CPU.Build.0 = Release|Any CPU
-		{003C65F7-B09D-4EF2-8490-5032418F1040}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{003C65F7-B09D-4EF2-8490-5032418F1040}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{003C65F7-B09D-4EF2-8490-5032418F1040}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{003C65F7-B09D-4EF2-8490-5032418F1040}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EB865B59-F036-44DC-8706-64E165F9CF64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EB865B59-F036-44DC-8706-64E165F9CF64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB865B59-F036-44DC-8706-64E165F9CF64}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,6 +47,10 @@ Global
 		{8D25A7CD-AA98-4D32-B0F8-0C883D0C8C5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D25A7CD-AA98-4D32-B0F8-0C883D0C8C5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D25A7CD-AA98-4D32-B0F8-0C883D0C8C5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20345D4D-5F29-4C4C-B468-E8B236238FD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20345D4D-5F29-4C4C-B468-E8B236238FD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20345D4D-5F29-4C4C-B468-E8B236238FD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20345D4D-5F29-4C4C-B468-E8B236238FD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
