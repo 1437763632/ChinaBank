@@ -20,12 +20,12 @@ namespace ChinaBank.Service
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>
-        public int PermissionAdd(Permission p)
+        public int PermissionAdd(Permission permission)
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
             {
                 string executeSql = @" INSERT INTO Permission (PermissionName,Url) VALUES (:PermissionName,:Url) ";
-                int result = conn.Execute(executeSql, p);
+                int result = conn.Execute(executeSql, permission);
                 return result;
             }
         }
@@ -64,12 +64,12 @@ namespace ChinaBank.Service
         /// <param name="p"></param>
         /// <returns></returns>
 
-        public int UpdatePermission(Permission p)
+        public int UpdatePermission(Permission permission)
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
             {
                 string sql = @"Update permission set PermissionName=:PermissionName,Url=：Url where Id=:Id";
-                var result = conn.Execute(sql, p);
+                var result = conn.Execute(sql, permission);
                 return result;
             }
         }
