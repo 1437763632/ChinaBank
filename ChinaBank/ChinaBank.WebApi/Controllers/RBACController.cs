@@ -11,6 +11,7 @@ namespace ChinaBank.WebApi.Controllers
     using IService;
     using Service;
     using Oracle;
+    [RoutePrefix("rbac")]
     public class RBACController : ApiController
     {
         IPermissionServices permissionServices;
@@ -24,9 +25,9 @@ namespace ChinaBank.WebApi.Controllers
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>
-        public int PermissionAdd(Permission p)
+        public int PermissionAdd(Permission permission)
         {
-            var i = permissionServices.PermissionAdd(p);
+            var i = permissionServices.PermissionAdd(permission);
             return i;
         }
         /// <summary>
@@ -56,9 +57,9 @@ namespace ChinaBank.WebApi.Controllers
         /// <param name="p"></param>
         /// <returns></returns>
 
-        public int UpdatePermission(Permission Permission)
+        public int UpdatePermission(Permission permission)
         {
-            var i = permissionServices.UpdatePermission(Permission);
+            var i = permissionServices.UpdatePermission(permission);
             return i;
         }
         #endregion
