@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChinaBank.Model
 {
+    using System.ComponentModel.DataAnnotations.Schema;
     /// <summary>
     /// 角色表
     /// </summary>
@@ -19,5 +20,10 @@ namespace ChinaBank.Model
         /// 角色名称
         /// </summary>
         public string  RoleName { get; set; }
+        /// <summary>
+        /// 权限ID
+        /// </summary>
+        [NotMapped]
+        public string RightID { get; set; }
     }
 }

@@ -4,6 +4,9 @@ using ChinaBank.Service;
 using ChinaBank.IService;
 namespace ChinaBank.WebApi
 {
+    using IService;
+    using Service;
+    using Model;
     /// <summary>
     /// Specifies the Unity configuration for the main container.
     /// </summary>
@@ -43,6 +46,9 @@ namespace ChinaBank.WebApi
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
             container.RegisterType<IInitiationService, InitiationService>();
+            container.RegisterType<IPermissionServices, PermissionServices>();
+            container.RegisterType<IRoleServices, RoleServices>();
+            container.RegisterType<IManageServices, ManageServices>();
         }
     }
 }
