@@ -107,6 +107,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\InitiationController.cs" />
+    <Compile Include="Controllers\ProjproblemController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -117,6 +118,8 @@
     <None Include="packages.config" />
     <Content Include="Views\Initiation\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Projproblem\Index.cshtml" />
+    <Content Include="Views\Projproblem\Addprojproblem.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -126,6 +129,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Contents\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>

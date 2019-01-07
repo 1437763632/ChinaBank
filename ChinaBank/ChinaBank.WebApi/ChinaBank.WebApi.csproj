@@ -124,7 +124,12 @@
     <Compile Include="App_Start\UnityWebApiActivator.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\InitiationController.cs" />
+    <Compile Include="Controllers\ManagemessageController.cs" />
+    <Compile Include="Controllers\ProjmessageController.cs" />
+    <Compile Include="Controllers\ProjproblemController.cs" />
     <Compile Include="Controllers\RBACController.cs" />
+    <Compile Include="Controllers\StackeholderController.cs" />
+    <Compile Include="Controllers\WeeklyController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

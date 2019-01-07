@@ -11,7 +11,7 @@ namespace ChinaBank.Service
     using Dapper;
     using IService;
     using Oracle.DataAccess.Client;
-    class Managemessage:IManagessageServices
+    public class Managemessage:IManagessageServices
     {
         public int Add(Model.Managemessage message)
         {

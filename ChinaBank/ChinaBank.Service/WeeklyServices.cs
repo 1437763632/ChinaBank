@@ -11,7 +11,7 @@ namespace ChinaBank.Service
     using Dapper;
     using IService;
     using Oracle.DataAccess.Client;
-    class WeeklyServices:IWeeklyServices
+    public class WeeklyServices:IWeeklyServices
     {
         public int Add(Model.Weekly p)
         {

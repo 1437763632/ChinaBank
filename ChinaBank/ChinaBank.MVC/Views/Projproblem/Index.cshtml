@@ -1,0 +1,99 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    <div id="app">
+        <h1>项目问题管理</h1>
+        <table>
+            <tr>
+                <td><a href="#" onclick="location.href='Addprojproblem'">添加</a></td>
+                <td>导出</td>
+                <td>删除</td>
+                <td><input id="Button1" type="button" value="搜索" v-on:click="searchUser(searchVal)" /></td>
+
+            </tr>
+            <tr></tr>
+        </table>
+        <hr />
+
+        <table v-show="contactsList.length" class="table-condensed">
+            <thead class="navbar-header">
+                <tr>
+                    <th>勾选</th>
+                    <th>序号</th>
+                    <th>状态</th>
+                    <th>问题名称</th>
+                    <th>问题优先级</th>
+                    <th>提出人</th>
+                    <th>当前解决人</th>
+                    <th>辅助解决人</th>
+                    <th>提出日期</th>
+                </tr>
+                <tr v-for="(contact,index) in contactsList">
+                    <td></td>
+                    <td>{{contact.Id}}</td>
+                    <td>{{contact.Probstate}}</td>
+                    <td>{{contact.Probname}}</td>
+                    <td>{{contact.Probpriority}}</td>
+                    <td>{{contact.Introducer}}</td>
+                    <td>{{contact.Currentperson}}</td>
+                    <td>{{contact.Assistperson}}</td>
+                    <td>{{contact.Inriqi}}</td>
+                    <td>
+                        @*<div v-if="contact.Id!=''">
+                                <a href="#" v-on:click="deleteContactById(contact.Id)">详细</a>
+                            </div>*@
+                    </td>
+                </tr>
+            </thead>
+        </table>
+
+    </div>
+</body>
+</html>
+<script src="~/Scripts/axios.js"></script>
+<script src="~/Scripts/vue.js"></script>
+<script type="text/javascript">
+
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            contactsList: [],
+        },
+        mounted() {
+            this.getAllContacts();
+        },
+        methods: {
+            getAllContacts: function () {
+                axios.get("http://localhost:8086/projproblem/GetProjproblems"
+                ).then(
+                    (response) => {
+                        this.contactsList = [];
+                        this.cur = response.data.CurrentPage;
+                        this.all = response.data.TotlePage;
+                        for (var i = 0; i < response.data.length; i++) {
+                            this.contactsList.push(response.data[i]);
+                        }
+                        this.contactsList.push({ Id: "", probstate: "", probname: "", probpriority: "", introducer: "", currentperson: "", assistperson: "", inriqi: "" });
+                    },
+                    (response) => {
+                        alert(response.status);
+                    }
+                ).catch(function (response) {
+                    alert(response);
+                });
+            },
+        }
+    });
+
+</script>
