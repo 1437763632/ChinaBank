@@ -11,7 +11,7 @@ namespace ChinaBank.Service
     using Model;
     using IService;
     using Common;
-    using Oracle.DataAccess.Client;
+    using Oracle.ManagedDataAccess.Client;
     using Dapper;
     public class PermissionServices : IPermissionServices
     {
@@ -24,7 +24,7 @@ namespace ChinaBank.Service
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
             {
-                string executeSql = @" INSERT INTO Permission (PermissionName,Url) VALUES (:PermissionName,:Url) ";
+                string executeSql = @" INSERT INTO Permission (PermissionName,URL) VALUES (:PermissionName,:Url) ";
                 int result = conn.Execute(executeSql, permission);
                 return result;
             }
@@ -38,7 +38,7 @@ namespace ChinaBank.Service
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
             {
-                string executeSql = @"select * from permission ";
+                string executeSql = @"select * from Permission ";
                 var result = conn.Query<Permission>(executeSql,null).ToList();
                 return result;
             }
@@ -68,7 +68,7 @@ namespace ChinaBank.Service
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
             {
-                string sql = @"Update permission set PermissionName=:PermissionName,Url=：Url where Id=:Id";
+                string sql = @"Update permission set PermissionName=:PermissionName,URL=:Url where Id=:Id";
                 var result = conn.Execute(sql, permission);
                 return result;
             }

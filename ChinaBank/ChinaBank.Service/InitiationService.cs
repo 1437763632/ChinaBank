@@ -10,7 +10,7 @@ namespace ChinaBank.Service
     using ChinaBank.IService;
     using ChinaBank.Model;
     using ChinaBank.Common;
-    using Oracle.DataAccess.Client;
+    using Oracle.ManagedDataAccess.Client;
     using Dapper;
 
     public class InitiationService : IInitiationService
