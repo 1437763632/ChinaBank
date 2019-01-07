@@ -33,6 +33,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InitiationType.cs" />
     <Compile Include="Managemessage.cs" />
     <Compile Include="Projmessage.cs" />
     <Compile Include="Projproblem.cs" />

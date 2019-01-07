@@ -26,5 +26,17 @@ namespace ChinaBank.WebApi.Controllers
         {
             return initiationService.GetInitiation();
         }
+        [HttpGet]
+        [Route("GetInitiationType")]
+        public List<InitiationType> GetInitiationType()
+        {
+            return initiationService.GetInitiationType();
+        }
+        [HttpPost]
+        [Route("AddInitiation")]
+        public int AddInitiation(Initiation initiation)
+        {
+            return initiationService.AddInitiation(initiation);
+        }
     }
 }
