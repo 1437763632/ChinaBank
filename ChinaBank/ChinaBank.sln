@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChinaBank.Common", "ChinaBa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChinaBank.Cache", "ChinaBank.Cache\ChinaBank.Cache.csproj", "{8D25A7CD-AA98-4D32-B0F8-0C883D0C8C5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChinaBank.WebApi", "ChinaBank.WebApi\ChinaBank.WebApi.csproj", "{20345D4D-5F29-4C4C-B468-E8B236238FD5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChinaBank.WebApi", "ChinaBank.WebApi\ChinaBank.WebApi.csproj", "{60EBF435-D950-441C-92B2-9F72970BF76F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +47,10 @@ Global
 		{8D25A7CD-AA98-4D32-B0F8-0C883D0C8C5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D25A7CD-AA98-4D32-B0F8-0C883D0C8C5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D25A7CD-AA98-4D32-B0F8-0C883D0C8C5F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{20345D4D-5F29-4C4C-B468-E8B236238FD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{20345D4D-5F29-4C4C-B468-E8B236238FD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{20345D4D-5F29-4C4C-B468-E8B236238FD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{20345D4D-5F29-4C4C-B468-E8B236238FD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60EBF435-D950-441C-92B2-9F72970BF76F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60EBF435-D950-441C-92B2-9F72970BF76F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60EBF435-D950-441C-92B2-9F72970BF76F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60EBF435-D950-441C-92B2-9F72970BF76F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
