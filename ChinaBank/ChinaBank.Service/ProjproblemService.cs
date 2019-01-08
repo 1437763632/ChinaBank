@@ -12,9 +12,9 @@ namespace ChinaBank.Service
     using ChinaBank.Common;
     using Dapper;
     using IService;
-    using Oracle.ManagedDataAccess.Client;
+    using Oracle.DataAccess.Client;
 
-    class ProjproblemService : IProjproblemServices
+    public class ProjproblemService : IProjproblemServices
     {
         public int Add(Model.Projproblem p)
         {
@@ -31,6 +31,15 @@ namespace ChinaBank.Service
             {
                 string captureByIdSql = @" select * from Projproblem";
                 var result = conn.Query<Model.Projproblem>(captureByIdSql, null);
+                return result.ToList();
+            }
+        }
+        public List<Model.Projproblem> Getproj(int id)
+        {
+            using (OracleConnection conn = DapperHelper.GetConnString())
+            {
+                string sql = @"select * from Projproblem where Id=" + id;
+                var result = conn.Query<Model.Projproblem>(sql, id);
                 return result.ToList();
             }
         }

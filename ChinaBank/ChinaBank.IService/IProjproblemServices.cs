@@ -14,5 +14,6 @@ namespace ChinaBank.IService
     {
         List<Projproblem> GetProjproblems();
         int Add(Projproblem p);
+        List<Model.Projproblem> Getproj(int id);
     }
 }

@@ -46,9 +46,17 @@ namespace ChinaBank.WebApi
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
             container.RegisterType<IInitiationService, InitiationService>();
+
+            container.RegisterType<IProjproblemServices, ProjproblemService>();
+            container.RegisterType<IProjmessageServices, IProjmessageServices>();
+            container.RegisterType<IManagessageServices,ChinaBank.Service.Managemessage>();
+            container.RegisterType<IStackeholderServices, StackeholderServices>();
+            container.RegisterType<IWeeklyServices, WeeklyServices>();
+
             container.RegisterType<IPermissionServices, PermissionServices>();
             container.RegisterType<IRoleServices, RoleServices>();
             container.RegisterType<IManageServices, ManageServices>();
+
         }
     }
 }

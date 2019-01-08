@@ -12,8 +12,8 @@ using System.Linq;
 namespace ChinaBank.Common
 {
     using ChinaBank.Model;
-    using Oracle.ManagedDataAccess;
-    using Oracle.ManagedDataAccess.Client;
+    using Oracle.DataAccess;
+    using Oracle.DataAccess.Client;
 
     public class DapperHelper
     {

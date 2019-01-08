@@ -10,8 +10,8 @@ namespace ChinaBank.Service
     using ChinaBank.Common;
     using Dapper;
     using IService;
-    using Oracle.ManagedDataAccess.Client;
-    class StackeholderServices:IStackeholderServices
+    using Oracle.DataAccess.Client;
+    public class StackeholderServices:IStackeholderServices
     {
         public int Add(Model.Stackeholder p)
         {

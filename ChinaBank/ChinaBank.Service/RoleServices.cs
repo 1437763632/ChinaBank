@@ -9,7 +9,7 @@ namespace ChinaBank.Service
     using Model;
     using IService;
     using Common;
-    using Oracle.ManagedDataAccess.Client;
+    using Oracle.DataAccess.Client;
     using Dapper;
     public class RoleServices : IRoleServices
     {

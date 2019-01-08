@@ -6,14 +6,14 @@ using System.Web.Mvc;
 
 namespace ChinaBank.MVC.Controllers
 {
-    public class InitiationController : Controller
+    public class ProjproblemController : Controller
     {
-        // GET: Initiation
+        // GET: Projproblem
         public ActionResult Index()
         {
             return View();
         }
-        public ActionResult AddInitiation()
+        public ActionResult Addprojproblem()
         {
             return View();
         }

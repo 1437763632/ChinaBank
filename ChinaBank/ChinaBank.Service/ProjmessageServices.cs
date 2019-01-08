@@ -10,8 +10,8 @@ namespace ChinaBank.Service
     using ChinaBank.Common;
     using Dapper;
     using IService;
-    using Oracle.ManagedDataAccess.Client;
-    class Projmessage:IProjmessageServices
+    using Oracle.DataAccess.Client;
+    public class Projmessage:IProjmessageServices
     {
         public int Add(Model.Projmessage message)
         {

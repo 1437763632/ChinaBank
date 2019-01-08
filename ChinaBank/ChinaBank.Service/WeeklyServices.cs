@@ -10,8 +10,10 @@ namespace ChinaBank.Service
     using ChinaBank.Common;
     using Dapper;
     using IService;
-    using Oracle.ManagedDataAccess.Client;
-    class WeeklyServices:IWeeklyServices
+    using Oracle.DataAccess.Client;
+    public class WeeklyServices:IWeeklyServices
+
+
     {
         public int Add(Model.Weekly p)
         {
