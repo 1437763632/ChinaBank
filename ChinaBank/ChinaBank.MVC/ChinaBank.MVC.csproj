@@ -88,6 +88,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BootstrapSouce\css\bootstrap-theme.css" />
+    <Content Include="BootstrapSouce\css\bootstrap-theme.min.css" />
+    <Content Include="BootstrapSouce\css\bootstrap.css" />
+    <Content Include="BootstrapSouce\css\bootstrap.min.css" />
+    <Content Include="BootstrapSouce\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="BootstrapSouce\js\bootstrap.js" />
+    <Content Include="BootstrapSouce\js\bootstrap.min.js" />
+    <Content Include="BootstrapSouce\js\html5shiv.js" />
+    <Content Include="BootstrapSouce\js\jquery.js" />
+    <Content Include="BootstrapSouce\js\jquery.min.js" />
+    <Content Include="BootstrapSouce\js\npm.js" />
+    <Content Include="BootstrapSouce\js\respond.min.js" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\axios.js" />
     <Content Include="Scripts\axios.min.js" />
@@ -95,6 +107,14 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\axios.map" />
     <Content Include="Scripts\axios.min.map" />
+    <Content Include="BootstrapSouce\css\bootstrap-theme.css.map" />
+    <Content Include="BootstrapSouce\css\bootstrap-theme.min.css.map" />
+    <Content Include="BootstrapSouce\css\bootstrap.css.map" />
+    <Content Include="BootstrapSouce\css\bootstrap.min.css.map" />
+    <Content Include="BootstrapSouce\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="BootstrapSouce\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="BootstrapSouce\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="BootstrapSouce\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
