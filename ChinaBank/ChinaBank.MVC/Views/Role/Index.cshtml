@@ -15,14 +15,14 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <style>
         .div-td table td {
-            width: 30px;
+            width: 50px;
             line-height: 15px
         }
     </style>
 </head>
 <body>
     <div id="app" class="div-td">
-        <input id="Button1" type="button" value="添加" onclick="location.href='Index'" />
+        <input id="Button1" type="button" value="添加" onclick="location.href='/Role/Add'" />
         <table v-show="list.length" class="table-condensed" border="1">
             <tr>
                 <th>ID</th>
@@ -34,11 +34,9 @@
                 <td>{{item.Id}}</td>
                 <td><input type="text" v-model="item.RoleName" /></td>
                 <td><input type="text" v-model="item.PermissionName" /></td>
-                
                 <td>
-                    <div v-if="item.ID!=''">
-                        <a href="#" v-on:click="DelQCPlan(item.ID)">删除</a>
-                        <a href="#" v-on:click="UptQCPlan(item.ID,item.Code,item.Name,item.Type_ID,item.ObjType_ID,item.Process_ID,item.Facility_ID,item.TargetType_ID,item.Target_ID,item.StandardValues,item.StandardValuesMax,item.StandardValuesMin,item.QCPlan_State)">修改</a>
+                    <div >
+                        <a @@click="pageSkip(item.Id)">修改</a>
                     </div>
                 </td>
             </tr>
@@ -56,7 +54,7 @@
             this.getList();
         },
         methods: {
-            //获取质检计划信息
+            //获取角色信息
             getList: function () {
                 axios.get('http://localhost:8086/rbac/showRoles').then((response) => {
                     this.list = [];
@@ -71,29 +69,9 @@
                     alert(response);
                 });
             },
-            //修改信息
-            UptQCPlan: function (Id, RoleName, PermissionName) {
-                var params = new URLSearchParams();
-                params.append('ID', Id);
-                params.append('Code', code);
-                params.append('Name', name);
-                axios.post('http://localhost:8086/rbac/RoleUpdate', params).then(
-                    (response) => {
-                        console.log(response.data);
-                        if (response.data > 0) {
-                            alert("修改成功!!!");
-                            this.getList();
-                        }
-                        //console.info(this.list);
-                    },
-                    (response) => {
-                        alert(response.status);
-                    }
-                ).catch(function (response) {
-                    alert(response);
-                });
-            },
-
+            pageSkip: function (id) {
+                location.href = '/Role/Update?id=' + id;
+            }
         },
 
     })

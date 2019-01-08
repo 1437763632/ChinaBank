@@ -52,7 +52,7 @@
             this.getList();
         },
         methods: {
-            //获取质检计划信息
+            //获取权限信息
             getList: function () {
                 axios.get('http://localhost:8086/rbac/permissions').then((response) => {
                     this.list = [];

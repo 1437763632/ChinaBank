@@ -82,6 +82,9 @@ namespace ChinaBank.WebApi.Controllers
 
         public int RoleAdd(Role role)
         {
+            //Role role = new Role();
+            //role.RoleName = RoleName;
+            //role.RightID = RightID;
             var i = roleServices.RoleAdd(role);
             return i;
         }
