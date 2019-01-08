@@ -146,7 +146,7 @@
             },
             methods: {
                 searchUser: function (data) {
-                    axios.get('@Url.Action("IndexShow", "User")', { params: { currentpage: 1, name: data }}).then(
+                    axios.get('@Url.Action("showRoles", "rbac")', { params: { currentpage: 1, name: data }}).then(
                         (response) => {
                             this.UserList = [];
                             this.cur = response.data.CurrentPage;
