@@ -8,335 +8,93 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-    <script src="~/Scripts/vue.js"></script>
+    <title>ShowIndex</title>
     <script src="~/Scripts/axios.js"></script>
-    <script src="~/Contents/BootstrapSouce/js/bootstrap.min.js"></script>
-    <link href="~/Contents/BootstrapSouce/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/vue.js"></script>
+    <link href="~/BootstrapSouce/css/bootstrap.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <style>
-        .page-bar {
-            margin: 40px;
-        }
-
-        ul, li {
-            margin: 0px;
-            padding: 0px;
-        }
-
-        li {
-            list-style: none
-        }
-
-        .page-bar li:first-child > a {
-            margin-left: 0px
-        }
-
-        .page-bar a {
-            border: 1px solid #ddd;
-            text-decoration: none;
-            position: relative;
-            float: left;
-            padding: 6px 12px;
-            margin-left: -1px;
-            line-height: 1.42857143;
-            color: #337ab7;
-            cursor: pointer
-        }
-
-            .page-bar a:hover {
-                background-color: #eee;
-            }
-
-            .page-bar a.banclick {
-                cursor: not-allowed;
-            }
-
-        .page-bar .active a {
-            color: #fff;
-            cursor: default;
-            background-color: #337ab7;
-            border-color: #337ab7;
-        }
-
-        .page-bar i {
-            font-style: normal;
-            color: #d44950;
-            margin: 0px 4px;
-            font-size: 12px;
+        .div-td table td {
+            width: 30px;
+            line-height: 15px
         }
     </style>
-
 </head>
 <body>
-    <div>
-        <h3>vue.js 无刷新的增删改查</h3>
-    </div>
-
-    <div id="app">
-        <span>姓名</span><input type="text" id="UserName" v-model="searchVal" />
-        <input id="Button1" type="button" value="搜索" v-on:click="searchUser(searchVal)" />
-        <table class="table table-bordered">
+    <div id="app" class="div-td">
+        <input id="Button1" type="button" value="添加" onclick="location.href='Index'" />
+        <table v-show="list.length" class="table-condensed" border="1">
             <tr>
-                <td>编号</td>
-                <td>姓名</td>
-                <td>性别</td>
-                <td>角色</td>
-                <td>编辑</td>
-                <td>{{user.Id}}</td>
+                <th>ID</th>
+                <th>角色名称</th>
+                <th>权限名称</th>
+                <th>编辑</th>
             </tr>
-            <tr v-for="(user,key,index) in UserList">
-                <td><input type="text" v-model="user.Name" /></td>
+            <tr v-for="item in list ">
+                <td>{{item.Id}}</td>
+                <td><input type="text" v-model="item.RoleName" /></td>
+                <td><input type="text" v-model="item.PermissionName" /></td>
+                
                 <td>
-                    <input id="Radio1" type="radio" value="男" v-model="user.Sex" /><span>男</span>
-                    <input id="Radio1" type="radio" value="女" v-model="user.Sex" /><span>女</span>
-                </td>
-                <td>
-                    <select id="Select1" v-model="user.Role">
-                        <option>--请选择--</option>
-                        <option v-for="role in RoleList">
-                            {{role}}
-                        </option>
-                    </select>
-                </td>
-                <td>
-                    <div v-if="user.Id!=''">
-                        <a href="#" v-on:click="updateUser(user.Id,user.Name,user.Sex,user.Role)">修改</a>
-                        <a href="#" v-on:click="deleteUserById(user.Id)">删除</a>
-                    </div>
-                    <div v-else>
-                        <a href="#" v-on:click="addUser(user.Name,user.Sex,user.Role)">添加</a>
+                    <div v-if="item.ID!=''">
+                        <a href="#" v-on:click="DelQCPlan(item.ID)">删除</a>
+                        <a href="#" v-on:click="UptQCPlan(item.ID,item.Code,item.Name,item.Type_ID,item.ObjType_ID,item.Process_ID,item.Facility_ID,item.TargetType_ID,item.Target_ID,item.StandardValues,item.StandardValuesMax,item.StandardValuesMin,item.QCPlan_State)">修改</a>
                     </div>
                 </td>
             </tr>
         </table>
-        <div class="page-bar">
-            <ul>
-                <li v-if="cur>1"><a v-on:click="cur--,pageClick()">上一页</a></li>
-                <li v-if="cur==1"><a class="banclick">上一页</a></li>
-                <li v-for="index in indexs" v-bind:class="{ 'active': cur == index}">
-                    <a v-on:click="btnClick(index)">{{ index }}</a>
-                </li>
-                <li v-if="cur!=all"><a v-on:click="cur++,pageClick()">下一页</a></li>
-                <li v-if="cur == all"><a class="banclick">下一页</a></li>
-                <li><a>共<i>{{all}}</i>页</a></li>
-            </ul>
-        </div>
-
-    </div>
-    <script type="text/javascript">
-        //表格
-        var vm = new Vue({
-            //提供一个在页面上已存在的 DOM 元素作为 Vue 实例的挂载目标。可以是 CSS 选择器，也可以是一个 HTMLElement 实例。
-            el: "#app",
-            data: {
-                UserList: [],
-                RoleList: ['董事','部门主管','部门经理','部门主管'],
-                all: 8, //总页数
-                cur: 1//当前页码
-
-            },
-            //一个对象，键是需要观察的表达式，值是对应回调函数。值也可以是方法名，或者包含选项的对象。Vue 实例将会在实例化时调用 $watch()，遍历 watch 对象的每一个属性。
-            watch: {
-                cur: function (oldValue, newValue) {
-                }
-            },
-            //el 被新创建的 vm.$el 替换，并挂载到实例上去之后调用该钩子。如果 root 实例挂载了一个文档内元素，当 mounted 被调用时 vm.$el 也在文档内。
-            mounted() {
-                this.getAllUser(this.cur);
-            },
-            methods: {
-                searchUser: function (data) {
-                    axios.get('@Url.Action("showRoles", "rbac")', { params: { currentpage: 1, name: data }}).then(
-                        (response) => {
-                            this.UserList = [];
-                            this.cur = response.data.CurrentPage;
-                            this.all = response.data.TotlePage;
-                            for (var i = 0; i < response.data.PageData.length; i++) {
-                                this.UserList.push(response.data.PageData[i]);
-                            }
-                          //  this.UserList.push({ Id: "", Name: "", Sex: ""});
-                        },
-                        (response) => {
-                            alert(response.status);
-                        }
-                    ).catch(function (response) {
-                        alert(response);
-                    });
-                },
-                btnClick: function (data) {//页码点击事件
-                    if (data != this.cur) {
-                        this.cur = data;
-                         this.getAllUser(data);
-
-
-                    }
-                },
-                pageClick: function () {
-                  //console.log('现在在' + this.cur + '页');
-                    this.getAllUser(this.cur);
-                },
-                getAllUser: function (id) {
-                    axios.get('@Url.Action("IndexShow", "User")', { params: { currentpage: id }}).then(
-                        (response) => {
-                            this.UserList = [];
-                            this.cur = response.data.CurrentPage;
-                            this.all = response.data.TotlePage;
-                            for (var i = 0; i < response.data.PageData.length; i++) {
-                                this.UserList.push(response.data.PageData[i]);
-                            }
-                          //  this.UserList.push({ Id: "", Name: "", Sex: ""});
-                        },
-                        (response) => {
-                            alert(response.status);
-                        }
-                    ).catch(function (response) {
-                        alert(response);
-                    });
-                },
-                addUser: function (name, sex, role) {
-                    console.log(role);
-
-                    axios.post('@Url.Action("Add", "User")', { user: { Name: name, Sex: sex, Role: role} }).then(
-                        (response) => {
-
-                            this.getAllUser(1);
-                            //this.UserList = [];
-                            //for (var i = 0; i < response.data.length; i++) {
-                            //    this.UserList.push(response.data[i]);
-                            //}
-                            //this.UserList.push({ Id: "", Name: "", Sex: "", Role:"" });
-                        },
-                        (response) => {
-                            alert(response.status);
-                        }
-                    ).catch(function (response) {
-                        alert(response);
-                    });
-                },
-                updateUser: function (id, name, sex, role) {
-                    axios.post('@Url.Action("Update", "User")', { user: { Id: id, Name: name, Sex: sex, Role: role} }).then(
-                        (response) => {
-                            console.log(response);
-                            if (response.data > 0) {
-                                this.getAllUser(this.cur);
-                            }
-                        },
-                        (response) => {
-                            alert(response.status);
-                        }
-                    ).catch(function (response) {
-                        alert(response);
-                    });
-                },
-                deleteUserById: function (id) {
-                    axios.post('@Url.Action("Delete", "User")', { id: id }).then(
-                        (response) => {
-                            if (response.data > 0) {
-                                this.getAllUser(this.cur);
-                            }
-                        },
-                        (response) => {
-                            alert(response.status);
-                        }
-                    ).catch(function (response) {
-                        alert(response);
-                    });
-                },
-            },
-            //计算属性
-            computed: {
-                indexs: function () {
-                    var left = 1;
-                    var right = this.all;
-                    var ar = [];
-                    if (this.all >= 5) {
-                        if (this.cur > 3 && this.cur < this.all - 2) {
-                            left = this.cur - 2
-                            right = this.cur + 2
-                        } else {
-                            if (this.cur <= 3) {
-                                left = 1
-                                right = 5
-                            } else {
-                                right = this.all
-                                left = this.all - 4
-                            }
-                        }
-                    }
-                    while (left <= right) {
-                        ar.push(left)
-                        left++
-                    }
-                    return ar
-                }
-
-            }
-        });
-    </script>
-</body>
-</html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-    <script src="~/Scripts/jquery-3.1.1.js"></script>
-
-    <style>
-        .list {
-            width: 600px;
-        }
-
-        li {
-            list-style-type: none;
-            width: 120px;
-            height: 50px;
-            float: left;
-            border: 1px solid;
-        }
-
-        .page {
-            margin: auto 200px;
-            width: 500px;
-        }
-
-            .page span {
-                width: 100px;
-                margin-left: 30px;
-            }
-    </style>
-</head>
-<body>
-    <div class="list">
-        <div>
-            <ul>
-                <li>编号</li>
-                <li>角色名称</li>                                                                                                   
-                <li>所属权限</li>
-                <li>操作</li>
-
-            </ul>
-        </div>
-        <div id="div1"></div>
     </div>
 </body>
 </html>
-<script>
-    $(function () {
-        $.ajax({
-            url: 'http://localhost:8086/rbac/showRoles',
-            type: 'get',
-            success: function (data) {
-                $(data).each(function (index, data) {
-                    var list = '<ul>'
-                        + ' <li>' + data.Id + '</li>'
-                        + ' <li>' + data.RoleName + '</li>'
-                        + ' <li>' + data.PermissionName + '</li>'
-                        + ' <li><a href="/Permission/Update?Id=' + data.Id + '">修改</a></li>'
-                        + '</ul>'
-                    $("#div1").append(list);
-                })
-            }
-        })
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            list: [],
+        },
+        mounted() {
+            this.getList();
+        },
+        methods: {
+            //获取质检计划信息
+            getList: function () {
+                axios.get('http://localhost:8086/rbac/showRoles').then((response) => {
+                    this.list = [];
+                    for (var i = 0; i < response.data.length; i++) {
+                        this.list.push(response.data[i]);
+                    }
+                },
+                    (response) => {
+                        alert(response.status);
+                    }
+                ).catch(function (response) {
+                    alert(response);
+                });
+            },
+            //修改信息
+            UptQCPlan: function (Id, RoleName, PermissionName) {
+                var params = new URLSearchParams();
+                params.append('ID', Id);
+                params.append('Code', code);
+                params.append('Name', name);
+                axios.post('http://localhost:8086/rbac/RoleUpdate', params).then(
+                    (response) => {
+                        console.log(response.data);
+                        if (response.data > 0) {
+                            alert("修改成功!!!");
+                            this.getList();
+                        }
+                        //console.info(this.list);
+                    },
+                    (response) => {
+                        alert(response.status);
+                    }
+                ).catch(function (response) {
+                    alert(response);
+                });
+            },
+
+        },
+
     })
 </script>
