@@ -9,6 +9,7 @@ namespace ChinaBank.WebApi.Controllers
 {
     using ChinaBank.IService;
     using ChinaBank.Service;
+   
     public class InitiationController : ApiController
     {
         IInitiationService initiationService = null;
@@ -36,7 +37,12 @@ namespace ChinaBank.WebApi.Controllers
         [Route("AddInitiation")]
         public int AddInitiation(Initiation initiation)
         {
+            
             return initiationService.AddInitiation(initiation);
         }
+        //public int AddInitiation(Initiation initiation)
+        //{
+        //    return initiationService.AddInitiation(initiation);
+        //}
     }
 }

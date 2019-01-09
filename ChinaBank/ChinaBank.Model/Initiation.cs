@@ -63,7 +63,7 @@ namespace ChinaBank.Model
         /// <summary>
         /// 是否为提前启动项目
         /// </summary>
-        public string Start { get; set; }
+        public string Starts { get; set; }
         /// <summary>
         /// 收到提前启动指令时间
         /// </summary>
@@ -76,7 +76,7 @@ namespace ChinaBank.Model
         /// <summary>
         /// 提前启动指令中费用额度
         /// </summary>
-        public string Limit { get; set; }
+        public string Limits { get; set; }
         /// <summary>
         /// 初步拟定软件中心项目经理
         /// </summary>
@@ -106,7 +106,7 @@ namespace ChinaBank.Model
         /// <summary>
         /// 申请日期
         /// </summary>
-        public DateTime Times { get; set; }
+        public string Times { get; set; }
         /// <summary>
         /// 是否紧急
         /// </summary>
@@ -114,7 +114,7 @@ namespace ChinaBank.Model
         /// <summary>
         /// 计划管理员
         /// </summary>
-        public string Admin { get; set; }
+        public string Admins { get; set; }
         /// <summary>
         /// 业务师
         /// </summary>
@@ -164,7 +164,7 @@ namespace ChinaBank.Model
         /// <summary>
         /// 状态
         /// </summary>
-        public int State { get; set; }
+        public string State { get; set; }
         /// <summary>
         /// 总行立项编号
         /// </summary>
