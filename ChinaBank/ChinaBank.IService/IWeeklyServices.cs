@@ -16,6 +16,10 @@ namespace ChinaBank.IService
         int Add(Weekly week);
 
         List<Weekly> GetWeekly();
-       
+        int Delete(int id);
+        List<Model.Weekly> GetWeeklybyid(int Id);
+
+
+
     }
 }

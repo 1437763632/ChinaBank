@@ -1,0 +1,82 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Addstackeholder</title>
+    <script src="~/Scripts/axios.js"></script>
+    <script src="~/Scripts/vue.js"></script>
+</head>
+<body>
+    <div id="add">
+        <table class="table table-hover">
+            <tr>
+                <td>功能名称: </td>
+                <td><input type="text" v-model="Functionname" /></td>
+            </tr>
+            <tr>
+                <td>项目角色: </td>
+                <td><input type="text" v-model="Projrole" /></td>
+            </tr>
+            <tr>
+                <td>姓名: </td>
+                <td><input type="text" v-model="Name" /></td>
+            </tr>
+            <tr>
+                <td>角色:</td>
+                <td><input type="text" v-model="Role" /></td>
+            </tr>
+            <tr>
+                <td>部门:</td>
+                <td><input type="text" v-model="Department" /></td>
+            </tr>
+            <tr>
+                <td><a href="javascript:;" v-on:click="AddQCPlan1(Functionname,Projrole,Name,Role,Department)">添加</a></td>
+                <td><a href="#" onclick="location.href='Index'">显示</a></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#add",
+        data: {
+            //Target: [],
+            RoleName: "",
+            RoleDescribe: ""
+        },
+        mounted() {
+            //this.AddQCPlan1();
+        },
+        methods:
+        {
+            //保存
+            AddQCPlan1: function (Functionname, Projrole, Name, Role, Department) {
+                var params = new URLSearchParams();
+                params.append('Functionname', Functionname);
+                params.append('Projrole', Projrole);
+                params.append('Name', Name);
+                params.append('Role', Role);
+                params.append('Department', Department);
+                axios.post('http://localhost:8086/Stackeholder/Add', params).then(
+                    (response) => {
+                        alert(response)
+                        alert("添加成功")
+                    },
+                    (response) => {
+                        alert(response.status);
+                    }
+                ).catch(function (response) {
+                    alert(response);
+                });
+            },
+        }, 
+    });
+</script>
+
