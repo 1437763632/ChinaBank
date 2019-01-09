@@ -60,32 +60,36 @@
             margin: 0px 4px;
             font-size: 12px;
         }
+        
     </style>
+    
 </head>
 <body>
     <h1>项目申请</h1>
     <hr />
-    <select id="s1">
-        <option value="开发类" onclick="">
-            开发类
-        </option>
-        <option onclick="">
-            推广类
-        </option>
-        <option onclick="">
-            研究类
-        </option>
-        <option onclick="">
-            技术支持类
-        </option>
-        <option onclick="">
-            管理服务类
-        </option>
-        <option onclick="">
-            技术转移类
-        </option>
-    </select>
+   
     <div id="app">
+        <select id="s1">
+            <option value="开发类" onclick="">
+                开发类
+            </option>
+            <option onclick="">
+                推广类
+            </option>
+            <option onclick="">
+                研究类
+            </option>
+            <option onclick="">
+                技术支持类
+            </option>
+            <option onclick="">
+                管理服务类
+            </option>
+            <option onclick="">
+                技术转移类
+            </option>
+        </select>
+        <input id="name" type="text" v-model="cha1" /><input type="button" v-on:click="getAllContacts(cha1)" value="搜索" />
 
         <table v-show="contactsList.length" class="table-condensed">
             <thead class="navbar-header">
@@ -106,26 +110,28 @@
                     <td>{{contact.Budget}}</td>
                     <td>{{contact.State}}</td>
                     <td>
-                        <div v-if="contact.Id!=''">
-                            <a href="#" v-on:click="deleteContactById(contact.Id)">详细</a>
+                        <div v-if="contact.Id!=''" id="example-3">
+                            <a @@click="Update(contact.Id)" >详细</a>
                         </div>
                     </td>
                 </tr>
             </thead>
         </table>
+
+        <div class="page-bar">
+            <ul>
+                <li v-if="cur>1"><a v-on:click="cur--,pageClick()">上一页</a></li>
+                <li v-if="cur==1"><a class="banclick">上一页</a></li>
+                <li v-for="index in indexs" v-bind:class="{ 'active': cur == index}">
+                    <a v-on:click="btnClick(index)">{{ index }}</a>
+                </li>
+                <li v-if="cur!=all"><a v-on:click="cur++,pageClick()">下一页</a></li>
+                <li v-if="cur == all"><a class="banclick">下一页</a></li>
+                <li><a>共<i>{{all}}</i>页</a></li>
+            </ul>
+        </div>
     </div>
-    <div class="page-bar">
-        <ul>
-            <li v-if="cur>1"><a v-on:click="cur--,pageClick()">上一页</a></li>
-            <li v-if="cur==1"><a class="banclick">上一页</a></li>
-            <li v-for="index in indexs" v-bind:class="{ 'active': cur == index}">
-                <a v-on:click="btnClick(index)">{{ index }}</a>
-            </li>
-            <li v-if="cur!=all"><a v-on:click="cur++,pageClick()">下一页</a></li>
-            <li v-if="cur == all"><a class="banclick">下一页</a></li>
-            <li><a>共<i>{{all}}</i>页</a></li>
-        </ul>
-    </div>
+
 </body>
 </html>
 <script src="~/Scripts/axios.js"></script>
@@ -135,7 +141,8 @@
         el: "#app",
         data: {
             contactsList: [],
-            all: 8, //总页数
+            cha1: "",
+            all: 0, //总页数
             cur: 1//当前页码
 
         },
@@ -144,21 +151,24 @@
         },
         methods: {
             getAllContacts: function () {
-                axios.get("http://localhost:8086/GetInitiation"
+                axios.get('http://localhost:8086/GetInitiationByPname?currentpage=' + this.cur + '&Pname=' + this.cha1
                 ).then(
                     (response) => {
+                        console.log(response)
                         this.contactsList = [];
-                        for (var i = 0; i < response.data.length; i++) {
-                            this.contactsList.push(response.data[i]);
+                        this.all = response.data.TotlePage;
+                        for (var i = 0; i < response.data.PageData.length; i++) {
+                            this.contactsList.push(response.data.PageData[i]);
                         }
-                        this.contactsList.push({ Id: "", Pid: "", Pname: "", Ptype: "", Budget: "", State: "" });
+                        //this.contactsList.push({ Id: "", Pid: "", Pname: "", Ptype: "", Budget: "", State: "" });
                     },
                     (response) => {
                         alert(response.status);
                     }
                 ).catch(function (response) {
                     alert(response);
-                });
+                    });
+                
             },
             btnClick: function (data) {//页码点击事件
                 if (data != this.cur) {
@@ -169,6 +179,9 @@
             pageClick: function () {
                 this.getAllContacts(this.cur);
                 console.log('现在在' + this.cur + '页');
+            },
+            Update: function(id){
+                location.href = '/Initiation/UpdateInitiation?Id='+id;
             }
 
         },
@@ -201,5 +214,5 @@
         }
 
     });
-   
+  
 </script>

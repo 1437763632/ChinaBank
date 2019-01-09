@@ -42,14 +42,24 @@ namespace ChinaBank.Service
 
             }
         }
-        public List<InitiationType> GetInitiationType()
+        public List<Initiation> GetInitiationByPname()
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
             {
-                string sql = @"select * from InitiationType";
-                var result = conn.Query<InitiationType>(sql, null);
+                string sql = @"select * from Initiation";
+                var result = conn.Query<Initiation>(sql, null);
                 return result.ToList();
 
+            }
+        }
+        public List<Initiation> GetInitiationById(int Id)
+        {
+            using (OracleConnection conn = DapperHelper.GetConnString())
+            {
+                string sql = @"select * from Initiation where Id=:Id";
+                var Collectlist = new { Id = Id };
+                var result = conn.Query<Initiation>(sql, Collectlist);
+                return result.ToList();
             }
         }
     }

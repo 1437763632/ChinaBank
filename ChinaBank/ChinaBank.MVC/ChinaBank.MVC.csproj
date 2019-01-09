@@ -149,6 +149,7 @@
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\Role\Update.cshtml" />
     <Content Include="Views\Role\Add.cshtml" />
+    <Content Include="Views\Initiation\UpdateInitiation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
