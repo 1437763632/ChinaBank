@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
@@ -8,62 +7,63 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Update</title>
-    <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <title>Index</title>
+    <script src="~/Scripts/axios.js"></script>
+    <script src="~/Scripts/vue.js"></script>
+    <link href="~/BootstrapSouce/css/bootstrap.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 </head>
 <body>
     <div>
-        <form action="/" method="post" id="form1">
-            <div>
-                <input type="hidden" name="Id" value="@Request.QueryString["Id"]" />
-            </div>
-            <div>
-                权限名称: <input type="text" name="PermissionName" />
-            </div>
-            <div>
-                权限路径: <input type="text" name="Url" />
-            </div>
-            <div>
-                <input type="button" value="修改" onclick="Add()" />
-                <input id="Button1" type="button" value="返回" />
-            </div>
-        </form>
+        <h3>Vue.js质检计划表添加页面</h3>
+    </div>
+    <div id="add">
+        <table class="table table-hover">
+            <tr>
+                <td>权限名称: </td>
+                <td><input type="text" name="PermissionName" /></td>
+            </tr>
+            <tr>
+                <td>权限路径:</td>
+                <td><input type="text" name="Url" /></td>
+            </tr>
+            <tr>
+                <td><a href="javascript:;" v-on:click="AddQCPlan1(PermissionName,Url)">添加</a></td>
+                <td><a href="#" onclick="location.href='Index'">显示</a></td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>
-<script>
-     $(function () {
-        GetPowerById();
-    })
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#add",
+        methods:
+        {
+            //保存
+            AddQCPlan1: function (PermissionName, Url) {
+                var params = new URLSearchParams();
+                params.append('PermissionName', PermissionName);
+                params.append('Url', Url);
+                axios.post('http://localhost:8086/rbac/PermissionAdd', params).then(
+                    (response) => {
+                        alert(response)
 
-     function GetPowerById() {
-         $.ajax({
-             url: "http://localhost:8086/rbac/permissionsID",
-             type: "get",
-             data: {
-                 Id:"@Request.QueryString["Id"]"
-             },
-             success: function (data) {
-                 $("input[name=PermissionName]").val(data[0].PermissionName);
-                 $("input[name=Url]").val(data[0].Url);
-             }
-         })
-    }
-    function Add() {
-        $.ajax({
-            url: "http://localhost:8086/rbac/UpdatePermission",
-            type: "post",
-            data: $("#form1").serialize(),
-            success: function (data) {
+                        alert("添加成功")
 
-                if (data > 0) {
-                    alert("修改成功!");
-                }
-                else {
-                    alert("修改失败!");
-                }
-            }
-        })
-    }
 
+                    },
+                    (response) => {
+                        alert(response.status);
+                    }
+                ).catch(function (response) {
+                    alert(response);
+                });
+            },
+
+        },
+        computed: {
+        }
+
+    });
 </script>

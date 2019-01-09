@@ -1,0 +1,103 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UpdateInitiation</title>
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <script>
+        $(function () {
+            GetInitiationById();
+        })
+        function GetInitiationById() {
+            $.ajax({
+                url: "http://localhost:8086/GetInitiationById",
+                type: "get",
+                data: {
+                    Id:"@Request.QueryString["Id"]"
+                },
+                success: function (data) {
+                    $("input[name=Code]").val(data[0].Code);
+                    $("input[name=Applicant]").val(data[0].Applicant);
+                    $("input[name=Pid]").val(data[0].Pid);
+                    $("input[name=Pname]").val(data[0].Pname);
+                    $("input[name=Ptype]").val(data[0].Ptype);
+                    $("input[name=Requisitionid]").val(data[0].Requisitionid);
+                    $("input[name=Productname]").val(data[0].Productname);
+                    $("input[name=Projectnum]").val(data[0].Projectnum);
+                    $("input[name=Operating]").val(data[0].Operating);
+                    $("input[name=ZPM]").val(data[0].ZPM);
+                    $("input[name=Department]").val(data[0].Department);
+                    $("input[name=Coordinate]").val(data[0].Coordinate);
+                    $("input[name=Start][value=" + data[0].Starts + "]").attr("checked", "checked");
+                    $("input[name=Starttime]").val(data[0].Starttime);
+                    $("input[name=Letter]").val(data[0].Letter);
+                    $("input[name=Limits]").val(data[0].Limits);
+                    $("input[name=Pm]").val(data[0].Pm);
+                    $("input[name=Pmqualification]").val(data[0].Pmqualification);
+                    $("input[name=Identification]").val(data[0].Identification);
+                    $("input[name=Appointtype]").val(data[0].Appointtype);
+                    $("input[name=Pschedule]").val(data[0].Pschedule);
+                    $("input[name=Budget]").val(data[0].Budget);
+                    $("input[name=Urgent][value=" + data[0].Urgent + "]").attr("checked", "checked");
+                    $("input[name=Admin]").val(data[0].Admins);
+                    $("input[name=Business]").val(data[0].Business);
+                    $("input[name=Pteam]").val(data[0].Pteam);
+                    $("input[name=Principal]").val(data[0].Principal);
+                    $("input[name=Engineer]").val(data[0].Engineer);
+                    $("input[name=Architect]").val(data[0].Architect);
+                    $("input[name=Testmanager]").val(data[0].Testmanager);
+                    $("input[name=Qualityengineer]").val(data[0].Qualityengineer);
+                    $("input[name=Configurationadmin]").val(data[0].Configurationadmin);
+                    $("input[name=Testarchitect]").val(data[0].Testarchitect);
+                    $("input[name=Financecode]").val(data[0].Financecode);
+                    $("input[name=Financetime]").val(data[0].Financetime);
+                }
+            })
+        }
+
+    </script>
+</head>
+<body>
+    <div id="app">
+        <table class="table table-bordered">
+            <tr><td><input type="hidden" name="Id" value="@Request.QueryString["Id"]"/></td></tr>
+            <tr><td>编码</td><td><input type="text" name="Code" /></td><td>申请人</td><td><input type="text" name="Applicant" /></td></tr>
+            <tr><td>项目编号</td><td><input type="text" name="Pid" /></td></tr>
+            <tr><td>项目名称</td><td><input type="text" name="Pname" /></td><td>项目类型</td><td><input type="text" name="Ptype" /></td></tr>
+            <tr><td>关联需求单号</td><td><input type="text" name="Requisitionid" /></td><td>涉及产品名称</td><td><input type="text" name="Productname" /></td></tr>
+            <tr><td>总行立项编号</td><td><input type="text" name="Projectnum" /></td><td>总行业务部门</td><td><input type="text" name="Operating" /></td></tr>
+            <tr><td>总行项目经理</td><td><input type="text" name="ZPM" /></td><td>业务负责人</td><td><input type="text" name="Principal" /></td></tr>
+            <tr><td>项目所属部门</td><td><input type="text" name="Department" /></td><td>实施配合部门</td><td><input type="text" name="Coordinate" /></td></tr>
+            <tr><td>提前启动项目</td><td><input type="radio" name="Start" value="0" />是<input type="radio" name="Start" value="1" />否</td></tr>
+            <tr><td>收到提前启动指令时间</td><td><input type="text" name="Starttime" /></td><td>提前启动函数</td><td><input type="text" name="Letter" /></td></tr>
+            <tr><td>提前启动指令中费用额度</td><td><input type="text" name="Limits" /></td></tr>
+            <tr><td>初步拟定软件中心项目经理</td><td><input type="text" name="Pm" /></td><td>项目经理等级</td><td><input type="text" name="Pmqualification" /></td></tr>
+            <tr><td>正副标识</td><td><input type="text" name="Identification" /></td><td>任命类型</td><td><input type="text" name="Appointtype" /></td></tr>
+            <tr><td>项目工期</td><td><input type="text" name="Pschedule" /></td><td>预算工作量</td><td><input type="text" name="Budget" /></td></tr>
+            <tr><td>是否紧急</td><td><input type="radio" name="Urgent" value="0" />是<input type="radio" name="Urgent" value="1" />否</td></tr>
+            <tr><td>计划管理人</td><td><input type="text" name="Admin" /></td></tr>
+            <tr><td>业务师</td><td><input type="text" name="Business" /></td></tr>
+            <tr><td>项目组主要成员</td><td><input type="text" name="Pteam" /></td></tr>
+            <tr><td>系统工程师</td><td><input type="text" name="Engineer" /></td></tr>
+            <tr><td>架构师</td><td><input type="text" name="Architect" /></td></tr>
+            <tr><td>测试经理</td><td><input type="text" name="Testmanager" /></td></tr>
+            <tr><td>质量工程师</td><td><input type="text" name="Qualityengineer" /></td></tr>
+            <tr><td>配置管理员</td><td><input type="text" name="Configurationadmin" /></td></tr>
+            <tr><td>测试架构师</td><td><input type="text" name="Testarchitect" /></td></tr>
+            <tr><td>项目核算项目编码</td><td><input type="text" name="Financecode" /></td><td>项目核算项目编码维护时间</td><td><input type="text" name="Financetime" /></td></tr>
+            <tr><td>处理步骤</td><td><input type="text" name="Cood" /></td><td>处理人</td><td><input type="text" name="Cood" /></td></tr>
+            <tr>
+                <td>
+                    <input type="button" value="保存" v-on:click="addUser(Cood,Applicant,Pid,Pname,Ptype,Requisitionid,Productname,Projectnum,Operating,ZPM,Principal,Department,Coordinate,Start,Starttime,Letter,Limit,Pm,Pmqualification,Identification,Appointtype,Pschedule,Budget,Urgent,Admin,Business,Pteam,Engineer,Architect,Testmanager,Qualityengineer,Configurationadmin,Testarchitect,Financecode,Financetime)" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

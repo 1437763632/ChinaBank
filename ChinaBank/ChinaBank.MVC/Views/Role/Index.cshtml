@@ -8,44 +8,71 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-    <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <title>ShowIndex</title>
+    <script src="~/Scripts/axios.js"></script>
+    <script src="~/Scripts/vue.js"></script>
+    <link href="~/BootstrapSouce/css/bootstrap.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <style>
-        .list {
-            width: 600px;
+        .div-td table td {
+            width: 50px;
+            line-height: 15px
         }
-
-        li {
-            list-style-type: none;
-            width: 120px;
-            height: 50px;
-            float: left;
-            border: 1px solid;
-        }
-
-        .page {
-            margin: auto 200px;
-            width: 500px;
-        }
-
-            .page span {
-                width: 100px;
-                margin-left: 30px;
-            }
     </style>
 </head>
 <body>
-    <div class="list">
-        <div>
-            <ul>
-                <li>编号</li>
-                <li>角色名称</li>
-                <li>所属权限</li>
-                <li>操作</li>
-
-            </ul>
-        </div>
-        <div id="div1"></div>
+    <div id="app" class="div-td">
+        <input id="Button1" type="button" value="添加" onclick="location.href='/Role/Add'" />
+        <table v-show="list.length" class="table-condensed" border="1">
+            <tr>
+                <th>ID</th>
+                <th>角色名称</th>
+                <th>权限名称</th>
+                <th>编辑</th>
+            </tr>
+            <tr v-for="item in list ">
+                <td>{{item.Id}}</td>
+                <td><input type="text" name="item.RoleName" /></td>
+                <td><input type="text" name="item.PermissionName" /></td>
+                <td>
+                    <div >
+                        <a @@click="pageSkip(item.Id)">修改</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            list: [],
+        },
+        mounted() {
+            this.getList();
+        },
+        methods: {
+            //获取角色信息
+            getList: function () {
+                axios.get('http://localhost:8086/rbac/showRoles').then((response) => {
+                    this.list = [];
+                    for (var i = 0; i < response.data.length; i++) {
+                        this.list.push(response.data[i]);
+                    }
+                },
+                    (response) => {
+                        alert(response.status);
+                    }
+                ).catch(function (response) {
+                    alert(response);
+                });
+            },
+            pageSkip: function (id) {
+                location.href = '/Role/Update?id=' + id;
+            }
+        },
+
+    })
+</script>

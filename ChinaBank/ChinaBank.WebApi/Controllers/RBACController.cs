@@ -70,15 +70,21 @@ namespace ChinaBank.WebApi.Controllers
             return i;
         }
         #endregion
+
         #region 角色
         /// <summary>
         /// 角色添加
         /// </summary>
         /// <param name="role"></param>
         /// <returns></returns>
+        [Route("RoleAdd")]
+        [HttpPost]
 
         public int RoleAdd(Role role)
         {
+            //Role role = new Role();
+            //role.RoleName = RoleName;
+            //role.RightID = RightID;
             var i = roleServices.RoleAdd(role);
             return i;
         }
@@ -87,6 +93,8 @@ namespace ChinaBank.WebApi.Controllers
         /// </summary>~
         /// <param name="role"></param>
         /// <returns></returns>
+        [Route("RoleUpdate")]
+        [HttpPost]
         public int RoleUpdate(Role role)
         {
             var i = roleServices.RoleUpdate(role);
@@ -96,6 +104,8 @@ namespace ChinaBank.WebApi.Controllers
         /// 角色显示
         /// </summary>
         /// <returns></returns>
+        [Route("showRoles")]
+        [HttpGet]
         public IEnumerable<ShowRole> showRoles()
         {
             var i = roleServices.showRoles();
@@ -106,6 +116,8 @@ namespace ChinaBank.WebApi.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Route("showRolesID")]
+        [HttpGet]
         public IEnumerable<ShowRole> showRolesID(int id)
         {
             var i = roleServices.showRolesID(id);
