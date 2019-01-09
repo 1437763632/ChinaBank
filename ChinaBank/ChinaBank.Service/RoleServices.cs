@@ -93,7 +93,7 @@ namespace ChinaBank.Service
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
 
-                string sql = string.Format(@" select role.Id,role.RoleName ,listagg(permission.permissionname,',')  within GROUP (order by permission.permissionname) 
+                string sql = string.Format(@" select role.Id,role.RoleName ,listagg(permission.permissionname,',')  within GROUP (order by permission.permissionname) permissionname
  from PermissionAndRole,role,permission
  where PermissionAndRole.roleid=role.id 
  and 
