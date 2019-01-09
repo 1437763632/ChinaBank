@@ -11,64 +11,153 @@
     <title>AddInitiation</title>
 </head>
 <body>
-    <div>
-        <div><span>编码</span><span><input type="text" name="Cood" /></span><span>申请人</span><span><input type="text" name="Cood" /></span></div>
-        <div><span>项目编号</span><span><input type="text" name="Cood" /></span><span>申请日期</span><span><input type="text" name="Cood" /></span></div>
-        <div><span>项目名称</span><span><input type="text" name="Cood" /></span><span>项目类型</span><span><input type="text" name="Cood" /></span></div>
-        <div><span>关联需求单号</span><span><input type="text" name="Cood" /></span><span>涉及产品名称</span><span><input type="text" name="Cood" /></span></div>
-        <div><span>总行立项编号</span><span><input type="text" name="Cood" /></span><span>总行业务部门</span><span><input type="text" name="Cood" /></span></div>
-        <div><span>总行项目经理</span><span><input type="text" name="Cood" /></span><span>业务负责人</span><span><input type="text" name="Cood" /></span></div>
-        <div><span>项目所属部门</span><span><input type="text" name="Cood" /></span><span>实施配合部门</span><span><input type="text" name="Cood" /></span></div>
-        <div><span>提前启动项目</span><span><input type="text" name="Cood" /></span></div>
-        <div><span>收到提前启动指令时间</span><span><input type="text" name="Cood" /></span><span>提前启动函数</span><span><input type="text" name="Cood" /></span></div>
-        <div><span>提前启动指令中费用额度</span><span><input type="text" name="Cood" /></span></div>
-        <div><span>初步拟定软件中心项目经理</span><span><input type="text" name="Cood" /></span><span>项目经理等级</span><span><input type="text" name="Cood" /></span></div>
-        <div><span>正副标识</span><span><input type="text" name="Cood" /></span><span>任命类型</span><span><input type="text" name="Cood" /></span></div>
-        <div><span>项目工期</span><span><input type="text" name="Cood" /></span><span>预算工作量</span><span><input type="text" name="Cood" /></span></div>
-        <div><span>是否敏捷</span><span><input type="text" name="Cood" /></span><span>是否紧急</span><span><input type="text" name="Cood" /></span></div>
-        <div><span>计划管理人</span><span><input type="text" name="Cood" /></span></div>
-        <div><span>业务师</span><span><input type="text" name="Cood" /></span></div>
-        <div><span>项目组主要成员</span><span><input type="text" name="Cood" /></span></div>
-        <div><span>系统工程师</span><span><input type="text" name="Cood" /></span></div>
-        <div><span>架构师</span><span><input type="text" name="Cood" /></span></div>
-        <div><span>测试经理</span><span><input type="text" name="Cood" /></span></div>
-        <div><span>质量工程师</span><span><input type="text" name="Cood" /></span></div>
-        <div><span>配置管理员</span><span><input type="text" name="Cood" /></span></div>
-        <div><span>测试架构师</span><span><input type="text" name="Cood" /></span></div>
-        <div><span>项目核算项目编码</span><span><input type="text" name="Cood" /></span><span>项目核算项目编码维护时间</span><span><input type="text" name="Cood" /></span></div>
-        <div><span>处理步骤</span><span><input type="text" name="Cood" /></span><span>处理人</span><span><input type="text" name="Cood" /></span></div>
-        <div><span>保存</span><span><input type="text" name="Cood" /></span></div>
+    <div id="app">
+        <table class="table table-bordered">
+            <tr><td>编码</td><td><input type="text" v-model="Cood" /></td><td>申请人</td><td><input type="text" v-model="Applicant" /></td></tr>
+            <tr><td>项目编号</td><td><input type="text" v-model="Pid" /></td></tr>
+            <tr><td>项目名称</td><td><input type="text" v-model="Pname" /></td><td>项目类型</td><td><input type="text" v-model="Ptype" /></td></tr>
+            <tr><td>关联需求单号</td><td><input type="text" v-model="Requisitionid" /></td><td>涉及产品名称</td><td><input type="text" v-model="Productname" /></td></tr>
+            <tr><td>总行立项编号</td><td><input type="text" v-model="Projectnum" /></td><td>总行业务部门</td><td><input type="text" v-model="Operating" /></td></tr>
+            <tr><td>总行项目经理</td><td><input type="text" v-model="ZPM" /></td><td>业务负责人</td><td><input type="text" v-model="Principal" /></td></tr>
+            <tr><td>项目所属部门</td><td><input type="text" v-model="Department" /></td><td>实施配合部门</td><td><input type="text" v-model="Coordinate" /></td></tr>
+            <tr><td>提前启动项目</td><td><input type="radio" v-model="Start" value="0" />是<input type="radio" v-model="Start" value="1" />否</td></tr>
+            <tr><td>收到提前启动指令时间</td><td><input type="text" v-model="Starttime" /></td><td>提前启动函数</td><td><input type="text" v-model="Letter" /></td></tr>
+            <tr><td>提前启动指令中费用额度</td><td><input type="text" v-model="Limit" /></td></tr>
+            <tr><td>初步拟定软件中心项目经理</td><td><input type="text" v-model="Pm" /></td><td>项目经理等级</td><td><input type="text" v-model="Pmqualification" /></td></tr>
+            <tr><td>正副标识</td><td><input type="text" v-model="Identification" /></td><td>任命类型</td><td><input type="text" v-model="Appointtype" /></td></tr>
+            <tr><td>项目工期</td><td><input type="text" v-model="Pschedule" /></td><td>预算工作量</td><td><input type="text" v-model="Budget" /></td></tr>
+            <tr><td>是否紧急</td><td><input type="radio" v-model="Urgent" value="0" />是<input type="radio" v-model="Urgent" value="1" />否</td></tr>
+            <tr><td>计划管理人</td><td><input type="text" v-model="Admin" /></td></tr>
+            <tr><td>业务师</td><td><input type="text" v-model="Business" /></td></tr>
+            <tr><td>项目组主要成员</td><td><input type="text" v-model="Pteam" /></td></tr>
+            <tr><td>系统工程师</td><td><input type="text" v-model="Engineer" /></td></tr>
+            <tr><td>架构师</td><td><input type="text" v-model="Architect" /></td></tr>
+            <tr><td>测试经理</td><td><input type="text" v-model="Testmanager" /></td></tr>
+            <tr><td>质量工程师</td><td><input type="text" v-model="Qualityengineer" /></td></tr>
+            <tr><td>配置管理员</td><td><input type="text" v-model="Configurationadmin" /></td></tr>
+            <tr><td>测试架构师</td><td><input type="text" v-model="Testarchitect" /></td></tr>
+            <tr><td>项目核算项目编码</td><td><input type="text" v-model="Financecode" /></td><td>项目核算项目编码维护时间</td><td><input type="text" v-model="Financetime" /></td></tr>
+            <tr><td>处理步骤</td><td><input type="text" v-model="Cood" /></td><td>处理人</td><td><input type="text" v-model="Cood" /></td></tr>
+            <tr><td>
+    <input type="button" value="保存" v-on:click="addUser(Cood,Applicant,Pid,Pname,Ptype,Requisitionid,Productname,Projectnum,Operating,ZPM,Principal,Department,Coordinate,Start,Starttime,Letter,Limit,Pm,Pmqualification,Identification,Appointtype,Pschedule,Budget,Urgent,Admin,Business,Pteam,Engineer,Architect,Testmanager,Qualityengineer,Configurationadmin,Testarchitect,Financecode,Financetime)" />
+                    @*<input type="button" value="保存" v-on:click="addUser(Cood)" />*@
+</td></tr>
+        </table>
     </div>
 </body>
 </html>
 <script src="~/Scripts/axios.js"></script>
 <script src="~/Scripts/vue.js"></script>
 <script type="text/javascript">
-        var vm = new Vue({
-            el: "#app",
-            data: {
-                RoleList: ['董事', '部门主管', '部门经理', '部门主管'],
-                Sex: "",
-                Role:"请选择"
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            Cood: "",
+            Applicant: "",
+            Pid: "",
+            Pname: "",
+            Ptype: "",
+            Requisitionid: "",
+            Productname: "",
+            Projectnum: "",
+            Operating: "",
+            ZPM: "",
+            Principal: "",
+            Department: "",
+            Coordinate: "",
+            Start: "",
+            Starttime: "",
+            Letter: "",
+            Limit: "",
+            Pm: "",
+            Pmqualification: "",
+            Identification: "",
+            Appointtype: "",
+            Pschedule: "",
+            Budget: "",
+            Urgent: "",
+            Admin: "",
+            Business: "",
+            Pteam: "",
+            Engineer: "",
+            Architect: "",
+            Testmanager: "",
+            Qualityengineer: "",
+            Configurationadmin: "",
+            Testarchitect: "",
+            Financecode: "",
+            Financetime: ""
+        },
+        methods: {
+            //addUser: function (Cood) {
+               
+            //    axios.post("http://localhost:8086/AddInitiation", { initiation: { Code:Cood}  }, {
+            //        headers: {
+            //            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+            //         }
+            //        }).then(
+            //        (response) => {
+            //            alert("添加成功")
+            //        },
+            //        (response) => {
+            //            alert(response.status);
+            //        }
+            //    ).catch(function (response) {
+            //        alert(response);
+            //    });
+            //},
+            addUser: function (Code, Applicant, Pid, Pname, Ptype, Requisitionid, Principal, Department, Coordinate, Start, Starttime, Letter, Limit, Pm, Pmqualification, Identification, Appointtype, Pschedule, Budget, Urgent, Admin, Business, Pteam, Engineer, Architect, Testmanager, Qualityengineer, Configurationadmin, Testarchitect, Financecode, Financetime, Projectnum, Productname, Operating, ZPM) {
+                var param = new URLSearchParams();
+                param.append("Code", Code);
+                param.append("Applicant", Applicant);
+                param.append("Pid", Pid);
+                param.append("Pname", Pname);
+                param.append("Ptype", Ptype);
+                param.append("Requisitionid", Requisitionid); 
+                param.append("Principal", Principal);
+                param.append("Department", Department);
+                param.append("Coordinate", Coordinate);
+                param.append("Start", Start);
+                param.append("Starttime", Starttime);
+                param.append("Letter", Letter);
+                param.append("Limit", Limit);
+                param.append("Pm", Pm);
+                param.append("Pmqualification", Pmqualification);
+                param.append("Identification", Identification);
+                param.append("Appointtype", Appointtype);
+                param.append("Pschedule", Pschedule);
+                param.append("Budget", Budget);
+                param.append("Urgent", Urgent);
+                param.append("Admin", Admin);
+                param.append("Business", Business);
+                param.append("Pteam", Pteam);
+                param.append("Engineer", Engineer);
+                param.append("Architect", Architect);
+                param.append("Testmanager", Testmanager);
+                param.append("Qualityengineer", Qualityengineer);
+                param.append("Configurationadmin", Configurationadmin);
+                param.append("Testarchitect", Testarchitect);
+                param.append("Financecode", Financecode);
+                param.append("Financetime", Financetime);
+                param.append("Projectnum", Projectnum);
+                param.append("Productname", Productname);
+                param.append("Operating", Operating);
+                param.append("ZPM", ZPM);
+                axios.post("http://localhost:8086/AddInitiation", param
+                  ).then(
+                    (response) => {
+                        alert("添加成功")
+                    },
+                    (response) => {
+                        alert(response.status);
+                    }
+                ).catch(function (response) {
+                    alert(response);
+                });
             },
-            methods: {
-                addUser: function (name, sex, role) {
-                    axios.post('@Url.Action("Add", "User")', { user: { Name: name, Sex: sex, Role: role} }).then(
-                        (response) => {
-                            alert("添加成功")
 
 
-                        },
-                        (response) => {
-                            alert(response.status);
-                        }
-                    ).catch(function (response) {
-                        alert(response);
-                    });
-                },
+        },
 
-
-            },
-
-        });
+    });
 </script>
