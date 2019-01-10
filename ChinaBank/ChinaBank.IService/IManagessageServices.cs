@@ -15,6 +15,8 @@ namespace ChinaBank.IService
         int Add(Managemessage message);
 
         List<Managemessage> GetManagemessage();
-  
+        int Delete(int id);
+
+
     }
 }
