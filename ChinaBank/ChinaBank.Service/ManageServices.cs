@@ -30,7 +30,7 @@ namespace ChinaBank.Service
                 if (Roles.Count() == 0)
                 {
                     //添加用户         
-                    string sql = string.Format("insert into role(ManageName,ManagePwd) values (:RoleName,:ManagePwd)");
+                    string sql = string.Format("insert into Manage(ManageName,ManagePwd) values (:ManageName,:ManagePwd)");
                     conn.Execute(sql, manage);
 
                     //获取到用户id
@@ -42,7 +42,7 @@ namespace ChinaBank.Service
                     for (int j = 0; j < roles.Length; j++)//循环添加进入关系表
                     {
                         ManageAndRole role_Right = new ManageAndRole();//实例化关系表
-                        role_Right.RoleId = ro.Id;   //用户id
+                        role_Right.ManageId = ro.Id;   //用户id
                         role_Right.RoleId = Convert.ToInt32(roles[j]);//角色id
                         string sql1 = string.Format("insert into ManageAndRole (RoleId,ManageId) values (:RoleId,:ManageId)");//关系表添加语句
                         resault = conn.Execute(sql1, role_Right);

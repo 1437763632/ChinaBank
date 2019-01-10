@@ -1,4 +1,5 @@
 ﻿
+
 @{
     Layout = null;
 }
@@ -8,10 +9,80 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>ManageAdd</title>
+    <title>Add</title>
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <link href="~/BootstrapSouce/css/bootstrap.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 </head>
 <body>
-    <div> 
+    <div>
+        <table class="table table-hover">
+            <tr>
+                <td>用户昵称: </td>
+                <td><input type="text" name="ManageName" /></td>
+            </tr>
+            <tr>
+                <td>用户密码:</td>
+                <td><input type="text" name="ManagePwd" /></td>
+            </tr>
+            <tr>
+                <td>权限角色:</td>
+                <td id="dl1"></td>
+            </tr>
+            <tr>
+                <td><a href="javascript:;" id="add">添加</a></td>
+                <td><a href="#" onclick="location.href='/Manage/Index'">显示</a></td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>
+<script type="text/javascript">
+    $(function () {
+        Show();
+        $("#add").click(function () {
+            var ids = [];
+            $("input[name=RoleName]:checked").each(function () {
+                ids.push($(this).val())
+            })
+            var rightIDs = "";
+            if (ids.length == 0) {
+                alert('请至少选择一项');
+                return;
+            }
+            rightIDs = ids.join(',');
+            $.ajax({
+                url: 'http://localhost:8086/rbac/AddManage',
+                type: 'POST',
+                data: {
+                    'ManageName': $("[name=ManageName]").val(),
+                    'ManagePwd': $("[name=ManagePwd]").val(),
+                    'RoleID': rightIDs
+                },
+                success: function (data) {
+
+                    if (data > 0) {
+                        alert("添加成功");
+                    }
+                    else {
+                        alert("添加失败");
+                    }
+                }
+            })
+        })
+    })
+    /* 角色加载方法*/
+    function Show() {
+        $.ajax({
+            url: 'http://localhost:8086/rbac/showRoles',
+            type: 'get',
+            async: false,
+            success: function (data) {
+                $(data).each(function (index, data) {
+                    var list = '<label class=""> <input type="checkbox"  name="RoleName"  value="' + data.Id + '">' + data.RoleName + '</label>&nbsp;&nbsp;&nbsp;&nbsp;'
+                    $("#dl1").append(list);
+                })
+            }
+        })
+    }
+</script>
