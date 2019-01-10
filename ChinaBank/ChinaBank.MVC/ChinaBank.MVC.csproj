@@ -126,6 +126,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HangupController.cs" />
     <Compile Include="Controllers\InitiationController.cs" />
     <Compile Include="Controllers\ProjproblemController.cs" />
     <Compile Include="Controllers\PermissionController.cs" />
@@ -150,6 +151,8 @@
     <Content Include="Views\Role\Update.cshtml" />
     <Content Include="Views\Role\Add.cshtml" />
     <Content Include="Views\Initiation\UpdateInitiation.cshtml" />
+    <Content Include="Views\Hangup\Index.cshtml" />
+    <Content Include="Views\Hangup\AddHangup.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

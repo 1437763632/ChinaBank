@@ -64,6 +64,7 @@
     </script>
 </head>
 <body>
+    <input type="button" value="项目挂起" onclick="location.href='/Hangup/AddHangup?Id='+@Request.QueryString["Id"]"/>
     <div id="app">
         <table class="table table-bordered">
             <tr><td><input type="hidden" name="Id" value="@Request.QueryString["Id"]"/></td></tr>

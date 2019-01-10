@@ -123,6 +123,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityWebApiActivator.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\HongupController.cs" />
     <Compile Include="Controllers\InitiationController.cs" />
     <Compile Include="Controllers\ManagemessageController.cs" />
     <Compile Include="Controllers\ProjmessageController.cs" />

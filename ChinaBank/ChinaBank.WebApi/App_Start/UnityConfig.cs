@@ -56,7 +56,7 @@ namespace ChinaBank.WebApi
             container.RegisterType<IPermissionServices, PermissionServices>();
             container.RegisterType<IRoleServices, RoleServices>();
             container.RegisterType<IManageServices, ManageServices>();
-
+            container.RegisterType<IHangupService, HangupService>();
         }
     }
 }
