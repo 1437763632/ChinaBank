@@ -122,8 +122,8 @@ namespace ChinaBank.Service
                     //string sql3 = string.Format("select Id from manage where managename='{0}'", manage.ManageName);
                     //var id = conn.Query<Role>(sql3, null).FirstOrDefault();
 
-                    string executeSqls = @"delete from manageandrole where manageid=:Id";
-                    int results = conn.Execute(executeSqls, new { Id = manage.Id });
+                    string executeSqls = string.Format("delete from manageandrole where manageid={0}",manage.Id);
+                     conn.Execute(executeSqls, null);
                     var roles = manage.RoleID.Split(',');//权限ID分隔字符串
                     for (int i = 0; i < roles.Length; i++)
                     {
