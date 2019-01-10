@@ -19,8 +19,16 @@ namespace ChinaBank.Service
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
             {
-                string executeSql = @" INSERT INTO Weekly ( formfirst, projectname, affiliated, projmanager, single, creadate, weektime, batchone, currentgeneration,batchtong,projectstatus,weekproj,nextweekproj,remark,notifyobj) VALUES (:formfirst,:projectname,:affiliated,:projmanager,:single, :creadate, :weektime, :batchone, ；currentgeneration,：batchtong,：projectstatus,：weekproj,：nextweekproj,：remark,：notifyobj)";
+                string executeSql = @" INSERT INTO Weekly (formfirst,projectname,affiliated,projmanager,single,creadate,weektime, batchone,currentgeneration,batchtong,projectstatus,weekproj,nextweekproj,remark,notifyobj) VALUES (:formfirst,:projectname,:affiliated,:projmanager,:single,:creadate,:weektime,:batchone,:currentgeneration,:batchtong,:projectstatus,:weekproj,:nextweekproj,:remark,:notifyobj)";
                 return conn.Execute(executeSql, p);
+            }
+        }
+        public int Delete(int id)
+        {
+            using (OracleConnection conn = DapperHelper.GetConnString())
+            {
+                string executeSql = @"delete from Weekly where Id="+id;
+                return conn.Execute(executeSql,id);
             }
         }
 
@@ -30,6 +38,16 @@ namespace ChinaBank.Service
             {
                 string captureByIdSql = @" select * from Weekly";
                 var result = conn.Query<Model.Weekly>(captureByIdSql, null);
+                return result.ToList();
+            }
+        }
+        public List<Model.Weekly> GetWeeklybyid(int Id)
+        {
+            using (OracleConnection conn = DapperHelper.GetConnString())
+            {
+                string sql = @"select * from Weekly where Id=:Id";
+                var Collectlist = new { Id = Id };
+                var result = conn.Query<Weekly>(sql, Collectlist);
                 return result.ToList();
             }
         }

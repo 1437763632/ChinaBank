@@ -6,18 +6,19 @@ using System.Web.Mvc;
 
 namespace ChinaBank.MVC.Controllers
 {
-    public class InitiationController : Controller
+    public class WeeklyController : Controller
     {
-        // GET: Initiation
+        // GET: Weekly
         public ActionResult Index()
         {
             return View();
         }
-        public ActionResult AddInitiation()
+        
+        public ActionResult AddWeekly()
         {
             return View();
         }
-        public ActionResult UpdateInitiation()
+        public ActionResult UpdateWeekly()
         {
             return View();
         }

@@ -1,0 +1,110 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UpdateWeekly</title>
+
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <script>
+    $(function () {
+        GetWeeklybyid();
+    })
+    function GetWeeklybyid() {
+            $.ajax({
+                url: "http://localhost:8086/Weekly/GetWeeklybyid",
+                type: "get",
+                data: {
+                    Id:"@Request.QueryString["Id"]"
+                },
+                success: function (data) {
+                    $("input[name=Formfirst]").val(data[0].Formfirst);
+                    $("input[name=Projectname]").val(data[0].Projectname);
+                    $("input[name=Projmanager]").val(data[0].Projmanager);
+                    $("input[name=Creadate]").val(data[0].Creadate);
+                    $("input[name=Batchone]").val(data[0].Batchone);
+                    $("input[name=Batchtong]").val(data[0].Batchtong);
+                    $("input[name=Affiliated]").val(data[0].Affiliated);
+                    $("input[name=Single]").val(data[0].Single);
+                    $("input[name=Weekproj]").val(data[0].Weekproj);
+                    $("input[name=Currentgeneration]").val(data[0].Currentgeneration);
+                    $("input[name=Projectstatus]").val(data[0].Projectstatus);
+                    $("input[name=Nextweekproj]").val(data[0].Nextweekproj);
+                    $("input[name=Remark]").val(data[0].Remark);
+                    $("input[name=Notifyobj]").val(data[0].Notifyobj);
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <div id="update">
+        <table class="table table-hover">
+            <tr><td><input type="hidden" name="Id" value="@Request.QueryString["Id"]" /></td></tr>
+            <tr>
+                <td>项目名称: </td>
+                <td><input type="text" name="Formfirst" /></td>
+            </tr>
+            <tr>
+                <td>项目名称: </td>
+                <td><input type="text" name="Projectname" /></td>
+            </tr>
+            <tr>
+                <td>项目经理:</td>
+                <td><input type="text" name="Projmanager" /></td>
+            </tr>
+            <tr>
+                <td>创建日期: </td>
+                <td><input type="text" name="Creadate" /></td>
+            </tr>
+            <tr>
+                <td>所属批次:</td>
+                <td><input type="text" name="Batchone" /></td>
+            </tr>
+            <tr>
+                <td>所属批次（同上）:</td>
+                <td><input type="text" name="Batchtong" /></td>
+            </tr>
+            <tr>
+                <td>所属部门: </td>
+                <td><input type="text" name="Affiliated" /></td>
+            </tr>
+            <tr>
+                <td>创建人:</td>
+                <td><input type="text" name="Single" /></td>
+            </tr>
+            <tr>
+                <td>本周时段: </td>
+                <td><input type="text" name="Weekproj" /></td>
+            </tr>
+            <tr>
+                <td>当前阶段: </td>
+                <td><input type="text" name="Currentgeneration" /></td>
+            </tr>
+            <tr>
+                <td>项目进度状态: </td>
+                <td><input type="text" name="Projectstatus" /></td>
+            </tr>
+            <tr>
+                <td>下周计划: </td>
+                <td><input type="text" name="Nextweekproj" /></td>
+            </tr>
+            <tr>
+                <td>备注: </td>
+                <td><input type="text" name="Remark" /></td>
+            </tr>
+            <tr>
+                <td>通知对象: </td>
+                <td><input type="text" name="Notifyobj" /></td>
+            </tr>
+            <tr>
+                <td><a href="#" onclick="location.href='Index'">显示</a></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

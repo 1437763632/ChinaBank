@@ -88,6 +88,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+
+    <Content Include="Contents\BootstrapSouce\css\bootstrap-theme.css" />
+    <Content Include="Contents\BootstrapSouce\css\bootstrap-theme.min.css" />
+    <Content Include="Contents\BootstrapSouce\css\bootstrap.css" />
+    <Content Include="Contents\BootstrapSouce\css\bootstrap.min.css" />
+    <Content Include="Contents\BootstrapSouce\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Contents\BootstrapSouce\js\bootstrap.js" />
+    <Content Include="Contents\BootstrapSouce\js\bootstrap.min.js" />
+    <Content Include="Contents\BootstrapSouce\js\html5shiv.js" />
+    <Content Include="Contents\BootstrapSouce\js\jquery.js" />
+    <Content Include="Contents\BootstrapSouce\js\jquery.min.js" />
+    <Content Include="Contents\BootstrapSouce\js\npm.js" />
+    <Content Include="Contents\BootstrapSouce\js\respond.min.js" />
     <Content Include="BootstrapSouce\css\bootstrap-theme.css" />
     <Content Include="BootstrapSouce\css\bootstrap-theme.min.css" />
     <Content Include="BootstrapSouce\css\bootstrap.css" />
@@ -107,6 +120,14 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\axios.map" />
     <Content Include="Scripts\axios.min.map" />
+    <Content Include="Contents\BootstrapSouce\css\bootstrap-theme.css.map" />
+    <Content Include="Contents\BootstrapSouce\css\bootstrap-theme.min.css.map" />
+    <Content Include="Contents\BootstrapSouce\css\bootstrap.css.map" />
+    <Content Include="Contents\BootstrapSouce\css\bootstrap.min.css.map" />
+    <Content Include="Contents\BootstrapSouce\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Contents\BootstrapSouce\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Contents\BootstrapSouce\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Contents\BootstrapSouce\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="BootstrapSouce\css\bootstrap-theme.css.map" />
     <Content Include="BootstrapSouce\css\bootstrap-theme.min.css.map" />
     <Content Include="BootstrapSouce\css\bootstrap.css.map" />
@@ -115,6 +136,7 @@
     <Content Include="BootstrapSouce\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="BootstrapSouce\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="BootstrapSouce\fonts\glyphicons-halflings-regular.woff2" />
+
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -131,6 +153,9 @@
     <Compile Include="Controllers\ProjproblemController.cs" />
     <Compile Include="Controllers\PermissionController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\StackeholderController.cs" />
+    <Compile Include="Controllers\WeeklyController.cs" />
+
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -148,11 +173,19 @@
     <Content Include="Views\Permission\Add.cshtml" />
     <Content Include="Views\Permission\Update.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
+
+    <Content Include="Views\Weekly\Index.cshtml" />
+    <Content Include="Views\Weekly\AddWeekly.cshtml" />
+    <Content Include="Views\Stackeholder\Index.cshtml" />
+    <Content Include="Views\Stackeholder\Addstackeholder.cshtml" />
+    <Content Include="Views\Weekly\UpdateWeekly.cshtml" />
+
     <Content Include="Views\Role\Update.cshtml" />
     <Content Include="Views\Role\Add.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />
     <Content Include="Views\Manage\ManageAdd.cshtml" />
     <Content Include="Views\Manage\ManageUpdate.cshtml" />
+    <Content Include="Views\Initiation\UpdateInitiation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -162,7 +195,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Contents\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>

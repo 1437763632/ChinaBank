@@ -38,6 +38,8 @@
   <ItemGroup>
     <Compile Include="InitiationType.cs" />
     <Compile Include="Managemessage.cs" />
+    <Compile Include="PageBox.cs" />
+    <Compile Include="Page.cs" />
     <Compile Include="Projmessage.cs" />
     <Compile Include="Projproblem.cs" />
     <Compile Include="ShowRole.cs" />

@@ -16,13 +16,17 @@
         <h1>项目问题管理</h1>
         <table>
             <tr>
-                <td><a href="#" onclick="location.href='Addprojproblem'">添加</a></td>
-                <td>导出</td>
-                <td>删除</td>
-                <td><input id="name" type="text" v-model="cha1" /><input type="button" v-on:click="getLists(cha1)" value="搜索" /></td>
-
+                <td><a href="#" onclick="location.href='Addstackeholder'">添加</a></td>
+                <td>
+                    角色：<select>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                </td>
+                <td><input id="name" type="text" v-model="cha1" /><input type="button" v-on:click="getList(cha1)" value="搜索" /></td>
+                <td><button type="button" onclick="del">删除</button></td>
             </tr>
-            <tr></tr>
         </table>
         <hr />
         <table v-show="contactsList.length" class="table-condensed">
@@ -30,29 +34,18 @@
                 <tr>
                     <th>勾选</th>
                     <th>序号</th>
-                    <th>状态</th>
-                    <th>问题名称</th>
-                    <th>问题优先级</th>
-                    <th>提出人</th>
-                    <th>当前解决人</th>
-                    <th>辅助解决人</th>
-                    <th>提出日期</th>
+                    <th>员工编号</th>
+                    <th>姓名</th>
+                    <th>所属部门</th>
+                    <th>角色</th>
                 </tr>
                 <tr v-for="contact in contactsList">
-                    <td></td>
+                    <td><input type="checkbox" :value="index" v-model="selectArr"> </td>
                     <td>{{contact.Id}}</td>
-                    <td>{{contact.Probstate}}</td>
-                    <td>{{contact.Probname}}</td>
-                    <td>{{contact.Probpriority}}</td>
-                    <td>{{contact.Introducer}}</td>
-                    <td>{{contact.Currentperson}}</td>
-                    <td>{{contact.Assistperson}}</td>
-                    <td>{{contact.Inriqi}}</td>
-                    <td>
-                        @*<div v-if="contact.Id!=''">
-                                <a href="#" v-on:click="deleteContactById(contact.Id)">详细</a>
-                            </div>*@
-                    </td>
+                    <td>{{contact.Id}}</td>
+                    <td>{{contact.Name}}</td>
+                    <td>{{contact.Department}}</td>
+                    <td>{{contact.Role}}</td>
                 </tr>
             </thead>
         </table>
@@ -141,8 +134,7 @@
         },
         methods: {
             getList: function () {
-              
-                axios.get('http://localhost:8086/projproblem/GetProjproblems?currentpage=' + this.cur + '&name=' + this.cha1).then(
+                axios.get('http://localhost:8086/Stackeholder/GetStackeholder?currentpage=' + this.cur + '&name=' + this.cha1).then(
                     (response) => {
                         console.log(response.data.PageData)
                         this.contactsList = [];
@@ -167,16 +159,29 @@
                     this.getList();
                 }
             },
-
             pageClick: function () {
                 //console.log('现在在' + this.cur + '页');
                 this.getList();
-            },
+            }, 
             getLists: function (id) {
                 this.cur = 1;
                 this.chal = id;
                 this.getList();
-            }
+            },
+            del() {
+                let arr = [];
+                var len = this.proData.length;
+                for (var i = 0; i < len; i++) {
+                    if (this.selectArr.indexOf(i) >= 0) {
+                        console.log(this.selectArr.indexOf(i))
+                    } else {
+                        arr.push(proData[i])
+                    }
+                }
+
+                this.proData = arr;
+                this.selectArr = []
+            },
         },
         //计算属性
         computed: {
@@ -208,3 +213,4 @@
     });
 
 </script>
+

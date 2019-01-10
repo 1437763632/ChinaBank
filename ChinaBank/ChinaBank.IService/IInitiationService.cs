@@ -13,7 +13,8 @@ namespace ChinaBank.IService
     public interface  IInitiationService
     {
         List<Initiation> GetInitiation();
-        List<InitiationType> GetInitiationType();
+        List<Initiation> GetInitiationByPname();
         int AddInitiation(Initiation initiation);
+        List<Initiation> GetInitiationById(int Id);
     }
 }

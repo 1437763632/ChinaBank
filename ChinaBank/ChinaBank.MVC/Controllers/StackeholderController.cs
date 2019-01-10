@@ -6,18 +6,14 @@ using System.Web.Mvc;
 
 namespace ChinaBank.MVC.Controllers
 {
-    public class InitiationController : Controller
+    public class StackeholderController : Controller
     {
-        // GET: Initiation
+        // GET: Stackeholder  Addstackeholder
         public ActionResult Index()
         {
             return View();
         }
-        public ActionResult AddInitiation()
-        {
-            return View();
-        }
-        public ActionResult UpdateInitiation()
+        public ActionResult Addstackeholder()
         {
             return View();
         }
