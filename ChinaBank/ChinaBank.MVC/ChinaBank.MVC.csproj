@@ -149,6 +149,7 @@
     <Compile Include="Controllers\InitiationController.cs" />
     <Compile Include="Controllers\ManagemessageController.cs" />
     <Compile Include="Controllers\ProjmessageController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProjproblemController.cs" />
     <Compile Include="Controllers\PermissionController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
@@ -178,14 +179,16 @@
     <Content Include="Views\Weekly\UpdateWeekly.cshtml" />
     <Content Include="Views\Role\Update.cshtml" />
     <Content Include="Views\Role\Add.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageAdd.cshtml" />
+    <Content Include="Views\Manage\ManageUpdate.cshtml" />
     <Content Include="Views\Initiation\UpdateInitiation.cshtml" />
+
     <Content Include="Views\Managemessage\Index.cshtml" />
     <Content Include="Views\Managemessage\AddManage.cshtml" />
     <Content Include="Views\Projmessage\Index.cshtml" />
     <Content Include="Views\Projmessage\AddProjmessage.cshtml" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
+
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
