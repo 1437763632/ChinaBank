@@ -12,10 +12,8 @@ namespace ChinaBank.IService
     /// </summary>
     public interface IProjmessageServices
     {
-         int Add(Projmessage message);
-
-
-
+         int Add(ChinaBank.Model.Projmessage message);
+        int Delete(int id);
         List<Projmessage> GetProjmessage();
       }
 }

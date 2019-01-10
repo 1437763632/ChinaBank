@@ -48,7 +48,7 @@ namespace ChinaBank.WebApi
             container.RegisterType<IInitiationService, InitiationService>();
 
             container.RegisterType<IProjproblemServices, ProjproblemService>();
-            container.RegisterType<IProjmessageServices, IProjmessageServices>();
+            container.RegisterType<IProjmessageServices, ChinaBank.Service.Projmessage>();
             container.RegisterType<IManagessageServices,ChinaBank.Service.Managemessage>();
             container.RegisterType<IStackeholderServices, StackeholderServices>();
             container.RegisterType<IWeeklyServices, WeeklyServices>();

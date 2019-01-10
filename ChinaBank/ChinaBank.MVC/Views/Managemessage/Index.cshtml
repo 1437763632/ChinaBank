@@ -1,0 +1,227 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    <div id="app">
+        <h1>项目周报管理</h1>
+        <table>
+            <tr>
+                <td><a href="#" onclick="location.href='AddManage'">添加</a></td>
+                <td><input id="name" type="text" v-model="cha1" /><input type="button" v-on:click="getList(cha1)" value="搜索" /></td>
+
+            </tr>
+            <tr></tr>
+        </table>
+        <hr />
+        <table v-show="contactsList.length" class="table-condensed">
+            <thead class="navbar-header">
+                <tr>
+                    <th>表单头</th>
+                    <th>项目名称</th>
+                    <th>项目编码</th>
+                    <th>总行立项时间</th>
+                    <th>所属阶段</th>
+                    <th>结项性质</th>
+                    <th>结项日期总行项目经理</th>
+                    <th> 业务负责人</th>
+                    <th>版本管理员</th>
+                </tr>
+                <tr v-for="contact in contactsList">
+                    <td>{{contact.Formfirst}}</td>
+                    <td>{{contact.Projname}}</td>
+                    <td>{{contact.Projcoding}}</td>
+                    <td>{{contact.Approvaldate}}</td>
+                    <td>{{contact.Sbstage}}</td>
+                    <td>{{contact.Nature}}</td>
+                    <td>{{contact.Headoffice}}</td>
+                    <td>{{contact.Versionmanager}}</td>
+                    <td>正常</td>
+                    <td>修改 <a href="#" v-on:click="deleteUserById(contact.Id)">删除</a></td>
+                    <td>
+                        @*<div v-if="contact.Id!=''" id="example-3">
+                <a @@click="GetWeeklyby(contact.Id)">详细</a>
+            </div>*@
+                    </td>
+                </tr>
+            </thead>
+        </table>
+        <div class="page-bar">
+            <ul>
+                <li v-if="cur>1"><a v-on:click="cur--,pageClick()">上一页</a></li>
+                <li v-if="cur==1"><a class="banclick">上一页</a></li>
+                <li v-for="index in indexs" v-bind:class="{ 'active': cur == index}">
+                    <a v-on:click="btnClick(index)">{{ index }}</a>
+                </li>
+                <li v-if="cur!=all"><a v-on:click="cur++,pageClick()">下一页</a></li>
+                <li v-if="cur == all"><a class="banclick">下一页</a></li>
+                <li><a>共<i>{{all}}</i>页</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+<script src="~/Scripts/axios.js"></script>
+<script src="~/Scripts/vue.js"></script>
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<style>
+    .page-bar {
+        margin: 40px;
+    }
+
+    ul, li {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    li {
+        list-style: none
+    }
+
+    .page-bar li:first-child > a {
+        margin-left: 0px
+    }
+
+    .page-bar a {
+        border: 1px solid #ddd;
+        text-decoration: none;
+        position: relative;
+        float: left;
+        padding: 6px 12px;
+        margin-left: -1px;
+        line-height: 1.42857143;
+        color: #337ab7;
+        cursor: pointer
+    }
+
+        .page-bar a:hover {
+            background-color: #eee;
+        }
+
+        .page-bar a.banclick {
+            cursor: not-allowed;
+        }
+
+    .page-bar .active a {
+        color: #fff;
+        cursor: default;
+        background-color: #337ab7;
+        border-color: #337ab7;
+    }
+
+    .page-bar i {
+        font-style: normal;
+        color: #d44950;
+        margin: 0px 4px;
+        font-size: 12px;
+    }
+</style>
+<script type="text/javascript">
+
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            contactsList: [],
+            cha1: "",
+            all: 0, //总页数
+            cur: 1//当前页码
+        },
+        mounted() {
+            this.getList();
+        },
+        methods: {
+            getList: function () {
+                axios.get('http://localhost:8086/Projmessage/GetProjmessage?currentpage=' + this.cur + '&name=' + this.cha1).then(
+                    (response) => {
+                        console.log(response.data.PageData)
+                        this.contactsList = [];
+                        currentpage: 1;
+                        this.cur = response.data.CurrentPage;
+                        this.all = response.data.TotlePage;
+                        for (var i = 0; i < response.data.PageData.length; i++) {
+                            this.contactsList.push(response.data.PageData[i]);
+                        }
+                        //this.contactsList.push({ Id: "", probstate: "", probname: "", probpriority: "", introducer: "", currentperson: "", assistperson: "", inriqi: "" });
+                    },
+                    (response) => {
+                        alert(response.status);
+                    }
+                ).catch(function (response) {
+                    alert(response);
+                });
+            },
+            btnClick: function (data) {//页码点击事件
+                if (data != this.cur) {
+                    this.cur = data;
+                    this.getList();
+                }
+            },
+            pageClick: function () {
+                //console.log('现在在' + this.cur + '页');
+                this.getList();
+            },
+            getLists: function (id) {
+                this.cur = 1;
+                this.chal = id;
+                this.getList();
+            },
+            deleteUserById: function (id) {
+                axios.get('http://localhost:8086/Projmessage/Delete?id='+id).then(
+                    (response) => {
+                        if (response.data > 0) {
+                            alert("删除成功");
+                            this.getList();
+                        }
+                    },
+                    (response) => {
+                        alert(response.status);
+                    }
+                ).catch(function (response) {
+                    alert(response);
+                });
+            },
+            //GetWeeklyby: function (id) {
+            //    location.href = '/Weekly/UpdateWeekly?Id=' + id;
+            //}
+        },
+        //计算属性
+        computed: {
+            indexs: function () {
+                var left = 1;
+                var right = this.all;
+                var ar = [];
+                if (this.all >= 5) {
+                    if (this.cur > 3 && this.cur < this.all - 2) {
+                        left = this.cur - 2
+                        right = this.cur + 2
+                    } else {
+                        if (this.cur <= 3) {
+                            left = 1
+                            right = 5
+                        } else {
+                            right = this.all
+                            left = this.all - 4
+                        }
+                    }
+                }
+                while (left <= right) {
+                    ar.push(left)
+                    left++
+                }
+                return ar
+            }
+        }
+    });
+
+</script>
+

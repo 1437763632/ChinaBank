@@ -17,7 +17,7 @@ namespace ChinaBank.Service
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
             {   
-                string executeSql = @" INSERT INTO Managemessage (itemnumber,projectmanager,qualification,identify,appointment,projectplan,situation,appointmentdate) VALUES ( :formfirst, :projname, :projcoding, :maintaindate, :accounting, :approvaldate, :approvalnum, :projcategory, :projtype,:business,:businessteam,:department,:problemteam,:cooperation,:isstart,:isstartdate,:letter,:limit,:isurgency,:isagility,:creationdate,:projdate,:projstate,:sbstage,:schedutestate,:nature，:headoffice，:businessleader，:managerperson，:phone，:qualification，:zhengfu，:appointtype，:centremanager，:contactnumber，:qualifications，:Andidentify,:appointmenttype,:architect,:parlor,:programmanager,:testarchitect,:testmanager,:qualityengineer,:systemsengineer,:configurationadministrator,:versionmanager,:projteam,:problem)";
+                string executeSql = @" INSERT INTO Managemessage (itemnumber,projectmanager,qualification,identify,appointment,projectplan,situation,appointmentdate) VALUES (:itemnumber,:projectmanager,:qualification,:identify,:appointment,:projectplan,:situation,:appointmentdate)";
                 return conn.Execute(executeSql, message);
             }
         }
@@ -29,6 +29,14 @@ namespace ChinaBank.Service
                 string captureByIdSql = @" select * from Managemessage";
                 var result = conn.Query<Model.Managemessage>(captureByIdSql, null);
                 return result.ToList();
+            }
+        }
+        public int Delete(int id)
+        {
+            using (OracleConnection conn = DapperHelper.GetConnString())
+            {
+                string executeSql = @"delete from Managemessage where Id=" + id;
+                return conn.Execute(executeSql, id);
             }
         }
     }
