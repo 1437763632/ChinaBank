@@ -154,6 +154,7 @@
     <Compile Include="Controllers\ProjproblemController.cs" />
     <Compile Include="Controllers\PermissionController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\SolutiontohangController.cs" />
     <Compile Include="Controllers\StackeholderController.cs" />
     <Compile Include="Controllers\WeeklyController.cs" />
     <Compile Include="Global.asax.cs">
@@ -186,15 +187,14 @@
     <Content Include="Views\Initiation\UpdateInitiation.cshtml" />
     <Content Include="Views\Hangup\Index.cshtml" />
     <Content Include="Views\Hangup\AddHangup.cshtml" />
+    <Content Include="Views\Solutiontohang\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-
     <Content Include="Views\Managemessage\Index.cshtml" />
     <Content Include="Views\Managemessage\AddManage.cshtml" />
     <Content Include="Views\Projmessage\Index.cshtml" />
     <Content Include="Views\Projmessage\AddProjmessage.cshtml" />
-
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

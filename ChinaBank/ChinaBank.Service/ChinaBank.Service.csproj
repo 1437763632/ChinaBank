@@ -61,6 +61,7 @@
     <Compile Include="ProjproblemServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleServices.cs" />
+    <Compile Include="SolutiontohangService.cs" />
     <Compile Include="StackeholderServices.cs" />
     <Compile Include="WeeklyServices.cs" />
   </ItemGroup>
