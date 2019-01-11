@@ -17,7 +17,7 @@ namespace ChinaBank.Service
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
             {   
-                string executeSql = @" INSERT INTO Managemessage (itemnumber,projectmanager,qualification,identify,appointment,projectplan,situation,appointmentdate) VALUES (:itemnumber,:projectmanager,:qualification,:identify,:appointment,:projectplan,:situation,:appointmentdate)";
+                string executeSql = @" INSERT INTO Managemessage (projectmanager,qualification,identify,appointment,projectplan,situation,appointmentdate) VALUES (:projectmanager,:qualification,:identify,:appointment,:projectplan,:situation,:appointmentdate)";
                 return conn.Execute(executeSql, message);
             }
         }
