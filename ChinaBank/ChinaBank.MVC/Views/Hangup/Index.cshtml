@@ -68,7 +68,7 @@
     <hr />
 
     <div id="app">
-        <input id="name" type="text" v-model="cha1" /><input type="button" v-on:click="getAllContacts(cha1)" value="搜索" />
+        项目名称:<input id="name" type="text" v-model="cha1" /><input type="button" v-on:click="getAllContacts(cha1)" value="搜索" />
 
         <table v-show="contactsList.length" class="table-condensed">
             <thead class="navbar-header">
@@ -162,7 +162,7 @@
                 console.log('现在在' + this.cur + '页');
             },
             Update: function(id){
-                location.href = '/GetHangup/UpdateGetHangup?Id='+id;
+                location.href = '/Hangup/GetHangupById?Id='+id;
             }
 
         },

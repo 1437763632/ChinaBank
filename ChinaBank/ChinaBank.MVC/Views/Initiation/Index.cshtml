@@ -69,27 +69,30 @@
     <hr />
    
     <div id="app">
-        <select id="s1">
-            <option value="开发类" onclick="">
+        <select id="s1" v-model="typename">
+            <option value="请选择">
+                请选择
+            </option>
+            <option value="开发类">
                 开发类
             </option>
-            <option onclick="">
+            <option value="推广类">
                 推广类
             </option>
-            <option onclick="">
+            <option value="研究类">
                 研究类
             </option>
-            <option onclick="">
+            <option value="技术支持类">
                 技术支持类
             </option>
-            <option onclick="">
+            <option value="管理服务类">
                 管理服务类
             </option>
-            <option onclick="">
+            <option value="技术转移类">
                 技术转移类
             </option>
         </select>
-        <input id="name" type="text" v-model="cha1" /><input type="button" v-on:click="getAllContacts(cha1)" value="搜索" />
+        项目名称:<input id="name" type="text" v-model="cha1" /><input type="button" v-on:click="getAllContacts(cha1)" value="搜索" />
 
         <table v-show="contactsList.length" class="table-condensed">
             <thead class="navbar-header">
@@ -140,6 +143,7 @@
     var vm = new Vue({
         el: "#app",
         data: {
+            typename:"请选择",
             contactsList: [],
             cha1: "",
             all: 0, //总页数
@@ -149,7 +153,17 @@
         mounted() {
             this.getAllContacts();
         },
+        //监控
+        watch: {
+            typename: function (newValue, oldValue) {
+               
+                location.href = "/Initiation/AddInitiation?name=" + newValue;
+            }
+        },
         methods: {
+            ToNAGE: function (name) {
+                location.href = "/Initiation/AddInitiation?name" + name;
+            },
             getAllContacts: function () {
                 axios.get('http://localhost:8086/GetInitiationByPname?currentpage=' + this.cur + '&Pname=' + this.cha1
                 ).then(

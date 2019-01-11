@@ -8,32 +8,32 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>GetHangupById</title>
+    <title>GetSolutiontohangById</title>
     <script src="~/Scripts/jquery-3.1.1.js"></script>
     <script>
         $(function () {
-            GetHangupById();
+            GetSolutiontohangId();
         })
-        function GetHangupById() {
+        function GetSolutiontohangId() {
             $.ajax({
-                url: "http://localhost:8086/GetHangupById",
+                url: "http://localhost:8086/GetSolutiontohangId",
                 type: "get",
                 data: {
                     Id:"@Request.QueryString["Id"]"
                 },
                 success: function (data) {
-                    console.log(data[0].Hangupcause);
                     $("input[name=Code]").val(data[0].Code);
                     $("input[name=Applicant]").val(data[0].Applicant);
+                    $("input[name=Pname]").val(data[0].Pname);
                     $("input[name=Pid]").val(data[0].Pid);
                     $("input[name=Createtime]").val(data[0].Createtime);
-                    $("input[name=Pname]").val(data[0].Pname);
                     $("input[name=Pm]").val(data[0].Pm);
                     $("input[name=Department]").val(data[0].Department);
                     $("input[name=State]").val(data[0].State);
-                    $("input[name=Hangupcause]").val(data[0].Hangupcause);
+                    $("input[name=Solutiontohangcause]").val(data[0].Solutiontohangcause);
                     $("input[name=Processingstep]").val(data[0].Processingstep);
                     $("input[name=Handler]").val(data[0].Handler);
+
                 }
             })
         }
@@ -49,11 +49,12 @@
                     <td>申请人:<input type="text" name="Applicant" /></td>
                 </tr>
                 <tr>
+                    <td>项目名称:<input type="text" name="Pname" /></td>
                     <td>项目编号:<input type="text" name="Pid" /></td>
-                    <td>申请日期:<input type="text" name="Createtime" /></td>
+
                 </tr>
                 <tr>
-                    <td>项目名称:<input type="text" name="Pname" /></td>
+                    <td>申请日期:<input type="text" name="Createtime" /></td>
                     <td>项目经理:<input type="text" name="Pm" /></td>
                 </tr>
                 <tr>
@@ -61,17 +62,18 @@
                     <td>项目状态:<input type="text" name="State" /></td>
                 </tr>
                 <tr>
-                    <td>挂起原因:<input type="text" name="Hangupcause" /></td>
+                    <td>解挂原因:<input type="text" name="Solutiontohangcause" /></td>
                 </tr>
                 <tr>
                     <td>处理步骤:<input type="text" name="Processingstep" /></td>
                     <td>处理人:<input type="text" name="Handler" /></td>
                 </tr>
                 <tr>
-                    <td><input type="button" value="返回" onclick="location.href='/Hangup/Index'" /></td>
+                    <td><input type="button" value="返回" onclick="location.href='/Solutiontohang/Index'" /></td>
                 </tr>
             </table>
         </form>
     </div>
 </body>
 </html>
+
