@@ -171,11 +171,12 @@ namespace ChinaBank.WebApi.Controllers
         /// <param name="ManageName"></param>
         /// <param name="ManagePwd"></param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpPost]
         [Route("Login")]
         public Manage Login(string ManageName, string ManagePwd)
         {
-            throw new NotImplementedException();
+            var i = manageServices.Login(ManageName, ManagePwd);
+            return i;
         }
         /// <summary>
         /// 反填

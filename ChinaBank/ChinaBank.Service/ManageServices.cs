@@ -89,7 +89,17 @@ namespace ChinaBank.Service
         /// <returns></returns>
         public Manage Login(string ManageName, string ManagePwd)
         {
-            throw new NotImplementedException();
+            using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
+            {
+                string sql = string.Format("SELECT * from manage WHERE Managename=:ManageNumber AND ManagePwd=:ManagePass");
+                var result = conn.Query<Manage>(sql, new { ManageNumber = ManageName, ManagePass = ManagePwd }).SingleOrDefault();
+
+                if (result != null)
+                {
+                    return result;
+                }
+                return null;
+            }
         }
         /// <summary>
         /// 反填
