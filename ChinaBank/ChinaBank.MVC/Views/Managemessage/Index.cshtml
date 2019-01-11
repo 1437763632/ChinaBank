@@ -13,13 +13,11 @@
 <body>
 
     <div id="app">
-        <h1>项目问题管理</h1>
+        <h1>项目周报管理</h1>
         <table>
             <tr>
-                <td><a href="#" onclick="location.href='Addprojproblem'">添加</a></td>
-                <td>导出</td>
-                <td>删除</td>
-                <td><input id="name" type="text" v-model="cha1" /><input type="button" v-on:click="getLists(cha1)" value="搜索" /></td>
+                <td><a href="#" onclick="location.href='AddManage'">添加</a></td>
+                <td><input id="name" type="text" v-model="cha1" /><input type="button" v-on:click="getList(cha1)" value="搜索" /></td>
 
             </tr>
             <tr></tr>
@@ -28,30 +26,31 @@
         <table v-show="contactsList.length" class="table-condensed">
             <thead class="navbar-header">
                 <tr>
-                    <th>勾选</th>
-                    <th>序号</th>
-                    <th>状态</th>
-                    <th>问题名称</th>
-                    <th>问题优先级</th>
-                    <th>提出人</th>
-                    <th>当前解决人</th>
-                    <th>辅助解决人</th>
-                    <th>提出日期</th>
+                    <th>表单头</th>
+                    <th>项目名称</th>
+                    <th>项目编码</th>
+                    <th>总行立项时间</th>
+                    <th>所属阶段</th>
+                    <th>结项性质</th>
+                    <th>结项日期总行项目经理</th>
+                    <th> 业务负责人</th>
+                    <th>版本管理员</th>
                 </tr>
                 <tr v-for="contact in contactsList">
-                    <td></td>
-                    <td>{{contact.Id}}</td>
-                    <td>{{contact.Probstate}}</td>
-                    <td>{{contact.Probname}}</td>
-                    <td>{{contact.Probpriority}}</td>
-                    <td>{{contact.Introducer}}</td>
-                    <td>{{contact.Currentperson}}</td>
-                    <td>{{contact.Assistperson}}</td>
-                    <td>{{contact.Inriqi}}</td>
+                    <td>{{contact.Formfirst}}</td>
+                    <td>{{contact.Projname}}</td>
+                    <td>{{contact.Projcoding}}</td>
+                    <td>{{contact.Approvaldate}}</td>
+                    <td>{{contact.Sbstage}}</td>
+                    <td>{{contact.Nature}}</td>
+                    <td>{{contact.Headoffice}}</td>
+                    <td>{{contact.Versionmanager}}</td>
+                    <td>正常</td>
+                    <td>修改 <a href="#" v-on:click="deleteUserById(contact.Id)">删除</a></td>
                     <td>
-                        @*<div v-if="contact.Id!=''">
-                                <a href="#" v-on:click="deleteContactById(contact.Id)">详细</a>
-                            </div>*@
+                        @*<div v-if="contact.Id!=''" id="example-3">
+                <a @@click="GetWeeklyby(contact.Id)">详细</a>
+            </div>*@
                     </td>
                 </tr>
             </thead>
@@ -73,6 +72,7 @@
 </html>
 <script src="~/Scripts/axios.js"></script>
 <script src="~/Scripts/vue.js"></script>
+<script src="~/Scripts/jquery-3.1.1.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 <style>
     .page-bar {
@@ -141,8 +141,7 @@
         },
         methods: {
             getList: function () {
-              
-                axios.get('http://localhost:8086/projproblem/GetProjproblems?currentpage=' + this.cur + '&name=' + this.cha1).then(
+                axios.get('http://localhost:8086/Projmessage/GetProjmessage?currentpage=' + this.cur + '&name=' + this.cha1).then(
                     (response) => {
                         console.log(response.data.PageData)
                         this.contactsList = [];
@@ -167,7 +166,6 @@
                     this.getList();
                 }
             },
-
             pageClick: function () {
                 //console.log('现在在' + this.cur + '页');
                 this.getList();
@@ -176,7 +174,25 @@
                 this.cur = 1;
                 this.chal = id;
                 this.getList();
-            }
+            },
+            deleteUserById: function (id) {
+                axios.get('http://localhost:8086/Projmessage/Delete?id='+id).then(
+                    (response) => {
+                        if (response.data > 0) {
+                            alert("删除成功");
+                            this.getList();
+                        }
+                    },
+                    (response) => {
+                        alert(response.status);
+                    }
+                ).catch(function (response) {
+                    alert(response);
+                });
+            },
+            //GetWeeklyby: function (id) {
+            //    location.href = '/Weekly/UpdateWeekly?Id=' + id;
+            //}
         },
         //计算属性
         computed: {
@@ -208,3 +224,4 @@
     });
 
 </script>
+

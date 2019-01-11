@@ -7,6 +7,8 @@ using System.Web.Http;
 
 namespace ChinaBank.WebApi.Controllers
 {
+    using ChinaBank.Model;
+    using Newtonsoft.Json;
     using Unity.Attributes;
     using ChinaBank.IService;
     [RoutePrefix("projproblem")]
@@ -33,22 +35,29 @@ namespace ChinaBank.WebApi.Controllers
         /// <returns></returns>
         [Route("GetProjproblems")]
         [HttpGet]
-        public List<Model.Projproblem> GetProjproblems()
+        public PageBox GetProjproblems(string currentpage, string name)
         {
-            var result = this.Projproblem.GetProjproblems();
-            return result;
-        }
-        /// <summary>
-        /// 根据ID查询
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        [Route("Getproj")]
-        [HttpGet]
-        public List<Model.Projproblem> Getproj(int id)
-        {
-            var result = this.Projproblem.Getproj(id);
-            return result;
+            var userlist = this.Projproblem.GetProjproblems();
+            if (currentpage == null)
+            {
+                currentpage = "1";
+            }
+            if (!String.IsNullOrEmpty(name))    
+            {
+                
+                userlist = userlist.Where(r=>r.Probname.Contains(name)).ToList();
+            }
+
+            //一页显示3条
+            int totlepage = userlist.Count / 3 + (userlist.Count % 3 == 0 ? 0 : 1);
+            userlist = userlist.Skip((int.Parse(currentpage) - 1) * 3).Take(3).ToList();
+
+            PageBox pagebox = new PageBox();
+            pagebox.CurrentPage = int.Parse(currentpage);
+            pagebox.TotlePage = totlepage;
+            pagebox.PageData = userlist;
+
+            return pagebox;
         }
     }
 }

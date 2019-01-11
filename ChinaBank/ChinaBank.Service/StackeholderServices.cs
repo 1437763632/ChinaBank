@@ -17,8 +17,8 @@ namespace ChinaBank.Service
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
             {
-                string executeSql = @" INSERT INTO Stackeholder ( functionname, projrole, name, Checkfield, role, department) VALUES (:functionname, :projrole,: name, :Checkfield, :role, :department)";
-                return conn.Execute(executeSql, p);
+                string executeSql = @" INSERT INTO Stackeholder (functionname,projrole,name,role,department) VALUES (:functionname,:projrole,:name,:role,:department)";
+                return conn.Execute(executeSql,p);
             }
         }
 

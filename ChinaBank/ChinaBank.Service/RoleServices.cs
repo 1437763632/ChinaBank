@@ -72,12 +72,12 @@ namespace ChinaBank.Service
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
             {
-                string executeSql = @" Update Role set RoleName=:RoleName where Id=:Id";
+                string executeSql = string.Format(@" Update Role set RoleName=:RoleName where Id=:Id");
                 int result = conn.Execute(executeSql, role);
                 if (result > 0)
                 {
-                    string sql3 = string.Format("select id from Role where RoleName=:RoleName");
-                    var id = conn.Query<int>(sql3, role).FirstOrDefault();
+                    string sql3 = string.Format("select Id from Role where RoleName='{0}'", role.RoleName);
+                    var id = conn.Query<Role>(sql3, null).FirstOrDefault();
 
                     string executeSqls = @"delete from PermissionAndRole where RoleId=:Id";
                     int results = conn.Execute(executeSqls, new { Id = role.Id });
@@ -85,9 +85,9 @@ namespace ChinaBank.Service
                     for (int i = 0; i < roles.Length; i++)
                     {
                         PermissionAndRole role_Right = new PermissionAndRole();//实例化关系表
-                        role_Right.RoleId = id;   //角色id
+                        role_Right.RoleId = id.Id;   //角色id
                         role_Right.PermissionId = Convert.ToInt32(roles[i]);//权限id
-                        string sql1 = string.Format("insert into PermissionAndRole (RoleId,PermissionId) value(:RoleId,:PermissionId)");//关系表添加语句
+                        string sql1 = string.Format("insert into PermissionAndRole (RoleId,PermissionId) values(:RoleId,:PermissionId)");//关系表添加语句
                         conn.Execute(sql1, role_Right);
                     }
                 }

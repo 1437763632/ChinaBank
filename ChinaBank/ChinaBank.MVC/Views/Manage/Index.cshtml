@@ -1,0 +1,81 @@
+﻿
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetManagers</title>
+    <script src="~/Scripts/axios.js"></script>
+    <script src="~/Scripts/vue.js"></script>
+    <link href="~/BootstrapSouce/css/bootstrap.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <style>
+        .div-td table td {
+            width: 50px;
+            line-height: 15px
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="div-td">
+        <input id="Button1" type="button" value="添加" onclick="location.href='/Manage/ManageAdd'" />
+        <table v-show="list.length" class=" table table-hover" border="1" >
+            <tr>
+                <th>ID</th>
+                <th>用户名称</th>
+                <th>用户密码</th>
+                <th>用户角色</th>
+                <th>编辑</th>
+            </tr>
+            <tr v-for="item in list ">
+                <td>{{item.Id}}</td>
+                <td>{{item.ManageName}}</td>
+                <td>{{item.ManagePwd}}</td>
+                <td>{{item.RoleName}}</td>
+                <td>
+                    <div>
+                        <a @@click="pageSkip(item.Id)">修改</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            list: [],
+        },
+        mounted() {
+            this.getList();
+        },
+        methods: {
+            //获取角色信息
+            getList: function () {
+                axios.get('http://localhost:8086/rbac/GetManagers').then((response) => {
+                    this.list = [];
+                    for (var i = 0; i < response.data.length; i++) {
+                        this.list.push(response.data[i]);
+                    }
+                },
+                    (response) => {
+                        alert(response.status);
+                    }
+                ).catch(function (response) {
+                    alert(response);
+                });
+            },
+            pageSkip: function (id) {
+                location.href = '/Manage/ManageUpdate?id=' + id;
+            }
+        },
+
+    })
+</script>

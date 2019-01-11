@@ -1,0 +1,304 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddProjmessage</title>
+    <script src="~/Scripts/axios.js"></script>
+    <script src="~/Scripts/vue.js"></script>
+</head>
+<body>
+    <div id="add">
+        <table class="table table-hover">
+            <tr>
+                <td>表单头: </td>
+                <td><input type="text" v-model="Formfirst" /></td>
+            </tr>
+            <tr>
+                <td>项目名称:</td>
+                <td><input type="text" v-model="Projname" /></td>
+            </tr>
+            <tr>
+                <td>项目编码: </td>
+                <td><input type="text" v-model="Projcoding" /></td>
+            </tr>
+            <tr>
+                <td>财务核算项目编码维护时间:</td>
+                <td><input type="text" v-model="Maintaindate" /></td>
+            </tr>
+            <tr>
+                <td>财务核算项目编码:</td>
+                <td><input type="text" v-model="Accounting" /></td>
+            </tr>
+            <tr>
+                <td>总行立项时间: </td>
+                <td><input type="text" v-model="Approvaldate" /></td>
+            </tr>
+            <tr>
+                <td>总行立项编号:</td>
+                <td><input type="text" v-model="Approvalnum" /></td>
+            </tr>
+            <tr>
+                <td>项目类别: </td>
+                <td><input type="text" v-model="Projcategory" /></td>
+            </tr>
+            <tr>
+                <td>项目类型: </td>
+                <td><input type="text" v-model="Projtype" /></td>
+            </tr>
+            <tr>
+                <td>总行业务部门: </td>
+                <td><input type="text" v-model="Business" /></td>
+            </tr>
+            <tr>
+                <td>所属业务团队: </td>
+                <td><input type="text" v-model="Businessteam" /></td>
+            <tr>
+                <td>项目所属部门: </td>
+                <td><input type="text" v-model="Department" /></td>
+            </tr>
+            <tr>
+                <td>主产品团队: </td>
+                <td><input type="text" v-model="Problemteam" /></td>
+            </tr>
+            <tr>
+                <td>合作公司: </td>
+                <td><input type="text" v-model="Cooperation" /></td>
+            <tr>
+                <td>是否Wie提前启动项目: </td>
+                <td><input type="text" v-model="Isstart" /></td>
+            </tr>
+            <tr>
+                <td>收到提前启动指令时间: </td>
+                <td><input type="text" v-model="Isstartdate" /></td>
+            </tr>
+            <tr>
+                <td>提前启动函号: </td>
+                <td><input type="text" v-model="Letter" /></td>
+            </tr>
+            <tr>
+                <td>提前启动指令中费用额度: </td>
+                <td><input type="text" v-model="Limit" /></td>
+            </tr>
+            <tr>
+                <td>是否紧急项目: </td>
+                <td><input type="text" v-model="Isurgency" /></td>
+            </tr>
+            <tr>
+                <td>是否敏捷项目: </td>
+                <td><input type="text" v-model="Isagility" /></td>
+            </tr>
+            <tr>
+                <td>建立日期: </td>
+                <td><input type="text" v-model="Creationdate" /></td>
+            </tr>
+            <tr>
+                <td>立项日期: </td>
+                <td><input type="text" v-model="Projdate" /></td>
+            </tr>
+            <tr>
+                <td>项目状态: </td>
+                <td><input type="text" v-model="Projstate" /></td>
+            </tr>
+            <tr>
+                <td>所属阶段: </td>
+                <td><input type="text" v-model="Sbstage" /></td>
+            </tr>
+            <tr>
+                <td>项目进度状态: </td>
+                <td><input type="text" v-model="Schedutestate" /></td>
+            </tr>
+            <tr>
+                <td>结项性质: </td>
+                <td><input type="text" v-model="Nature" /></td>
+            </tr>
+            <tr>
+                <td>结项日期总行项目经理: </td>
+                <td><input type="text" v-model="Headoffice" /></td>
+            </tr>
+            <tr>
+                <td>业务负责人: </td>
+                <td><input type="text" v-model="Businessleader" /></td>
+            </tr>
+            <tr>
+                <td>前期项目管理人员: </td>
+                <td><input type="text" v-model="Managerperson" /></td>
+            </tr>
+            <tr>
+                <td>练习电话（项目立项获取）: </td>
+                <td><input type="text" v-model="Phone" /></td>
+            </tr>
+            <tr>
+                <td>项目经理资格: </td>
+                <td><input type="text" v-model="Qualification" /></td>
+            </tr>
+            <tr>
+                <td>正副标识: </td>
+                <td><input type="text" v-model="Zhengfu" /></td>
+            </tr>
+            <tr>
+                <td>任命类型: </td>
+                <td><input type="text" v-model="Appointtype" /></td>
+            </tr>
+            <tr>
+                <td>软件中心项目经理: </td>
+                <td><input type="text" v-model="Centremanager" /></td>
+            </tr>
+            <tr>
+                <td>联系电话（项目经理任命审批获取）: </td>
+                <td><input type="text" v-model="Contactnumber" /></td>
+            </tr>
+            <tr>
+                <td>项目经理资格（项目经理任命审批）: </td>
+                <td><input type="text" v-model="Qualifications" /></td>
+            </tr>
+            <tr>
+                <td>正副标识（项目经理任命审批获取）: </td>
+                <td><input type="text" v-model="Andidentify" /></td>
+            </tr>
+            <tr>
+                <td> 任命类型（项目经理审批获取）: </td>
+                <td><input type="text" v-model="Appointmenttype" /></td>
+            </tr>
+            <tr>
+                <td>架构师: </td>
+                <td><input type="text" v-model="Architect" /></td>
+            <tr>
+                <td>业务师: </td>
+                <td><input type="text" v-model="Parlor" /></td>
+            </tr>
+            <tr>
+                <td>计划管理员: </td>
+                <td><input type="text" v-model="Programmanager" /></td>
+            </tr>
+            <tr>
+                <td>测试架构师: </td>
+                <td><input type="text" v-model="Testarchitect" /></td>
+            </tr>
+            <tr>
+                <td>测试经理: </td>
+                <td><input type="text" v-model="Testmanager" /></td>
+            </tr>
+            <tr>
+                <td>质量工程师: </td>
+                <td><input type="text" v-model="Qualityengineer" /></td>
+            </tr>
+            <tr>
+                <td>系统工程师: </td>
+                <td><input type="text" v-model="Systemsengineer" /></td>
+            </tr>
+            <tr>
+                <td>配置管理员: </td>
+                <td><input type="text" v-model="Configurationadministrator" /></td>
+            </tr>
+            <tr>
+                <td>版本管理员: </td>
+                <td><input type="text" v-model="Versionmanager" /></td>
+            </tr>
+            <tr>
+                <td>项目组主要成员: </td>
+                <td><input type="text" v-model="Projteam" /></td>
+            </tr>
+            <tr>
+                <td>问题与风险（待设计）: </td>
+                <td><input type="text" v-model="Problem" /></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="javascript:;" v-on:click="AddQCPlan1(Formfirst,Projname,Projcoding,Maintaindate,Accounting,Approvaldate,Approvalnum,Projcategory,Projtype,Business,Businessteam,Department,Problemteam,Cooperation,Isstart,Isstartdate,Letter,Limit,Isurgency,Isagility,Creationdate,Projdate,Projstate,Sbstage,Schedutestate,Nature,Headoffice,Businessleader,Managerperson,Phone,Qualification,Zhengfu,Appointtype,Centremanager,Contactnumber,Qualifications,Andidentify,Appointmenttype,Architect,Parlor,Programmanager,Testarchitect,Testmanager,Qualityengineer,Systemsengineer,Configurationadministrator,Versionmanager,Projteam,ProblemS)">添加</a>
+                </td>
+                <td><a href="#" onclick="location.href='Index'">显示</a></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#add",
+        data: {
+            //Target: [],
+            RoleName: "",
+            RoleDescribe: ""
+        },
+        mounted() {
+            //this.AddQCPlan1();
+        },
+        methods:
+        {
+            //保存
+            AddQCPlan1: function (Formfirst,Projname,Projcoding,Maintaindate,Accounting,Approvaldate,Approvalnum,Projcategory,Projtype,Business,Businessteam,Department,Problemteam,Cooperation,Isstart,Isstartdate,Letter,Limit,Isurgency,Isagility,Creationdate,Projdate,Projstate,Sbstage,Schedutestate,Nature,Headoffice,Businessleader,Managerperson,Phone,Qualification,Zhengfu,Appointtype,Centremanager,Contactnumber,Qualifications,Andidentify,Appointmenttype,Architect,Parlor,Programmanager,Testarchitect,Testmanager,Qualityengineer,Systemsengineer,Configurationadministrator,Versionmanager,Projteam,Problem) {
+                var params = new URLSearchParams();
+                params.append('Formfirst', Formfirst);
+                params.append('Projname', Projname);
+                params.append('Projcoding', Projcoding);
+                params.append('Maintaindate', Maintaindate);
+                params.append('Accounting', Accounting);
+                params.append('Approvaldate', Approvaldate);
+                params.append('Approvalnum', Approvalnum);
+                params.append('Projcategory', Projcategory);
+                params.append('Projtype', Projtype);
+                params.append('Business', Business);
+                params.append('Businessteam', Businessteam);
+                params.append('Department', Department);
+                params.append('Problemteam', Problemteam);
+                params.append('Cooperation', Cooperation);
+                params.append('Isstart', Isstart);
+                params.append('Isstartdate', Isstartdate);
+                params.append('Letter', Letter);
+                params.append('Limit', Limit);
+                params.append('Isurgency', Isurgency);
+                params.append('Isagility', Isagility);
+                params.append('Creationdate', Creationdate);
+                params.append('Projdate', Projdate);
+                params.append('Projstate', Projstate);
+                params.append('Sbstage', Sbstage);
+                params.append('Schedutestate', Schedutestate);
+                params.append('Nature', Nature);
+                params.append('Headoffice', Headoffice);
+                params.append('Businessleader', Businessleader);
+                params.append('Managerperson', Managerperson);
+                params.append('Phone', Phone);
+                params.append('Qualification', Qualification);
+                params.append('Zhengfu', Zhengfu);
+                params.append('Appointtype', Appointtype);
+                params.append('Centremanager', Centremanager);
+                params.append('Contactnumber', Contactnumber);
+                params.append('Qualifications', Qualifications);
+                params.append('Andidentify', Andidentify);
+                params.append('Appointmenttype', Appointmenttype);
+                params.append('Architect', Architect);
+                params.append('Parlor', Parlor);
+                params.append('Programmanager', Programmanager);
+                params.append('Testarchitect', Testarchitect);
+                params.append('Testmanager', Testmanager);
+                params.append('Qualityengineer', Qualityengineer);
+                params.append('Systemsengineer', Systemsengineer);
+                params.append('Configurationadministrator', Configurationadministrator);
+                params.append('Versionmanager', Versionmanager);
+                params.append('Projteam', Projteam);
+                params.append('Problem', Problem);
+
+                axios.post('http://localhost:8086/Projmessage/Add',params).then(
+                    (response) => {
+                        alert(response)
+                        alert("添加成功")
+                    },
+                    (response) => {
+                        alert(response.status);
+                    }
+                ).catch(function (response) {
+                    alert(response);
+                });
+            },
+        },
+        computed: {
+        }
+    });
+</script>
+
