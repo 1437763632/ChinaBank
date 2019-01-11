@@ -14,28 +14,28 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 </head>
 <body>
-        <div>
-            <table class="table table-hover">
-                <tr>
-                    <td>角色名称: </td>
-                    <td><input type="text" name="RoleName" /></td>
-                </tr>
-                <tr>
-                    <td>权限角色:</td>
-                    <td id="dl1">
-                    </td>
-                </tr>
-                <tr>
-                    <td><a href="javascript:;" id="add">添加</a></td>
-                    <td><a href="#" onclick="location.href='/Role/Index'">显示</a></td>
-                </tr>
-            </table>
-        </div>
+    <div>
+        <table class="table table-hover">
+            <tr>
+                <td>角色名称: </td>
+                <td><input type="text" name="RoleName" /></td>
+            </tr>
+            <tr>
+                <td>权限角色:</td>
+                <td id="dl1"></td>
+            </tr>
+            <tr>
+                <td><a href="javascript:;" id="add">添加</a></td>
+                <td><a href="#" onclick="location.href='/Role/Index'">显示</a></td>
+            </tr>
+        </table>
+    </div>
 </body>
 </html>
 <script type="text/javascript">
     $(function () {
         Show();
+
         //反填
             $.ajax({
                 url: 'http://localhost:8086/rbac/showRolesID?id='+@Request.QueryString["id"] ,
@@ -69,16 +69,16 @@
                 success: function (data) {
                     
                     if (data > 0) {
-                        alert("修改成功");
+                        location.href = "/Role/Index";
                     }
                     else {
-                        alert("修改失败");
+                        alert("已存在此角色");
                     }
                 }
             })
         })
     })
-    /* 权限加载方法*/
+    /* 角色加载方法*/
     function Show() {
         $.ajax({
             url: 'http://localhost:8086/rbac/permissions',

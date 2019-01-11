@@ -24,14 +24,26 @@
             </div>
             <div>
                 <input type="button" value="添加"  onclick="Add()"/>
-                <input id="Button1" type="button" value="返回" />
+                <input type="button" value="返回" onclick="f()"/>
             </div>
         </form>
     </div>
 </body>
 </html>
 <script>
+    $(function myfunction() {
+        add();
+        f();
+    })
     function Add() {
+        if ($("[name=PermissionName]").val().trim().length==0) {
+            alert("权限名称不能为空")
+            return;
+        }
+        if ($("[name=Url]").val().trim().trim().length == 0) {
+            alert("权限路径不能为空")
+            return;
+        }
         $.ajax({
             url: "http://localhost:8086/rbac/PermissionAdd",
             type: "post",
@@ -39,12 +51,16 @@
             success: function (data) {
 
                 if (data > 0) {
-                    alert("添加成功!");
+                    location.href = "/Permission/Index";
                 }
                 else {
-                    alert("添加失败!");
+                    alert("添加失败,请重新添加");
+                    return;
                 }
             }
         })
+    }
+    function f() {
+        location.href = "/Permission/Index";
     }
 </script>

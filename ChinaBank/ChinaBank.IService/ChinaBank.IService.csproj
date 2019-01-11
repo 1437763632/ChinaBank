@@ -51,7 +51,7 @@
     <Compile Include="IProjmessageServices.cs" />
     <Compile Include="IProjproblemServices.cs" />
     <Compile Include="IRoleServices.cs" />
-    <Compile Include="ISolutiontohangServices.cs" />
+    <Compile Include="ISolutiontohangService.cs" />
     <Compile Include="IStackeholderServices.cs" />
     <Compile Include="IWeeklyServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

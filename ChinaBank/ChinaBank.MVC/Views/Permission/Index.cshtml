@@ -20,7 +20,7 @@
     <div id="app" class="div-td">
         <input type="button" value="ajax添加" onclick="location.href='Add'" />
         <input type="button" value="vue添加" onclick="location.href='update'" />
-        <table v-show="list.length" class="table-condensed" border="1">
+        <table v-show="list.length" class="table  table-condensed" border="1">
             <tr>
                 <th>ID</th>
                 <th>权限名称</th>
@@ -29,12 +29,13 @@
             </tr>
             <tr v-for="item in list ">
                 <td>{{item.Id}}</td>
-                <td><input type="text" name="item.PermissionName" /></td>
-                <td><input type="text" name="item.Url" /></td>
+                <td> {{item.PermissionName}}</td>
+                <td>{{item.Url}}</td>
 
                 <td>
                     <div v-if="item.ID!=''">
-                        <a href="#" v-on:click="UptQCPlan(item.Id,item.PermissionName,item.Url)">修改</a>
+                        @*<a href="#" v-on:click="UptQCPlan(item.Id,item.PermissionName,item.Url)">修改</a>*@
+                        <a @@click="pageSkip(item.Id)">修改</a>
                     </div>
                 </td>
             </tr>
@@ -66,6 +67,9 @@
                 ).catch(function (response) {
                     alert(response);
                 });
+            },
+            pageSkip: function (id) {
+                location.href = "/Permission/perUpdate?Id=" + id;
             },
             //修改信息
             UptQCPlan: function (Id, PermissionName, Url) {

@@ -23,7 +23,7 @@
 <body>
     <div id="app" class="div-td">
         <input id="Button1" type="button" value="添加" onclick="location.href='/Role/Add'" />
-        <table v-show="list.length" class="table-condensed" border="1">
+        <table class="table table-condensed" border="1">
             <tr>
                 <th>ID</th>
                 <th>角色名称</th>
@@ -32,8 +32,8 @@
             </tr>
             <tr v-for="item in list ">
                 <td>{{item.Id}}</td>
-                <td><input type="text" name="item.RoleName" /></td>
-                <td><input type="text" name="item.PermissionName" /></td>
+                <td>{{item.RoleName}}</td>
+                <td>{{item.PermissionName}}</td>
                 <td>
                     <div >
                         <a @@click="pageSkip(item.Id)">修改</a>
