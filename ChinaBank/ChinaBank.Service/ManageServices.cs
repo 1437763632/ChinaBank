@@ -137,9 +137,9 @@ namespace ChinaBank.Service
                     var roles = manage.RoleID.Split(',');//权限ID分隔字符串
                     for (int i = 0; i < roles.Length; i++)
                     {
-                        PermissionAndRole role_Right = new PermissionAndRole();//实例化关系表
-                        role_Right.RoleId = manage.Id;   //用户id
-                        role_Right.PermissionId = Convert.ToInt32(roles[i]);//角色id
+                        ManageAndRole role_Right = new ManageAndRole();//实例化关系表
+                        role_Right.ManageId = manage.Id;   //用户id
+                        role_Right.RoleId = Convert.ToInt32(roles[i]);//角色id
                         string sql1 = string.Format("insert into MANAGEANDROLE (RoleId,ManageId) values(:RoleId,:ManageId)");//关系表添加语句
                         conn.Execute(sql1, role_Right);
                     }
