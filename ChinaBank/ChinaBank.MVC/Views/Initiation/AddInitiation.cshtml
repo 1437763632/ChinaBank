@@ -9,11 +9,12 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>AddInitiation</title>
+    <link href="~/BootstrapSouce/css/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
     <div id="app">
         <h3>项目立项生清单(<span>@Request.QueryString["name"]</span>)</h3>
-        <table class="table table-bordered">
+        <table  class=" table table-hover">
             <tr><td>编码</td><td><input type="text" v-model="Cood" /></td><td>申请人</td><td><input type="text" v-model="Applicant" /></td></tr>
             <tr><td>项目编号</td><td><input type="text" v-model="Pid" /></td></tr>
             <tr><td>项目名称</td><td><input type="text" v-model="Pname" /></td><td>项目类型</td><td><input type="text" v-model="Ptype" /></td></tr>
