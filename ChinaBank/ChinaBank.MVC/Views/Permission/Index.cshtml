@@ -34,7 +34,8 @@
 
                 <td>
                     <div v-if="item.ID!=''">
-                        <a href="#" v-on:click="UptQCPlan(item.Id,item.PermissionName,item.Url)">修改</a>
+                        @*<a href="#" v-on:click="UptQCPlan(item.Id,item.PermissionName,item.Url)">修改</a>*@
+                        <a @@click="pageSkip(item.Id)">修改</a>
                     </div>
                 </td>
             </tr>
@@ -66,6 +67,9 @@
                 ).catch(function (response) {
                     alert(response);
                 });
+            },
+            pageSkip: function (id) {
+                location.href = "/Permission/perUpdate?Id=" + id;
             },
             //修改信息
             UptQCPlan: function (Id, PermissionName, Url) {

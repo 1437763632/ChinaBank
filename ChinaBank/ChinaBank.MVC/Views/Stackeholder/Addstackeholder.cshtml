@@ -66,8 +66,7 @@
                 params.append('Department', Department);
                 axios.post('http://localhost:8086/Stackeholder/Add', params).then(
                     (response) => {
-                        alert(response)
-                        alert("添加成功")
+                        location.href = 'Index'
                     },
                     (response) => {
                         alert(response.status);

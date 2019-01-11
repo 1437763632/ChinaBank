@@ -13,10 +13,6 @@ namespace ChinaBank.Model
     {
         public int Id { get; set; }
         /// <summary>
-        /// 项目编号
-        /// </summary>
-        public int Itemnumber { get; set; }
-        /// <summary>
         /// 项目经理
         /// </summary>
         public string Projectmanager { get; set; }

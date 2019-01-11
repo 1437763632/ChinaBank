@@ -13,7 +13,7 @@
 <body>
 
     <div id="app">
-        <h1>项目周报管理</h1>
+        <h1>项目信息表</h1>
         <table>
             <tr>
                 <td><a href="#" onclick="location.href='AddProjmessage'">添加</a></td>
@@ -34,6 +34,7 @@
                     <th>立项日期</th>
                     <th>项目状态</th>
                     <th>总行项目经理</th>
+                    <th>操作</th>
                 </tr>
                 <tr v-for="contact in contactsList">
                     <td>{{contact.Formfirst}}</td>
@@ -44,7 +45,6 @@
                     <td>{{contact.Projdate}}</td>
                     <td>{{contact.Projstate}}</td>
                     <td>{{contact.Headoffice}}</td>
-                    <td>正常</td>
                     <td>修改 <a href="#" v-on:click="deleteUserById(contact.Id)">删除</a></td>
                     <td>
                         @*<div v-if="contact.Id!=''" id="example-3">

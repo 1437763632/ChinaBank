@@ -35,7 +35,7 @@
                 <td><input type="text" v-model="Batchone" /></td>
             </tr>
             <tr>
-                <td>所属批次（同上）:</td>
+                <td>所属批次:</td>
                 <td><input type="text" v-model="Batchtong" /></td>
             </tr>
             <tr>
@@ -110,8 +110,7 @@
                 params.append('Notifyobj', Notifyobj);
                 axios.post('http://localhost:8086/Weekly/Add', params).then(
                     (response) => {
-                        alert(response)
-                        alert("添加成功")
+                        location.href = 'Index'
                     },
                     (response) => {
                         alert(response.status);
