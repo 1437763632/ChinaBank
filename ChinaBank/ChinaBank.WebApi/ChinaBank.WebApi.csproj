@@ -129,6 +129,7 @@
     <Compile Include="Controllers\ProjmessageController.cs" />
     <Compile Include="Controllers\ProjproblemController.cs" />
     <Compile Include="Controllers\RBACController.cs" />
+    <Compile Include="Controllers\SolutiontohangController.cs" />
     <Compile Include="Controllers\StackeholderController.cs" />
     <Compile Include="Controllers\WeeklyController.cs" />
     <Compile Include="Global.asax.cs">

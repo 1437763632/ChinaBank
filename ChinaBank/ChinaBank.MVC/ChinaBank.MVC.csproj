@@ -1211,6 +1211,7 @@
     <Compile Include="Controllers\ProjproblemController.cs" />
     <Compile Include="Controllers\PermissionController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\SolutiontohangController.cs" />
     <Compile Include="Controllers\StackeholderController.cs" />
     <Compile Include="Controllers\WeeklyController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1253,6 +1254,7 @@
     <Content Include="Views\Hangup\AddHangup.cshtml" />
     <Content Include="Views\main\Index.cshtml" />
     <Content Include="Views\Permission\perUpdate.cshtml" />
+    <Content Include="Views\Solutiontohang\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

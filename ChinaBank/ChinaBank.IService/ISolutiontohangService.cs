@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace ChinaBank.IService
 {
+    using ChinaBank.Model;
     /// <summary>
     /// 解挂表接口
     /// </summary>
-    public interface  ISolutiontohangServices
+    public interface ISolutiontohangService
     {
+        List<Solutiontohang> GetSolutiontohang();
+        int AddSolutiontohang(Solutiontohang s);
     }
 }
