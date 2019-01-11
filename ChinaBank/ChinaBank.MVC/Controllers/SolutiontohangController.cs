@@ -17,5 +17,9 @@ namespace ChinaBank.MVC.Controllers
         {
             return View();
         }
+        public ActionResult GetSolutiontohangById()
+        {
+            return View();
+        }
     }
 }
