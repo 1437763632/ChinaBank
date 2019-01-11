@@ -12,14 +12,12 @@ namespace ChinaBank.Service
     using IService;
     using Oracle.DataAccess.Client;
     public class WeeklyServices:IWeeklyServices
-
-
     {
         public int Add(Model.Weekly p)
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
             {
-                string executeSql = @" INSERT INTO Weekly (formfirst,projectname,affiliated,projmanager,single,creadate,weektime, batchone,currentgeneration,batchtong,projectstatus,weekproj,nextweekproj,remark,notifyobj) VALUES (:formfirst,:projectname,:affiliated,:projmanager,:single,:creadate,:weektime,:batchone,:currentgeneration,:batchtong,:projectstatus,:weekproj,:nextweekproj,:remark,:notifyobj)";
+                string executeSql = @" INSERT INTO Weekly (formfirst,projectname,affiliated,projmanager,single,creadate,weektime,batchone,currentgeneration,batchtong,projectstatus,weekproj,nextweekproj,remark,notifyobj) VALUES (:formfirst,:projectname,:affiliated,:projmanager,:single,:creadate,:weektime,:batchone,:currentgeneration,:batchtong,:projectstatus,:weekproj,:nextweekproj,:remark,:notifyobj)";
                 return conn.Execute(executeSql, p);
             }
         }

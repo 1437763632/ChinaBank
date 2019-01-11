@@ -27,7 +27,7 @@ namespace ChinaBank.Model
         /// <summary>
         /// 提出日期
         /// </summary>
-        public DateTime Inriqi { get; set; }
+        public string Inriqi { get; set; }
         /// <summary>
         /// 识别事件
         /// </summary>

@@ -11,10 +11,12 @@
     <title>AddProjmessage</title>
     <script src="~/Scripts/axios.js"></script>
     <script src="~/Scripts/vue.js"></script>
+    <link href="~/BootstrapSouce/css/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
+
     <div id="add">
-        <table class="table table-hover">
+        <table class="table table-bordered" style="width:500px">
             <tr>
                 <td>表单头: </td>
                 <td><input type="text" v-model="Formfirst" /></td>
@@ -82,7 +84,7 @@
                 <td><input type="text" v-model="Letter" /></td>
             </tr>
             <tr>
-                <td>提前启动指令中费用额度: </td>
+                <td>提前启动指令中费用额度(int): </td>
                 <td><input type="text" v-model="Limit" /></td>
             </tr>
             <tr>
@@ -209,10 +211,11 @@
                 <td><input type="text" v-model="Problem" /></td>
             </tr>
             <tr>
-                <td>
-                    <a href="javascript:;" v-on:click="AddQCPlan1(Formfirst,Projname,Projcoding,Maintaindate,Accounting,Approvaldate,Approvalnum,Projcategory,Projtype,Business,Businessteam,Department,Problemteam,Cooperation,Isstart,Isstartdate,Letter,Limit,Isurgency,Isagility,Creationdate,Projdate,Projstate,Sbstage,Schedutestate,Nature,Headoffice,Businessleader,Managerperson,Phone,Qualification,Zhengfu,Appointtype,Centremanager,Contactnumber,Qualifications,Andidentify,Appointmenttype,Architect,Parlor,Programmanager,Testarchitect,Testmanager,Qualityengineer,Systemsengineer,Configurationadministrator,Versionmanager,Projteam,ProblemS)">添加</a>
-                </td>
                 <td><a href="#" onclick="location.href='Index'">显示</a></td>
+                <td>
+                    <a href="javascript:;" v-on:click="AddQCPlan1(Formfirst,Projname,Projcoding,Maintaindate,Accounting,Approvaldate,Approvalnum,Projcategory,Projtype,Business,Businessteam,Department,Problemteam,Cooperation,Isstart,Isstartdate,Letter,Limit,Isurgency,Isagility,Creationdate,Projdate,Projstate,Sbstage,Schedutestate,Nature,Headoffice,Businessleader,Managerperson,Phone,Qualification,Zhengfu,Appointtype,Centremanager,Contactnumber,Qualifications,Andidentify,Appointmenttype,Architect,Parlor,Programmanager,Testarchitect,Testmanager,Qualityengineer,Systemsengineer,Configurationadministrator,Versionmanager,Projteam,Problem)">添加</a>
+                </td>
+                
             </tr>
         </table>
     </div>
@@ -223,8 +226,56 @@
         el: "#add",
         data: {
             //Target: [],
-            RoleName: "",
-            RoleDescribe: ""
+            Formfirst: "",
+            Projname: "",
+            Projcoding: "",
+            Maintaindate: "",
+            Accounting: "",
+            Approvaldate: "",
+            Approvalnum: "",
+            Projcategory: "",
+            Projtype: "",
+            Business: "",
+            Businessteam: "",
+            Department: "",
+            Problemteam: "",
+            Cooperation: "",
+            Isstart: "",
+            Isstartdate: "",
+            Letter: "",
+            Limit: "",
+            Isurgency: "",
+            Isagility: "",
+            Creationdate: "",
+            Projdate: "",
+            Projstate: "",
+            Sbstage: "",
+            Schedutestate: "",
+            Nature: "",
+            Headoffice: "",
+            Businessleader: "",
+            Managerperson: "",
+            Phone: "",
+            Qualification: "",
+            Zhengfu: "",
+            Appointtype: "",
+            Centremanager: "",
+            Contactnumber: "",
+            Qualifications: "",
+            Andidentify: "",
+            Appointmenttype: "",
+            Architect: "",
+            Parlor: "",
+            Programmanager: "",
+            Testarchitect: "",
+            Testmanager: "",
+            Qualityengineer: "",
+            Systemsengineer: "",
+            Configurationadministrator: "",
+            Versionmanager: "",
+            Projteam: "",
+            Problem: "",
+            
         },
         mounted() {
             //this.AddQCPlan1();
