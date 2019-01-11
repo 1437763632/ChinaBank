@@ -188,6 +188,7 @@
     <Content Include="Views\Hangup\Index.cshtml" />
     <Content Include="Views\Hangup\AddHangup.cshtml" />
     <Content Include="Views\Solutiontohang\Index.cshtml" />
+    <Content Include="Views\Solutiontohang\AddSolutiontohang.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
