@@ -89,23 +89,6 @@
             Financetime: ""
         },
         methods: {
-            //addUser: function (Cood) {
-               
-            //    axios.post("http://localhost:8086/AddInitiation", { initiation: { Code:Cood}  }, {
-            //        headers: {
-            //            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-            //         }
-            //        }).then(
-            //        (response) => {
-            //            alert("添加成功")
-            //        },
-            //        (response) => {
-            //            alert(response.status);
-            //        }
-            //    ).catch(function (response) {
-            //        alert(response);
-            //    });
-            //},
             addUser: function (Code, Applicant, Pid, Pname, Ptype, Requisitionid, Principal, Department, Coordinate, Start, Starttime, Letter, Limit, Pm, Pmqualification, Identification, Appointtype, Pschedule, Budget, Urgent, Admin, Business, Pteam, Engineer, Architect, Testmanager, Qualityengineer, Configurationadmin, Testarchitect, Financecode, Financetime, Projectnum, Productname, Operating, ZPM) {
                 var param = new URLSearchParams();
                 param.append("Code", Code);

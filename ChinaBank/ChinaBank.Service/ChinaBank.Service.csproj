@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HangupService.cs" />
     <Compile Include="Managemessage.cs" />
     <Compile Include="ManageServices.cs" />
     <Compile Include="PermissionServices.cs" />

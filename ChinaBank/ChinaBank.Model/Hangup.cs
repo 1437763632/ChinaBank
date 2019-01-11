@@ -22,7 +22,7 @@ namespace ChinaBank.Model
         /// <summary>
         /// 编码
         /// </summary>
-        public string Documentcode { get; set; }
+        public string Code { get; set; }
         /// <summary>
         /// 申请人
         /// </summary>
@@ -32,13 +32,13 @@ namespace ChinaBank.Model
         /// </summary>
         public string Pname { get; set; }
         /// <summary>
-        /// 项目编码
+        /// 项目编号
         /// </summary>
-        public string Pcode { get; set; }
+        public string Pid { get; set; }
         /// <summary>
         /// 创建日期
         /// </summary>
-        public DateTime Createtime { get; set; }
+        public string Createtime { get; set; }
         /// <summary>
         /// 挂起日期
         /// </summary>

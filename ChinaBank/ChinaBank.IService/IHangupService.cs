@@ -9,7 +9,10 @@ using System.Threading.Tasks;
 /// </summary>
 namespace ChinaBank.IService
 {
+    using ChinaBank.Model;
     public interface  IHangupService
     {
+        List<Hangup> GetHangup();
+        int AddHangup(Hangup h);
     }
 }

@@ -146,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HangupController.cs" />
     <Compile Include="Controllers\InitiationController.cs" />
     <Compile Include="Controllers\ManagemessageController.cs" />
     <Compile Include="Controllers\ProjmessageController.cs" />
@@ -183,6 +184,11 @@
     <Content Include="Views\Manage\ManageAdd.cshtml" />
     <Content Include="Views\Manage\ManageUpdate.cshtml" />
     <Content Include="Views\Initiation\UpdateInitiation.cshtml" />
+    <Content Include="Views\Hangup\Index.cshtml" />
+    <Content Include="Views\Hangup\AddHangup.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
 
     <Content Include="Views\Managemessage\Index.cshtml" />
     <Content Include="Views\Managemessage\AddManage.cshtml" />
