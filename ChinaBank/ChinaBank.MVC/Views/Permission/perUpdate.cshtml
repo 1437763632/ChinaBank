@@ -1,0 +1,77 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+</head>
+<body>
+    <div>
+        <form action="/" method="post" id="form1">
+
+
+            <div>
+                权限名称: <input type="text" name="PermissionName" />
+            </div>
+            <div>
+                权限路径: <input type="text" name="Url" />
+            </div>
+            <div>
+                <input type="button" value="修改" onclick="Add()" />
+                <input type="button" value="返回" onclick="f()" />
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+<script>
+    $(function myfunction() {
+        //反填
+        $.ajax({
+            url: 'http://localhost:8086/rbac/permissionsID?Id='+@Request.QueryString["id"],
+            type: "get",
+            success: function (data) {
+                $("input[name=PermissionName]").val(data[0].PermissionName)
+                $("input[name=Url]").val(data[0].Url)
+            }
+        })
+    })
+    function Add() {
+        if ($("[name=PermissionName]").val().trim().length==0) {
+            alert("权限名称不能为空")
+            return;
+        }
+        if ($("[name=Url]").val().trim().trim().length == 0) {
+            alert("权限路径不能为空")
+            return;
+        }
+        $.ajax({
+            url: "http://localhost:8086/rbac/UpdatePermission",
+            type: "post",
+            data: {
+                PermissionName: $("[name=PermissionName]").val(),
+                Url: $("[name=Url]").val(),
+                Id:@Request.QueryString["id"],
+            },
+            success: function (data) {
+
+                if (data > 0) {
+                    location.href = "/Permission/Index";
+                }
+                else {
+                    alert("修改失败,请重新添加");
+                    return;
+                }
+            }
+        })
+    }
+    function f() {
+        location.href = "/Permission/Index";
+    }
+</script>

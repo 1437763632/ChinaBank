@@ -21,5 +21,10 @@ namespace ChinaBank.MVC.Controllers
         {
             return View();
         }
+        public ActionResult perUpdate()
+        {
+            return View();
+        }
+        
     }
 }

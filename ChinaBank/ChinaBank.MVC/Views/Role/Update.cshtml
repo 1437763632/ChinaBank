@@ -17,12 +17,8 @@
     <div>
         <table class="table table-hover">
             <tr>
-                <td>用户昵称: </td>
-                <td><input type="text" name="ManageName" /></td>
-            </tr>
-            <tr>
-                <td>用户密码:</td>
-                <td><input type="text" name="ManagePwd" /></td>
+                <td>角色名称: </td>
+                <td><input type="text" name="RoleName" /></td>
             </tr>
             <tr>
                 <td>权限角色:</td>
@@ -30,7 +26,7 @@
             </tr>
             <tr>
                 <td><a href="javascript:;" id="add">添加</a></td>
-                <td><a href="#" onclick="location.href='/Manage/Index'">显示</a></td>
+                <td><a href="#" onclick="location.href='/Role/Index'">显示</a></td>
             </tr>
         </table>
     </div>
@@ -39,6 +35,19 @@
 <script type="text/javascript">
     $(function () {
         Show();
+
+        //反填
+            $.ajax({
+                url: 'http://localhost:8086/rbac/showRolesID?id='+@Request.QueryString["id"] ,
+                type:'get',
+               // async:false,
+                success: function (data) {
+                    $("input[name=RoleName]").val(data[0].RoleName)
+                    $(data).each(function (index,data) {
+                        $("input[name=PermissionName][value=" + data.PermissionId + "]").prop("checked", true)
+                    })
+                }
+        })
         //修改
         $("#add").click(function () {
 
@@ -60,10 +69,10 @@
                 success: function (data) {
                     
                     if (data > 0) {
-                        alert("修改成功");
+                        location.href = "/Role/Index";
                     }
                     else {
-                        alert("修改失败");
+                        alert("已存在此角色");
                     }
                 }
             })
@@ -72,12 +81,12 @@
     /* 角色加载方法*/
     function Show() {
         $.ajax({
-            url: 'http://localhost:8086/rbac/showRoles',
+            url: 'http://localhost:8086/rbac/permissions',
             type: 'get',
             async: false,
             success: function (data) {
                 $(data).each(function (index, data) {
-                    var list = '<label class=""> <input type="checkbox"  name="RoleName"  value="' + data.Id + '">' + data.RoleName + '</label>&nbsp;&nbsp;&nbsp;&nbsp;'
+                    var list = '<label class=""> <input type="checkbox"  name="PermissionName"  value="' + data.Id + '">' + data.PermissionName + '</label>&nbsp;&nbsp;&nbsp;&nbsp;'
                     $("#dl1").append(list);
                 })
             }

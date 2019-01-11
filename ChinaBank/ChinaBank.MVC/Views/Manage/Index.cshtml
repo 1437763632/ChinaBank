@@ -24,7 +24,7 @@
 <body>
     <div id="app" class="div-td">
         <input id="Button1" type="button" value="添加" onclick="location.href='/Manage/ManageAdd'" />
-        <table v-show="list.length" class=" table table-hover" border="1" >
+        <table  class=" table table-hover" border="1" >
             <tr>
                 <th>ID</th>
                 <th>用户名称</th>
@@ -73,7 +73,7 @@
                 });
             },
             pageSkip: function (id) {
-                location.href = '/Manage/ManageUpdate?id=' + id;
+                location.href = '/Manage/ManageUpdate?Id=' + id;
             }
         },
 
