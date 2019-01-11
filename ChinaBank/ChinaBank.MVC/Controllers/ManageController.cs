@@ -10,7 +10,7 @@ namespace ChinaBank.MVC.Controllers
     public class ManageController : Controller
     {
         // GET: Manage
-        [LoginFatier]
+        //[LoginFatier]
         public ActionResult Index()
         {
             return View();

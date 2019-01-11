@@ -140,7 +140,7 @@ namespace ChinaBank.Service
                         PermissionAndRole role_Right = new PermissionAndRole();//实例化关系表
                         role_Right.RoleId = manage.Id;   //用户id
                         role_Right.PermissionId = Convert.ToInt32(roles[i]);//角色id
-                        string sql1 = string.Format("insert into PermissionAndRole (RoleId,PermissionId) values(:RoleId,:PermissionId)");//关系表添加语句
+                        string sql1 = string.Format("insert into MANAGEANDROLE (RoleId,ManageId) values(:RoleId,:ManageId)");//关系表添加语句
                         conn.Execute(sql1, role_Right);
                     }
                 }
