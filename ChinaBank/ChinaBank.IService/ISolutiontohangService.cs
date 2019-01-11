@@ -14,5 +14,6 @@ namespace ChinaBank.IService
     {
         List<Solutiontohang> GetSolutiontohang();
         int AddSolutiontohang(Solutiontohang s);
+        List<Solutiontohang> GetSolutiontohangById(int Id);
     }
 }

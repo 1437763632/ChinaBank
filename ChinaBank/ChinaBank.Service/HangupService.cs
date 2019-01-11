@@ -36,5 +36,15 @@ namespace ChinaBank.Service
 
             }
         }
+        public List<Hangup> GetHangupById(int Id)
+        {
+            using (OracleConnection conn = DapperHelper.GetConnString())
+            {
+                string sql = @"select * from Hangup where Id=:Id";
+                var Collectlist = new { Id = Id };
+                var result = conn.Query<Hangup>(sql, Collectlist);
+                return result.ToList();
+            }
+        }
     }
 }

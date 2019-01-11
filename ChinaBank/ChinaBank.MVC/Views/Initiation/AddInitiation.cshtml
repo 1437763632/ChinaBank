@@ -23,7 +23,8 @@
             <tr><td>提前启动项目</td><td><input type="radio" v-model="Start" value="0" />是<input type="radio" v-model="Start" value="1" />否</td></tr>
             <tr><td>收到提前启动指令时间</td><td><input type="text" v-model="Starttime" /></td><td>提前启动函数</td><td><input type="text" v-model="Letter" /></td></tr>
             <tr><td>提前启动指令中费用额度</td><td><input type="text" v-model="Limit" /></td></tr>
-            <tr><td>初步拟定软件中心项目经理</td><td><input type="text" v-model="Pm" /></td><td>项目经理等级</td><td><input type="text" v-model="Pmqualification" /></td></tr>
+            <tr><td>初步拟定软件中心项目经理</td><td><input type="text" v-model="Pm" /></td><td>项目经理等级</td><td>
+                <select  v-model="Pmqualification"><option value="0">--请选择--</option><option value="总经理">总经理</option><option value="副总经理">副总经理</option></select></td></tr>
             <tr><td>正副标识</td><td><input type="text" v-model="Identification" /></td><td>任命类型</td><td><input type="text" v-model="Appointtype" /></td></tr>
             <tr><td>项目工期</td><td><input type="text" v-model="Pschedule" /></td><td>预算工作量</td><td><input type="text" v-model="Budget" /></td></tr>
             <tr><td>是否紧急</td><td><input type="radio" v-model="Urgent" value="0" />是<input type="radio" v-model="Urgent" value="1" />否</td></tr>
