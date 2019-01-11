@@ -18,7 +18,6 @@
             <tr>
                 <td><a href="#" onclick="location.href='AddWeekly'">添加</a></td>
                 <td><input id="name" type="text" v-model="cha1" /><input type="button" v-on:click="getList(cha1)" value="搜索" /></td>
-
             </tr>
             <tr></tr>
         </table>
@@ -26,9 +25,9 @@
         <table v-show="contactsList.length" class="table-condensed">
             <thead class="navbar-header">
                 <tr>
-                    <th>序号</th>
                     <th>项目编号</th>
                     <th>项目名称</th>
+                    <th>项目经理</th>
                     <th>填写日期</th>
                     <th>状态</th>
                     <th>操作</th>
@@ -36,11 +35,11 @@
                 </tr>
                 <tr v-for="contact in contactsList">
                     <td>{{contact.Id}}</td>
-                    <td>{{contact.Id}}</td>
                     <td>{{contact.Projectname}}</td>
+                    <td>{{contact.Projmanager}}</td>
                     <td>{{contact.Creadate}}</td>
                     <td>正常</td>
-                    <td>修改 <a href="#" v-on:click="deleteUserById(contact.Id)">删除</a></td>
+                    <td><a href="#" >修改</a>&nbsp;<a href="#" v-on:click="deleteUserById(contact.Id)">删除</a></td>
                     <td>
                         <div v-if="contact.Id!=''" id="example-3">
                             <a @@click="GetWeeklyby(contact.Id)">详细</a>
@@ -119,6 +118,7 @@
         margin: 0px 4px;
         font-size: 12px;
     }
+   
 </style>
 <script type="text/javascript">
 

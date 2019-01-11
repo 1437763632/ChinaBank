@@ -95,11 +95,11 @@
             </tr>
             <tr>
                 <td>建立日期: </td>
-                <td><input type="text" v-model="Creationdate" /></td>
+                <td><input id="meeting" type="date" value="2014-01-13" v-model="Creationdate" /></td>
             </tr>
             <tr>
                 <td>立项日期: </td>
-                <td><input type="text" v-model="Projdate" /></td>
+                <td><input id="meeting" type="date" value="2014-01-13" v-model="Projdate" /></td>
             </tr>
             <tr>
                 <td>项目状态: </td>
@@ -286,8 +286,7 @@
 
                 axios.post('http://localhost:8086/Projmessage/Add',params).then(
                     (response) => {
-                        alert(response)
-                        alert("添加成功")
+                        location.href = 'Index'
                     },
                     (response) => {
                         alert(response.status);

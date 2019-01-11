@@ -21,7 +21,7 @@ namespace ChinaBank.WebApi.Controllers
         {
             solutiontohangService = isolutiontohangService;
         }
-        [HttpGet]
+        [HttpPost]
         [Route("AddSolutiontohang")]
         public int AddSolutiontohang(Solutiontohang s)
         {
