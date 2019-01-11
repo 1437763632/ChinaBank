@@ -1263,6 +1263,7 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Manage\Index2.cshtml" />
     <Content Include="Views\Solutiontohang\AddSolutiontohang.cshtml" />
+    <Content Include="Views\Hangup\GetHangupById.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

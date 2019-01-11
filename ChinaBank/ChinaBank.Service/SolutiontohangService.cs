@@ -35,5 +35,15 @@ namespace ChinaBank.Service
                 return result.ToList();
             }
         }
+        public List<Solutiontohang> GetSolutiontohangById(int Id)
+        {
+            using (OracleConnection conn = DapperHelper.GetConnString())
+            {
+                string sql = @"select * from Solutiontohang where Id=:Id";
+                var Collectlist = new { Id = Id };
+                var result = conn.Query<Solutiontohang>(sql, Collectlist);
+                return result.ToList();
+            }
+        }
     }
 }
