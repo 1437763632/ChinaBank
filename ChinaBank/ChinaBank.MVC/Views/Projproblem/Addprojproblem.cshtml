@@ -11,41 +11,43 @@
     <title>Addprojproblem</title>
     <script src="~/Scripts/axios.js"></script>
     <script src="~/Scripts/vue.js"></script>
+    <link href="~/BootstrapSouce/css/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
     <div id="add">
-        <table class="table table-hover">
+        <table class="table table-bordered" style="width:500px">
             <tr>
                 <td>状态: </td>
-                <td><input type="text" name="Probstate" /></td>
+                <td><input type="text"  v-model="Probstate" /></td>
             </tr>
             <tr>
                 <td>问题名称:</td>
-                <td><input type="text" name="Probname" /></td>
+                <td><input type="text" v-model="Probname" /></td>
             </tr>
             <tr>
                 <td>问题优先级: </td>
-                <td><input type="text" name="Probpriority" /></td>
+                <td><input type="text" v-model="Probpriority" /></td>
             </tr>
             <tr>
                 <td>提出人:</td>
-                <td><input type="text" name="Introducer" /></td>
+                <td><input type="text" v-model="Introducer" /></td>
             </tr>
             <tr>
                 <td>当前解决人: </td>
-                <td><input type="text" name="Currentperson" /></td>
+                <td><input type="text" v-model="Currentperson" /></td>
             </tr>
             <tr>
                 <td>辅助解决人:</td>
-                <td><input type="text" name="Assistperson" /></td>
+                <td><input type="text" v-model="Assistperson" /></td>
             </tr>
             <tr>
                 <td>提出日期: </td>
-                <td><input type="text" name="Inriqi" /></td>
+                <td><input type="text" v-model="Inriqi" /></td>
             </tr>
             <tr>
-                <td><a href="javascript:;" v-on:click="AddQCPlan1(Probstate,Probname,Probpriority,Introducer,Currentperson,Assistperson,Inriqi)">添加</a></td>
                 <td><a href="#" onclick="location.href='Index'">显示</a></td>
+                <td><a href="javascript:;" v-on:click="AddQCPlan1(Probstate,Probname,Probpriority,Introducer,Currentperson,Assistperson,Inriqi)">添加</a></td>
+
             </tr>
         </table>
     </div>
@@ -56,8 +58,13 @@
         el: "#add",
         data: {
             //Target: [],
-            RoleName: "",
-            RoleDescribe: ""
+            Probstate: "",
+            Probname: "",
+            Probpriority: "",
+            Introducer: "",
+            Currentperson: "",
+            Assistperson: "",
+            Inriqi: ""
         },
         mounted() {
             //this.AddQCPlan1();
@@ -67,6 +74,7 @@
             //保存
             AddQCPlan1: function (Probstate, Probname, Probpriority, Introducer, Currentperson, Assistperson, Inriqi) {
                 console.log(1);
+               
                 var params = new URLSearchParams();
                 params.append('Probstate', Probstate);
                 params.append('Probname', Probname);
@@ -77,8 +85,7 @@
                 params.append('Inriqi', Inriqi);
                 axios.post('http://localhost:8086/projproblem/Add', params).then(
                     (response) => {
-                        alert(response)
-                        alert("添加成功")
+                        location.href='Index'
                     },
                     (response) => {
                         alert(response.status);

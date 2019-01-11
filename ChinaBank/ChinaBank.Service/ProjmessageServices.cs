@@ -11,14 +11,16 @@ namespace ChinaBank.Service
     using Dapper;
     using IService;
     using Oracle.DataAccess.Client;
-    public class Projmessage:IProjmessageServices
+    public class Projmessage : IProjmessageServices
     {
         public int Add(Model.Projmessage message)
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
             {
-                string executeSql = @"INSERT INTO Projmessage(formfirst,projname,projcoding,maintaindate,accounting,approvaldate,approvalnum,projcategory,projtype,business,businessteam,department,problemteam,cooperation,isstart,isstartdate,letter,limit,isurgency,isagility,creationdate,projdate,projstate,sbstage,schedutestate,nature,headoffice,businessleader,managerperson,phone,qualification,zhengfu,appointtype,centremanager,contactnumber,qualifications,Andidentify,appointmenttype,architect,parlor,programmanager,testarchitect,testmanager,qualityengineer,systemsengineer,configurationadministrator,versionmanager,projteam,problem) VALUES (:formfirst,:projname,:projcoding,:maintaindate,:accounting,:approvaldate,:approvalnum,:projcategory,:projtype,:business,:businessteam,:department,:problemteam,:cooperation,:isstart,:isstartdate,:letter,:limit,:isurgency,:isagility,:creationdate,:projdate,:projstate,:sbstage,:schedutestate,:nature,:headoffice,:businessleader,:managerperson,:phone,:qualification,:zhengfu,:appointtype,:centremanager,:contactnumber,:qualifications,:Andidentify,:appointmenttype,:architect,:parlor,:programmanager,:testarchitect,:testmanager,:qualityengineer,:systemsengineer,:configurationadministrator,:versionmanager,:projteam,:problem)";
-                return conn.Execute(executeSql, message); 
+                string executeSql = @"INSERT INTO Projmessage
+(formfirst,projname,projcoding,maintaindate,accounting,approvaldate,approvalnum,projcategory,projtype,business,businessteam,department,problemteam,cooperation,isstart,isstartdate,letter,limit,isurgency,isagility,creationdate,projdate,projstate,sbstage,schedutestate,nature,headoffice,businessleader,managerperson,phone,qualification,zhengfu,appointtype,centremanager,contactnumber,qualifications,Andidentify,appointmenttype,architect,parlor,programmanager,testarchitect,testmanager,qualityengineer,systemsengineer,configurationadministrator,versionmanager,projteam,problem) VALUES 
+(:formfirst,:projname,:projcoding,:maintaindate,:accounting,:approvaldate,:approvalnum,:projcategory,:projtype,:business,:businessteam,:department,:problemteam,:cooperation,:isstart,:isstartdate,:letter,:limit,:isurgency,:isagility,:creationdate,:projdate,:projstate,:sbstage,:schedutestate,:nature,:headoffice,:businessleader,:managerperson,:phone,:qualification,:zhengfu,:appointtype,:centremanager,:contactnumber,:qualifications,:Andidentify,:appointmenttype,:architect,:parlor,:programmanager,:testarchitect,:testmanager,:qualityengineer,:systemsengineer,:configurationadministrator,:versionmanager,:projteam,:problem)";
+                return conn.Execute(executeSql, message);
             }
         }
 
@@ -35,7 +37,7 @@ namespace ChinaBank.Service
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
             {
-                string executeSql = @"delete from Projmessage where Id="+id;
+                string executeSql = @"delete from Projmessage where Id=" + id;
                 return conn.Execute(executeSql, id);
             }
         }

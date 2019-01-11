@@ -23,7 +23,7 @@
             <tr></tr>
         </table>
         <hr />
-        <table v-show="contactsList.length" class="table-condensed">
+        <table v-show="contactsList.length" class="table table-bordered">
             <thead class="navbar-header">
                 <tr>
                     <th>项目编号</th>
@@ -48,8 +48,8 @@
                     <td>修改 <a href="#" v-on:click="deleteUserById(contact.Id)">删除</a></td>
                     <td>
                         @*<div v-if="contact.Id!=''" id="example-3">
-                <a @@click="GetWeeklyby(contact.Id)">详细</a>
-            </div>*@
+                                <a @@click="GetWeeklyby(contact.Id)">详细</a>
+                            </div>*@
                     </td>
                 </tr>
             </thead>
@@ -72,6 +72,7 @@
 <script src="~/Scripts/axios.js"></script>
 <script src="~/Scripts/vue.js"></script>
 <script src="~/Scripts/jquery-3.1.1.js"></script>
+<link href="~/BootstrapSouce/css/bootstrap.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 <style>
     .page-bar {
@@ -140,7 +141,7 @@
         },
         methods: {
             getList: function () {
-                axios.get('http://localhost:8086/Projmessage/GetProjmessage?currentpage='+this.cur+'&name='+this.cha1).then(
+                axios.get('http://localhost:8086/Projmessage/GetProjmessage?currentpage=' + this.cur + '&name=' + this.cha1).then(
                     (response) => {
                         console.log(response.data.PageData)
                         this.contactsList = [];
@@ -175,7 +176,7 @@
                 this.getList();
             },
             deleteUserById: function (id) {
-                axios.get('http://localhost:8086/Projmessage/Delete?id='+id).then(
+                axios.get('http://localhost:8086/Projmessage/Delete?id=' + id).then(
                     (response) => {
                         if (response.data > 0) {
                             alert("删除成功");

@@ -47,7 +47,7 @@ namespace ChinaBank.Model
         /// <summary>
         /// 当前阶段
         /// </summary>
-        public int Currentgeneration { get; set; }
+        public string Currentgeneration { get; set; }
         /// <summary>
         /// 所属批次（同1）
         /// </summary>

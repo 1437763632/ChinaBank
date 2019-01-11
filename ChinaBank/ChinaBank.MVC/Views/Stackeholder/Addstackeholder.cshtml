@@ -11,10 +11,11 @@
     <title>Addstackeholder</title>
     <script src="~/Scripts/axios.js"></script>
     <script src="~/Scripts/vue.js"></script>
+    <link href="~/BootstrapSouce/css/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
     <div id="add">
-        <table class="table table-hover">
+        <table class="table table-bordered" style="width:500px">
             <tr>
                 <td>功能名称: </td>
                 <td><input type="text" v-model="Functionname" /></td>
@@ -35,9 +36,9 @@
                 <td>部门:</td>
                 <td><input type="text" v-model="Department" /></td>
             </tr>
-            <tr>
+            <tr><td><a href="#" onclick="location.href='Index'">显示</a></td>
                 <td><a href="javascript:;" v-on:click="AddQCPlan1(Functionname,Projrole,Name,Role,Department)">添加</a></td>
-                <td><a href="#" onclick="location.href='Index'">显示</a></td>
+                
             </tr>
         </table>
     </div>
