@@ -10,10 +10,11 @@
     <title>AddWeekly</title>
     <script src="~/Scripts/axios.js"></script>
     <script src="~/Scripts/vue.js"></script>
+    <link href="~/BootstrapSouce/css/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
     <div id="add">
-        <table class="table table-hover">
+        <table class="table table-bordered" style="width:500px">
             <tr>
                 <td>项目名称: </td>
                 <td><input type="text" v-model="Formfirst" /></td>
@@ -24,11 +25,22 @@
             </tr>
             <tr>
                 <td>项目经理:</td>
-                <td><input type="text" v-model="Projmanager" /></td>
+                <td>
+                    <select v-model="Projmanager">
+                        <option value="0">--请选择--</option>
+                        <option value="金克斯">金克斯</option>
+                        <option value="百分点">百分点</option>
+                        <option value="王建成">王建成</option>
+                    </select>
+                </td>
             </tr>
             <tr>
                 <td>创建日期: </td>
                 <td><input type="text" v-model="Creadate" /></td>
+            </tr>
+            <tr>
+                <td>本周时段: </td>
+                <td><input type="text" v-model="Weektime" /></td>
             </tr>
             <tr>
                 <td>所属批次:</td>
@@ -52,7 +64,21 @@
             </tr>
             <tr>
                 <td>当前阶段: </td>
-                <td><input type="text" v-model="Currentgeneration" /></td>
+                <td>
+                    <select v-model="Currentgeneration">
+                        <option value="0">--请选择--</option>
+                        <option value="需求分析">需求分析</option>
+                        <option value="总体设计">总体设计</option>
+                        <option value="详细设计">详细设计</option>
+                        <option value="程序设计">程序设计</option>
+                        <option value="功能测试">功能测试</option>
+                        <option value="投产演练">投产演练</option>
+                        <option value="投产">投产</option>
+                        <option value="结项">结项</option>
+                        <option value="未开展">未开展</option>
+                        <option value="其他">其他</option>
+                    </select>
+                </td>
             </tr>
             <tr>
                 <td>项目进度状态: </td>
@@ -71,8 +97,9 @@
                 <td><input type="text" v-model="Notifyobj" /></td>
             </tr>
             <tr>
-                <td><a href="javascript:;" v-on:click="AddQCPlan1(Formfirst,Projectname,Projmanager,Creadate,Batchone,Batchtong,Affiliated,Single,Weekproj,Currentgeneration,Projectstatus,Nextweekproj,Remark,Notifyobj)">添加</a></td>
                 <td><a href="#" onclick="location.href='Index'">显示</a></td>
+                <td><a href="javascript:;" v-on:click="AddQCPlan1(Formfirst,Projectname,Affiliated,Projmanager,Single,Creadate,Weektime,Batchone,Currentgeneration,Batchtong,Projectstatus,Weekproj,Nextweekproj,Remark,Notifyobj)">添加</a></td>
+
             </tr>
         </table>
     </div>
@@ -84,7 +111,9 @@
         data: {
             //Target: [],
             RoleName: "",
-            RoleDescribe: ""
+            RoleDescribe: "",
+            Currentgeneration: "0",
+            Projmanager:"0"
         },
         mounted() {
             //this.AddQCPlan1();
@@ -92,23 +121,36 @@
         methods:
         {
             //保存
-            AddQCPlan1: function (Formfirst, Projectname, Projmanager, Creadate, Batchone, Batchtong, Affiliated, Single, Weekproj, Currentgeneration, Projectstatus, Nextweekproj, Remark, Notifyobj) {
+            AddQCPlan1: function (Formfirst,Projectname,Affiliated,Projmanager,Single,Creadate,Weektime,Batchone,Currentgeneration,Batchtong,Projectstatus,Weekproj,Nextweekproj,Remark,Notifyobj) {
+               
+                if (Projmanager == "0") {
+                    alert('请选择项目经理')
+                    return;
+                }
+                if (Currentgeneration == "0") {
+                    alert('请选择当前阶段')
+                    return;
+                }
                 var params = new URLSearchParams();
-                params.append('Formfirst', Formfirst);
-                params.append('Projectname', Projectname);
-                params.append('Projmanager', Projmanager);
-                params.append('Creadate', Creadate);
-                params.append('Batchone', Batchone);
-                params.append('Batchtong', Batchtong);
-                params.append('Affiliated', Affiliated);
-                params.append('Single', Single);
-                params.append('Weekproj', Weekproj);
-                params.append('Currentgeneration', Currentgeneration);
-                params.append('Projectstatus', Projectstatus);
-                params.append('Nextweekproj', Nextweekproj);
-                params.append('Remark', Remark);
-                params.append('Notifyobj', Notifyobj);
-                axios.post('http://localhost:8086/Weekly/Add', params).then(
+                params.append('Formfirst',Formfirst);
+                params.append('Projectname',Projectname);
+                params.append('Affiliated',Projmanager);
+                params.append('Projmanager',Creadate); 
+                params.append('Creadate',Weektime);
+                params.append('Weektime',Batchone);
+                params.append('Batchone',Batchtong);
+                params.append('Currentgeneration',Affiliated);
+                params.append('Batchtong',Single);
+                params.append('Projectstatus',Weekproj);
+               // params.append('Currentgeneration', Currentgeneration);
+                params.append('Weekproj',Currentgeneration);
+                params.append('Projectstatus',Projectstatus);
+                params.append('Nextweekproj',Nextweekproj);
+                params.append('Remark',Remark);
+                params.append('Notifyobj',Notifyobj);
+                //console.log(Currentgeneration);
+                //return;
+                axios.post('http://localhost:8086/Weekly/Add', params).then(  
                     (response) => {
                         location.href = 'Index'
                     },

@@ -9,6 +9,11 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <script src="~/Scripts/axios.js"></script>
+    <script src="~/Scripts/vue.js"></script>
+    <link href="~/BootstrapSouce/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 </head>
 <body>
 
@@ -22,13 +27,14 @@
             <tr></tr>
         </table>
         <hr/>
-        <table v-show="contactsList.length" class="table-condensed">
+        <table v-show="contactsList.length" class="table table-bordered ">
             <thead class="navbar-header">
                 <tr>
                     <th>项目编号</th>
                     <th>项目名称</th>
                     <th>项目经理</th>
                     <th>填写日期</th>
+                    <th>当前阶段</th>
                     <th>状态</th>
                     <th>操作</th>
                     <th>详细</th>
@@ -38,8 +44,9 @@
                     <td>{{contact.Projectname}}</td>
                     <td>{{contact.Projmanager}}</td>
                     <td>{{contact.Creadate}}</td>
+                    <td>{{contact.Currentgeneration}}</td>
                     <td>正常</td>
-                    <td><a href="#" >修改</a>&nbsp;<a href="#" v-on:click="deleteUserById(contact.Id)">删除</a></td>
+                    <td><a href="#">修改</a>&nbsp;<a href="#" v-on:click="deleteUserById(contact.Id)">删除</a></td>
                     <td>
                         <div v-if="contact.Id!=''" id="example-3">
                             <a @@click="GetWeeklyby(contact.Id)">详细</a>
@@ -63,10 +70,7 @@
     </div>
 </body>
 </html>
-<script src="~/Scripts/axios.js"></script>
-<script src="~/Scripts/vue.js"></script>
-<script src="~/Scripts/jquery-3.1.1.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
 <style>
     .page-bar {
         margin: 40px;

@@ -10,10 +10,11 @@
     <title>AddManage</title>
     <script src="~/Scripts/axios.js"></script>
     <script src="~/Scripts/vue.js"></script>
+    <link href="~/BootstrapSouce/css/bootstrap.css" rel="stylesheet" />
 </head>  
 <body>
     <div id="add">
-        <table class="table table-hover">
+        <table class="table table-bordered" style="width:500px">
             <tr>
                 
               
@@ -45,8 +46,9 @@
                 <td><input id="meeting" type="date" v-model="Appointmentdate" /></td>
             </tr>
             <tr>
-                <td><a href="javascript:;" v-on:click="AddQCPlan1(Projectmanager,Qualification,Identify,Appointment,Projectplan,Situation,Appointmentdate)">添加</a></td>
                 <td><a href="#" onclick="location.href='Index'">显示</a></td>
+                <td><a href="javascript:;" v-on:click="AddQCPlan1(Projectmanager,Qualification,Identify,Appointment,Projectplan,Situation,Appointmentdate)">添加</a></td>
+
             </tr>
         </table>
     </div>
