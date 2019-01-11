@@ -20,7 +20,7 @@
     <div id="app" class="div-td">
         <input type="button" value="ajax添加" onclick="location.href='Add'" />
         <input type="button" value="vue添加" onclick="location.href='update'" />
-        <table v-show="list.length" class="table-condensed" border="1">
+        <table v-show="list.length" class="table  table-condensed" border="1">
             <tr>
                 <th>ID</th>
                 <th>权限名称</th>
@@ -29,8 +29,8 @@
             </tr>
             <tr v-for="item in list ">
                 <td>{{item.Id}}</td>
-                <td><input type="text" name="item.PermissionName" /></td>
-                <td><input type="text" name="item.Url" /></td>
+                <td> {{item.PermissionName}}</td>
+                <td>{{item.Url}}</td>
 
                 <td>
                     <div v-if="item.ID!=''">

@@ -24,13 +24,17 @@
             </div>
             <div>
                 <input type="button" value="添加"  onclick="Add()"/>
-                <input id="Button1" type="button" value="返回" />
+                <input type="button" value="返回" onclick="f()"/>
             </div>
         </form>
     </div>
 </body>
 </html>
 <script>
+    $(function myfunction() {
+        add();
+        f();
+    })
     function Add() {
         $.ajax({
             url: "http://localhost:8086/rbac/PermissionAdd",
@@ -39,12 +43,16 @@
             success: function (data) {
 
                 if (data > 0) {
-                    alert("添加成功!");
+                    location.href = "/Permission/Index";
                 }
                 else {
-                    alert("添加失败!");
+                    alert("添加失败,请重新添加");
+                    return;
                 }
             }
         })
+    }
+    function f() {
+        location.href = "/Permission/Index";
     }
 </script>
