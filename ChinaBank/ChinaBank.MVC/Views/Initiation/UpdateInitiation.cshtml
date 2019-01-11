@@ -64,10 +64,11 @@
     </script>
 </head>
 <body>
-    <input type="button" value="项目挂起" onclick="location.href='/Hangup/AddHangup?Id='+@Request.QueryString["Id"]"/>
+    <input type="button" value="项目挂起" onclick="location.href='/Hangup/AddHangup?Id='+@Request.QueryString["Id"]" />
+    <input type="button" value="项目解挂" onclick="location.href='/Solutiontohang/AddSolutiontohang?Id='+@Request.QueryString["Id"]" />
     <div id="app">
         <table class="table table-bordered">
-            <tr><td><input type="hidden" name="Id" value="@Request.QueryString["Id"]"/></td></tr>
+            <tr><td><input type="hidden" name="Id" value="@Request.QueryString["Id"]" /></td></tr>
             <tr><td>编码</td><td><input type="text" name="Code" /></td><td>申请人</td><td><input type="text" name="Applicant" /></td></tr>
             <tr><td>项目编号</td><td><input type="text" name="Pid" /></td></tr>
             <tr><td>项目名称</td><td><input type="text" name="Pname" /></td><td>项目类型</td><td><input type="text" name="Ptype" /></td></tr>

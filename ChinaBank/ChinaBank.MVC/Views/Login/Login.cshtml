@@ -1,0 +1,66 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>后台登录</title>
+
+    <link href="../../css/login.css" type="text/css" rel="stylesheet" />
+    <script src="~/lib/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <div class="login">
+        <div class="message">品牌名称-管理登录</div>
+        <div id="darkbannerwrap"></div>
+
+        <form method="post" id="from1">
+            @*<input name="action" value="login" type="hidden">*@
+            <input name="ManageNumber" placeholder="账号" required="" type="text">
+            <hr class="hr15">
+            <input name="ManagePass" placeholder="密码" required="" type="password">
+            <hr class="hr15">
+            <input value="登录" style="width:100%;" type="button"  id="login">
+            <hr class="hr20">
+            <!-- 帮助 <a onClick="alert('请联系管理员')">忘记密码</a> -->
+        </form>
+    </div>
+
+</body>
+</html>
+<script>
+    $(function () {
+        $("#login").click(function () {
+            $.ajax({
+                url: 'http://localhost:8086/rbac/Login?ManageName=' + $("[name=ManageNumber]").val() + '&ManagePwd=' + $("[name=ManagePass]").val(),
+                type: 'post',
+                success: function (data) {
+                    if (data!=null) {
+                        $.ajax({
+                            url: '/Login/Login',
+                            type: 'post',
+                            data: JSON.stringify(data),
+                            dataType: 'json',
+                            contentType: 'application/json',
+                            success: function (a) {
+                                location.href = "/main/Index?id=" + data.Id;
+                            }
+                        })
+                    }
+                    else {
+                        alert("登录失败");
+                        return;
+                    }
+                }
+            })
+        })
+    })
+</script>

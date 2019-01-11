@@ -117,6 +117,8 @@
     <Content Include="BootstrapSouce\js\respond.min.js" />
     <Content Include="css\login.css" />
     <Content Include="Global.asax" />
+    <Content Include="images\aiwrap.png" />
+    <Content Include="images\web_login_bg.jpg" />
     <Content Include="lib\datatables\1.10.0\jquery.dataTables.min.js" />
     <Content Include="lib\DD_belatedPNG_0.0.8a-min.js" />
     <Content Include="lib\echarts\3.4.0\echarts.common.min.js" />
@@ -980,6 +982,7 @@
     <Content Include="lib\webuploader\0.1.5\images\icons.psd" />
     <Content Include="lib\webuploader\0.1.5\images\progress.psd" />
     <Content Include="lib\webuploader\0.1.5\README.md" />
+    <Content Include="images\Thumbs.db" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1204,6 +1207,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HangupController.cs" />
     <Compile Include="Controllers\InitiationController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\mainController.cs" />
     <Compile Include="Controllers\ManagemessageController.cs" />
     <Compile Include="Controllers\ProjmessageController.cs" />
@@ -1225,6 +1229,7 @@
     <Compile Include="lib\ueditor\1.4.3\net\App_Code\NotSupportedHandler.cs" />
     <Compile Include="lib\ueditor\1.4.3\net\App_Code\PathFormater.cs" />
     <Compile Include="lib\ueditor\1.4.3\net\App_Code\UploadHandler.cs" />
+    <Compile Include="Models\LoginFatier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1255,6 +1260,10 @@
     <Content Include="Views\main\Index.cshtml" />
     <Content Include="Views\Permission\perUpdate.cshtml" />
     <Content Include="Views\Solutiontohang\Index.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Manage\Index2.cshtml" />
+    <Content Include="Views\Solutiontohang\AddSolutiontohang.cshtml" />
+    <Content Include="Views\Hangup\GetHangupById.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1268,7 +1277,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChinaBank.Model\ChinaBank.Model.csproj">
+      <Project>{6277cced-4453-4807-bc15-659f37505bea}</Project>
+      <Name>ChinaBank.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

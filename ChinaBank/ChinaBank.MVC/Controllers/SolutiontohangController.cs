@@ -13,7 +13,7 @@ namespace ChinaBank.MVC.Controllers
         {
             return View();
         }
-        public ActionResult GetSolutiontohang()
+        public ActionResult AddSolutiontohang()
         {
             return View();
         }
