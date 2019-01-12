@@ -9,6 +9,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>UpdateInitiation</title>
+    <link href="~/BootstrapSouce/css/bootstrap.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-3.1.1.js"></script>
     <script>
         $(function () {
@@ -67,7 +68,7 @@
     <input type="button" value="项目挂起" onclick="location.href='/Hangup/AddHangup?Id='+@Request.QueryString["Id"]" />
     <input type="button" value="项目解挂" onclick="location.href='/Solutiontohang/AddSolutiontohang?Id='+@Request.QueryString["Id"]" />
     <div id="app">
-        <table class="table table-bordered">
+        <table class=" table table-hover">
             <tr><td><input type="hidden" name="Id" value="@Request.QueryString["Id"]" /></td></tr>
             <tr><td>编码</td><td><input type="text" name="Code" /></td><td>申请人</td><td><input type="text" name="Applicant" /></td></tr>
             <tr><td>项目编号</td><td><input type="text" name="Pid" /></td></tr>

@@ -1264,6 +1264,7 @@
     <Content Include="Views\Manage\Index2.cshtml" />
     <Content Include="Views\Solutiontohang\AddSolutiontohang.cshtml" />
     <Content Include="Views\Hangup\GetHangupById.cshtml" />
+    <Content Include="Views\Solutiontohang\GetSolutiontohangById.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

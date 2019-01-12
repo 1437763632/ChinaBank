@@ -8,64 +8,54 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>AddHangup</title>
+    <title>GetSolutiontohangById</title>
     <link href="~/BootstrapSouce/css/bootstrap.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-3.1.1.js"></script>
     <script>
         $(function () {
-            GetInitiationById();
+            GetSolutiontohangId();
         })
-        function GetInitiationById() {
+        function GetSolutiontohangId() {
             $.ajax({
-                url: "http://localhost:8086/GetInitiationById",
+                url: "http://localhost:8086/GetSolutiontohangId",
                 type: "get",
                 data: {
                     Id:"@Request.QueryString["Id"]"
                 },
                 success: function (data) {
                     $("input[name=Code]").val(data[0].Code);
+                    $("input[name=Applicant]").val(data[0].Applicant);
                     $("input[name=Pname]").val(data[0].Pname);
                     $("input[name=Pid]").val(data[0].Pid);
+                    $("input[name=Createtime]").val(data[0].Createtime);
                     $("input[name=Pm]").val(data[0].Pm);
                     $("input[name=Department]").val(data[0].Department);
                     $("input[name=State]").val(data[0].State);
+                    $("input[name=Solutiontohangcause]").val(data[0].Solutiontohangcause);
+                    $("input[name=Processingstep]").val(data[0].Processingstep);
+                    $("input[name=Handler]").val(data[0].Handler);
 
-                }
-            })
-        }
-        function Add() {
-            alert(0);
-            $.ajax({
-                url: "http://localhost:8086/AddHangup",
-                type: "post",
-                data: $("#form1").serialize(),
-                success: function (data) {
-
-                    if (data > 0) {
-                        alert("添加成功!");
-                    }
-                    else {
-                        alert("添加失败!");
-                    }
                 }
             })
         }
     </script>
 </head>
 <body>
-    <div> 
+    <div>
         <form id="form1">
-            <table class=" table table-hover">
+            <table 	class=" table table-hover">
+                <tr><td><input type="hidden" name="Id" value="@Request.QueryString["Id"]" /></td></tr>
                 <tr>
                     <td>编码:<input type="text" name="Code" /></td>
                     <td>申请人:<input type="text" name="Applicant" /></td>
                 </tr>
                 <tr>
+                    <td>项目名称:<input type="text" name="Pname" /></td>
                     <td>项目编号:<input type="text" name="Pid" /></td>
-                    <td>申请日期:<input id="meeting" type="date" name="Createtime" /></td>
+
                 </tr>
                 <tr>
-                    <td>项目名称:<input type="text" name="Pname" /></td>
+                    <td>申请日期:<input type="text" name="Createtime" /></td>
                     <td>项目经理:<input type="text" name="Pm" /></td>
                 </tr>
                 <tr>
@@ -73,17 +63,18 @@
                     <td>项目状态:<input type="text" name="State" /></td>
                 </tr>
                 <tr>
-                    <td>挂起原因:<input type="text" name="Hangupcause" /></td>
+                    <td>解挂原因:<input type="text" name="Solutiontohangcause" /></td>
                 </tr>
                 <tr>
                     <td>处理步骤:<input type="text" name="Processingstep" /></td>
                     <td>处理人:<input type="text" name="Handler" /></td>
                 </tr>
                 <tr>
-                    <td><input type="button" value="保存" onclick="Add()"/></td>
+                    <td><input type="button" value="返回" onclick="location.href='/Solutiontohang/Index'" /></td>
                 </tr>
             </table>
         </form>
     </div>
 </body>
 </html>
+

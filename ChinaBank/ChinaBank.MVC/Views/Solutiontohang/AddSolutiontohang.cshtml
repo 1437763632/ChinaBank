@@ -9,7 +9,9 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>AddSolutiontohang</title>
+    <link href="~/BootstrapSouce/css/bootstrap.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-3.1.1.js"></script>
+
     <script>
         $(function () {
             GetInitiationById();
@@ -53,7 +55,7 @@
 <body>
     <div>
         <form id="form1">
-            <table>
+            <table class=" table table-hover">
                 <tr>
                     <td>编码:<input type="text" name="Code" /></td>
                     <td>申请人:<input type="text" name="Applicant" /></td>
@@ -64,7 +66,7 @@
                    
                 </tr>
                 <tr>
-                    <td>申请日期:<input type="text" name="Createtime" /></td>
+                    <td>申请日期:<input id="meeting" type="date" name="Createtime" /></td>
                     <td>项目经理:<input type="text" name="Pm" /></td>
                 </tr>
                 <tr>
