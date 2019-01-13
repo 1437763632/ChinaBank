@@ -13,6 +13,11 @@ namespace ChinaBank.Service
     using Oracle.DataAccess.Client;
     public class Managemessage:IManagessageServices
     {
+        /// <summary>
+        /// 添加项目经理信息
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
         public int Add(Model.Managemessage message)
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
@@ -22,6 +27,10 @@ namespace ChinaBank.Service
             }
         }
 
+        /// <summary>
+        /// 查询项目经理信息
+        /// </summary>
+        /// <returns></returns>
         public List<Model.Managemessage> GetManagemessage()
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
@@ -31,6 +40,12 @@ namespace ChinaBank.Service
                 return result.ToList();
             }
         }
+
+        /// <summary>
+        /// 删除项目经理信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public int Delete(int id)
         {
             using (OracleConnection conn = DapperHelper.GetConnString())

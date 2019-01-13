@@ -16,6 +16,11 @@ namespace ChinaBank.Service
 
     public class ProjproblemService : IProjproblemServices
     {
+        /// <summary>
+        /// 添加项目问题
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
         public int Add(Model.Projproblem p)
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
@@ -25,6 +30,10 @@ namespace ChinaBank.Service
             }
         }
 
+        /// <summary>
+        /// 显示项目问题
+        /// </summary>
+        /// <returns></returns>
         public List<Model.Projproblem> GetProjproblems()
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
@@ -34,6 +43,12 @@ namespace ChinaBank.Service
                 return result.ToList();
             }
         }
+
+        /// <summary>
+        /// 查询项目问题
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public List<Model.Projproblem> Getproj(int id)
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
