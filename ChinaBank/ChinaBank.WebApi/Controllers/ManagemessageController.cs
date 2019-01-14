@@ -72,5 +72,29 @@ namespace ChinaBank.WebApi.Controllers
             var result = this.Managemessage.Delete(id);
             return result;
         }
+        /// <summary>
+        /// 修改项目经理信息
+        /// </summary>
+        /// <returns></returns>
+        [Route("Update")]
+        [HttpPost]
+        public int Update(Model.Managemessage managemessage)
+        {
+            var result = this.Managemessage.Update(managemessage);
+            return result;
+        }
+
+        /// <summary>
+        /// 根据ID查询
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        [Route("GetManagemessageId")]
+        [HttpGet]
+        public List<Managemessage> GetManagemessageId(int Id)
+        {
+            var result = this.Managemessage.GetManagemessageId(Id);
+            return result;
+        }
     }
 }

@@ -54,5 +54,34 @@ namespace ChinaBank.Service
                 return conn.Execute(executeSql, id);
             }
         }
+        /// <summary>
+        /// 根据ID查询
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        public List<Model.Managemessage> GetManagemessageId(int Id)
+        {
+            using (OracleConnection conn = DapperHelper.GetConnString())
+            {
+                string sql = @"select * from Managemessage where Id=:Id";
+                var Collectlist = new { Id = Id };
+                var result = conn.Query<Model.Managemessage>(sql, Collectlist);
+                return result.ToList();
+            }
+        }
+
+        /// <summary>
+        /// 修改项目经理信息
+        /// </summary>
+        /// <returns></returns>
+        public int Update(Model.Managemessage managemessage)
+        {
+            using (OracleConnection conn = DapperHelper.GetConnString())
+            {
+                string executeSql = @"update Managemessage set Projectmanager=:Projectmanager,Qualification=:Qualification,Identify=:Identify,Appointment=:Appointment,Projectplan=:Projectplan,Situation=:Situation,Appointmentdate=:Appointmentdate where Id=:Id";
+                int result = conn.Execute(executeSql, managemessage);
+                return result;
+            }
+        }
     }
 }
