@@ -13,6 +13,11 @@ namespace ChinaBank.Service
     using Oracle.DataAccess.Client;
     public class Projmessage : IProjmessageServices
     {
+        /// <summary>
+        /// 添加项目信息
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
         public int Add(Model.Projmessage message)
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
@@ -24,6 +29,10 @@ namespace ChinaBank.Service
             }
         }
 
+        /// <summary>
+        /// 显示项目信息
+        /// </summary>
+        /// <returns></returns>
         public List<Model.Projmessage> GetProjmessage()
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
@@ -33,6 +42,12 @@ namespace ChinaBank.Service
                 return result.ToList();
             }
         }
+
+        /// <summary>
+        /// 删除项目信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public int Delete(int id)
         {
             using (OracleConnection conn = DapperHelper.GetConnString())

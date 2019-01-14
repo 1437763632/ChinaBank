@@ -18,9 +18,9 @@ namespace ChinaBank.Service
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
             {
-                string executeSql = @" INSERT INTO Hangup(Code,Applicant,Pname,Pid,Createtime,Pm,Department,State,Hangupcause,Processingstep,Handler) VALUES (:Code,:Applicant,:Pname,:Pid,:Createtime,:Pm,:Department,:State,:Hangupcause,:Processingstep,:Handler) ";
-                //initiation.Times = System.DateTime.Now;
-                var Collectlist = new { Code=h.Code, Applicant = h.Applicant, Pname = h.Pname, Pid = h.Pid, Createtime = h.Createtime, Pm = h.Pm, Department = h.Department, State = h.State, Hangupcause = h.Hangupcause, Processingstep = h.Processingstep, Handler = h.Handler };
+                string executeSql = @" INSERT INTO Hangup(Code,Applicant,Pname,Pid,Createtime,Hanguptime,Pm,Department,State,Hangupcause,Processingstep,Handler) VALUES (:Code,:Applicant,:Pname,:Pid,:Createtime,:Hanguptime,:Pm,:Department,:State,:Hangupcause,:Processingstep,:Handler) ";
+                h.Hanguptime = System.DateTime.Now;
+                var Collectlist = new { Code=h.Code, Applicant = h.Applicant, Pname = h.Pname, Pid = h.Pid, Createtime = h.Createtime, Hanguptime=h.Hanguptime,Pm = h.Pm, Department = h.Department, State = h.State, Hangupcause = h.Hangupcause, Processingstep = h.Processingstep, Handler = h.Handler };
                 int result = conn.Execute(executeSql, Collectlist);
                 return result;
             }
