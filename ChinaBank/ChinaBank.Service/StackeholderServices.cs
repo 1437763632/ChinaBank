@@ -13,6 +13,11 @@ namespace ChinaBank.Service
     using Oracle.DataAccess.Client;
     public class StackeholderServices:IStackeholderServices
     {
+        /// <summary>
+        /// 添加项目干系人
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
         public int Add(Model.Stackeholder p)
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
@@ -22,6 +27,10 @@ namespace ChinaBank.Service
             }
         }
 
+        /// <summary>
+        /// 显示项目干系人
+        /// </summary>
+        /// <returns></returns>
         public List<Model.Stackeholder> GetStackeholder()
         {
             using (OracleConnection conn = DapperHelper.GetConnString())

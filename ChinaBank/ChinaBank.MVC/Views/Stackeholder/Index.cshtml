@@ -17,29 +17,22 @@
         <table>
             <tr>
                 <td><a href="#" onclick="location.href='Addstackeholder'">添加</a></td>
-                <td>
-                    角色：<select>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                    </select>
-                </td>
                 <td><input id="name" type="text" v-model="cha1" /><input type="button" v-on:click="getList(cha1)" value="搜索" /></td>
-                <td><button type="button" onclick="del">删除</button></td>
+                @*<td><button type="button" onclick="del">删除</button></td>*@
             </tr>
         </table>
         <hr />
         <table v-show="contactsList.length" class="table table-bordered ">
             <thead class="navbar-header">
                 <tr>
-                    <th>勾选</th>
+                    @*<th>勾选</th>*@
                     <th>员工编号</th>
                     <th>姓名</th>
                     <th>所属部门</th>
                     <th>角色</th>
                 </tr>
                 <tr v-for="contact in contactsList">
-                    <td><input type="checkbox" :value="index" v-model="selectArr"> </td>
+                    @*<td><input type="checkbox" :value="index" v-model="selectArr"> </td>*@
                     <td>{{contact.Id}}</td>
                     <td>{{contact.Name}}</td>
                     <td>{{contact.Department}}</td>

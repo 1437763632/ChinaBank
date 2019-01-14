@@ -77,7 +77,8 @@
             </tr>
             <tr>
                 <td>收到提前启动指令时间: </td>
-                <td><input type="text" v-model="Isstartdate" /></td>
+                <td>
+                    <input id="meeting" type="date" v-model="Isstartdate" /></td>
             </tr>
             <tr>
                 <td>提前启动函号: </td>
@@ -105,7 +106,15 @@
             </tr>
             <tr>
                 <td>项目状态: </td>
-                <td><input type="text" v-model="Projstate" /></td>
+                <td>
+                    <select v-model="Projstate">
+                        <option value="0">--请选择--</option>
+                        <option value="运行">运行</option>
+                        <option value="挂起">挂起</option>
+                        <option value="结束">结束</option>
+                        <option value="结项">结项</option>
+                    </select>
+                </td>
             </tr>
             <tr>
                 <td>所属阶段: </td>
@@ -248,7 +257,7 @@
             Isagility: "",
             Creationdate: "",
             Projdate: "",
-            Projstate: "",
+            Projstate: "0",
             Sbstage: "",
             Schedutestate: "",
             Nature: "",
@@ -283,7 +292,11 @@
         methods:
         {
             //保存
-            AddQCPlan1: function (Formfirst,Projname,Projcoding,Maintaindate,Accounting,Approvaldate,Approvalnum,Projcategory,Projtype,Business,Businessteam,Department,Problemteam,Cooperation,Isstart,Isstartdate,Letter,Limit,Isurgency,Isagility,Creationdate,Projdate,Projstate,Sbstage,Schedutestate,Nature,Headoffice,Businessleader,Managerperson,Phone,Qualification,Zhengfu,Appointtype,Centremanager,Contactnumber,Qualifications,Andidentify,Appointmenttype,Architect,Parlor,Programmanager,Testarchitect,Testmanager,Qualityengineer,Systemsengineer,Configurationadministrator,Versionmanager,Projteam,Problem) {
+            AddQCPlan1: function (Formfirst, Projname, Projcoding, Maintaindate, Accounting, Approvaldate, Approvalnum, Projcategory, Projtype, Business, Businessteam, Department, Problemteam, Cooperation, Isstart, Isstartdate, Letter, Limit, Isurgency, Isagility, Creationdate, Projdate, Projstate, Sbstage, Schedutestate, Nature, Headoffice, Businessleader, Managerperson, Phone, Qualification, Zhengfu, Appointtype, Centremanager, Contactnumber, Qualifications, Andidentify, Appointmenttype, Architect, Parlor, Programmanager, Testarchitect, Testmanager, Qualityengineer, Systemsengineer, Configurationadministrator, Versionmanager, Projteam, Problem) {
+                if (Projstate == "0") {
+                    alert('请选择项目状态')
+                    return;
+                }
                 var params = new URLSearchParams();
                 params.append('Formfirst', Formfirst);
                 params.append('Projname', Projname);
