@@ -38,11 +38,11 @@ namespace ChinaBank.Model
         /// <summary>
         /// 创建日期
         /// </summary>
-        public string Createtime { get; set; }
+        public DateTime Createtime { get; set; }
         /// <summary>
         /// 挂起日期
         /// </summary>
-        public string Hanguptime { get; set; }
+        public DateTime Hanguptime { get; set; }
         /// <summary>
         /// 项目经理
         /// </summary>
