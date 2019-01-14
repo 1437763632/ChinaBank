@@ -1,0 +1,100 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Update</title>
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <script>
+    $(function () {
+           $.ajax({
+                url: "http://localhost:8086/Managemessage/GetManagemessageId",
+                type: "get",
+                data: {
+                    Id:"@Request.QueryString["Id"]"
+                },
+               success: function (data) {
+                    console.log(data)
+                    $("input[name=Projectmanager]").val(data[0].Projectmanager);
+                    $("input[name=Qualification]").val(data[0].Qualification);
+                    $("input[name=Identify]").val(data[0].Identify);
+                    $("input[name=Appointment]").val(data[0].Appointment);
+                    $("input[name=Projectplan]").val(data[0].Projectplan);
+                   $("input[name=Situation]").val(data[0].Situation);
+                   $("input[name=Appointmentdate]").val(data[0].Appointmentdate);
+                }
+        })
+        $("#upt").click(function () {
+            $.ajax({
+                url: 'http://localhost:8086/Managemessage/Update',
+                type: 'post',
+                data:
+                {
+                    Projectmanager: $("[name=Projectmanager]").val(),
+                    Qualification: $("[name=Qualification]").val(),
+                    Identify: $("[name=Identify]").val(),
+                    Appointment: $("[name=Appointment]").val(),
+                    Projectplan: $("[name=Projectplan]").val(),
+                    Situation: $("[name=Situation]").val(),
+                    Appointmentdate: $("[name=Appointmentdate]").val(),
+                    Id:@Request.QueryString["id"],
+                },
+                success: function (data) {
+                    if (data > 0) {
+                        location.href = "/Managemessage/Index";
+                    }
+                }
+            })
+        })
+        })
+
+
+
+    </script>
+</head>
+<body>
+    <div id="update">
+        <table class="table table-hover">
+            <tr><td><input type="hidden" name="Id" value="@Request.QueryString["Id"]" /></td></tr>
+            <tr>
+                <td>项目经理: </td>
+                <td><input type="text" name="Projectmanager" /></td>
+            </tr>
+            <tr>
+                <td>项目经理资格: </td>
+                <td><input type="text" name="Qualification" /></td>
+            </tr>
+            <tr>
+                <td>正副标识:</td>
+                <td><input type="text" name="Identify" /></td>
+            </tr>
+            <tr>
+                <td>任命类型: </td>
+                <td><input type="text" name="Appointment" /></td>
+            </tr>
+            <tr>
+                <td>立项拟定:</td>
+                <td><input type="text" name="Projectplan" /></td>
+            </tr>
+            <tr>
+                <td>任命情况:</td>
+                <td><input type="text" name="Situation" /></td>
+            </tr>
+            <tr>
+                <td>任命日期: </td>
+                <td>
+                    <input id="meeting" type="date" name="Appointmentdate" />
+                </td>
+            </tr>
+            <tr>
+                <td><a href="javascript:;" id="upt" class="btn btn-info">修改</a></td>
+                <td><a href="#" onclick="location.href='Index'">显示</a></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

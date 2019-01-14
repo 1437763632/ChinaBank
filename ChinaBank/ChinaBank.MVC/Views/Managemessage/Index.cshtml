@@ -36,7 +36,7 @@
                     <th>任命日期</th>
                     <th>操作</th>
                 </tr>
-                <tr v-for="contact in contactsList">
+                <tr v-for="contact in contactsList">  
                     <td>{{contact.Id}}</td>
                     <td>{{contact.Projectmanager}}</td>
                     <td>{{contact.Qualification}}</td>
@@ -46,7 +46,10 @@
                     <td>{{contact.Situation}}</td>
                     <td>{{contact.Appointmentdate}}</td>
                     @*<td>正常</td>*@
-                    <td>修改 <a href="#" v-on:click="deleteUserById(contact.Id)">删除</a></td>
+                    <td>
+                        <a href="#" @@click="Update(contact.Id)">修改</a>
+                        <a href="#" v-on:click="deleteUserById(contact.Id)">删除</a>
+                    </td>
 
                 </tr>
             </thead>
@@ -166,6 +169,9 @@
             pageClick: function () {
                 //console.log('现在在' + this.cur + '页');
                 this.getList();
+            },
+            Update: function (Id) {
+                location.href = '/Managemessage/Update?Id=' + Id;
             },
             getLists: function (id) {
                 this.cur = 1;
