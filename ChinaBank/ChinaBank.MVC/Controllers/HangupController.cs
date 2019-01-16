@@ -21,5 +21,9 @@ namespace ChinaBank.MVC.Controllers
         {
             return View();
         }
+        public ActionResult HongUpAudit()
+        {
+            return View();
+        }
     }
 }
