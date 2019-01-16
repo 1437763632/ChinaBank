@@ -1,0 +1,138 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+    <link href="~/BootstrapSouce/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/axios.js"></script>
+    <script src="~/Scripts/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h3>{{Forms}}</h3>
+        <table class=" table table-hover table-border">
+            <tr>
+                <td>申请人</td>
+                <td>
+                    <input type="text" v-model="Applicant" />
+                </td>
+                <td>项目名称</td>
+                <td>
+                    <input type="text" v-model="Pname" />
+                </td>
+            </tr>
+            <tr>
+                <td>项目类型abcd</td>
+                <td>
+                    <select v-model="Ptype">
+                        <option value="A型">A型</option>
+                        <option value="B型">B型</option>
+                        <option value="C型">C型</option>
+                        <option value="D型">D型</option>
+                    </select>
+                </td>
+                <td>需求单号</td>
+                <td>
+                    <input type="text" v-model="Requisitionid" />
+                </td>
+            </tr>
+            <tr>
+                <td>发起部门</td>
+                <td>
+                    <input type="text" v-model="Section" />
+                </td>
+                <td>项目所属部门（分中心/总公司）</td>
+                <td>
+                    <select v-model="Department" style="width:180px;height:30px;">
+                        <option value="总公司">总公司</option>
+                        <option value="分中心">分中心</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>是否为提前启动项目</td>
+                <td>
+                    <input type="radio" name="Starts" value="是" v-model="Starts" />是
+                    <input type="radio" name="Starts" value="否" v-model="Starts" checked="checked" />否
+                </td>
+                <td>提前启动指令时</td>
+                <td>
+                    <input type="date" v-model="Starttime" />
+                </td>
+            </tr>
+            <tr>
+                <td>提前启动符号</td>
+                <td>
+                    <input type="text" v-model="Letter" />
+                </td>
+                <td>提前启动指令中费用额度</td>
+                <td>
+                    <input type="text" v-model="Limits" />
+                </td>
+            </tr>
+           
+            <tr>
+                <td>
+                    <input type="button" value="保存" v-on:click="addUser(Forms, Applicant, Pname, Ptype, Requisitionid, Section, Department, Starts, Starttime, Letter, Limits)" />
+                    @*<input type="button" value="保存" v-on:click="addUser(Cood)" />*@
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            Forms:"项目立项生清单"+@Request.QueryString["name"],
+            Applicant: "",
+            Pname:"",
+            Ptype: "A型",
+            Requisitionid: "",
+            Section: "",
+            Department: "总公司",
+            Starts: "否",
+            Starttime: object,
+            Letter: "",
+            Limits:""
+        },
+        methods: {
+            //添加申请
+            addUser: function (Forms, Applicant, Pname, Ptype, Requisitionid, Section, Department, Starts, Starttime, Letter, Limits) {
+                var params = new URLSearchParams();
+                params.append("Forms", Forms);
+                params.append("Applicant", Applicant);
+                params.append("Pname", Pname);
+                params.append("Requisitionid", Requisitionid);
+                params.append("Section", Section);
+                params.append("Ptype", Ptype);
+                params.append("Department", Department);
+                params.append("Starts", Starts);
+                params.append("Starttime", Starttime);
+                params.append("Letter", Letter);
+                params.append("Limits", Limits);
+                axios.post("http://localhost:8086/AddInitiation", param).then(
+                    (response) => {
+                        console.log(response)
+                        alert("添加成功")
+                    },
+                    (response) => {
+                        alert(response.status);
+                    }
+                ).catch(function (response) {
+                    alert(response);
+                })
+
+            }
+        }
+    })
+
+</script>

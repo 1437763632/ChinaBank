@@ -36,8 +36,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Approvals.cs" />
+    <Compile Include="Configs.cs" />
     <Compile Include="InitiationType.cs" />
     <Compile Include="Managemessage.cs" />
+    <Compile Include="Nodes.cs" />
     <Compile Include="PageBox.cs" />
     <Compile Include="Page.cs" />
     <Compile Include="Projmessage.cs" />

@@ -21,5 +21,14 @@ namespace ChinaBank.MVC.Controllers
         {
             return View();
         }
+
+        public  ActionResult Add()
+        {
+            return View();
+        }
+        public ActionResult ApproveOne()
+        {
+            return View();
+        }
     }
 }
