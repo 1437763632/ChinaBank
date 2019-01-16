@@ -71,5 +71,18 @@ namespace ChinaBank.WebApi.Controllers
             var result = this.Projmessage.Delete(id);
             return result;
         }
+
+        /// <summary>
+        /// 根据ID查询
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        [Route("GetProjmessageId")]
+        [HttpGet]
+        public List<Model.Projmessage> GetProjmessageId(int Id)
+        {
+            var result = this.Projmessage.GetProjmessageId(Id);
+            return result;
+        }
     }
 }

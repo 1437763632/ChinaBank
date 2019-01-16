@@ -1,0 +1,257 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/BootstrapSouce/css/bootstrap.css" rel="stylesheet" />
+    <title>AddSolutionhang</title>
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <script>
+    $(function () {
+           $.ajax({
+               url: "http://localhost:8086/Projmessage/GetProjmessageId",
+                type: "get",
+                data: {
+                    Id:"@Request.QueryString["Id"]"
+                },
+               success: function (data) {
+                    console.log(data)
+                   $("input[name=Formfirst]").val(data[0].Formfirst);
+                   $("input[name=Projname]").val(data[0].Projname);
+                   $("input[name=Projcoding]").val(data[0].Projcoding);
+                   $("input[name=Maintaindate]").val(data[0].Maintaindate);
+                   $("input[name=Accounting]").val(data[0].Accounting);
+                   $("input[name=Approvaldate]").val(data[0].Approvaldate);
+                   $("input[name=Approvalnum]").val(data[0].Approvalnum);
+                   $("input[name=Projcategory]").val(data[0].Projcategory);
+                   $("input[name=Projtype]").val(data[0].Projtype);
+                   $("input[name=Business]").val(data[0].Business);
+                   $("input[name=Businessteam]").val(data[0].Businessteam);
+                   $("input[name=Department]").val(data[0].Department);
+                   $("input[name=Problemteam]").val(data[0].Problemteam);
+                   $("input[name=Cooperation]").val(data[0].Cooperation);
+                   $("input[name=Isstart]").val(data[0].Isstart);
+                   $("input[name=Isstartdate]").val(data[0].Isstartdate);
+                   $("input[name=Letter]").val(data[0].Letter);
+                   $("input[name=Limit]").val(data[0].Limit);
+                   $("input[name=Isurgency]").val(data[0].Isurgency);
+                   $("input[name=Isagility]").val(data[0].Isagility);
+                   $("input[name=Creationdate]").val(data[0].Creationdate);
+                   $("input[name=Projdate]").val(data[0].Projdate);
+                   $("select[name=Projstate]").val(data[0].Projstate);
+                   $("input[name=Sbstage]").val(data[0].Sbstage);
+                   $("input[name=Schedutestate]").val(data[0].Schedutestate);
+                   $("input[name=Nature]").val(data[0].Nature);
+                   $("input[name=Headoffice]").val(data[0].Headoffice);
+                   $("input[name=Businessleader]").val(data[0].Businessleader);
+                   $("input[name=Managerperson]").val(data[0].Managerperson);
+                   $("input[name=Phone]").val(data[0].Phone);
+                   $("input[name=Qualification]").val(data[0].Qualification);
+                   $("input[name=Zhengfu]").val(data[0].Zhengfu);
+                   $("input[name=Appointtype]").val(data[0].Appointtype);
+                   $("input[name=Centremanager]").val(data[0].Centremanager);
+                   $("input[name=Contactnumber]").val(data[0].Contactnumber);
+                   $("input[name=Qualifications]").val(data[0].Qualifications);
+                   $("input[name=Phone]").val(data[0].Phone);
+                   $("input[name=Qualification]").val(data[0].Qualification);
+                   $("input[name=Andidentify]").val(data[0].Andidentify);
+                   $("input[name=Appointmenttype]").val(data[0].Appointmenttype);
+                   $("input[name=Architect]").val(data[0].Architect);
+                   $("input[name=Parlor]").val(data[0].Parlor);
+                   $("input[name=Programmanager]").val(data[0].Programmanager);
+                   $("input[name=Testarchitect]").val(data[0].Testarchitect);
+                   $("input[name=Testmanager]").val(data[0].Testmanager);
+                   $("input[name=Qualityengineer]").val(data[0].Qualityengineer);
+                   $("input[name=Systemsengineer]").val(data[0].Systemsengineer);
+                   $("input[name=Configurationadministrator]").val(data[0].Configurationadministrator);
+                   $("input[name=Versionmanager]").val(data[0].Versionmanager);
+                   $("input[name=Projteam]").val(data[0].Projteam);
+                   $("input[name=Problem]").val(data[0].Problem);
+                }
+        })
+        @*$("#add").click(function () {
+            $.ajax({
+                url: 'http://localhost:8086/Managemessage/Update',
+                type: 'post',
+                data:
+                {
+                    Projectmanager: $("[name=Projectmanager]").val(),
+                    Qualification: $("[name=Qualification]").val(),
+                    Identify: $("[name=Identify]").val(),
+                    Appointment: $("[name=Appointment]").val(),
+                    Projectplan: $("[name=Projectplan]").val(),
+                    Situation: $("[name=Situation]").val(),
+                    Appointmentdate: $("[name=Appointmentdate]").val(),
+                    Id:@Request.QueryString["id"],
+                },
+                success: function (data) {
+                    if (data > 0) {
+                        location.href = "/Managemessage/Index";
+                    }
+                }
+            })
+        })*@
+        })
+         function Add() {
+             $.ajax({
+                 url: "http://localhost:8086/AddSolutiontohang",
+                 type: "post",
+                 data: {
+                     Code: $("input[name=Projcoding]").val(),
+                     Applicant:@ViewBag.Name,
+                     Pname: $("input[name=Projname]").val(),
+                     Pid: $("input[name=Approvalnum]").val(),
+                     Createtime: $("input[name=Creationdate]").val(),
+                     Pm: $("input[name=Centremanager]").val(),
+                     Department: $("input[name=Businessteam]").val(),
+                     State: $("select[name=Projstate]").val(),
+                     Solutiontohangcause:"",
+                     Processingstep:"PMO意见",
+                     Handler:"PMO小三"
+                 },
+                success: function (data) {
+                    console.log(data);
+                    if (data > 0) {
+                        alert("添加成功!");
+                        location.href ='/Solutiontohang/Index'
+                    }
+                    else {
+                        alert("添加失败!");
+                    }
+                }
+            })
+        }
+
+
+
+    </script>
+</head>
+<body>
+    <div id="form1">
+        <table class="table table-bordered" style="width:1000px">
+            <tr>
+                <td>表单头:<input type="text" name="Formfirst" /></td>
+                <td>项目名称:<input type="text" name="Projname" /></td>
+            </tr>
+
+            <tr>
+                <td>项目编码:<input type="text" name="Projcoding" /></td>
+                <td>财务核算项目编码维护时间:<input id="meeting" type="date" name="Maintaindate" /></td>
+            </tr>
+            <tr>
+                <td>财务核算项目编码:<input type="text" name="Accounting" /></td>
+                <td>总行立项时间:<input id="meeting" type="date" name="Approvaldate" /> </td>
+            </tr>
+            <tr>
+                <td>总行立项编号:<input type="text" name="Approvalnum" /></td>
+            </tr>
+            <tr>
+                <td>项目类别:<input type="text" name="Projcategory" /> </td>
+                <td>项目类型:<input type="text" name="Projtype" /> </td>
+            </tr>
+            <tr>
+                <td>总行业务部门:<input type="text" name="Business" /> </td>
+                <td>所属业务团队:<input type="text" name="Businessteam" /> </td>
+            <tr>
+                <td>项目所属部门:<input type="text" name="Department" /> </td>
+                <td>主产品团队: <input type="text" name="Problemteam" /></td>
+            </tr>
+            <tr>
+                <td>合作公司:<input type="text" name="Cooperation" /></td>
+                <td>是否Wie提前启动项目:<input type="text" name="Isstart" /> </td>
+            </tr>
+            <tr>
+                <td>收到提前启动指令时间:<input id="meeting" type="date" name="Isstartdate" /> </td>
+                <td>提前启动函号:<input type="text" name="Letter" /> </td>
+            </tr>
+            <tr>
+                <td>提前启动指令中费用额度(int):<input type="text" name="Limit" /> </td>
+                <td>是否紧急项目:<input type="text" name="Isurgency" /> </td>
+            </tr>
+            <tr>
+                <td>是否敏捷项目:<input type="text" name="Isagility" /> </td>
+                <td>建立日期:<input id="meeting" type="date" name="Creationdate" /> </td>
+            </tr>
+            <tr>
+                <td>立项日期:<input id="meeting" type="date" name="Projdate" /> </td>
+                <td>
+                    项目状态:  <select name="Projstate">
+                        <option value="0">--请选择--</option>
+                        <option value="运行">运行</option>
+                        <option value="挂起">挂起</option>
+                        <option value="解挂">解挂</option>
+                        <option value="结项">结项</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>所属阶段:<input type="text" name="Sbstage" /> </td>
+                <td>项目进度状态:<input type="text" name="Schedutestate" /></td>
+            </tr>
+            <tr>
+                <td>结项性质:<input type="text" name="Nature" /> </td>
+                <td>结项日期总行项目经理:<input type="text" name="Headoffice" /> </td>
+            </tr>
+            <tr>
+                <td>业务负责人:<input type="text" name="Businessleader" /> </td>
+                <td>前期项目管理人员:<input type="text" name="Managerperson" /> </td>
+            </tr>
+            <tr>
+                <td>练习电话（项目立项获取）:<input type="text" name="Phone" /> </td>
+                <td>项目经理资格:<input type="text" name="Qualification" /> </td>
+            </tr>
+            <tr>
+                <td>正副标识:<input type="text" name="Zhengfu" /> </td>
+            </tr>
+            <tr>
+                <td>任命类型:<input type="text" name="Appointtype" /> </td>
+                <td>软件中心项目经理:<input type="text" name="Centremanager" /> </td>
+            </tr>
+            <tr>
+                <td>联系电话（项目经理任命审批获取）:<input type="text" name="Contactnumber" /> </td>
+                <td>项目经理资格（项目经理任命审批）:<input type="text" name="Qualifications" /> </td>
+            </tr>
+            <tr>
+                <td>正副标识（项目经理任命审批获取）: </td>
+                <td><input type="text" name="Andidentify" /></td>
+            </tr>
+            <tr>
+                <td> 任命类型（项目经理审批获取）:<input type="text" name="Appointmenttype" /> </td>
+                <td>架构师:<input type="text" name="Architect" /> </td>
+            <tr>
+                <td>业务师:<input type="text" name="Parlor" /> </td>
+                <td>计划管理员:<input type="text" name="Programmanager" /> </td>
+            </tr>
+            <tr>
+                <td>测试架构师:<input type="text" name="Testarchitect" /> </td>
+                <td>测试经理:<input type="text" name="Testmanager" /> </td>
+            </tr>
+            <tr>
+                <td>质量工程师:<input type="text" name="Qualityengineer" /> </td>
+                <td>系统工程师:<input type="text" name="Systemsengineer" /> </td>
+            </tr>
+            <tr>
+                <td>配置管理员:<input type="text" name="Configurationadministrator" /> </td>
+                <td>版本管理员:<input type="text" name="Versionmanager" /> </td>
+            </tr>
+            <tr>
+                <td>项目组主要成员:<input type="text" name="Projteam" /> </td>
+                <td>问题与风险（待设计）:<input type="text" name="Problem" /> </td>
+            </tr>
+            <tr>
+                <td><a href="#" onclick="location.href='Index'">显示</a></td>
+                <td>
+                    <a href="javascript:;" v-on:click="AddQCPlan1(Code,Applicant,Pname,Pid,Createtime,Pm,Department,State,Solutiontohangcause,Processingstep,Handler)"><input type="button" value="申请解挂" onclick="Add()" /></a>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+

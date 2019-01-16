@@ -95,11 +95,11 @@ namespace ChinaBank.Model
         /// <summary>
         /// 建立日期
         /// </summary>
-        public DateTime Creationdate { get; set; }
+        public string Creationdate { get; set; }
         /// <summary>
         /// 立项日期
         /// </summary>
-        public DateTime Projdate { get; set; }
+        public string Projdate { get; set; }
         /// <summary>
         /// 项目状态
         /// </summary>
