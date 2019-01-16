@@ -1268,6 +1268,16 @@
     <Content Include="Views\Managemessage\Update.cshtml" />
     <Content Include="Views\Initiation\Add.cshtml" />
     <Content Include="Views\Initiation\ApproveOne.cshtml" />
+    <Content Include="Views\PMOAudit\HongUpAudit.cshtml" />
+    <Content Include="Views\PMOAudit\Index.cshtml" />
+    <Content Include="Views\DepartmentAudit\HongUpAudit.cshtml" />
+    <Content Include="Views\DepartmentAudit\Index.cshtml" />
+    <Content Include="Views\ProjectAudit\HongUpAudit.cshtml" />
+    <Content Include="Views\ProjectAudit\Index.cshtml" />
+    <Content Include="Views\ItemAudit\HongUpAudit.cshtml" />
+    <Content Include="Views\ItemAudit\Index.cshtml" />
+    <Content Include="Views\GmAudit\HongUpAudit.cshtml" />
+    <Content Include="Views\GmAudit\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
