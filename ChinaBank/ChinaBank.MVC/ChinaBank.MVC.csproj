@@ -1266,6 +1266,8 @@
     <Content Include="Views\Hangup\GetHangupById.cshtml" />
     <Content Include="Views\Solutiontohang\GetSolutiontohangById.cshtml" />
     <Content Include="Views\Managemessage\Update.cshtml" />
+    <Content Include="Views\Initiation\Add.cshtml" />
+    <Content Include="Views\Initiation\ApproveOne.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
