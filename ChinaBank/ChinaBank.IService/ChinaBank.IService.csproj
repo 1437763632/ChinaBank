@@ -46,7 +46,10 @@
     <Compile Include="IInitiationService.cs" />
     <Compile Include="IManageServices.cs" />
     <Compile Include="IManagessageServices.cs" />
+    <Compile Include="IPDSPService.cs" />
     <Compile Include="IPdspServices.cs" />
+    <Compile Include="IPMOAuditService.cs" />
+    <Compile Include="IPMOSolutionServices.cs" />
     <Compile Include="IProjectriskServices.cs" />
     <Compile Include="IProjmessageServices.cs" />
     <Compile Include="IProjproblemServices.cs" />

@@ -1,0 +1,143 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <link href="~/BootstrapSouce/css/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <h2 >项目结项申请表</h2>
+
+        <table class="table table-striped ">
+            <tr>
+                <td>表单头</td>
+                <td><span name="Forms"></span></td>
+            </tr>
+            <tr>
+                <td>项目编号</td>
+                <td><span name="Pid"></span></td>
+            </tr>
+            <tr>
+                <td>项目名称</td>
+                <td><span name="Pname"></span></td>
+            </tr>
+            <tr>
+                <td>申请人</td>
+                <td><span name="Applicant"></span></td>
+            </tr>
+            <tr>
+                <td>总行项目经理</td>
+                <td><input id="Text1" type="text" name="Pmheadoffice" /></td>
+            </tr>
+            <tr>
+                <td>创建日期</td>
+                <td><span name="Createtime"></span></td>
+            </tr>
+            <tr>
+                <td>所属部门</td>
+                <td><span name="Department"></span></td>
+            </tr>
+            <tr>
+                <td>结项性质</td>
+                <td><input id="jie1" type="radio" name="Postprojectnature" value="正常结束" checked />正常结束<input id="jie2" type="radio" name="Postprojectnature" value="异常结束" />异常结束</td>
+            </tr>
+            <tr>
+                <td>中心项目经理</td>
+                <td><span name="Centerprojectpm"></span></td>
+            </tr>
+            <tr>
+                <td>项目副经理</td>
+                <td><span name="Dpm"></span></td>
+            </tr>
+            <tr>
+                <td>成果评测会<input type="hidden" name="Projstateid" value="1" /></td>
+                <td><input id="ping1" type="radio" name="Resultsevaluation" value="是" checked />是<input id="ping2" type="radio" name="Resultsevaluation" value="否"/>否</td>
+            </tr>
+            @*<tr>
+                <td>处理步骤</td>
+                <td>
+                    <select id="Select1">
+                        <option></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>处理人</td>
+                <td>
+                    <select id="Select1">
+                        <option></option>
+                    </select>
+                </td>
+            </tr>*@
+
+            <tr>
+                <td><input id="Add" type="button" value="提交" /></td>
+                <td><input type="button" value="显示" onclick="location.href='/Pdsp/Index2'" /></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+<script>  
+    $(function () {
+        show();
+        $("#Add").click(function () {
+            //alert($("[name=Forms]").text())
+            //return 
+            $.ajax({
+                url: 'http://localhost:8086/pdsp/Addpdsp',
+                type: 'POST',
+                data: {
+                    Forms: $("span[name=Forms]").text(),
+                    Pid: $("span[name=Pid]").text(),
+                    Pname: $("span[name=Pname]").text(),
+                    Applicant: $("span[name=Applicant]").text(),
+                    Pmheadoffice: $("input[name=Pmheadoffice]").val(),
+                    Createtime: $("span[name=Createtime]").text(),
+                    Department: $("span[name=Department]").text(),
+                    Postprojectnature: $("input[name=Postprojectnature]:checked").val(),
+                    Centerprojectpm: $("span[name=Centerprojectpm]").text(),
+                    Projstateid: $("input[name=Projstateid]").val(),
+                    Resultsevaluation: $("input[name=Resultsevaluation]:checked").val(),
+
+                },
+                success: function (data) {
+
+                    if (data > 0) {
+                        location.href = "/Pdsp/Index";
+                    }
+                    else {
+                        alert("添加失败");
+                    }
+                }
+            })
+        })
+    })
+    function show(){
+        $.ajax({
+            url:'http://localhost:8086/Projmessage/fan?id='+@Request.QueryString["id"],
+            type: 'get',
+            success: function (data) {
+                console.log(data)
+                $("span[name=Forms]").html(data.Formfirst)
+                $("span[name=Pid]").html(data.Projcoding)
+                $("span[name=Pname]").html(data.Projname)
+                $("span[name=Applicant]").html(@ViewBag.Name)
+                $("input[name=Pmheadoffice]").val(data.Headoffice)
+                $("span[name=Createtime]").html("@DateTime.Now.ToString("yyyy-MM-dd")")
+                $("span[name=Department]").html(data.Department)
+                $("span[name=Centerprojectpm]").html(data.Centremanager)
+                $("span[name=Dpm]").html(data.Projname)
+            }
+        })
+    }
+
+</script>

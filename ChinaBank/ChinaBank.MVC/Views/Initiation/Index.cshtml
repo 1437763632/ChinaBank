@@ -114,8 +114,13 @@
                     <td>{{contact.State}}</td>
                     <td>
                         <div v-if="contact.Id!=''" id="example-3">
+
                             <a @@click="Update(contact.Id)" >详细</a>
                             <a @@click="ApproveOne(contact.Id)">步骤1项目主管审核</a>
+                            <a @@click="Update(contact.Id)">详细</a>
+                            <a @@click="Update(contact.Id)">挂起</a>
+                            <a @@click="Update(contact.Id)">结项</a>
+
                         </div>
                     </td>
                 </tr>
@@ -166,7 +171,7 @@
                 location.href = "/Initiation/AddInitiation?name" + name;
             },
             getAllContacts: function () {
-                axios.get('http://localhost:8086/GetInitiationByPname?currentpage=' + this.cur + '&Pname=' + this.cha1
+                axios.get('http://localhost:8086/pdsp/projmessages?currentpage=' + this.cur + '&Pname=' + this.cha1
                 ).then(
                     (response) => {
                         console.log(response)

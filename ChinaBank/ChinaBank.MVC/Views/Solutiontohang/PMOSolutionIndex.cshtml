@@ -1,0 +1,214 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>PMOSolutionIndex</title>
+    <link href="~/BootstrapSouce/css/bootstrap.css" rel="stylesheet" />
+    <style>
+        .page-bar {
+            margin: 40px;
+        }
+
+        ul, li {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        li {
+            list-style: none
+        }
+
+        .page-bar li:first-child > a {
+            margin-left: 0px
+        }
+
+        .page-bar a {
+            border: 1px solid #ddd;
+            text-decoration: none;
+            position: relative;
+            float: left;
+            padding: 6px 12px;
+            margin-left: -1px;
+            line-height: 1.42857143;
+            color: #337ab7;
+            cursor: pointer
+        }
+
+            .page-bar a:hover {
+                background-color: #eee;
+            }
+
+            .page-bar a.banclick {
+                cursor: not-allowed;
+            }
+
+        .page-bar .active a {
+            color: #fff;
+            cursor: default;
+            background-color: #337ab7;
+            border-color: #337ab7;
+        }
+
+        .page-bar i {
+            font-style: normal;
+            color: #d44950;
+            margin: 0px 4px;
+            font-size: 12px;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>PMO解挂</h1>
+    <hr />
+
+    <div id="app">
+        项目名称:<input id="name" type="text" v-model="cha1" /><input type="button" v-on:click="getAllContacts(cha1)" value="搜索" />
+
+        <table v-show="contactsList.length" class=" table table-hover">
+            <thead class="navbar-header">
+                <tr>
+                    <th>序号</th>
+                    <th>项目编码</th>
+                    <th>项目名称</th>
+                    <th>申请日期</th>
+                    <th>解挂日期</th>
+                    <th>申请人</th>
+                    <th>状态</th>
+                    <th>PMO意见</th>
+                    <th>所属部门意见</th>
+                    <th>工程管理部意见</th>
+                    <th>项目管理部意见</th>
+                    <th>总经理意见</th>
+                    <th>操作</th>
+                </tr>
+                <tr v-for="(contact,index) in contactsList">
+                    <td>{{contact.Id}}</td>
+                    <td>{{contact.Code}}</td>
+                    <td>{{contact.Pname}}</td>
+                    <td>{{contact.Createtime}}</td>
+                    <td>{{contact.Solutiontohangtime}}</td>
+                    <td>{{contact.Applicant}}</td>
+                    <td>{{contact.State}}</td>
+                    <td>{{contact.Pmoopinion}}</td>
+                    <td>{{contact.Departmentopinion}}</td>
+                    <td>{{contact.Projectopinion}}</td>
+                    <td>{{contact.Itemopinion}}</td>
+                    <td>{{contact.Gmopinion}}</td>
+                    <td>
+                        <div v-if="contact.Id!=''" id="example-3">
+                            <a @@click="Update(contact.Id)">详细</a>
+                        </div>
+                    </td>
+                </tr>
+            </thead>
+        </table>
+
+        <div class="page-bar">
+            <ul>
+                <li v-if="cur>1"><a v-on:click="cur--,pageClick()">上一页</a></li>
+                <li v-if="cur==1"><a class="banclick">上一页</a></li>
+                <li v-for="index in indexs" v-bind:class="{ 'active': cur == index}">
+                    <a v-on:click="btnClick(index)">{{ index }}</a>
+                </li>
+                <li v-if="cur!=all"><a v-on:click="cur++,pageClick()">下一页</a></li>
+                <li v-if="cur == all"><a class="banclick">下一页</a></li>
+                <li><a>共<i>{{all}}</i>页</a></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
+<script src="~/Scripts/axios.js"></script>
+<script src="~/Scripts/vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            contactsList: [],
+            cha1: "",
+            all: 0, //总页数
+            cur: 1//当前页码
+
+        },
+        mounted() {
+            this.getAllContacts();
+        },
+        methods: {
+            getAllContacts: function () {
+                axios.get('http://localhost:8086/GetSolutionPMO?currentpage=' + this.cur + '&Pname=' + this.cha1
+                ).then(
+                    (response) => {
+                        console.log(response)
+                        this.contactsList = [];
+                        this.all = response.data.TotlePage;
+                        for (var i = 0; i < response.data.PageData.length; i++) {
+                            this.contactsList.push(response.data.PageData[i]);
+                        }
+                        //this.contactsList.push({ Id: "", Pid: "", Pname: "", Ptype: "", Budget: "", State: "" });
+                    },
+                    (response) => {
+                        alert(response.status);
+                    }
+                ).catch(function (response) {
+                    alert(response);
+                });
+
+            },
+            btnClick: function (data) {//页码点击事件
+                if (data != this.cur) {
+                    this.cur = data
+                    this.getAllContacts(this.cur);
+                }
+            },
+            pageClick: function () {
+                this.getAllContacts(this.cur);
+                console.log('现在在' + this.cur + '页');
+            },
+            Update: function (id) {
+                location.href = '/Solutiontohang/PMOSolution?Id=' + id;
+            }
+
+        },
+        computed: {
+            indexs: function () {
+                var left = 1;
+                var right = this.all;
+                var ar = [];
+                if (this.all >= 5) {
+                    if (this.cur > 3 && this.cur < this.all - 2) {
+                        left = this.cur - 2
+                        right = this.cur + 2
+                    } else {
+                        if (this.cur <= 3) {
+                            left = 1
+                            right = 5
+                        } else {
+                            right = this.all
+                            left = this.all - 4
+                        }
+                    }
+                }
+                while (left <= right) {
+                    ar.push(left)
+                    left++
+                }
+                return ar
+            }
+
+        }
+
+    });
+
+</script>
+
+
+
+
+

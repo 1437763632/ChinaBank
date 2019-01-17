@@ -91,6 +91,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\layer\layer.js" />
+    <Content Include="Areas\layer\mobile\layer.js" />
+    <Content Include="Areas\layer\mobile\need\layer.css" />
+    <Content Include="Areas\layer\theme\default\icon-ext.png" />
+    <Content Include="Areas\layer\theme\default\icon.png" />
+    <Content Include="Areas\layer\theme\default\layer.css" />
+    <Content Include="Areas\layer\theme\default\loading-0.gif" />
+    <Content Include="Areas\layer\theme\default\loading-1.gif" />
+    <Content Include="Areas\layer\theme\default\loading-2.gif" />
     <Content Include="Contents\BootstrapSouce\css\bootstrap-theme.css" />
     <Content Include="Contents\BootstrapSouce\css\bootstrap-theme.min.css" />
     <Content Include="Contents\BootstrapSouce\css\bootstrap.css" />
@@ -1210,6 +1219,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\mainController.cs" />
     <Compile Include="Controllers\ManagemessageController.cs" />
+    <Compile Include="Controllers\PdspController.cs" />
     <Compile Include="Controllers\ProjmessageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProjproblemController.cs" />
@@ -1265,11 +1275,26 @@
     <Content Include="Views\Solutiontohang\AddSolutiontohang.cshtml" />
     <Content Include="Views\Hangup\GetHangupById.cshtml" />
     <Content Include="Views\Solutiontohang\GetSolutiontohangById.cshtml" />
+
+    <Content Include="Views\Pdsp\Index.cshtml" />
+    <Content Include="Views\Pdsp\Add.cshtml" />
+    <Content Include="Views\Pdsp\Index2.cshtml" />
+    <Content Include="Views\Pdsp\Index_PMO.cshtml" />
+    <Content Include="Views\Pdsp\Add_PMO.cshtml" />
+    <Content Include="Views\Pdsp\Index_Imp.cshtml" />
+    <Content Include="Views\Pdsp\Add_Imp.cshtml" />
+    <Content Include="Views\Pdsp\Index_Item.cshtml" />
+    <Content Include="Views\Pdsp\Add_Item.cshtml" />
+    <Content Include="Views\Pdsp\Index_Resource.cshtml" />
+    <Content Include="Views\Pdsp\Add_Resource.cshtml" />
+    <Content Include="Views\Pdsp\Index_Financial.cshtml" />
+    <Content Include="Views\Pdsp\Add_Financial.cshtml" />
+    <Content Include="Views\Pdsp\Index_Office.cshtml" />
+    <Content Include="Views\Pdsp\Add_Office.cshtml" />
     <Content Include="Views\Managemessage\Update.cshtml" />
+    <Content Include="Views\Projmessage\AddSolutionhang.cshtml" />
     <Content Include="Views\Initiation\Add.cshtml" />
     <Content Include="Views\Initiation\ApproveOne.cshtml" />
-    <Content Include="Views\PMOAudit\HongUpAudit.cshtml" />
-    <Content Include="Views\PMOAudit\Index.cshtml" />
     <Content Include="Views\DepartmentAudit\HongUpAudit.cshtml" />
     <Content Include="Views\DepartmentAudit\Index.cshtml" />
     <Content Include="Views\ProjectAudit\HongUpAudit.cshtml" />
@@ -1278,6 +1303,26 @@
     <Content Include="Views\ItemAudit\Index.cshtml" />
     <Content Include="Views\GmAudit\HongUpAudit.cshtml" />
     <Content Include="Views\GmAudit\Index.cshtml" />
+    <Content Include="Views\Hangup\PMOAuditIndex.cshtml" />
+    <Content Include="Views\Hangup\PMOAudit.cshtml" />
+    <Content Include="Views\Hangup\DepartmentAuditIndex.cshtml" />
+    <Content Include="Views\Hangup\DepartmentAudit.cshtml" />
+    <Content Include="Views\Hangup\ProjectAuditIndex.cshtml" />
+    <Content Include="Views\Hangup\ProjectAudit.cshtml" />
+    <Content Include="Views\Hangup\ItemAuditIndex.cshtml" />
+    <Content Include="Views\Hangup\ItemAudit.cshtml" />
+    <Content Include="Views\Hangup\GmAuditIndex.cshtml" />
+    <Content Include="Views\Hangup\GmAudit.cshtml" />
+    <Content Include="Views\Solutiontohang\PMOSolutionIndex.cshtml" />
+    <Content Include="Views\Solutiontohang\PMOSolution.cshtml" />
+    <Content Include="Views\Solutiontohang\DepartmentSolutionIndex.cshtml" />
+    <Content Include="Views\Solutiontohang\DepartmentSolution.cshtml" />
+    <Content Include="Views\Solutiontohang\ProjectSolutionIndex.cshtml" />
+    <Content Include="Views\Solutiontohang\ProjectSolution.cshtml" />
+    <Content Include="Views\Solutiontohang\ItemSolutionIndex.cshtml" />
+    <Content Include="Views\Solutiontohang\ItemSolution.cshtml" />
+    <Content Include="Views\Solutiontohang\GmoSolutionIndex.cshtml" />
+    <Content Include="Views\Solutiontohang\GmoSolution.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

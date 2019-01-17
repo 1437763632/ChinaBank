@@ -30,7 +30,20 @@ namespace ChinaBank.WebApi.Controllers
             return result;
         }
         /// <summary>
-        /// 添加项目信息
+        /// 反填
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("fan")]
+        [HttpGet]
+        public Projmessage projmessages (int id)
+        {
+            var user = this.Projmessage.GetProjmessage();
+            var userlist = user.FirstOrDefault<Projmessage>(r => r.Id.Equals(id));
+            return userlist;
+        } 
+        /// <summary>
+        /// 项目信息
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>
@@ -69,6 +82,19 @@ namespace ChinaBank.WebApi.Controllers
         public int Delete(int id)
         {
             var result = this.Projmessage.Delete(id);
+            return result;
+        }
+
+        /// <summary>
+        /// 根据ID查询
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        [Route("GetProjmessageId")]
+        [HttpGet]
+        public List<Model.Projmessage> GetProjmessageId(int Id)
+        {
+            var result = this.Projmessage.GetProjmessageId(Id);
             return result;
         }
     }

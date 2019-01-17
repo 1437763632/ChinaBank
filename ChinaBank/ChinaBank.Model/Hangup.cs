@@ -62,7 +62,7 @@ namespace ChinaBank.Model
         /// <summary>
         /// 项目进度状态
         /// </summary>
-        public string Schedule { get; set; }
+        public int Schedule { get; set; }
         /// <summary>
         /// 附件
         /// </summary>
