@@ -17,5 +17,11 @@ namespace ChinaBank.MVC.Controllers
         {
             return View();
         }
+        public ActionResult AddSolutionhang()
+        {
+            ViewBag.Name = Session["Name"];
+            return View();
+        }
+        //GetProjmessageId
     }
 }

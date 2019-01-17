@@ -56,5 +56,20 @@ namespace ChinaBank.Service
                 return conn.Execute(executeSql, id);
             }
         }
+        /// <summary>
+        /// 根据ID查询
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        public List<Model.Projmessage> GetProjmessageId(int Id)
+        {
+            using (OracleConnection conn = DapperHelper.GetConnString())
+            {
+                string sql = @"select * from Projmessage where Id=:Id";
+                var Collectlist = new { Id = Id };
+                var result = conn.Query<Model.Projmessage>(sql, Collectlist);
+                return result.ToList();
+            }
+        }
     }
 }

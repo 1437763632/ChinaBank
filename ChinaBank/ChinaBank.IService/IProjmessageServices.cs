@@ -15,5 +15,6 @@ namespace ChinaBank.IService
          int Add(ChinaBank.Model.Projmessage message);
         int Delete(int id);
         List<Projmessage> GetProjmessage();
+        List<Model.Projmessage> GetProjmessageId(int Id);
       }
 }
