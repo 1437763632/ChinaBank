@@ -18,9 +18,10 @@ namespace ChinaBank.Service
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
             {
-                string executeSql = @" INSERT INTO Hangup(Code,Applicant,Pname,Pid,Createtime,Hanguptime,Pm,Department,State,Hangupcause,Processingstep,Handler) VALUES (:Code,:Applicant,:Pname,:Pid,:Createtime,:Hanguptime,:Pm,:Department,:State,:Hangupcause,:Processingstep,:Handler) ";
+                string executeSql = @" INSERT INTO Hangup(Code,Applicant,Pname,Pid,Createtime,Hanguptime,Pm,Department,State,Schedule,Hangupcause,Processingstep,Handler) VALUES (:Code,:Applicant,:Pname,:Pid,:Createtime,:Hanguptime,:Pm,:Department,:State,:Schedule,:Hangupcause,:Processingstep,:Handler) ";
                 h.Hanguptime = System.DateTime.Now;
-                var Collectlist = new { Code=h.Code, Applicant = h.Applicant, Pname = h.Pname, Pid = h.Pid, Createtime = h.Createtime, Hanguptime=h.Hanguptime,Pm = h.Pm, Department = h.Department, State = h.State, Hangupcause = h.Hangupcause, Processingstep = h.Processingstep, Handler = h.Handler };
+                h.Schedule = 10;
+                var Collectlist = new { Code=h.Code, Applicant = h.Applicant, Pname = h.Pname, Pid = h.Pid, Createtime = h.Createtime, Hanguptime=h.Hanguptime,Pm = h.Pm, Department = h.Department, State = h.State, Schedule=h.Schedule, Hangupcause = h.Hangupcause, Processingstep = h.Processingstep, Handler = h.Handler };
                 int result = conn.Execute(executeSql, Collectlist);
                 return result;
             }
@@ -46,5 +47,27 @@ namespace ChinaBank.Service
                 return result.ToList();
             }
         }
+
+        public List<Nodes> GetNode()
+        {
+            using (OracleConnection conn = DapperHelper.GetConnString())
+            {
+                string sql = @"select * from Nodes";
+                var result = conn.Query<Nodes>(sql, null);
+                return result.ToList();
+            }
+        }
+
+        public List<Manage> GetManage(int DepartmentId)
+        {
+            using (OracleConnection conn = DapperHelper.GetConnString())
+            {
+                string sql = @"select * from Manage where Id=:DepartmentId";
+                //var Collectlist = new { DepartmentId = DepartmentId };
+                var result = conn.Query<Manage>(sql, new { DepartmentId = DepartmentId });
+                return result.ToList();
+            }
+        }
+
     }
 }

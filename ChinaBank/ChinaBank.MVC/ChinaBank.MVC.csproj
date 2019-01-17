@@ -1268,8 +1268,6 @@
     <Content Include="Views\Managemessage\Update.cshtml" />
     <Content Include="Views\Initiation\Add.cshtml" />
     <Content Include="Views\Initiation\ApproveOne.cshtml" />
-    <Content Include="Views\PMOAudit\HongUpAudit.cshtml" />
-    <Content Include="Views\PMOAudit\Index.cshtml" />
     <Content Include="Views\DepartmentAudit\HongUpAudit.cshtml" />
     <Content Include="Views\DepartmentAudit\Index.cshtml" />
     <Content Include="Views\ProjectAudit\HongUpAudit.cshtml" />
@@ -1278,6 +1276,16 @@
     <Content Include="Views\ItemAudit\Index.cshtml" />
     <Content Include="Views\GmAudit\HongUpAudit.cshtml" />
     <Content Include="Views\GmAudit\Index.cshtml" />
+    <Content Include="Views\Hangup\PMOAuditIndex.cshtml" />
+    <Content Include="Views\Hangup\PMOAudit.cshtml" />
+    <Content Include="Views\Hangup\DepartmentAuditIndex.cshtml" />
+    <Content Include="Views\Hangup\DepartmentAudit.cshtml" />
+    <Content Include="Views\Hangup\ProjectAuditIndex.cshtml" />
+    <Content Include="Views\Hangup\ProjectAudit.cshtml" />
+    <Content Include="Views\Hangup\ItemAuditIndex.cshtml" />
+    <Content Include="Views\Hangup\ItemAudit.cshtml" />
+    <Content Include="Views\Hangup\GmAuditIndex.cshtml" />
+    <Content Include="Views\Hangup\GmAudit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

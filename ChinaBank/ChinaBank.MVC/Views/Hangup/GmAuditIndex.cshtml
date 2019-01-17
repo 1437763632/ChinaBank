@@ -8,7 +8,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>GmAuditIndex</title>
     <link href="~/BootstrapSouce/css/bootstrap.css" rel="stylesheet" />
     <style>
         .page-bar {
@@ -133,7 +133,7 @@
         },
         methods: {
             getAllContacts: function () {
-                axios.get('http://localhost:8086/GetHangup?currentpage=' + this.cur + '&Pname=' + this.cha1
+                axios.get('http://localhost:8086/GetHangupGm?currentpage=' + this.cur + '&Pname=' + this.cha1
                 ).then(
                     (response) => {
                         console.log(response)
@@ -163,7 +163,7 @@
                 console.log('现在在' + this.cur + '页');
             },
             Update: function(id){
-                location.href = '/Hangup/GetHangupById?Id='+id;
+                location.href = '/Hangup/GmAudit?Id='+id;
             }
 
         },
@@ -198,3 +198,4 @@
     });
 
 </script>
+

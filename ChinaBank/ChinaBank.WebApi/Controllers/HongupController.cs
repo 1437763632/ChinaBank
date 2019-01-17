@@ -63,5 +63,17 @@ namespace ChinaBank.WebApi.Controllers
         {
             return hangupService.GetHangupById(Id);
         }
+        [HttpGet]
+        [Route("GetNode")]
+        public List<Nodes> GetNode()
+        {
+            return hangupService.GetNode();
+        }
+        [HttpGet]
+        [Route("GetManage")]
+        public List<Manage> GetManage(int DepartmentId)
+        {
+            return hangupService.GetManage(DepartmentId);
+        }
     }
 }
