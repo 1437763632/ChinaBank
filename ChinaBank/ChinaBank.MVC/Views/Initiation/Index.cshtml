@@ -115,6 +115,7 @@
                     <td>
                         <div v-if="contact.Id!=''" id="example-3">
                             <a @@click="Update(contact.Id)" >详细</a>
+                            <a @@click="ApproveOne(contact.Id)">步骤1项目主管审核</a>
                         </div>
                     </td>
                 </tr>
@@ -196,8 +197,10 @@
             },
             Update: function(id){
                 location.href = '/Initiation/UpdateInitiation?Id='+id;
+            },
+            ApproveOne: function (id) {
+                location.href = '/Initiation/ApproveOne?Id=' + id;
             }
-
         },
         computed: {
             indexs: function () {

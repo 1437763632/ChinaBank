@@ -62,5 +62,25 @@ namespace ChinaBank.Service
                 return result.ToList();
             }
         }
+        /// <summary>
+        /// 项目审批
+        /// </summary>
+        /// <param name="initiation"></param>
+        /// <returns></returns>
+        public int InitiationApprovals(Initiation initiation)
+        {
+            using (OracleConnection conn = DapperHelper.GetConnString())
+            {
+                //定义sql语句
+                string sql = string.Empty;
+                //查询该流程所有节点信息
+                sql = @"select nodesid from Configs where approvalsid=(select id from Approvals where name='项目立项')";
+                var nodes = conn.Query<string>(sql, null);
+                string nodesStr = nodes.FirstOrDefault();
+                 sql = @"update  Initiation set Principal=:Principal where Id=:Id";                
+                var result = conn.Execute(sql, initiation);
+                return result;
+            }
+        }
     }
 }

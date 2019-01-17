@@ -16,5 +16,11 @@ namespace ChinaBank.IService
         List<Initiation> GetInitiationByPname();
         int AddInitiation(Initiation initiation);
         List<Initiation> GetInitiationById(int Id);
+        /// <summary>
+        /// 审批流程调用
+        /// </summary>
+        /// <param name="initiation"></param>
+        /// <returns></returns>
+        int InitiationApprovals(Initiation initiation);
     }
 }

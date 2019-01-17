@@ -88,5 +88,17 @@ namespace ChinaBank.WebApi.Controllers
         {
             return initiationService.GetInitiationById(Id);
         }
+        /// <summary>
+        /// 项目审批调用
+        /// </summary>
+        /// <param name="initiation"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("InitiationApprovals")]
+        public int InitiationApprovals(Initiation initiation)
+        {
+            var result = initiationService.InitiationApprovals(initiation);
+            return result;
+        }
     }
 }
