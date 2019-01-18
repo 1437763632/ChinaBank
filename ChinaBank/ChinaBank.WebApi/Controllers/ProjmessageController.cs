@@ -30,7 +30,20 @@ namespace ChinaBank.WebApi.Controllers
             return result;
         }
         /// <summary>
-        /// 添加项目信息
+        /// 反填
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("fan")]
+        [HttpGet]
+        public Projmessage projmessages (int id)
+        {
+            var user = this.Projmessage.GetProjmessage();
+            var userlist = user.FirstOrDefault<Projmessage>(r => r.Id.Equals(id));
+            return userlist;
+        } 
+        /// <summary>
+        /// 项目信息
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>

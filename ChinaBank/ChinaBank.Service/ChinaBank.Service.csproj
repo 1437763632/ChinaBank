@@ -53,6 +53,7 @@
     <Compile Include="HangupService.cs" />
     <Compile Include="Managemessage.cs" />
     <Compile Include="ManageServices.cs" />
+    <Compile Include="PDSPService.cs" />
     <Compile Include="PermissionServices.cs" />
     <Compile Include="InitiationService.cs" />
     <Compile Include="PMOAuditService.cs" />
