@@ -1,0 +1,119 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <link href="~/BootstrapSouce/css/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <h2>项目结项审核</h2>
+        <table class="table table-striped ">
+            <tr>
+                <td>表单头</td>
+                <td><span name="Forms"></span></td>
+            </tr>
+            <tr>
+                <td>项目编号</td>
+                <td><span name="Pid"></span></td>
+            </tr>
+            <tr>
+                <td>项目名称</td>
+                <td><span name="Pname"></span></td>
+            </tr>
+            <tr>
+                <td>申请人</td>
+                <td><span name="Applicant"></span></td>
+            </tr>
+
+            <tr>
+                <td>创建日期</td>
+                <td><span name="Createtime"></span></td>
+            </tr>
+            <tr>
+                <td>所属部门 <input type="hidden" name="Projstateid" value="3" /></td>
+                <td><span name="Department"></span></td>
+            </tr>
+
+            <tr>
+                <td><input id="Add" type="button" value="提交" /></td>
+                <td><input id="Out" type="button" value="驳回" /></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+<script>
+    $(function () {
+        show();
+        //审批
+        $("#Add").click(function () {
+            //alert($("input[name=Projstateid]").val())
+            //return
+            $.ajax({
+                url: 'http://localhost:8086/pdsp/ImpUpdatePdsp',
+                type: 'POST',
+                data: {
+                    Implementation:'通过',
+                    Projstateid: $("input[name=Projstateid]").val(),
+                    Id:@Request.QueryString["id"],
+                },
+                success: function (data) {
+
+                    if (data > 0) {
+                        location.href = "/Pdsp/Index_Imp";
+                    }
+                    else {
+                        alert("添加失败");
+                    }
+                }
+            })
+        })
+        //驳回
+        $("#Out").click(function () {
+            //alert($("[name=Forms]").text())
+            //return
+            $.ajax({
+                url: 'http://localhost:8086/pdsp/updatePdsp',
+                type: 'POST',
+                data: {
+                    Implementation: '驳回',
+                    Projstateid:7,
+                    Id:@Request.QueryString["id"],
+                },
+                success: function (data) {
+                    if (data > 0) {
+                        location.href = "/Pdsp/Index_Imp";
+                    }
+                    else {
+                        alert("添加失败");
+                    }
+                }
+            })
+        })
+    })
+
+    function show(){
+        $.ajax({
+            url:'http://localhost:8086/pdsp/GetPs?Id='+@Request.QueryString["id"],
+            type: 'get',
+            success: function (data) {
+                console.log(data)
+                $("span[name=Forms]").html(data[0].Forms)
+                $("span[name=Pid]").html(data[0].Pid)
+                $("span[name=Pname]").html(data[0].Pname)
+                $("span[name=Applicant]").html(data[0].Applicant)
+                $("input[name=Pmheadoffice]").val(data[0].Pmheadoffice)
+                $("span[name=Createtime]").html(data[0].Createtime.substring(0, 10))
+                $("span[name=Department]").html(data[0].Department)
+            }
+        })
+    }
+</script>

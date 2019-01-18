@@ -81,6 +81,11 @@
                     <th>解挂日期</th>
                     <th>申请人</th>
                     <th>状态</th>
+                    <th>PMO意见</th>
+                    <th>所属部门意见</th>
+                    <th>工程管理部意见</th>
+                    <th>项目管理部意见</th>
+                    <th>总经理意见</th>
                     <th>操作</th>
                 </tr>
                 <tr v-for="(contact,index) in contactsList">
@@ -91,6 +96,11 @@
                     <td>{{contact.Solutiontohangtime}}</td>
                     <td>{{contact.Applicant}}</td>
                     <td>{{contact.State}}</td>
+                    <td>{{contact.Pmoopinion}}</td>
+                    <td>{{contact.Departmentopinion}}</td>
+                    <td>{{contact.Projectopinion}}</td>
+                    <td>{{contact.Itemopinion}}</td>
+                    <td>{{contact.Gmopinion}}</td>
                     <td>
                         <div v-if="contact.Id!=''" id="example-3">
                             <a @@click="Update(contact.Id)">详细</a>

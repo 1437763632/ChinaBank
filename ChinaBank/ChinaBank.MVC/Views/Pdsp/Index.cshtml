@@ -65,62 +65,34 @@
 
 </head>
 <body>
-    <h1>项目申请</h1>
+    <h1>项目结项申请</h1>
     <hr />
-   
+
     <div id="app">
-        <select id="s1" v-model="typename">
-            <option value="请选择">
-                请选择
-            </option>
-            <option value="开发类">
-                开发类
-            </option>
-            <option value="推广类">
-                推广类
-            </option>
-            <option value="研究类">
-                研究类
-            </option>
-            <option value="技术支持类">
-                技术支持类
-            </option>
-            <option value="管理服务类">
-                管理服务类
-            </option>
-            <option value="技术转移类">
-                技术转移类
-            </option>
-        </select>
+        
         项目名称:<input id="name" type="text" v-model="cha1" /><input type="button" v-on:click="getAllContacts(cha1)" value="搜索" />
 
-        <table v-show="contactsList.length" class=" table table-hover">
-            <thead class="navbar-header">
+        <table v-show="contactsList.length" class="table table-bordered"  border="1">
                 <tr>
                     <th>序号</th>
                     <th>项目编号</th>
                     <th>项目名称</th>
-                    <th>项目类型</th>
                     <th>申请日期</th>
-                    <th>状态</th>
+                    <th>结项性质</th>
                     <th>操作</th>
                 </tr>
                 <tr v-for="(contact,index) in contactsList">
                     <td>{{contact.Id}}</td>
                     <td>{{contact.Pid}}</td>
                     <td>{{contact.Pname}}</td>
-                    <td>{{contact.Ptype}}</td>
-                    <td>{{contact.Budget}}</td>
-                    <td>{{contact.State}}</td>
+                    <td>{{contact.Createtime.substring(0,10)}}</td>
+                    <td>{{contact.Postprojectnature}}</td>
                     <td>
                         <div v-if="contact.Id!=''" id="example-3">
                             <a @@click="Update(contact.Id)">详细</a>
-                            <a @@click="Update(contact.Id)">挂起</a>
-                            <a @@click="Update(contact.Id)">结项</a>
                         </div>
                     </td>
                 </tr>
-            </thead>
         </table>
 
         <div class="page-bar">
@@ -158,7 +130,7 @@
         //监控
         watch: {
             typename: function (newValue, oldValue) {
-               
+
                 location.href = "/Initiation/AddInitiation?name=" + newValue;
             }
         },
@@ -167,7 +139,7 @@
                 location.href = "/Initiation/AddInitiation?name" + name;
             },
             getAllContacts: function () {
-                axios.get('http://localhost:8086/pdsp/projmessages?currentpage=' + this.cur + '&Pname=' + this.cha1
+                axios.get('http://localhost:8086/pdsp/GetPDSPs?currentpage=' + this.cur + '&Pname=' + this.cha1
                 ).then(
                     (response) => {
                         console.log(response)
@@ -176,7 +148,6 @@
                         for (var i = 0; i < response.data.PageData.length; i++) {
                             this.contactsList.push(response.data.PageData[i]);
                         }
-                        //this.contactsList.push({ Id: "", Pid: "", Pname: "", Ptype: "", Budget: "", State: "" });
                     },
                     (response) => {
                         alert(response.status);
@@ -184,7 +155,7 @@
                 ).catch(function (response) {
                     alert(response);
                     });
-                
+
             },
             btnClick: function (data) {//页码点击事件
                 if (data != this.cur) {
@@ -230,5 +201,5 @@
         }
 
     });
-  
+
 </script>
