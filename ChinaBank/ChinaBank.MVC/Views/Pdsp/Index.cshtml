@@ -69,10 +69,13 @@
     <hr />
 
     <div id="app">
-        
-        项目名称:<input id="name" type="text" v-model="cha1" /><input type="button" v-on:click="getAllContacts(cha1)" value="搜索" />
 
-        <table v-show="contactsList.length" class="table table-bordered"  border="1">
+
+        项目名称:
+        <input id="name" type="text" v-model="cha1" />
+        <input type="button" v-on:click="getAllContacts(cha1)" value="搜索" />
+        <template v-if="contactsList.length > 0">
+            <table v-show="contactsList.length" class="table table-bordered" border="1">
                 <tr>
                     <th>序号</th>
                     <th>项目编号</th>
@@ -89,12 +92,28 @@
                     <td>{{contact.Postprojectnature}}</td>
                     <td>
                         <div v-if="contact.Id!=''" id="example-3">
-                            <a @@click="Update(contact.Id)">详细</a>
+                            <a @@click="Update(contact.Id)"style="cursor:pointer">详细</a>
                         </div>
                     </td>
                 </tr>
-        </table>
+            </table>
+        </template>
+        <template v-else>
+            <table class="table table-bordered" border="1">
+                <tr>
+                    <th>序号</th>
+                    <th>项目编号</th>
+                    <th>项目名称</th>
+                    <th>申请日期</th>
+                    <th>结项性质</th>
+                    <th>操作</th>
+                </tr>
+                <tr>
+                    <td colspan="6" style="text-align:center">暂时没有数据</td>
 
+                </tr>
+            </table>
+        </template>
         <div class="page-bar">
             <ul>
                 <li v-if="cur>1"><a v-on:click="cur--,pageClick()">上一页</a></li>
@@ -117,7 +136,7 @@
     var vm = new Vue({
         el: "#app",
         data: {
-            typename:"请选择",
+            typename: "请选择",
             contactsList: [],
             cha1: "",
             all: 0, //总页数
@@ -154,7 +173,7 @@
                     }
                 ).catch(function (response) {
                     alert(response);
-                    });
+                });
 
             },
             btnClick: function (data) {//页码点击事件
@@ -167,8 +186,8 @@
                 this.getAllContacts(this.cur);
                 console.log('现在在' + this.cur + '页');
             },
-            Update: function(id){
-                location.href = '/Initiation/UpdateInitiation?Id='+id;
+            Update: function (id) {
+                location.href = '/Initiation/UpdateInitiation?Id=' + id;
             }
 
         },
