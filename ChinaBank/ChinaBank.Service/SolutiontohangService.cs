@@ -18,9 +18,9 @@ namespace ChinaBank.Service
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
             {
-                string executeSql = @" INSERT INTO Solutiontohang(Code,Applicant,Pname,Pid,Createtime,Solutiontohangtime,Pm,Department,State,Solutiontohangcause,Processingstep,Handler) VALUES (:Code,:Applicant,:Pname,:Pid,:Createtime,:Solutiontohangtime,:Pm,:Department,:State,:Solutiontohangcause,:Processingstep,:Handler) ";
+                string executeSql = @" INSERT INTO Solutiontohang(Code,Applicant,Pname,Pid,Createtime,Solutiontohangtime,Pm,Department,State,Solutiontohangcause,Schedule,Processingstep,Handler) VALUES (:Code,:Applicant,:Pname,:Pid,:Createtime,:Solutiontohangtime,:Pm,:Department,:State,:Solutiontohangcause,:Schedule,:Processingstep,:Handler) ";
                 s.Solutiontohangtime = System.DateTime.Now;
-                var Collectlist = new { Code = s.Code, Applicant = s.Applicant, Pname = s.Pname, Pid = s.Pid, Createtime = s.Createtime, Solutiontohangtime=s.Solutiontohangtime,Pm = s.Pm, Department = s.Department, State = s.State, Solutiontohangcause = s.Solutiontohangcause, Processingstep = s.Processingstep, Handler = s.Handler };
+                var Collectlist = new { Code = s.Code, Applicant = s.Applicant, Pname = s.Pname, Pid = s.Pid, Createtime = s.Createtime, Solutiontohangtime=s.Solutiontohangtime,Pm = s.Pm, Department = s.Department, State = s.State, Solutiontohangcause = s.Solutiontohangcause, Schedule=s.Schedule, Processingstep = s.Processingstep, Handler = s.Handler };
                 int result = conn.Execute(executeSql, Collectlist);
                 return result;
             }
