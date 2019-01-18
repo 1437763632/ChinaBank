@@ -46,11 +46,11 @@ namespace ChinaBank.Model
         /// <summary>
         /// 结束日期
         /// </summary>
-        public DateTime Finishtime { get; set; }
+        public DateTime? Finishtime { get; set; }
         /// <summary>
         /// 生效日期
         /// </summary>
-        public string Takeeffecttime { get; set; }
+        public DateTime? Takeeffecttime { get; set; }
         /// <summary>
         /// 结项性质
         /// </summary>
@@ -59,14 +59,7 @@ namespace ChinaBank.Model
         /// 中心项目经理
         /// </summary>
         public string Centerprojectpm { get; set; }
-        /// <summary>
-        /// 项目副经理
-        /// </summary>
-        public string Dpm { get; set; }
-        /// <summary>
-        /// 项目结项报告
-        /// </summary>
-        public string Projectreport { get; set; }
+        
         /// <summary>
         /// 成果评测会
         /// </summary>
@@ -143,5 +136,9 @@ namespace ChinaBank.Model
         /// 总经理室
         /// </summary>
         public string Executiveoffice { get; set; }
+        /// <summary>
+        /// 状态
+        /// </summary>
+        public int Projstateid { get; set; }
     }
 }
