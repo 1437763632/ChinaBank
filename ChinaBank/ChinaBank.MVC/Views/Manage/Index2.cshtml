@@ -70,7 +70,7 @@
 
     <div id="app">
         
-        项目名称:<input id="name" type="text" v-model="cha1" /><input type="button" v-on:click="getAllContacts(cha1)" value="搜索" />
+        项目名称:<input id="name" type="text" v-model="cha1" /><input type="button" v-on:click="getAllContacts(cha1)" value="搜索"style="cursor:pointer" />
 
         <table v-show="contactsList.length" class=" table table-hover">
                 <tr>
@@ -91,7 +91,7 @@
                     <td>{{contact.Projstate}}</td>
                     <td>
                         <div v-if="contact.Id!=''" id="example-3">
-                            <a @@click="Update(contact.Id)">详细</a>
+                            <a @@click="Update(contact.Id)"style="cursor:pointer">详细</a>
                         </div>
                     </td>
                 </tr>
