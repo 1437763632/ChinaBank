@@ -31,7 +31,8 @@
             </tr>
             <tr>
                 <td>财务核算项目编码维护时间:</td>
-                <td><input type="text" v-model="Maintaindate" /></td>
+                <td>
+                    <input id="meeting" type="date" value="2014-01-13" v-model="Maintaindate" /></td>
             </tr>
             <tr>
                 <td>财务核算项目编码:</td>
@@ -39,7 +40,8 @@
             </tr>
             <tr>
                 <td>总行立项时间: </td>
-                <td><input type="text" v-model="Approvaldate" /></td>
+                <td>
+                    <input id="meeting" type="date" value="2014-01-13" v-model="Approvaldate" /></td>
             </tr>
             <tr>
                 <td>总行立项编号:</td>
@@ -78,7 +80,7 @@
             <tr>
                 <td>收到提前启动指令时间: </td>
                 <td>
-                    <input id="meeting" type="date" v-model="Isstartdate" /></td>
+                    <input id="meeting" type="date" value="2014-01-13" v-model="Isstartdate" /></td>
             </tr>
             <tr>
                 <td>提前启动函号: </td>
@@ -111,7 +113,7 @@
                         <option value="0">--请选择--</option>
                         <option value="运行">运行</option>
                         <option value="挂起">挂起</option>
-                        <option value="结束">结束</option>
+                        <option value="解挂">解挂</option>
                         <option value="结项">结项</option>
                     </select>
                 </td>

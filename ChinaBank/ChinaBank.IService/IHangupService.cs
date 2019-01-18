@@ -15,5 +15,7 @@ namespace ChinaBank.IService
         List<Hangup> GetHangup();
         int AddHangup(Hangup h);
         List<Hangup> GetHangupById(int Id);
+        List<Nodes> GetNode();
+        List<Manage> GetManage(int DepartmentId);
     }
 }

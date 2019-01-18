@@ -1275,6 +1275,7 @@
     <Content Include="Views\Solutiontohang\AddSolutiontohang.cshtml" />
     <Content Include="Views\Hangup\GetHangupById.cshtml" />
     <Content Include="Views\Solutiontohang\GetSolutiontohangById.cshtml" />
+
     <Content Include="Views\Pdsp\Index.cshtml" />
     <Content Include="Views\Pdsp\Add.cshtml" />
     <Content Include="Views\Pdsp\Index2.cshtml" />
@@ -1290,6 +1291,28 @@
     <Content Include="Views\Pdsp\Add_Financial.cshtml" />
     <Content Include="Views\Pdsp\Index_Office.cshtml" />
     <Content Include="Views\Pdsp\Add_Office.cshtml" />
+    <Content Include="Views\Managemessage\Update.cshtml" />
+    <Content Include="Views\Projmessage\AddSolutionhang.cshtml" />
+    <Content Include="Views\Initiation\Add.cshtml" />
+    <Content Include="Views\Initiation\ApproveOne.cshtml" />
+    <Content Include="Views\DepartmentAudit\HongUpAudit.cshtml" />
+    <Content Include="Views\DepartmentAudit\Index.cshtml" />
+    <Content Include="Views\ProjectAudit\HongUpAudit.cshtml" />
+    <Content Include="Views\ProjectAudit\Index.cshtml" />
+    <Content Include="Views\ItemAudit\HongUpAudit.cshtml" />
+    <Content Include="Views\ItemAudit\Index.cshtml" />
+    <Content Include="Views\GmAudit\HongUpAudit.cshtml" />
+    <Content Include="Views\GmAudit\Index.cshtml" />
+    <Content Include="Views\Hangup\PMOAuditIndex.cshtml" />
+    <Content Include="Views\Hangup\PMOAudit.cshtml" />
+    <Content Include="Views\Hangup\DepartmentAuditIndex.cshtml" />
+    <Content Include="Views\Hangup\DepartmentAudit.cshtml" />
+    <Content Include="Views\Hangup\ProjectAuditIndex.cshtml" />
+    <Content Include="Views\Hangup\ProjectAudit.cshtml" />
+    <Content Include="Views\Hangup\ItemAuditIndex.cshtml" />
+    <Content Include="Views\Hangup\ItemAudit.cshtml" />
+    <Content Include="Views\Hangup\GmAuditIndex.cshtml" />
+    <Content Include="Views\Hangup\GmAudit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -13,6 +13,11 @@ namespace ChinaBank.Service
     using Oracle.DataAccess.Client;
     public class WeeklyServices:IWeeklyServices
     {
+        /// <summary>
+        /// 添加项目周报
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
         public int Add(Model.Weekly p)
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
@@ -21,6 +26,12 @@ namespace ChinaBank.Service
                 return conn.Execute(executeSql, p);
             }
         }
+
+        /// <summary>
+        /// 删除项目周报
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public int Delete(int id)
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
@@ -30,6 +41,10 @@ namespace ChinaBank.Service
             }
         }
 
+        /// <summary>
+        /// 显示项目周报
+        /// </summary>
+        /// <returns></returns>
         public List<Model.Weekly> GetWeekly()
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
@@ -39,6 +54,12 @@ namespace ChinaBank.Service
                 return result.ToList();
             }
         }
+
+        /// <summary>
+        /// 查询项目周报
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         public List<Model.Weekly> GetWeeklybyid(int Id)
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
