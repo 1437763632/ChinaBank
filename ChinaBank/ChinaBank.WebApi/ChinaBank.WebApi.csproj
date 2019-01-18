@@ -128,6 +128,7 @@
     <Compile Include="Controllers\ManagemessageController.cs" />
     <Compile Include="Controllers\PdspController.cs" />
     <Compile Include="Controllers\PMOAuditController.cs" />
+    <Compile Include="Controllers\PMOSolutionController.cs" />
     <Compile Include="Controllers\ProjmessageController.cs" />
     <Compile Include="Controllers\ProjproblemController.cs" />
     <Compile Include="Controllers\RBACController.cs" />

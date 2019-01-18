@@ -63,5 +63,17 @@ namespace ChinaBank.WebApi.Controllers
         {
             return solutiontohangService.GetSolutiontohangById(Id);
         }
+        [HttpGet]
+        [Route("GetNode")]
+        public List<Nodes> GetNode()
+        {
+            return solutiontohangService.GetNode();
+        }
+        [HttpGet]
+        [Route("GetManage")]
+        public List<Manage> GetManage(int DepartmentId)
+        {
+            return solutiontohangService.GetManage(DepartmentId);
+        }
     }
 }
