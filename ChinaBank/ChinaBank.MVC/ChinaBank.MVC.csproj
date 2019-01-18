@@ -1287,6 +1287,16 @@
     <Content Include="Views\Hangup\ItemAudit.cshtml" />
     <Content Include="Views\Hangup\GmAuditIndex.cshtml" />
     <Content Include="Views\Hangup\GmAudit.cshtml" />
+    <Content Include="Views\Solutiontohang\PMOSolutionIndex.cshtml" />
+    <Content Include="Views\Solutiontohang\PMOSolution.cshtml" />
+    <Content Include="Views\Solutiontohang\DepartmentSolutionIndex.cshtml" />
+    <Content Include="Views\Solutiontohang\DepartmentSolution.cshtml" />
+    <Content Include="Views\Solutiontohang\ProjectSolutionIndex.cshtml" />
+    <Content Include="Views\Solutiontohang\ProjectSolution.cshtml" />
+    <Content Include="Views\Solutiontohang\ItemSolutionIndex.cshtml" />
+    <Content Include="Views\Solutiontohang\ItemSolution.cshtml" />
+    <Content Include="Views\Solutiontohang\GmoSolutionIndex.cshtml" />
+    <Content Include="Views\Solutiontohang\GmoSolution.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

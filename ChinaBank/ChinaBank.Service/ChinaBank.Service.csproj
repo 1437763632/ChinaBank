@@ -56,6 +56,7 @@
     <Compile Include="PermissionServices.cs" />
     <Compile Include="InitiationService.cs" />
     <Compile Include="PMOAuditService.cs" />
+    <Compile Include="PMOSolutionServices.cs" />
     <Compile Include="ProjmessageServices.cs" />
     <Compile Include="ProjproblemService.cs" />
     <Compile Include="Demo.cs" />

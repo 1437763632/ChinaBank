@@ -59,6 +59,7 @@ namespace ChinaBank.WebApi
             container.RegisterType<IHangupService, HangupService>();
             container.RegisterType<ISolutiontohangService, SolutiontohangService>();
             container.RegisterType<IPMOAuditService, PMOAuditService>();
+            container.RegisterType<IPMOSolutionServices, PMOSolutionServices>();
         }
     }
 }
