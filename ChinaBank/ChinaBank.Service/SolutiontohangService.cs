@@ -45,25 +45,5 @@ namespace ChinaBank.Service
                 return result.ToList();
             }
         }
-        public List<Nodes> GetNode()
-        {
-            using (OracleConnection conn = DapperHelper.GetConnString())
-            {
-                string sql = @"select * from Nodes";
-                var result = conn.Query<Nodes>(sql, null);
-                return result.ToList();
-            }
-        }
-
-        public List<Manage> GetManage(int DepartmentId)
-        {
-            using (OracleConnection conn = DapperHelper.GetConnString())
-            {
-                string sql = @"select * from Manage where Id=:DepartmentId";
-                //var Collectlist = new { DepartmentId = DepartmentId };
-                var result = conn.Query<Manage>(sql, new { DepartmentId = DepartmentId });
-                return result.ToList();
-            }
-        }
     }
 }
