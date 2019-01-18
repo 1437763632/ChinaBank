@@ -116,8 +116,8 @@
                     <td>{{contact.Approvaldate}}</td>
                     <td>{{contact.Projstate}}</td>
                     <td>
-                        <a v-on:click="Update(contact.Id,contact.Formfirst,contact.Projname,contact.Projtype,contact.Approvaldate,contact.Projstate)">详细</a>
-                        <a href="#" @@click="Add(contact.Id)">结项</a>
+                        <a v-on:click="Update(contact.Id,contact.Formfirst,contact.Projname,contact.Projtype,contact.Approvaldate,contact.Projstate)" style="cursor:pointer">详细</a>
+                        <a href="#" @@click="Add(contact.Id)" style="cursor:pointer">结项</a>
                     </td>
                 </tr>
             </table>
