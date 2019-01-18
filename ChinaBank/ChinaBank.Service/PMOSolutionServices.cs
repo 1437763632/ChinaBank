@@ -34,7 +34,7 @@ namespace ChinaBank.Service
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
             {
-                string sql = @"select * from Solutiontohang where Schedule=4";
+                string sql = @"select * from Solutiontohang where Schedule=3";
                 var result = conn.Query<Solutiontohang>(sql, null);
                 return result.ToList();
             }
@@ -84,7 +84,7 @@ namespace ChinaBank.Service
             using (OracleConnection conn = DapperHelper.GetConnString())
             {
                 string executeSql = @" update Solutiontohang set State=:State,Schedule=:Schedule,Pmoopinion=:Pmoopinion,Processingstep=:Processingstep,Handler=:Handler where Id=:Id";
-                solution.Schedule = "4";
+                solution.Schedule = "3";
                 solution.State = "解挂审核中";
                 var Collectlist = new { Id = solution.Id, State = solution.State, Schedule = solution.Schedule, Pmoopinion = solution.Pmoopinion, Processingstep = solution.Processingstep, Handler = solution.Handler };
                 int result = conn.Execute(executeSql, Collectlist);
@@ -121,8 +121,7 @@ namespace ChinaBank.Service
             using (OracleConnection conn = DapperHelper.GetConnString())
             {
                 string executeSql = @" update Solutiontohang set Schedule=:Schedule,Itemopinion=:Itemopinion,Processingstep=:Processingstep,Handler=:Handler where Id=:Id";
-                solution.Schedule = "1";
-                solution.State = "已审批";
+                solution.Schedule = "9";
                 var Collectlist = new { Id = solution.Id, State = solution.State, Schedule = solution.Schedule, Itemopinion = solution.Itemopinion, Processingstep = solution.Processingstep, Handler = solution.Handler };
                 int result = conn.Execute(executeSql, Collectlist);
                 return result;
@@ -134,7 +133,7 @@ namespace ChinaBank.Service
             using (OracleConnection conn = DapperHelper.GetConnString())
             {
                 string executeSql = @" update Solutiontohang set State=:State,Schedule=:Schedule,Gmopinion=:Gmopinion,Processingstep=:Processingstep,Handler=:Handler where Id=:Id";
-                solution.Schedule = "9";
+                solution.Schedule = "12";
                 solution.State = "已解挂";
                 var Collectlist = new { Id = solution.Id, State = solution.State, Schedule = solution.Schedule, Gmopinion = solution.Gmopinion, Processingstep = solution.Processingstep, Handler = solution.Handler };
                 int result = conn.Execute(executeSql, Collectlist);

@@ -70,9 +70,48 @@
 
     <div id="app">
         项目名称:<input id="name" type="text" v-model="cha1" /><input type="button" v-on:click="getAllContacts(cha1)" value="搜索" />
-
-        <table v-show="contactsList.length" class=" table table-hover">
-            <thead class="navbar-header">
+        <template v-if="contactsList.length > 0">
+            <table v-show="contactsList.length" class="table table-bordered" border="1">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>项目编码</th>
+                        <th>项目名称</th>
+                        <th>申请日期</th>
+                        <th>解挂日期</th>
+                        <th>申请人</th>
+                        <th>状态</th>
+                        <th>PMO意见</th>
+                        <th>开发部门意见</th>
+                        <th>工程管理部意见</th>
+                        <th>项目管理部意见</th>
+                        <th>总经理意见</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr v-for="(contact,index) in contactsList">
+                        <td>{{contact.Id}}</td>
+                        <td>{{contact.Code}}</td>
+                        <td>{{contact.Pname}}</td>
+                        <td>{{contact.Createtime}}</td>
+                        <td>{{contact.Solutiontohangtime}}</td>
+                        <td>{{contact.Applicant}}</td>
+                        <td>{{contact.State}}</td>
+                        <td>{{contact.Pmoopinion}}</td>
+                        <td>{{contact.Departmentopinion}}</td>
+                        <td>{{contact.Projectopinion}}</td>
+                        <td>一一一一一</td>
+                        <td>一一一一一</td>
+                        <td>
+                            <div v-if="contact.Id!=''" id="example-3">
+                                <a @@click="Update(contact.Id)">审批</a>
+                            </div>
+                        </td>
+                    </tr>
+                </thead>
+            </table>
+        </template>
+        <template v-else>
+            <table class="table table-bordered" border="1">
                 <tr>
                     <th>序号</th>
                     <th>项目编码</th>
@@ -88,28 +127,12 @@
                     <th>总经理意见</th>
                     <th>操作</th>
                 </tr>
-                <tr v-for="(contact,index) in contactsList">
-                    <td>{{contact.Id}}</td>
-                    <td>{{contact.Code}}</td>
-                    <td>{{contact.Pname}}</td>
-                    <td>{{contact.Createtime}}</td>
-                    <td>{{contact.Solutiontohangtime}}</td>
-                    <td>{{contact.Applicant}}</td>
-                    <td>{{contact.State}}</td>
-                    <td>{{contact.Pmoopinion}}</td>
-                    <td>{{contact.Departmentopinion}}</td>
-                    <td>{{contact.Projectopinion}}</td>
-                    <td>{{contact.Itemopinion}}</td>
-                    <td>{{contact.Gmopinion}}</td>
-                    <td>
-                        <div v-if="contact.Id!=''" id="example-3">
-                            <a @@click="Update(contact.Id)">详细</a>
-                        </div>
-                    </td>
-                </tr>
-            </thead>
-        </table>
+                <tr>
+                    <td colspan="13" style="text-align:center">暂时没有数据</td>
 
+                </tr>
+            </table>
+        </template>
         <div class="page-bar">
             <ul>
                 <li v-if="cur>1"><a v-on:click="cur--,pageClick()">上一页</a></li>
