@@ -92,32 +92,57 @@
     <hr />
 
     <div id="app">
+        <template v-if="contactsList.length > 0">
 
-        项目名称:<input id="name" type="text" v-model="cha1" /><input type="button" v-on:click="getAllContacts(cha1)" value="搜索" />
+            项目名称:
+            <input id="name" type="text" v-model="cha1" />
+            <input type="button" v-on:click="getAllContacts(cha1)" value="搜索" />
 
-        <table v-show="contactsList.length" class=" table table-hover">
-            <tr>
-                <th>序号</th>
-                <th>表单头</th>
-                <th>项目名称</th>
-                <th>项目类型</th>
-                <th>申请日期</th>
-                <th>状态</th>
-                <th>操作</th>
-            </tr>
-            <tr v-for="(contact,index) in contactsList">
-                <td>{{contact.Id}}</td>
-                <td>{{contact.Formfirst}}</td>
-                <td>{{contact.Projname}}</td>
-                <td>{{contact.Projtype}}</td>
-                <td>{{contact.Approvaldate}}</td>
-                <td>{{contact.Projstate}}</td>
-                <td>
-                    <a v-on:click="Update(contact.Id,contact.Formfirst,contact.Projname,contact.Projtype,contact.Approvaldate,contact.Projstate)">详细</a>
-                    <a href="#"@@click="Add(contact.Id)" >结项</a>
-                </td>
-            </tr>
-        </table>
+            <table v-show="contactsList.length" class=" table table-hover">
+                <tr>
+                    <th>序号</th>
+                    <th>表单头</th>
+                    <th>项目名称</th>
+                    <th>项目类型</th>
+                    <th>申请日期</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+                <tr v-for="(contact,index) in contactsList">
+                    <td>{{contact.Id}}</td>
+                    <td>{{contact.Formfirst}}</td>
+                    <td>{{contact.Projname}}</td>
+                    <td>{{contact.Projtype}}</td>
+                    <td>{{contact.Approvaldate}}</td>
+                    <td>{{contact.Projstate}}</td>
+                    <td>
+                        <a v-on:click="Update(contact.Id,contact.Formfirst,contact.Projname,contact.Projtype,contact.Approvaldate,contact.Projstate)">详细</a>
+                        <a href="#" @@click="Add(contact.Id)">结项</a>
+                    </td>
+                </tr>
+            </table>
+        </template>
+        <template v-else>
+
+            项目名称:
+            <input id="name" type="text" v-model="cha1" />
+            <input type="button" v-on:click="getAllContacts(cha1)" value="搜索" />
+
+            <table  class="table table-bordered" border="1">
+                <tr>
+                    <th>序号</th>
+                    <th>表单头</th>
+                    <th>项目名称</th>
+                    <th>项目类型</th>
+                    <th>申请日期</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+                <tr>
+                    <td colspan="6" style="text-align:center">暂时没有数据</td>
+                </tr>
+            </table>
+        </template>
         @* 分页 *@
         <div class="page-bar">
             <ul>

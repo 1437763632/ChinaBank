@@ -71,29 +71,48 @@
     <hr />
 
     <div id="app">
-        <table v-show="contactsList.length" class="table table-bordered" border="1">
-            <tr>
-                <th>序号</th>
-                <th>项目编号</th>
-                <th>项目名称</th>
-                <th>申请日期</th>
-                <th>结项性质</th>
-                <th>操作</th>
-            </tr>
-            <tr v-for="(contact,index) in contactsList">
-                <td>{{contact.Id}}</td>
-                <td>{{contact.Pid}}</td>
-                <td>{{contact.Pname}}</td>
-                <td>{{contact.Createtime.substring(0,10)}}</td>
-                <td>{{contact.Postprojectnature}}</td>
-                <td>
-                    <div v-if="contact.Id!=''" id="example-3">
-                        <a @@click="Update(contact.Id)">审批</a>
-                    </div>
-                </td>
-            </tr>
-        </table>
+        <template v-if="contactsList.length > 0">
 
+            <table v-show="contactsList.length" class="table table-bordered" border="1">
+                <tr>
+                    <th>序号</th>
+                    <th>项目编号</th>
+                    <th>项目名称</th>
+                    <th>申请日期</th>
+                    <th>结项性质</th>
+                    <th>操作</th>
+                </tr>
+                <tr v-for="(contact,index) in contactsList">
+                    <td>{{contact.Id}}</td>
+                    <td>{{contact.Pid}}</td>
+                    <td>{{contact.Pname}}</td>
+                    <td>{{contact.Createtime.substring(0,10)}}</td>
+                    <td>{{contact.Postprojectnature}}</td>
+                    <td>
+                        <div v-if="contact.Id!=''" id="example-3">
+                            <a @@click="Update(contact.Id)">审批</a>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </template>
+        <template v-else>
+
+            <table  class="table table-bordered" border="1">
+                <tr>
+                    <th>序号</th>
+                    <th>项目编号</th>
+                    <th>项目名称</th>
+                    <th>申请日期</th>
+                    <th>结项性质</th>
+                    <th>操作</th>
+                </tr>
+                <tr >
+                    <td colspan="6" style="text-align:center">暂时没有数据</td>
+
+                </tr>
+            </table>
+        </template>
         <div class="page-bar">
             <ul>
                 <li v-if="cur>1"><a v-on:click="cur--,pageClick()">上一页</a></li>
