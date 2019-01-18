@@ -23,7 +23,7 @@
 </head>
 <body>
     <div id="app" class="div-td">
-        <input class="btn-link"  type="button" value="添加用户" onclick="location.href='/Manage/ManageAdd'" />
+        <input class="btn-link"  type="button" value="添加用户" style="cursor:pointer" onclick="location.href='/Manage/ManageAdd'" />
         <table  class=" table table-hover" border="1" >
             <tr>
                 <th>ID</th>
@@ -39,7 +39,7 @@
                 <td>{{item.RoleName}}</td>
                 <td>
                     <div>
-                        <a @@click="pageSkip(item.Id)">修改</a>
+                        <a @@click="pageSkip(item.Id)" style="cursor:pointer">修改</a>
                     </div>
                 </td>
             </tr>

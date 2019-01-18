@@ -12,7 +12,9 @@
     <link href="~/BootstrapSouce/css/bootstrap.css" rel="stylesheet" />
     <script src="~/Scripts/axios.js"></script>
     <script src="~/Scripts/vue.js"></script>
+    
     <style>
+
         .page-bar {
             margin: 40px;
         }
@@ -89,7 +91,7 @@
                     <td>{{contact.Postprojectnature}}</td>
                     <td>
                         <div v-if="contact.Id!=''" id="example-3">
-                            <a @@click="Update(contact.Id)">审批</a>
+                            <a @@click="Update(contact.Id)" style="cursor:pointer">审批</a>
                         </div>
                     </td>
                 </tr>
