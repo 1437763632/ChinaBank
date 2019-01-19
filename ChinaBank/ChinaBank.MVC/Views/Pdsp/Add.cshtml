@@ -89,9 +89,8 @@
 <script>  
     $(function () {
         show();
+        //审批
         $("#Add").click(function () {
-            //alert($("[name=Forms]").text())
-            //return 
             $.ajax({
                 url: 'http://localhost:8086/pdsp/Addpdsp',
                 type: 'POST',
@@ -121,6 +120,7 @@
             })
         })
     })
+    //显示加载
     function show(){
         $.ajax({
             url:'http://localhost:8086/Projmessage/fan?id='+@Request.QueryString["id"],
