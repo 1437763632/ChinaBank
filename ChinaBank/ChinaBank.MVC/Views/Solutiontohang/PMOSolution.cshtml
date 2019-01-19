@@ -1,6 +1,8 @@
 ﻿
 @{
-    Layout = null;
+                /**/
+
+                Layout = null;
 }
 
 <!DOCTYPE html>
@@ -19,7 +21,7 @@
         })
         function NodeName() {
             $.ajax({
-                url: "http://localhost:8086/GetNode",
+                url: "http://localhost:8086/GetNodeList",
                 type: "get",
                 success: function (d) {
                     $(d).each(function () {
@@ -31,7 +33,7 @@
         function GetManage() {
             $("select[name=Processingstep]").change(function () {
                 $.ajax({
-                    url: "http://localhost:8086/GetManage",
+                    url: "http://localhost:8086/GetManageList",
                     data: { DepartmentId: $(this).val() },
                     type: "get",
                     success: function (d) {
@@ -87,8 +89,11 @@
         }
         function UpdateStated() {
             $.ajax({
-                url: "http://localhost:8086/PMOSolution/UpdateStates",
+                url: "http://localhost:8086/UpdateStates",
                 type: "post",
+                data:{
+                    Id:"@Request.QueryString["Id"]"
+                },
                 success: function (data) {
                     if (data > 0) {
                         alert("已驳回!");
@@ -127,7 +132,8 @@
                 <tr>
                     <td>意见:<input type="text" name="Pmoopinion" /></td>
                 </tr>
-                <tr>吗    
+                <tr>
+                    吗
                     <td>
                         处理步骤:<select name="Processingstep">
                             <option value="0">--请选择--</option>
