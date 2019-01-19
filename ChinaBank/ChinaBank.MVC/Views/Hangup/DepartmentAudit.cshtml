@@ -89,6 +89,9 @@
         function UpdateState() {
             $.ajax({
                 url: "http://localhost:8086/UpdateState",
+                data:{
+                    Id:"@Request.QueryString["Id"]"
+                },
                 type: "post",
                 success: function (data) {
                     if (data > 0) {
