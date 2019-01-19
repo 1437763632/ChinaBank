@@ -48,5 +48,13 @@ namespace ChinaBank.IService
         /// <param name="manage"></param>
         /// <returns></returns>
         int UpdateManage(Manage manage);
+
+        /// <summary>
+        /// 绑定数据栏
+        /// </summary>
+        /// <param name="ManageNumber"></param>
+        /// <param name="ManagePass"></param>
+        /// <returns></returns>
+        IEnumerable<Permission> Getrights(int id);
     }
 }
