@@ -19,7 +19,7 @@
         })
         function NodeName() {
             $.ajax({
-                url: "http://localhost:8086/GetNode",
+                url: "http://localhost:8086/GetNodeList",
                 type: "get",
                 success: function (d) {
                     $(d).each(function () {
@@ -31,7 +31,7 @@
         function GetManage() {
             $("select[name=Processingstep]").change(function () {
                 $.ajax({
-                    url: "http://localhost:8086/GetManage",
+                    url: "http://localhost:8086/GetManageList",
                     data: { DepartmentId: $(this).val() },
                     type: "get",
                     success: function (d) {
