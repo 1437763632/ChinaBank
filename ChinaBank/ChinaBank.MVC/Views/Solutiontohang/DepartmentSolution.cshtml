@@ -85,9 +85,9 @@
                 }
             })
         }
-        function UpdateState() {
+        function UpdateStates() {
             $.ajax({
-                url: "http://localhost:8086/UpdateState",
+                url: "http://localhost:8086/Reject",
                 type: "post",
                 success: function (data) {
                     if (data > 0) {
@@ -141,7 +141,7 @@
                 </tr>
                 <tr>
                     <td><input type="button" value="同意" onclick="Update()" /></td>
-                    <td><input type="button" value="驳回" onclick="UpdateState()" /></td>
+                    <td><input type="button" value="驳回" onclick="UpdateStates()" /></td>
                 </tr>
             </table>
         </form>

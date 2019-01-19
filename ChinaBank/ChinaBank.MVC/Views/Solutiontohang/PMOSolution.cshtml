@@ -85,9 +85,9 @@
                 }
             })
         }
-        function UpdateState() {
+        function UpdateStated() {
             $.ajax({
-                url: "http://localhost:8086/UpdateState",
+                url: "http://localhost:8086/PMOSolution/UpdateStates",
                 type: "post",
                 success: function (data) {
                     if (data > 0) {
@@ -127,7 +127,7 @@
                 <tr>
                     <td>意见:<input type="text" name="Pmoopinion" /></td>
                 </tr>
-                <tr>
+                <tr>吗    
                     <td>
                         处理步骤:<select name="Processingstep">
                             <option value="0">--请选择--</option>
@@ -141,7 +141,7 @@
                 </tr>
                 <tr>
                     <td><input type="button" value="同意" onclick="Update()" /></td>
-                    <td><input type="button" value="驳回" onclick="UpdateState()" /></td>
+                    <td><input type="button" value="驳回" onclick="UpdateStated()" /></td>
                 </tr>
             </table>
         </form>

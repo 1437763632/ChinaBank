@@ -217,10 +217,10 @@ namespace ChinaBank.WebApi.Controllers
         /// <returns></returns>
         /// 
         [HttpPost]
-        [Route("UpdateState")]
-        public int UpdateState(Solutiontohang solution)
+        [Route("UpdateStates")]
+        public int UpdateStates(Solutiontohang solution)
         {
-            return pmosolution.UpdateState(solution);
+            return pmosolution.UpdateStates(solution);
         }
     }
 }
