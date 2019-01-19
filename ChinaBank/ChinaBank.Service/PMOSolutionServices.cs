@@ -145,7 +145,7 @@ namespace ChinaBank.Service
         /// </summary>
         /// <param name="solution"></param>
         /// <returns></returns>
-        public int UpdateState(Solutiontohang solution)
+        public int UpdateStates(Solutiontohang solution)
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
             {

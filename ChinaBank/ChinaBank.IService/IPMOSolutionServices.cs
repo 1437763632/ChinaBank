@@ -44,6 +44,6 @@ namespace ChinaBank.IService
         int UpdateSolutionitem(Solutiontohang solution);
 
         int UpdateSolutiongmo(Solutiontohang solution);
-        int UpdateState(Solutiontohang solution);
+        int UpdateStates(Solutiontohang solution);
     }
 }
