@@ -26,7 +26,20 @@ namespace ChinaBank.MVC.Controllers
         {
             return View();
         }
+        /// <summary>
+        /// 项目管理部主管审批
+        /// </summary>
+        /// <returns></returns>
         public ActionResult ApproveOne()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// 财务部主管审批
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ApproveTwo()
         {
             return View();
         }

@@ -81,6 +81,11 @@
                     <th>项目编号</th>
                     <th>项目名称</th>
                     <th>申请日期</th>
+                    <th>牵头部门意见</th>
+                    <th>项目部意见</th>
+                    <th>资源部意见</th>
+                    <th>财务部意见</th>
+                    <th>总经理意见</th>
                     <th>结项性质</th>
                     <th>操作</th>
                 </tr>
@@ -89,10 +94,15 @@
                     <td>{{contact.Pid}}</td>
                     <td>{{contact.Pname}}</td>
                     <td>{{contact.Createtime.substring(0,10)}}</td>
+                    <td>{{contact.Implementation}}</td>
+                    <td>{{contact.Itemopinion}}</td>
+                    <td>{{contact.Resourceadmin}}</td>
+                    <td>{{contact.Financialadmin}}</td>
+                    <td>{{contact.Executiveoffice}}</td>
                     <td>{{contact.Postprojectnature}}</td>
                     <td>
                         <div v-if="contact.Id!=''" id="example-3">
-                            <a @@click="Update(contact.Id)"style="cursor:pointer">详细</a>
+                            <a @@click="Update(contact.Id)" style="cursor:pointer">详细</a>
                         </div>
                     </td>
                 </tr>
@@ -105,6 +115,11 @@
                     <th>项目编号</th>
                     <th>项目名称</th>
                     <th>申请日期</th>
+                    <th>牵头部门意见</th>
+                    <th>项目部意见</th>
+                    <th>资源部意见</th>
+                    <th>财务部意见</th>
+                    <th>总经理意见</th>
                     <th>结项性质</th>
                     <th>操作</th>
                 </tr>

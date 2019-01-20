@@ -1,4 +1,5 @@
 ﻿
+
 @{
     Layout = null;
 }
@@ -8,7 +9,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>ApproveOne</title>
+    <title>ApproveTwo</title>
     <script src="~/Scripts/axios.js"></script>
     <script src="~/Scripts/jquery-3.1.1.js"></script>
     <script src="~/Scripts/vue.js"></script>
@@ -18,7 +19,7 @@
 <body>
     <div id="app">
         <h3>项目立项项目管理部主管审批</h3>
-        <input type="hidden" name="Id"  v-model="Id" />
+        <input type="hidden" name="Id" v-model="Id" />
         <table class="table table-bordered" style="width:800px;">
             <tr>
                 <td>
@@ -76,10 +77,10 @@
                     <input type="text" v-model="Limits" readonly="readonly" style="border:0px;" />
                 </td>
                 <td>
-                   请选择处理步骤:<select name="State">
+                    请选择处理步骤:<select name="Accessory">
                         <option value="0">--请选择--</option>
                     </select>
-                   
+
 
                 </td>
             </tr>
@@ -94,8 +95,8 @@
                     <input type="button" value="返回" v-on:click="Back()" />
                 </td>
                 <td>
-                    
-                   
+
+
                     <input type="button" value="同意" v-on:click="Agree()" />
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="button" value="驳回" v-on:click="DisAgree()" />
@@ -108,7 +109,7 @@
 <script type="text/javascript">
     $(function () {
         GetNodes();
-        
+
     })
     //加载处理步骤
     function GetNodes() {
@@ -118,7 +119,7 @@
             success: function (data) {
                 console.log(data)
                 $(data).each(function (index,data) {
-                    $("select[name=State]").append("<option value=\"" + data.Id + "\">" + data.NodeName + "</option>");
+                    $("select[name=Accessory]").append("<option value=\"" + data.Id + "\">" + data.NodeName + "</option>");
                 })
             }
         })
@@ -194,14 +195,11 @@
                 })
                 this.Principal = pri.join(',');
                 params.append("Principal", pri.join(','));
-                params.append("State", $("select[name=State]").val())
+                params.append("Accessory", $("select[name=Accessory]").val())
                 axios.post("http://localhost:8086/InitiationApprovals",params).then(
                     (response) => {
                         console.log(response);
-                        if (response.data > 0) {
-                            alert('审核完成，请等待！');
-                        }
-                        
+                        alert(response);
                     }
                 ).catch(function (response) {
                     alert(response);
@@ -210,8 +208,8 @@
             //驳回时调用方法
             DisAgree: function () {
                 var params = new URLSearchParams();
-                params.append("Id", this.Id);                
-                params.append("State", $("select[name=State]").val());
+                params.append("Id", this.Id);
+                params.append("Accessory", $("input[name=Accessory]").val() + "已驳回");
                 axios.post("http://localhost:8086/ReInitiationApprovals", params).then((response) => {
                     console.log(response);
                     alert("已驳回！");

@@ -15,6 +15,9 @@
         $(function () {
             GetInitiationById();
         })
+        function Back() {
+            location.href ="/Initiation/Index"
+        }
         function GetInitiationById() {
             $.ajax({
                 url: "http://localhost:8086/GetInitiationById",
@@ -68,7 +71,7 @@
     <input type="button" value="项目挂起" onclick="location.href='/Hangup/AddHangup?Id='+@Request.QueryString["Id"]" />
     <input type="button" value="项目解挂" onclick="location.href='/Solutiontohang/AddSolutiontohang?Id='+@Request.QueryString["Id"]" />
     <div id="app">
-        <table class=" table table-hover">
+        <table class=" table table-hover table-bordered">
             <tr><td><input type="hidden" name="Id" value="@Request.QueryString["Id"]" /></td></tr>
             <tr><td>编码</td><td><input type="text" name="Code" /></td><td>申请人</td><td><input type="text" name="Applicant" /></td></tr>
             <tr><td>项目编号</td><td><input type="text" name="Pid" /></td></tr>
@@ -97,7 +100,9 @@
             @*<tr><td>处理步骤</td><td><input type="text" name="Cood" /></td><td>处理人</td><td><input type="text" name="Cood" /></td></tr>*@
             <tr>
                 <td>
-                    <input type="button" value="保存" v-on:click="addUser(Cood,Applicant,Pid,Pname,Ptype,Requisitionid,Productname,Projectnum,Operating,ZPM,Principal,Department,Coordinate,Start,Starttime,Letter,Limit,Pm,Pmqualification,Identification,Appointtype,Pschedule,Budget,Urgent,Admin,Business,Pteam,Engineer,Architect,Testmanager,Qualityengineer,Configurationadmin,Testarchitect,Financecode,Financetime)" />
+                    @*<input type="button" value="保存" onclick="addUser(Cood,Applicant,Pid,Pname,Ptype,Requisitionid,Productname,Projectnum,Operating,ZPM,Principal,Department,Coordinate,Start,Starttime,Letter,Limit,Pm,Pmqualification,Identification,Appointtype,Pschedule,Budget,Urgent,Admin,Business,Pteam,Engineer,Architect,Testmanager,Qualityengineer,Configurationadmin,Testarchitect,Financecode,Financetime)" />*@
+                    &nbsp;&nbsp;&nbsp; &nbsp;
+                    <input type="button" value="返回" onclick="Back()" />
                 </td>
             </tr>
         </table>

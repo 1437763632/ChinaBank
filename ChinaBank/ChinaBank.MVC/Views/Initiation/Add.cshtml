@@ -10,12 +10,14 @@
     <meta name="viewport" content="width=device-width" />
     <title>Add</title>
     <link href="~/BootstrapSouce/css/bootstrap.css" rel="stylesheet" />
-    <script src="~/Scripts/axios.js"></script>
     <script src="~/Scripts/vue.js"></script>
+    <script src="~/Scripts/axios.js"></script>
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+
 </head>
 <body>
     <div id="app">
-        <h3>{{Forms}}</h3>
+        <h3 id="h3">项目立项申请单（@Request.QueryString["name"]）</h3>
         <table class=" table table-hover table-border">
             <tr>
                 <td>申请人</td>
@@ -28,7 +30,7 @@
                 </td>
             </tr>
             <tr>
-                <td>项目类型abcd</td>
+                <td>项目类型</td>
                 <td>
                     <select v-model="Ptype">
                         <option value="A型">A型</option>
@@ -58,8 +60,8 @@
             <tr>
                 <td>是否为提前启动项目</td>
                 <td>
-                    <input type="radio" name="Starts" value="是" v-model="Starts" />是
-                    <input type="radio" name="Starts" value="否" v-model="Starts" checked="checked" />否
+                    <input type="radio" name="Starts" value="0" v-model="Starts" />是
+                    <input type="radio" name="Starts" value="1" v-model="Starts" checked="checked" />否
                 </td>
                 <td>提前启动指令时</td>
                 <td>
@@ -92,21 +94,23 @@
     var vm = new Vue({
         el: "#app",
         data: {
-            Forms:"项目立项生清单"+@Request.QueryString["name"],
+            Forms: $("#h3").text(),
             Applicant: "",
             Pname:"",
             Ptype: "A型",
             Requisitionid: "",
             Section: "",
             Department: "总公司",
-            Starts: "否",
-            Starttime: object,
+            Starts: "1",
+            Starttime: "",
             Letter: "",
             Limits:""
         },
         methods: {
             //添加申请
             addUser: function (Forms, Applicant, Pname, Ptype, Requisitionid, Section, Department, Starts, Starttime, Letter, Limits) {
+                //alert(Forms);
+                //return;
                 var params = new URLSearchParams();
                 params.append("Forms", Forms);
                 params.append("Applicant", Applicant);
@@ -119,10 +123,11 @@
                 params.append("Starttime", Starttime);
                 params.append("Letter", Letter);
                 params.append("Limits", Limits);
-                axios.post("http://localhost:8086/AddInitiation", param).then(
+                axios.post("http://localhost:8086/AddInitiation",params).then(
                     (response) => {
                         console.log(response)
-                        alert("添加成功")
+                        alert("添加成功");
+                        location.href ='/Initiation/Index'
                     },
                     (response) => {
                         alert(response.status);
@@ -130,7 +135,6 @@
                 ).catch(function (response) {
                     alert(response);
                 })
-
             }
         }
     })
