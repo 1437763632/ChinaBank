@@ -11,6 +11,30 @@
     <title>DepartmentAudit</title>
     <link href="~/BootstrapSouce/css/bootstrap.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <script src="~/Scripts/MessageBox.js"></script>
+    <style>
+        .messageBox {
+            height: 52px;
+            padding: 0 53px 0 78px;
+            line-height: 52px;
+            background: url(../../image/img-set1.png) -441px -613px #ffffe7 no-repeat;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            position: fixed;
+            top: -60px;
+            left: 50%;
+            border: 5px solid #ddd;
+            border-top: 0;
+            color: #444;
+            font-size: 18px;
+            z-index: 9999;
+        }
+
+
+        .messageError {
+            background-position: -441px -673px;
+        }
+    </style>
     <script>
         $(function () {
             GetHangupById();
@@ -19,7 +43,7 @@
         })
         function NodeName() {
             $.ajax({
-                url: "http://localhost:8086/GetNode",
+                url: "http://localhost:8086/GetNodeList",
                 type: "get",
                 success: function (d) {
                     $(d).each(function () {
@@ -31,7 +55,7 @@
         function GetManage() {
             $("select[name=Processingstep]").change(function () {
                 $.ajax({
-                    url: "http://localhost:8086/GetManage",
+                    url: "http://localhost:8086/GetManageList",
                     data: { DepartmentId: $(this).val() },
                     type: "get",
                     success: function (d) {
@@ -78,10 +102,10 @@
                 success: function (data) {
 
                     if (data > 0) {
-                        alert("审批通过,进入下一步审批!");
+                        showmessagebox(true, "审批通过,进入下一步审批!")
                     }
                     else {
-                        alert("修改失败!");
+                        showmessagebox(false, "审批失败!")
                     }
                 }
             })
@@ -89,13 +113,16 @@
         function UpdateState() {
             $.ajax({
                 url: "http://localhost:8086/UpdateState",
+                data:{
+                    Id:"@Request.QueryString["Id"]"
+                },
                 type: "post",
                 success: function (data) {
                     if (data > 0) {
-                        alert("已驳回!");
+                        showmessagebox(true, "已驳回!")
                     }
                     else {
-                        alert("修改失败!");
+                        showmessagebox(false, "驳回失败!")
                     }
                 }
             })
@@ -103,6 +130,7 @@
     </script>
 </head>
 <body>
+    <div class="messageBox"> </div>
     <div>
         <h1>开发部主管审批</h1>
         <form id="form1">
@@ -141,7 +169,7 @@
                 </tr>
                 <tr>
                     <td><input type="button" value="同意" onclick="Update()" /></td>
-                    <td><input type="button" value="驳回" onclick="UpdateState()"/></td>
+                    <td><input type="button" value="驳回" onclick="UpdateState()" /></td>
                 </tr>
             </table>
         </form>

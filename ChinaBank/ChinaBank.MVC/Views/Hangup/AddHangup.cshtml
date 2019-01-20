@@ -11,6 +11,30 @@
     <title>AddHangup</title>
     <link href="~/BootstrapSouce/css/bootstrap.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <script src="~/Scripts/MessageBox.js"></script>
+    <style>
+        .messageBox {
+            height: 52px;
+            padding: 0 53px 0 78px;
+            line-height: 52px;
+            background: url(../../image/img-set1.png) -441px -613px #ffffe7 no-repeat;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            position: fixed;
+            top: -60px;
+            left: 50%;
+            border: 5px solid #ddd;
+            border-top: 0;
+            color: #444;
+            font-size: 18px;
+            z-index: 9999;
+        }
+
+
+        .messageError {
+            background-position: -441px -673px;
+        }
+    </style>
     <script>
         $(function () {
             GetInitiationById();
@@ -34,7 +58,6 @@
             })
         }
         function Add() {
-            alert(0);
             $.ajax({
                 url: "http://localhost:8086/AddHangup",
                 type: "post",
@@ -42,7 +65,7 @@
                 success: function (data) {
 
                     if (data > 0) {
-                        alert("添加成功!");
+                        showmessagebox(true, "添加成功!")
                     }
                     else {
                         alert("添加失败!");
@@ -53,7 +76,8 @@
     </script>
 </head>
 <body>
-    <div> 
+    <div class="messageBox"> </div>
+    <div>
         <form id="form1">
             <table class=" table table-hover">
                 <tr>
@@ -80,10 +104,11 @@
                     <td>处理人:<input type="text" name="Handler" /></td>
                 </tr>
                 <tr>
-                    <td><input type="button" value="保存" onclick="Add()"/></td>
+                    <td><input type="button" value="保存" onclick="Add()" /></td>
                 </tr>
             </table>
         </form>
+
     </div>
 </body>
 </html>

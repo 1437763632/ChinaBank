@@ -204,6 +204,20 @@ namespace ChinaBank.WebApi.Controllers
             return i;
             
         }
+
+        /// <summary>
+        /// 绑定数据栏
+        /// </summary>
+        /// <param name="ManageNumber"></param>
+        /// <param name="ManagePass"></param>
+        /// <returns></returns>
+        [Route("Getrights")]
+        [HttpGet]
+        public IEnumerable<Permission> Getrights(int id)
+        {
+            var i = manageServices.Getrights(id);
+            return i;
+        }
         #endregion
     }
 }

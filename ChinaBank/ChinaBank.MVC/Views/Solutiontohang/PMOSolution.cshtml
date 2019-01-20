@@ -1,6 +1,8 @@
 ﻿
 @{
-    Layout = null;
+                /**/
+
+                Layout = null;
 }
 
 <!DOCTYPE html>
@@ -19,7 +21,7 @@
         })
         function NodeName() {
             $.ajax({
-                url: "http://localhost:8086/GetNode",
+                url: "http://localhost:8086/GetNodeList",
                 type: "get",
                 success: function (d) {
                     $(d).each(function () {
@@ -31,7 +33,7 @@
         function GetManage() {
             $("select[name=Processingstep]").change(function () {
                 $.ajax({
-                    url: "http://localhost:8086/GetManage",
+                    url: "http://localhost:8086/GetManageList",
                     data: { DepartmentId: $(this).val() },
                     type: "get",
                     success: function (d) {
@@ -85,10 +87,13 @@
                 }
             })
         }
-        function UpdateState() {
+        function UpdateStated() {
             $.ajax({
-                url: "http://localhost:8086/UpdateState",
+                url: "http://localhost:8086/UpdateStates",
                 type: "post",
+                data:{
+                    Id:"@Request.QueryString["Id"]"
+                },
                 success: function (data) {
                     if (data > 0) {
                         alert("已驳回!");
@@ -128,6 +133,7 @@
                     <td>意见:<input type="text" name="Pmoopinion" /></td>
                 </tr>
                 <tr>
+                    吗
                     <td>
                         处理步骤:<select name="Processingstep">
                             <option value="0">--请选择--</option>
@@ -141,7 +147,7 @@
                 </tr>
                 <tr>
                     <td><input type="button" value="同意" onclick="Update()" /></td>
-                    <td><input type="button" value="驳回" onclick="UpdateState()" /></td>
+                    <td><input type="button" value="驳回" onclick="UpdateStated()" /></td>
                 </tr>
             </table>
         </form>

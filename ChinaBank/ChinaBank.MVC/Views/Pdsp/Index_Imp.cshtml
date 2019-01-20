@@ -90,7 +90,7 @@
                     <td>{{contact.Postprojectnature}}</td>
                     <td>
                         <div v-if="contact.Id!=''" id="example-3">
-                            <a @@click="Update(contact.Id)">审批</a>
+                            <a @@click="Update(contact.Id)" style="cursor:pointer">审批</a>
                         </div>
                     </td>
                 </tr>
@@ -178,7 +178,7 @@
                 console.log('现在在' + this.cur + '页');
             },
             Update: function (id) {
-                location.href = '/Pdsp/Add_PMO?Id=' + id;
+                location.href = '/Pdsp/Add_Imp?Id=' + id;
             }
 
         },

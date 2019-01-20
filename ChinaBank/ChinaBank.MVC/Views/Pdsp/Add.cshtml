@@ -89,9 +89,8 @@
 <script>  
     $(function () {
         show();
+        //审批
         $("#Add").click(function () {
-            //alert($("[name=Forms]").text())
-            //return 
             $.ajax({
                 url: 'http://localhost:8086/pdsp/Addpdsp',
                 type: 'POST',
@@ -121,6 +120,7 @@
             })
         })
     })
+    //显示加载
     function show(){
         $.ajax({
             url:'http://localhost:8086/Projmessage/fan?id='+@Request.QueryString["id"],
@@ -130,7 +130,7 @@
                 $("span[name=Forms]").html(data.Formfirst)
                 $("span[name=Pid]").html(data.Projcoding)
                 $("span[name=Pname]").html(data.Projname)
-                $("span[name=Applicant]").html(@ViewBag.Name)
+                $("span[name=Applicant]").html("@ViewBag.Name")
                 $("input[name=Pmheadoffice]").val(data.Headoffice)
                 $("span[name=Createtime]").html("@DateTime.Now.ToString("yyyy-MM-dd")")
                 $("span[name=Department]").html(data.Department)

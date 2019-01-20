@@ -9,9 +9,149 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>ItemSolution</title>
+    <link href="~/BootstrapSouce/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <script>
+        $(function () {
+            GetSolutiontohangId();
+            NodeName();
+            GetManage();
+        })
+        function NodeName() {
+            $.ajax({
+                url: "http://localhost:8086/GetNodeList",
+                type: "get",
+                success: function (d) {
+                    $(d).each(function () {
+                        $("select[name=Processingstep]").append("<option value=\"" + this.DepartmentId + "\">" + this.NodeName + "</option>");
+                    })
+                }
+            })
+        }
+        function GetManage() {
+            $("select[name=Processingstep]").change(function () {
+                $.ajax({
+                    url: "http://localhost:8086/GetManageList",
+                    data: { DepartmentId: $(this).val() },
+                    type: "get",
+                    success: function (d) {
+                        $("select[name=Handler] option").remove();
+                        $(d).each(function () {
+                            $("select[name=Handler]").append("<option value=\"" + this.Id + "\">" + this.ManageName + "</option>");
+                        })
+                    }
+                })
+            })
+
+        }
+        function GetSolutiontohangId() {
+            $.ajax({
+                url: "http://localhost:8086/GetSolutiontohangId",
+                type: "get",
+                data: {
+                    Id:"@Request.QueryString["Id"]"
+                },
+                success: function (data) {
+                    $("input[name=Code]").val(data[0].Code);
+                    $("input[name=Applicant]").val(data[0].Applicant);
+                    $("input[name=Pname]").val(data[0].Pname);
+                    $("input[name=Pid]").val(data[0].Pid);
+                    $("input[name=Createtime]").val(data[0].Createtime);
+                    $("input[name=Pm]").val(data[0].Pm);
+                    $("input[name=Department]").val(data[0].Department);
+                    $("input[name=State]").val(data[0].State);
+                    $("input[name=Solutiontohangcause]").val(data[0].Solutiontohangcause);
+
+                }
+            })
+        }
+               function Update() {
+            $.ajax({
+                url: "http://localhost:8086/UpdateSolutionItem",
+                type: "post",
+                data: {
+                    Id:"@Request.QueryString["Id"]",
+                    Itemopinion: $("input[name=Itemopinion]").val(),
+                    Processingstep: $("select[name=Processingstep]").val(),
+                    Handler: $("select[name=Handler]").val()
+                },
+                success: function (data) {
+                    if (data > 0) {
+                        alert("审批通过,进入下一步审批!");
+                    }
+                    else {
+                        alert("修改失败!");
+                    }
+                }
+            })
+        }
+        function UpdateStates() {
+            $.ajax({
+                 url: "http://localhost:8086/UpdateStates",
+                type: "post",
+                data:{
+                    Id:"@Request.QueryString["Id"]"
+                },
+                success: function (data) {
+                    if (data > 0) {
+                        alert("已驳回!");
+                    }
+                    else {
+                        alert("修改失败!");
+                    }
+                }
+            })
+        }
+    </script>
 </head>
 <body>
-    <div> 
+    <div>
+        <h1>项目管理部审批</h1>
+        <form id="form1">
+            <table class=" table table-hover">
+                <tr><td><input type="hidden" name="Id" value="@Request.QueryString["Id"]" /></td></tr>
+                <tr>
+                    <td>编码:<input type="text" name="Code" /></td>
+                    <td>申请人:<input type="text" name="Applicant" /></td>
+                </tr>
+                <tr>
+                    <td>项目名称:<input type="text" name="Pname" /></td>
+                    <td>项目编号:<input type="text" name="Pid" /></td>
+
+                </tr>
+                <tr>
+                    <td>申请日期:<input type="text" name="Createtime" /></td>
+                    <td>项目经理:<input type="text" name="Pm" /></td>
+                </tr>
+                <tr>
+                    <td>所属部门:<input type="text" name="Department" /></td>
+                    <td>项目状态:<input type="text" name="State" /></td>
+                </tr>
+                <tr>
+                    <td>意见:<input type="text" name="Itemopinion" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        处理步骤:<select name="Processingstep">
+                            <option value="0">--请选择--</option>
+                        </select>
+                    </td>
+                    <td>
+                        处理步骤:<select name="Handler">
+                            <option value="0">--请选择--</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="同意" onclick="Update()" /></td>
+                    <td><input type="button" value="驳回" onclick="UpdateStates()" /></td>
+                </tr>
+            </table>
+        </form>
     </div>
 </body>
 </html>
+
+
+
+
