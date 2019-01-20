@@ -8,30 +8,7 @@
 
 <html>
 <head>
-    <script>
-         function Show() {
-        $.ajax({
-            url: 'http://localhost:8086/rbac/Getrights?id=' +@ViewBag.Id,
-            type: 'get',
-            async: false,
-            success: function (data) {
-                console.log(data)
-                $(data).each(function (index, data) {
 
-                    var list ='<ul>'
-                        +'<li><a data-href="' + data.Url + '" data-title="' + data.PermissionName + '" href="javascript:void(0)">' + data.PermissionName +'</a></li>';
-                    //alert(list)
-                    //var list = '<dl>'
-                    //    + '<dt><i class="Hui-iconfont">&#xe616;</i>' + data.PermissionName+'<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>'
-                    //    +'<dd><ul>'
-                    //    + '<li><a data-href="' + data.Url + '" data-title="' + data.PermissionName + '" >' + data.PermissionName + '</a></li>'
-                    //    + '</ul></dd></dl>';
-                    $("#div1").append(list);
-                })
-            }
-        })
-    }
-    </script>
     <meta charset="utf-8">
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -96,12 +73,12 @@
     </header>
     @* 页面主题 *@
     <aside class="Hui-aside">
-        <div class="menu_dropdown bk_2" >
+        <div class="menu_dropdown bk_2">
 
             <dl>
                 <dt><i class="Hui-iconfont">&#xe616;</i> 业务管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-                <dd id="div1"> 
-                    
+                <dd id="div1">
+
                 </dd>
             </dl>
         </div>
@@ -149,4 +126,20 @@
         });
     }
 
+         function Show() {
+        $.ajax({
+            url: 'http://localhost:8086/rbac/Getrights?id=' +@ViewBag.Id,
+            type: 'get',
+            async: false,
+            success: function (data) {
+                console.log(data)
+                $(data).each(function (index, data) {
+
+                    var list ='<ul>'
+                        +'<li><a data-href="' + data.Url + '" data-title="' + data.PermissionName + '" href="javascript:void(0)">' + data.PermissionName +'</a></li>';
+                    $("#div1").append(list);
+                })
+            }
+        })
+    }
 </script>
