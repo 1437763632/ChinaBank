@@ -1275,7 +1275,6 @@
     <Content Include="Views\Solutiontohang\AddSolutiontohang.cshtml" />
     <Content Include="Views\Hangup\GetHangupById.cshtml" />
     <Content Include="Views\Solutiontohang\GetSolutiontohangById.cshtml" />
-
     <Content Include="Views\Pdsp\Index.cshtml" />
     <Content Include="Views\Pdsp\Add.cshtml" />
     <Content Include="Views\Pdsp\Index2.cshtml" />
@@ -1323,6 +1322,7 @@
     <Content Include="Views\Solutiontohang\ItemSolution.cshtml" />
     <Content Include="Views\Solutiontohang\GmoSolutionIndex.cshtml" />
     <Content Include="Views\Solutiontohang\GmoSolution.cshtml" />
+    <Content Include="Views\Initiation\ApproveTwo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

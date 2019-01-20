@@ -10,6 +10,11 @@
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
     <link href="~/BootstrapSouce/css/bootstrap.css" rel="stylesheet" />
+
+    <script src="~/Scripts/axios.js"></script>
+    <script src="~/Scripts/vue.js"></script>
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+
     <style>
         .page-bar {
             margin: 40px;
@@ -67,7 +72,7 @@
 <body>
     <h1>项目申请</h1>
     <hr />
-   
+
     <div id="app">
         <select id="s1" v-model="typename">
             <option value="请选择">
@@ -111,15 +116,15 @@
                     <td>{{contact.Pname}}</td>
                     <td>{{contact.Ptype}}</td>
                     <td>{{contact.Budget}}</td>
-                    <td>{{contact.State}}</td>
+                    <td>{{contact.Accessory}}</td>
                     <td>
                         <div v-if="contact.Id!=''" id="example-3">
 
-                            <a @@click="Update(contact.Id)" >详细</a>
-                            <a @@click="ApproveOne(contact.Id)">步骤1项目主管审核</a>
                             <a @@click="Update(contact.Id)">详细</a>
-                            <a @@click="Update(contact.Id)">挂起</a>
-                            <a @@click="Update(contact.Id)">结项</a>
+                            <a @@click="ApproveOne(contact.Id)">步骤1项目主管审核</a>
+                            <a @@click="ApproveTwo(contact.Id)">2财务部主管审批</a>
+                            @* <a @@click="Update(contact.Id)">挂起</a>
+        <a @@click="Update(contact.Id)">结项</a>*@
 
                         </div>
                     </td>
@@ -143,13 +148,12 @@
 
 </body>
 </html>
-<script src="~/Scripts/axios.js"></script>
-<script src="~/Scripts/vue.js"></script>
+
 <script type="text/javascript">
     var vm = new Vue({
         el: "#app",
         data: {
-            typename:"请选择",
+            typename: "请选择",
             contactsList: [],
             cha1: "",
             all: 0, //总页数
@@ -162,16 +166,17 @@
         //监控
         watch: {
             typename: function (newValue, oldValue) {
-               
-                location.href = "/Initiation/AddInitiation?name=" + newValue;
+                location.href = "/Initiation/Add?name=" + newValue;
+                //location.href = "/Initiation/AddInitiation?name=" + newValue;
             }
         },
         methods: {
-            ToNAGE: function (name) {
-                location.href = "/Initiation/AddInitiation?name" + name;
-            },
+            //ToNAGE: function (name) {
+            //    location.href = "/Initiation/Add?name" + name
+            //    //location.href = "/Initiation/AddInitiation?name" + name;
+            //},
             getAllContacts: function () {
-                axios.get('http://localhost:8086/pdsp/projmessages?currentpage=' + this.cur + '&Pname=' + this.cha1
+                axios.get('http://localhost:8086/GetInitiationByPname?currentpage=' + this.cur + '&Pname=' + this.cha1
                 ).then(
                     (response) => {
                         console.log(response)
@@ -187,8 +192,8 @@
                     }
                 ).catch(function (response) {
                     alert(response);
-                    });
-                
+                });
+
             },
             btnClick: function (data) {//页码点击事件
                 if (data != this.cur) {
@@ -200,12 +205,18 @@
                 this.getAllContacts(this.cur);
                 console.log('现在在' + this.cur + '页');
             },
-            Update: function(id){
-                location.href = '/Initiation/UpdateInitiation?Id='+id;
+            Update: function (id) {
+                location.href = '/Initiation/UpdateInitiation?Id=' + id;
             },
+            //跳转到项目管理部主管审批
             ApproveOne: function (id) {
                 location.href = '/Initiation/ApproveOne?Id=' + id;
-            }
+            },
+            //跳转到财务部主管审批
+            ApproveTwo: function (id) {
+                location.href = '/Initiation/ApproveTwo?Id=' + id;
+            },
+
         },
         computed: {
             indexs: function () {
@@ -236,5 +247,5 @@
         }
 
     });
-  
+
 </script>
