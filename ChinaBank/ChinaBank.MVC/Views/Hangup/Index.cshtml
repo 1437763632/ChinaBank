@@ -70,48 +70,68 @@
 
     <div id="app">
         项目名称:<input id="name" type="text" v-model="cha1" /><input type="button" v-on:click="getAllContacts(cha1)" value="搜索" />
+        <template v-if="contactsList.length > 0">
+            <table v-show="contactsList.length" class="table table-hover">
+                <thead class="navbar-header">
+                    <tr>
+                        <th>序号</th>
+                        <th>项目编码</th>
+                        <th>项目名称</th>
+                        <th>申请日期</th>
+                        <th>挂起日期</th>
+                        <th>申请人</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr v-for="(contact,index) in contactsList">
+                        <td>{{contact.Id}}</td>
+                        <td>{{contact.Code}}</td>
+                        <td>{{contact.Pname}}</td>
+                        <td>{{contact.Createtime}}</td>
+                        <td>{{contact.Hanguptime}}</td>
+                        <td>{{contact.Applicant}}</td>
+                        <td>{{contact.State}}</td>
+                        <td>
+                            <div v-if="contact.Id!=''" id="example-3">
+                                <a @@click="Update(contact.Id)">详细</a>
+                            </div>
+                        </td>
+                    </tr>
+                </thead>
+            </table>
+         </template>
+        <template v-else>
+            <table v-show="contactsList.length" class=" table table-hover">
+                <thead class="navbar-header">
+                    <tr>
+                        <th>序号</th>
+                        <th>项目编码</th>
+                        <th>项目名称</th>
+                        <th>申请日期</th>
+                        <th>挂起日期</th>
+                        <th>申请人</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr>
+                        <td colspan="8" style="text-align:center">暂时没有数据</td>
 
-        <table v-show="contactsList.length" class=" table table-hover">
-            <thead class="navbar-header">
-                <tr>
-                    <th>序号</th>
-                    <th>项目编码</th>
-                    <th>项目名称</th>
-                    <th>申请日期</th>
-                    <th>挂起日期</th>
-                    <th>申请人</th>
-                    <th>状态</th>
-                    <th>操作</th>
-                </tr>
-                <tr v-for="(contact,index) in contactsList">
-                    <td>{{contact.Id}}</td>
-                    <td>{{contact.Code}}</td>
-                    <td>{{contact.Pname}}</td>
-                    <td>{{contact.Createtime}}</td>
-                    <td>{{contact.Hanguptime}}</td>
-                    <td>{{contact.Applicant}}</td>
-                    <td>{{contact.State}}</td>
-                    <td>
-                        <div v-if="contact.Id!=''" id="example-3">
-                            <a @@click="Update(contact.Id)">详细</a>
-                        </div>
-                    </td>
-                </tr>
-            </thead>
-        </table>
-
-        <div class="page-bar">
-            <ul>
-                <li v-if="cur>1"><a v-on:click="cur--,pageClick()">上一页</a></li>
-                <li v-if="cur==1"><a class="banclick">上一页</a></li>
-                <li v-for="index in indexs" v-bind:class="{ 'active': cur == index}">
-                    <a v-on:click="btnClick(index)">{{ index }}</a>
-                </li>
-                <li v-if="cur!=all"><a v-on:click="cur++,pageClick()">下一页</a></li>
-                <li v-if="cur == all"><a class="banclick">下一页</a></li>
-                <li><a>共<i>{{all}}</i>页</a></li>
-            </ul>
-        </div>
+                    </tr>
+                </thead>
+            </table>
+        </template>
+            <div class="page-bar">
+                <ul>
+                    <li v-if="cur>1"><a v-on:click="cur--,pageClick()">上一页</a></li>
+                    <li v-if="cur==1"><a class="banclick">上一页</a></li>
+                    <li v-for="index in indexs" v-bind:class="{ 'active': cur == index}">
+                        <a v-on:click="btnClick(index)">{{ index }}</a>
+                    </li>
+                    <li v-if="cur!=all"><a v-on:click="cur++,pageClick()">下一页</a></li>
+                    <li v-if="cur == all"><a class="banclick">下一页</a></li>
+                    <li><a>共<i>{{all}}</i>页</a></li>
+                </ul>
+            </div>
     </div>
 
 </body>
@@ -148,7 +168,6 @@
                         alert(response.status);
                     }
                 ).catch(function (response) {
-                    alert(response);
                     });
 
             },
