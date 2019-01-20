@@ -47,7 +47,15 @@
                         <td>{{contact.Projstate}}</td>
                         <td>{{contact.Headoffice}}</td>
                         <td>
-                            <a href="#" @@click="Update(contact.Id)">解挂</a>
+                            <template v-if="contact.Projstate==='挂起'">
+                                <a href="#" @@click="Update(contact.Id)">解挂</a>
+                            </template>
+                            <template v-if="contact.Projstate==='解挂'">
+                                <a href="#">挂起</a>
+                            </template>
+                            <template v-if="contact.Projstate==='运行'">
+                                <a href="#">挂起</a>
+                            </template>
                             <a href="#" v-on:click="deleteUserById(contact.Id)">删除</a>
                         </td>
                     </tr>

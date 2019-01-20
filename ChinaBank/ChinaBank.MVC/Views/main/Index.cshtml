@@ -73,7 +73,7 @@
     <aside class="Hui-aside">
         <div class="menu_dropdown bk_2" id="div1">
 
-            <dl id="menu-article">
+           <dl id="menu-article">
                 <dt><i class="Hui-iconfont">&#xe616;</i> 权限管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
                 <dd>
                     <ul>
@@ -110,11 +110,11 @@
                     <ul>
                         <li><a data-href="/Solutiontohang/Index/" data-title="项目解挂" href="javascript:void(0)">项目解挂</a></li>
 
-                            <li><a data-href="/Solutiontohang/PMOSolutionIndex/" data-title="PMO审核" href="javascript:void(0)">PMO审核</a></li>
-                            <li><a data-href="/Solutiontohang/DepartmentSolutionIndex/" data-title="开发部主管审核" href="javascript:void(0)">开发部主管审核</a></li>
-                            <li><a data-href="/Solutiontohang/ProjectSolutionIndex/" data-title="项目管理部审核" href="javascript:void(0)">工程管理部审核</a></li>
-                            <li><a data-href="/Solutiontohang/ItemSolutionIndex/" data-title="工程管理部审核" href="javascript:void(0)">项目管理部审核</a></li>
-                            <li><a data-href="/Solutiontohang/GmoSolutionIndex/" data-title="总经理室成员审核" href="javascript:void(0)">总经理室审核</a></li>
+                        <li><a data-href="/Solutiontohang/PMOSolutionIndex/" data-title="PMO审核" href="javascript:void(0)">PMO审核</a></li>
+                        <li><a data-href="/Solutiontohang/DepartmentSolutionIndex/" data-title="开发部主管审核" href="javascript:void(0)">开发部主管审核</a></li>
+                        <li><a data-href="/Solutiontohang/ProjectSolutionIndex/" data-title="项目管理部审核" href="javascript:void(0)">工程管理部审核</a></li>
+                        <li><a data-href="/Solutiontohang/ItemSolutionIndex/" data-title="工程管理部审核" href="javascript:void(0)">项目管理部审核</a></li>
+                        <li><a data-href="/Solutiontohang/GmoSolutionIndex/" data-title="总经理室成员审核" href="javascript:void(0)">总经理室审核</a></li>
 
                     </ul>
                 </dd>
@@ -223,20 +223,8 @@
 <script type="text/javascript">
 
     $(function () {
-        //Show();
-        $("#min_title_list li").contextMenu('Huiadminmenu', {
-            bindings: {
-                'closethis': function (t) {
-                    console.log(t);
-                    if (t.find("i")) {
-                        t.find("i").trigger("click");
-                    }
-                },
-                'closeall': function (t) {
-                    alert('Trigger was ' + t.id + '\nAction was Email');
-                },
-            }
-        });
+        Show();
+
     });
     /*个人信息*/
     function myselfinfo() {
@@ -250,18 +238,19 @@
             content: '<div><table align="right"><tr><th>用户昵称</th><th>@ViewBag.Name</th></tr><tr><th>用户密码</th><th>@ViewBag.Pass</th></tr></table></div>'
         });
     }
-    @*function Show() {
+    function Show() {
         $.ajax({
-            url: 'http://localhost:8765/rbac/Httprights?id=' +@ViewBag.Id,
+            url: 'http://localhost:8086/rbac/Getrights?id=' +@ViewBag.Id,
             type: 'get',
             success: function (data) {
                 $(data).each(function (index, data) {
-                    var list = '<ul> '
-                        + '<li><a data-href="' + data.URL + '" data-title="' + data.RightName + '">' + data.RightName + '</a></li>'
+                    var list ='<ul>'
+                        + '<li><a data-href="' + data.Url + '" data-title="' + data.PermissionName + '" href="javascript:void(0)">' + data.PermissionName + '</a></li>'
+
                         + '</ul>';
                     $("#div1").append(list);
                 })
             }
         })
-    }*@
+    }
 </script>
