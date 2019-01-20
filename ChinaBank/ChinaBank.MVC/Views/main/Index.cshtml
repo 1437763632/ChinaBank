@@ -8,6 +8,30 @@
 
 <html>
 <head>
+    <script>
+         function Show() {
+        $.ajax({
+            url: 'http://localhost:8086/rbac/Getrights?id=' +@ViewBag.Id,
+            type: 'get',
+            async: false,
+            success: function (data) {
+                console.log(data)
+                $(data).each(function (index, data) {
+
+                    var list ='<ul>'
+                        +'<li><a data-href="' + data.Url + '" data-title="' + data.PermissionName + '" href="javascript:void(0)">' + data.PermissionName +'</a></li>';
+                    //alert(list)
+                    //var list = '<dl>'
+                    //    + '<dt><i class="Hui-iconfont">&#xe616;</i>' + data.PermissionName+'<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>'
+                    //    +'<dd><ul>'
+                    //    + '<li><a data-href="' + data.Url + '" data-title="' + data.PermissionName + '" >' + data.PermissionName + '</a></li>'
+                    //    + '</ul></dd></dl>';
+                    $("#div1").append(list);
+                })
+            }
+        })
+    }
+    </script>
     <meta charset="utf-8">
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -30,6 +54,7 @@
     <script type="text/javascript" src="~/lib/jquery.contextmenu/jquery.contextmenu.r2.js"></script>
 
     <title>中国银行项目立项系统</title>
+
 </head>
 <body>
     <header class="navbar-wrapper">
@@ -71,23 +96,15 @@
     </header>
     @* 页面主题 *@
     <aside class="Hui-aside">
-        <div class="menu_dropdown bk_2" id="div1">
+        <div class="menu_dropdown bk_2" >
 
-           <dl id="menu-article">
-                <dt><i class="Hui-iconfont">&#xe616;</i> 权限管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-                <dd>
-                    <ul>
-                        <li><a data-href="/Permission/Index/" data-title="权限管理" href="javascript:void(0)">权限管理</a></li>
-                    </ul>
-                    <ul>
-                        <li><a data-href="/Role/Index/" data-title="角色管理" href="javascript:void(0)">角色管理</a></li>
-                    </ul>
-                    <ul>
-                        <li><a data-href="/Manage/Index/" data-title="用户管理" href="javascript:void(0)">用户管理</a></li>
-                    </ul>
+            <dl>
+                <dt><i class="Hui-iconfont">&#xe616;</i> 业务管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+                <dd id="div1"> 
+                    
                 </dd>
             </dl>
-            <dl id="menu-article">
+            <dl>
                 <dt><i class="Hui-iconfont">&#xe616;</i> 立项管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
                 <dd>
                     <ul>
@@ -96,7 +113,7 @@
                     </ul>
                 </dd>
             </dl>
-            <dl id="menu-article">
+            <dl>
                 <dt><i class="Hui-iconfont">&#xe616;</i> 挂起管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
                 <dd>
                     <ul>
@@ -104,7 +121,7 @@
                     </ul>
                 </dd>
             </dl>
-            <dl id="menu-article">
+            <dl>
                 <dt><i class="Hui-iconfont">&#xe616;</i> 解挂管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
                 <dd>
                     <ul>
@@ -119,36 +136,8 @@
                     </ul>
                 </dd>
             </dl>
-            <dl id="menu-article">
-                <dt><i class="Hui-iconfont">&#xe616;</i> 项目结项<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-                <dd>
-                    <ul>
-                        <li><a data-href="/Pdsp/Index/" data-title="结项信息" href="javascript:void(0)">结项信息</a></li>
-                    </ul>
-                    <ul>
-                        <li><a data-href="/Pdsp/Index2/" data-title="项目信息管理" href="javascript:void(0)">项目信息管理</a></li>
-                    </ul>
-                    <ul>
-                        <li><a data-href="/Pdsp/Index_PMO/" data-title="PMO管理" href="javascript:void(0)">PMO管理</a></li>
-                    </ul>
-                    <ul>
-                        <li><a data-href="/Pdsp/Index_Imp/" data-title="牵头管理" href="javascript:void(0)">牵头管理</a></li>
-                    </ul>
-                    <ul>
-                        <li><a data-href="/Pdsp/Index_Item/" data-title="项目管理部门" href="javascript:void(0)">项目管理部门</a></li>
-                    </ul>
-                    <ul>
-                        <li><a data-href="/Pdsp/Index_Resource/" data-title="资源管理部门" hef="javascript:void(0)">资源管理部门</a></li>
-                    </ul>
-                    <ul>
-                        <li><a data-href="/Pdsp/Index_Financial/" data-title="财务管理部门" href="javascript:void(0)">财务管理部门</a></li>
-                    </ul>
-                    <ul>
-                        <li><a data-href="/Pdsp/Index_Office/" data-title="总经理管理部门" href="javascript:void(0)">总经理管理部门</a></li>
-                    </ul>
-                </dd>
-            </dl>
-            <dl id="menu-article">
+            
+            <dl>
 
                 <dt><i class="Hui-iconfont">&#xe616;</i> 项目信息<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
                 <dd>
@@ -158,7 +147,7 @@
                     </ul>
                 </dd>
             </dl>
-            <dl id="menu-article">
+            <dl>
                 <dt><i class="Hui-iconfont">&#xe616;</i> 项目问题管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
                 <dd>
                     <ul>
@@ -166,7 +155,7 @@
                     </ul>
                 </dd>
             </dl>
-            <dl id="menu-article">
+            <dl>
                 <dt><i class="Hui-iconfont">&#xe616;</i> 项目人员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
                 <dd>
                     <ul>
@@ -174,7 +163,7 @@
                     </ul>
                 </dd>
             </dl>
-            <dl id="menu-article">
+            <dl>
                 <dt><i class="Hui-iconfont">&#xe616;</i> 报告管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
                 <dd>
                     <ul>
@@ -182,7 +171,7 @@
                     </ul>
                 </dd>
             </dl>
-            <dl id="menu-article">
+            <dl>
                 <dt><i class="Hui-iconfont">&#xe616;</i> 项目挂起审核<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
                 <dd>
                     <ul>
@@ -238,19 +227,5 @@
             content: '<div><table align="right"><tr><th>用户昵称</th><th>@ViewBag.Name</th></tr><tr><th>用户密码</th><th>@ViewBag.Pass</th></tr></table></div>'
         });
     }
-    function Show() {
-        $.ajax({
-            url: 'http://localhost:8086/rbac/Getrights?id=' +@ViewBag.Id,
-            type: 'get',
-            success: function (data) {
-                $(data).each(function (index, data) {
-                    var list ='<ul>'
-                        + '<li><a data-href="' + data.Url + '" data-title="' + data.PermissionName + '" href="javascript:void(0)">' + data.PermissionName + '</a></li>'
 
-                        + '</ul>';
-                    $("#div1").append(list);
-                })
-            }
-        })
-    }
 </script>

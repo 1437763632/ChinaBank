@@ -28,7 +28,15 @@
             <hr class="hr15">
             <input name="ManagePass" placeholder="密码" required="" value="1" type="password">
             <hr class="hr15">
-            <input value="登录" style="width:100%;" type="button"  id="login">
+            <input id="xx" type="button" value="项目经理" />
+            <input id="a1" type="button" value="PMO" />
+            <input id="a2" type="button" value="牵头部门" />
+            <input id="a3" type="button" value="项目部门" />
+            <input id="a4" type="button" value="资源部门" />
+            <input id="a5" type="button" value="财务部门" />
+            <input id="a6" type="button" value="总经理" />
+            <input id="a7" type="button" value="工程部" />
+            <input value="登录" style="width:100%;" type="button" id="login">
             <hr class="hr20">
             <!-- 帮助 <a onClick="alert('请联系管理员')">忘记密码</a> -->
         </form>
@@ -39,28 +47,73 @@
 <script>
     $(function () {
         $("#login").click(function () {
-            $.ajax({
-                url: 'http://localhost:8086/rbac/Login?ManageName=' + $("[name=ManageNumber]").val() + '&ManagePwd=' + $("[name=ManagePass]").val(),
-                type: 'post',
-                success: function (data) {
-                    if (data!=null) {
-                        $.ajax({
-                            url: '/Login/Login',
-                            type: 'post',
-                            data: JSON.stringify(data),
-                            dataType: 'json',
-                            contentType: 'application/json',
-                            success: function (a) {
-                                location.href = "/main/Index?id=" + data.Id;
-                            }
-                        })
-                    }
-                    else {
-                        alert("登录失败");
-                        return;
-                    }
-                }
-            })
+            show();
+            
+        })
+        $("#xx").click(function () {
+            $("[name=ManageNumber]").val("xx");
+            $("[name=ManagePass]").val("xx");
+            show();
+        })
+        $("#a7").click(function () {
+            $("[name=ManageNumber]").val("zz");
+            $("[name=ManagePass]").val("zz");
+            show();
+        })
+        $("#a1").click(function () {
+            $("[name=ManageNumber]").val(2);
+            $("[name=ManagePass]").val(2);
+            show();
+        })
+        $("#a2").click(function () {
+            $("[name=ManageNumber]").val(3);
+            $("[name=ManagePass]").val(3);
+            show();
+        })
+
+        $("#a3").click(function () {
+            $("[name=ManageNumber]").val(4);
+            $("[name=ManagePass]").val(4);
+            show();
+        })
+        $("#a4").click(function () {
+            $("[name=ManageNumber]").val(5);
+            $("[name=ManagePass]").val(5);
+            show();
+        })
+        $("#a5").click(function () {
+            $("[name=ManageNumber]").val(6);
+            $("[name=ManagePass]").val(6);
+            show();
+        })
+        $("#a6").click(function () {
+            $("[name=ManageNumber]").val(7);
+            $("[name=ManagePass]").val(7);
+            show();
         })
     })
+    function show() {
+        $.ajax({
+            url: 'http://localhost:8086/rbac/Login?ManageName=' + $("[name=ManageNumber]").val() + '&ManagePwd=' + $("[name=ManagePass]").val(),
+            type: 'post',
+            success: function (data) {
+                if (data != null) {
+                    $.ajax({
+                        url: '/Login/Login',
+                        type: 'post',
+                        data: JSON.stringify(data),
+                        dataType: 'json',
+                        contentType: 'application/json',
+                        success: function (a) {
+                            location.href = "/main/Index?id=" + data.Id;
+                        }
+                    })
+                }
+                else {
+                    alert("登录失败");
+                    return;
+                }
+            }
+        })
+    }
 </script>
