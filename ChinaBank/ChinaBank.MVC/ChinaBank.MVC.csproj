@@ -996,6 +996,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
+    <Content Include="Scripts\MessageBox.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\vue-resource.js" />
     <Content Include="Scripts\vue.js" />
@@ -1275,7 +1276,6 @@
     <Content Include="Views\Solutiontohang\AddSolutiontohang.cshtml" />
     <Content Include="Views\Hangup\GetHangupById.cshtml" />
     <Content Include="Views\Solutiontohang\GetSolutiontohangById.cshtml" />
-
     <Content Include="Views\Pdsp\Index.cshtml" />
     <Content Include="Views\Pdsp\Add.cshtml" />
     <Content Include="Views\Pdsp\Index2.cshtml" />
