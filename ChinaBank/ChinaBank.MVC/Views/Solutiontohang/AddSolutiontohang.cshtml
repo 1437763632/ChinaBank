@@ -25,6 +25,7 @@
                 },
                 success: function (data) {
                     $("input[name=Code]").val(data[0].Code);
+                    $("input[name=Applicant]").val(data[0].Applicant);
                     $("input[name=Pname]").val(data[0].Pname);
                     $("input[name=Pid]").val(data[0].Pid);
                     $("input[name=Pm]").val(data[0].Pm);

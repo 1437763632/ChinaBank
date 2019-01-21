@@ -137,6 +137,10 @@ namespace ChinaBank.Service
                 solution.State = "已解挂";
                 var Collectlist = new { Id = solution.Id, State = solution.State, Schedule = solution.Schedule, Gmopinion = solution.Gmopinion, Processingstep = solution.Processingstep, Handler = solution.Handler };
                 int result = conn.Execute(executeSql, Collectlist);
+                string sql1 = @"select * from  Solutiontohang where id=:id";
+                var result1 = conn.Query<Solutiontohang>(sql1, new { id = solution.Id }).FirstOrDefault();
+                string sql2 = @"Update Projmessage set Projstate='解挂' where Projcoding=:Projcoding";
+                var res = conn.Execute(sql2, new { Projcoding = result1.Pid });
                 return result;
             }
         }
