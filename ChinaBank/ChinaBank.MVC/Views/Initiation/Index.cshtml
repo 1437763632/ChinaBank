@@ -98,39 +98,59 @@
             </option>
         </select>
         项目名称:<input id="name" type="text" v-model="cha1" /><input type="button" v-on:click="getAllContacts(cha1)" value="搜索" />
+        <template v-if="contactsList.length>0">
+            <table v-show="contactsList.length" class=" table table-hover">
+                <thead class="navbar-header">
+                    <tr>
+                        <th>序号</th>
+                        <th>项目编号</th>
+                        <th>项目名称</th>
+                        <th>项目类型</th>
+                        <th>申请日期</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr v-for="(contact,index) in contactsList">
+                        <td>{{contact.Id}}</td>
+                        <td>{{contact.Pid}}</td>
+                        <td>{{contact.Pname}}</td>
+                        <td>{{contact.Ptype}}</td>
+                        <td>{{contact.Starttime}}</td>
+                        <td>{{contact.Accessory}}</td>
+                        <td>
+                            <div v-if="contact.Id!=''" id="example-3">
 
-        <table v-show="contactsList.length" class=" table table-hover">
-            <thead class="navbar-header">
-                <tr>
-                    <th>序号</th>
-                    <th>项目编号</th>
-                    <th>项目名称</th>
-                    <th>项目类型</th>
-                    <th>申请日期</th>
-                    <th>状态</th>
-                    <th>操作</th>
-                </tr>
-                <tr v-for="(contact,index) in contactsList">
-                    <td>{{contact.Id}}</td>
-                    <td>{{contact.Pid}}</td>
-                    <td>{{contact.Pname}}</td>
-                    <td>{{contact.Ptype}}</td>
-                    <td>{{contact.Budget}}</td>
-                    <td>{{contact.Accessory}}</td>
-                    <td>
-                        <div v-if="contact.Id!=''" id="example-3">
-
-                            <a @@click="Update(contact.Id)">详细</a>
-                            <a @@click="ApproveOne(contact.Id)">步骤1项目主管审核</a>
-                            <a @@click="ApproveTwo(contact.Id)">2财务部主管审批</a>
-                            @* <a @@click="Update(contact.Id)">挂起</a>
+                                <a @@click="Update(contact.Id)">详细</a>
+                                <a @@click="ApproveOne(contact.Id)">步骤1项目主管审核</a>
+                                <a @@click="ApproveTwo(contact.Id)">2财务部主管审批</a>
+                                <a @@click="ApproveThere(contact.Id)">3开发部主管审批</a>
+                                
+                                @* <a @@click="Update(contact.Id)">挂起</a>
         <a @@click="Update(contact.Id)">结项</a>*@
 
-                        </div>
-                    </td>
-                </tr>
-            </thead>
-        </table>
+                            </div>
+                        </td>
+                    </tr>
+                </thead>
+            </table>
+        </template>
+        <template v-else>
+            <table  class="table table-hover">
+                <thead class="navbar-header">
+                    <tr>
+                        <th>序号</th>
+                        <th>项目编号</th>
+                        <th>项目名称</th>
+                        <th>项目类型</th>
+                        <th>申请日期</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr>
+                        <td colspan="7" style="text-align:center">暂无数据</td>
+                    </tr>
+            </table>
+        </template>
 
         <div class="page-bar">
             <ul>
@@ -215,6 +235,10 @@
             //跳转到财务部主管审批
             ApproveTwo: function (id) {
                 location.href = '/Initiation/ApproveTwo?Id=' + id;
+            },
+            //跳转到开发部主管审批
+            ApproveThere: function (id) {
+                location.href = '/Initiation/ApproveThere?Id=' + id;
             },
 
         },

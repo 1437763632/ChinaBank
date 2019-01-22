@@ -22,5 +22,11 @@ namespace ChinaBank.IService
         /// <param name="initiation"></param>
         /// <returns></returns>
         int InitiationApprovals(Initiation initiation);
+        /// <summary>
+        /// 驳回调用方法
+        /// </summary>
+        /// <param name="initiation"></param>
+        /// <returns></returns>
+        int ReInitiationApprovals(Initiation initiation);
     }
 }

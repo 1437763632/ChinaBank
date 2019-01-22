@@ -113,7 +113,7 @@
     //加载处理步骤
     function GetNodes() {
         $.ajax({
-            url: "http://localhost:8086/GetNode",
+            url: "http://localhost:8086/GetNodeList",
             type: "get",
             success: function (data) {
                 console.log(data)
@@ -128,18 +128,18 @@
         el: "#app",
         data: {
             Id:@Request.QueryString["Id"],
-            Code: "",
-            Applicant: "",
-            Pname: "",
-            Ptype: "",
-            Requisitionid: "",
-            Section:"",
-            Department: "",
-            Starts: "",
-            Starttime: "",
-            Letter: "",
-            Limits: "",
-            Principal:""
+            Code: "",// 编码
+            Applicant: "",// 申请人
+            Pname: "",// 项目名称
+            Ptype: "",// 项目类型
+            Requisitionid: "",// 关联需求单号
+            Section: "",// 发起部门
+            Department: "",// 项目所属部门
+            Starts: "",// 是否为提前启动项目
+            Starttime: "",// 收到提前启动指令时间
+            Letter: "",// 提前启动符号
+            Limits: "",//提前启动指令中费用额度
+            Principal: ""//业务负责人
 
         },
         mounted: function () {

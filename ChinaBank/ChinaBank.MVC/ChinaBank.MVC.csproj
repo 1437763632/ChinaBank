@@ -1324,6 +1324,7 @@
     <Content Include="Views\Solutiontohang\GmoSolutionIndex.cshtml" />
     <Content Include="Views\Solutiontohang\GmoSolution.cshtml" />
     <Content Include="Views\Initiation\ApproveTwo.cshtml" />
+    <Content Include="Views\Initiation\ApproveThere.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
