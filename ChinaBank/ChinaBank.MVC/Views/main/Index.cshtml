@@ -8,30 +8,7 @@
 
 <html>
 <head>
-    <script>
-         function Show() {
-        $.ajax({
-            url: 'http://localhost:8086/rbac/Getrights?id=' +@ViewBag.Id,
-            type: 'get',
-            async: false,
-            success: function (data) {
-                console.log(data)
-                $(data).each(function (index, data) {
 
-                    var list ='<ul>'
-                        +'<li><a data-href="' + data.Url + '" data-title="' + data.PermissionName + '" href="javascript:void(0)">' + data.PermissionName +'</a></li>';
-                    //alert(list)
-                    //var list = '<dl>'
-                    //    + '<dt><i class="Hui-iconfont">&#xe616;</i>' + data.PermissionName+'<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>'
-                    //    +'<dd><ul>'
-                    //    + '<li><a data-href="' + data.Url + '" data-title="' + data.PermissionName + '" >' + data.PermissionName + '</a></li>'
-                    //    + '</ul></dd></dl>';
-                    $("#div1").append(list);
-                })
-            }
-        })
-    }
-    </script>
     <meta charset="utf-8">
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -72,7 +49,6 @@
                             <a href="#" class="dropDown_A">@ViewBag.Name <i class="Hui-iconfont">&#xe6d5;</i></a>
                             <ul class="dropDown-menu menu radius box-shadow">
                                 <li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>
-                                <li><a href="#">切换账户</a></li>
                                 <li><a href="/Login/Login">退出</a></li>
                             </ul>
                         </li>
@@ -96,91 +72,12 @@
     </header>
     @* 页面主题 *@
     <aside class="Hui-aside">
-        <div class="menu_dropdown bk_2" >
+        <div class="menu_dropdown bk_2">
 
             <dl>
                 <dt><i class="Hui-iconfont">&#xe616;</i> 业务管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-                <dd id="div1"> 
-                    
-                </dd>
-            </dl>
-            <dl>
-                <dt><i class="Hui-iconfont">&#xe616;</i> 立项管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-                <dd>
-                    <ul>
-                        <li><a data-href="/Initiation/Index/" data-title="项目立项" href="javascript:void(0)">项目立项</a></li>
-                        <li><a data-href="/Initiation/Index/" data-title="项目立项审核" href="javascript:void(0)">项目立项审核</a></li>
-                    </ul>
-                </dd>
-            </dl>
-            <dl>
-                <dt><i class="Hui-iconfont">&#xe616;</i> 挂起管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-                <dd>
-                    <ul>
-                        <li><a data-href="/Hangup/Index/" data-title="项目挂起" href="javascript:void(0)">项目挂起</a></li>
-                    </ul>
-                </dd>
-            </dl>
-            <dl>
-                <dt><i class="Hui-iconfont">&#xe616;</i> 解挂管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-                <dd>
-                    <ul>
-                        <li><a data-href="/Solutiontohang/Index/" data-title="项目解挂" href="javascript:void(0)">项目解挂</a></li>
+                <dd id="div1">
 
-                        <li><a data-href="/Solutiontohang/PMOSolutionIndex/" data-title="PMO审核" href="javascript:void(0)">PMO审核</a></li>
-                        <li><a data-href="/Solutiontohang/DepartmentSolutionIndex/" data-title="开发部主管审核" href="javascript:void(0)">开发部主管审核</a></li>
-                        <li><a data-href="/Solutiontohang/ProjectSolutionIndex/" data-title="项目管理部审核" href="javascript:void(0)">工程管理部审核</a></li>
-                        <li><a data-href="/Solutiontohang/ItemSolutionIndex/" data-title="工程管理部审核" href="javascript:void(0)">项目管理部审核</a></li>
-                        <li><a data-href="/Solutiontohang/GmoSolutionIndex/" data-title="总经理室成员审核" href="javascript:void(0)">总经理室审核</a></li>
-
-                    </ul>
-                </dd>
-            </dl>
-            
-            <dl>
-
-                <dt><i class="Hui-iconfont">&#xe616;</i> 项目信息<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-                <dd>
-                    <ul>
-                        <li><a data-href="/Managemessage/Index/" data-title="项目经理信息" href="javascript:void(0)">项目经理信息</a></li>
-                        <li><a data-href="/Projmessage/Index/" data-title="项目信息" href="javascript:void(0)">项目信息</a></li>
-                    </ul>
-                </dd>
-            </dl>
-            <dl>
-                <dt><i class="Hui-iconfont">&#xe616;</i> 项目问题管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-                <dd>
-                    <ul>
-                        <li><a data-href="/Projproblem/Index/" data-title="项目问题" href="javascript:void(0)">项目问题</a></li>
-                    </ul>
-                </dd>
-            </dl>
-            <dl>
-                <dt><i class="Hui-iconfont">&#xe616;</i> 项目人员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-                <dd>
-                    <ul>
-                        <li><a data-href="/Stackeholder/Index/" data-title="人员管理" href="javascript:void(0)">人员管理</a></li>
-                    </ul>
-                </dd>
-            </dl>
-            <dl>
-                <dt><i class="Hui-iconfont">&#xe616;</i> 报告管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-                <dd>
-                    <ul>
-                        <li><a data-href="/Weekly/Index/" data-title="周报信息" href="javascript:void(0)">周报信息</a></li>
-                    </ul>
-                </dd>
-            </dl>
-            <dl>
-                <dt><i class="Hui-iconfont">&#xe616;</i> 项目挂起审核<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-                <dd>
-                    <ul>
-                        <li><a data-href="/Hangup/PMOAuditIndex/" data-title="PMO审核" href="javascript:void(0)">PMO审核</a></li>
-                        <li><a data-href="/Hangup/DepartmentAuditIndex/" data-title="开发部主管审核" href="javascript:void(0)">开发部主管审核</a></li>
-                        <li><a data-href="/Hangup/ProjectAuditIndex/" data-title="项目管理部审核" href="javascript:void(0)">项目管理部审核</a></li>
-                        <li><a data-href="/Hangup/ItemAuditIndex/" data-title="工程管理部审核" href="javascript:void(0)">工程管理部审核</a></li>
-                        <li><a data-href="/Hangup/GmAuditIndex/" data-title="总经理室成员审核" href="javascript:void(0)">总经理室成员审核</a></li>
-                    </ul>
                 </dd>
             </dl>
         </div>
@@ -228,4 +125,20 @@
         });
     }
 
+         function Show() {
+        $.ajax({
+            url: 'http://localhost:8086/rbac/Getrights?id=' +@ViewBag.Id,
+            type: 'get',
+            async: false,
+            success: function (data) {
+                console.log(data)
+                $(data).each(function (index, data) {
+
+                    var list ='<ul>'
+                        +'<li><a data-href="' + data.Url + '" data-title="' + data.PermissionName + '" href="javascript:void(0)">' + data.PermissionName +'</a></li>';
+                    $("#div1").append(list);
+                })
+            }
+        })
+    }
 </script>

@@ -170,11 +170,16 @@ namespace ChinaBank.Service
         public int GeneralUpdatePdsp(PDSP pdsp)
         {
             using (OracleConnection conn = DapperHelper.GetConnString())
-            {
+            {   
                 string sql = @"Update pdsp set Executiveoffice=:Executiveoffice,Projstateid=:Projstateid where id=:id";
                 var result = conn.Execute(sql, pdsp);
+                string sql1 = @"select * from  pdsp where id=:id";
+                var result1 = conn.Query<PDSP>(sql1, new { id= pdsp.Id }).FirstOrDefault();
+                string sql2= @"Update Projmessage set Projstate='结项' where Projcoding=:Projcoding";
+                var res = conn.Execute(sql2, new { Projcoding = result1.Pid });
                 return result;
             }
         }
     }
+
 }
