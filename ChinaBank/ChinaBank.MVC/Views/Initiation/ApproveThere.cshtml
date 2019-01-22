@@ -1,5 +1,6 @@
 ﻿
 
+
 @{
     Layout = null;
 }
@@ -9,7 +10,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>财务部主管审批</title>
+    <title>开发部主管审批</title>
     <script src="~/Scripts/axios.js"></script>
     <script src="~/Scripts/jquery-3.1.1.js"></script>
     <script src="~/Scripts/vue.js"></script>
@@ -18,13 +19,13 @@
 </head>
 <body>
     <div id="app">
-        <h3>项目立项财务部主管审批</h3>
+        <h3>项目立项开发部部主管审批</h3>
         <input type="hidden" name="Id" v-model="Id" />
         <table class="table table-bordered" style="width:800px;">
             <tr>
                 <td>
                     项目编码:&nbsp;&nbsp;
-                    <input type="text" v-model="Code" />
+                    <input type="text" v-model="Code" readonly="readonly" style="border:0px;" />
                 </td>
                 <td>
                     申请人：&nbsp;&nbsp;
@@ -64,17 +65,17 @@
             <tr>
                 <td>
                     提前启动指令时：&nbsp;&nbsp;
-                    <input type="date" v-model="Starttime" />
+                    <input type="date" v-model="Starttime"  readonly="readonly" style="border:0px;"/>
                 </td>
                 <td>
                     提前启动符号：&nbsp;&nbsp;
-                    <input type="text" v-model="Letter" />
+                    <input type="text" v-model="Letter" readonly="readonly" style="border:0px;" />
                 </td>
             </tr>
             <tr>
                 <td>
                     提前启动指令中费用额度：&nbsp;&nbsp;
-                    <input type="text" v-model="Limits" />
+                    <input type="text" v-model="Limits" readonly="readonly" style="border:0px;" />
                 </td>
                 <td>
                     请选择处理步骤:<select name="State">
@@ -84,25 +85,7 @@
 
                 </td>
             </tr>
-            <tr>
-                <td>
-                    项目编号：&nbsp;&nbsp;
-                    <input type="text" v-model="Pid" />
-                </td>
-                <td>
-                   
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    财务核算项目编码：&nbsp;&nbsp;
-                    <input type="text" v-model="Financecode" />
-                </td>
-                <td>
-                    财务核算项目编码维护时间：&nbsp;&nbsp;
-                    <input type="date" v-model="Financetime" />
-                </td>
-            </tr>
+
             <tr>
                 <td>
                     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -143,25 +126,23 @@
         el: "#app",
         data: {
             Id:@Request.QueryString["Id"],
-            Code: "",// 编码
-            Applicant: "",// 申请人
-            Pname: "",// 项目名称
-            Ptype: "",// 项目类型
-            Requisitionid: "",// 关联需求单号
-            Section: "",// 发起部门
-            Department: "",// 项目所属部门
-            Starts: "",// 是否为提前启动项目
-            Starttime: "",// 收到提前启动指令时间
-            Letter: "",// 提前启动符号
-            Limits: "",//提前启动指令中费用额度
-            Principal: "",//业务负责人
-            Pid:"",//项目编号
-            Financecode: "",//财务核算项目编码
-            Financetime: "",//财务核算项目编码维护时间
+            Code: "",
+            Applicant: "",
+            Pname: "",
+            Ptype: "",
+            Requisitionid: "",
+            Section:"",
+            Department: "",
+            Starts: "",
+            Starttime: "",
+            Letter: "",
+            Limits: "",
+            Principal:""
+
         },
         mounted: function () {
             this.Get();
-            this.Peoples();
+            
         },
         methods: {
             GetPrincipals: function () {
@@ -187,7 +168,7 @@
                     }
                 )
             },
-            
+
             Back: function () {
                 location.href ='/Initiation/Index'
             },
@@ -195,20 +176,9 @@
             Agree: function () {
                 var params = new URLSearchParams();
                 params.append("Id", this.Id);
-                var pri = [];
-                $("input[name=Principal]:checked").each(function () {
-                    pri.push($(this).val());
-                })
-                this.Principal = pri.join(',');
-                params.append("Principal", pri.join(','));
                 params.append("State", $("select[name=State]").val());
-                params.append("Starttime", this.Starttime);
-                params.append("Letter", this.Letter);
-                params.append("Limits", this.Limits);
-                params.append("Code", this.Code);
-                params.append("Pid", this.Pid);
-                params.append("Financetime", this.Financetime);
-                params.append("Financecode", this.Financecode);
+               
+
                 axios.post("http://localhost:8086/InitiationApprovals",params).then(
                     (response) => {
                         console.log(response);

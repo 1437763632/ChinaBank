@@ -43,5 +43,13 @@ namespace ChinaBank.MVC.Controllers
         {
             return View();
         }
+        /// <summary>
+        /// 开发部主管审批
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ApproveThere()
+        {
+            return View();
+        }
     }
 }

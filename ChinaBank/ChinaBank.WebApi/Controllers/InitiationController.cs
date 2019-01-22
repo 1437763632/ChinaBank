@@ -10,7 +10,7 @@ namespace ChinaBank.WebApi.Controllers
     using ChinaBank.IService;
     using ChinaBank.Service;
     using ChinaBank.Model;
-   
+
     public class InitiationController : ApiController
     {
         IInitiationService initiationService = null;
@@ -32,7 +32,7 @@ namespace ChinaBank.WebApi.Controllers
         [Route("AddInitiation")]
         public int AddInitiation(Initiation initiation)
         {
-            
+
             return initiationService.AddInitiation(initiation);
         }
 
@@ -58,10 +58,10 @@ namespace ChinaBank.WebApi.Controllers
             {
                 currentpage = "1";
             }
-            if (!String.IsNullOrEmpty(Pname))    
+            if (!String.IsNullOrEmpty(Pname))
             {
-                
-                userlist = userlist.Where(r=>r.Pname.Contains(Pname)).ToList();
+
+                userlist = userlist.Where(r => r.Pname.Contains(Pname)).ToList();
             }
 
 
@@ -98,6 +98,13 @@ namespace ChinaBank.WebApi.Controllers
         public int InitiationApprovals(Initiation initiation)
         {
             var result = initiationService.InitiationApprovals(initiation);
+            return result;
+        }
+        [HttpPost]
+        [Route("ReInitiationApprovals")]
+        public int ReInitiationApprovals(Initiation initiation)
+        {
+            var result = initiationService.ReInitiationApprovals(initiation);
             return result;
         }
     }

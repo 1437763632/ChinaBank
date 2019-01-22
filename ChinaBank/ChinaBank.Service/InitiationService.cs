@@ -21,7 +21,7 @@ namespace ChinaBank.Service
             using (OracleConnection conn = DapperHelper.GetConnString())
             {
                 string executeSql = @" INSERT INTO Initiation(Code,Applicant,Pid,Pname,Ptype,Requisitionid,Principal,Department,Coordinate,Starts,Starttime,Letter,Limits,Pm,Pmqualification,Identification,Appointtype,Pschedule,Budget,Times,Urgent,Admins,Business,Pteam,Engineer,Architect,Testmanager,Qualityengineer,Configurationadmin,Testarchitect,Financecode,Financetime,Accessory,Projectnum,Productname,Operating,ZPM) VALUES (:Code,:Applicant,:Pid,:Pname,:Ptype,:Requisitionid,:Principal,:Department,:Coordinate,:Starts,:Starttime,:Letter,:Limits,:Pm,:Pmqualification,:Identification,:Appointtype,:Pschedule,:Budget,:Times,:Urgent,:Admins,:Business,:Pteam,:Engineer,:Architect,:Testmanager,:Qualityengineer,:Configurationadmin,:Testarchitect,:Financecode,:Financetime,:Accessory,:Projectnum,:Productname,:Operating,:ZPM) ";
-                //initiation.Times = System.DateTime.Now;
+                initiation.Times = System.DateTime.Now.ToString("yyyy-MM-dd");
                 var Collectlist = new { Code = initiation.Code, Applicant = initiation.Applicant, Pid = initiation.Pid, Pname = initiation.Pname, Ptype = initiation.Ptype, Requisitionid = initiation.Requisitionid, Principal = initiation.Principal, Department = initiation.Department, Coordinate = initiation.Coordinate, Starts = initiation.Starts, Starttime = initiation.Starttime, Letter = initiation.Letter, Limits = initiation.Limits, Pm = initiation.Pm, Pmqualification = initiation.Pmqualification, Identification = initiation.Identification, Appointtype = initiation.Appointtype, Pschedule = initiation.Pschedule, Budget = initiation.Budget, Times = initiation.Times, Urgent = initiation.Urgent, Admins = initiation.Admins, Business = initiation.Business, Pteam = initiation.Pteam, Engineer = initiation.Engineer, Architect = initiation.Architect, Testmanager = initiation.Testmanager, Qualityengineer = initiation.Qualityengineer, Configurationadmin = initiation.Configurationadmin, Testarchitect = initiation.Testarchitect, Financecode = initiation.Financecode, Financetime = initiation.Financetime, Accessory = initiation.Accessory, Projectnum = initiation.Projectnum, Productname = initiation.Productname, Operating = initiation.Operating, ZPM = initiation.ZPM };
 
                 //string executeSql = @" INSERT INTO Initiation(Code,Applicant,Pid,Pname,Ptype,Requisitionid,Principal,Department,Coordinate,Starts,Starttime) VALUES (:Code,:Applicant,:Pid,:Pname,:Ptype,:Requisitionid,:Principal,:Department,:Coordinate,:Starts,:Starttime) ";
@@ -105,7 +105,7 @@ namespace ChinaBank.Service
                     //将状态信息转换为string类型字符串
                     initiation.Accessory = String.Join(",", conn.Query<string>(sql, null).ToList());
                     //修改要修改的内容
-                    sql = @"update  Initiation set Accessory=:Accessory,State=:State where Id=:Id";
+                    sql = @"update  Initiation set Accessory=:Accessory,State=:State,Starttime=:Starttime,Letter=:Letter,Limits=:Limits,Code=:Code,Financecode=:Financecode,Financetime=:Financetime where Id=:Id";
                     result = conn.Execute(sql, initiation);
                     return result;
                 }
@@ -289,6 +289,24 @@ namespace ChinaBank.Service
                 }
                 //sql = @"update  Initiation set Principal=:Principal where Id=:Id";
                 //result = conn.Execute(sql, initiation);
+                return result;
+            }
+        }
+        /// <summary>
+        /// 驳回调用方法
+        /// </summary>
+        /// <param name="initiation"></param>
+        /// <returns></returns>
+        public int ReInitiationApprovals(Initiation initiation)
+        {
+            using (OracleConnection conn = DapperHelper.GetConnString())
+            {
+                string sql = string.Empty;
+                sql = string.Format("select * from Nodes where id=" + initiation.State);
+                var ini = conn.Query<Nodes>(sql, null).FirstOrDefault();
+                initiation.Accessory = ini.NodeName + "已驳回";
+                sql = @"update  Initiation set Accessory=:Accessory where Id=:Id";
+                var result = conn.Execute(sql, initiation);
                 return result;
             }
         }
